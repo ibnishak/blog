@@ -1,6 +1,6 @@
 ---
 title: Workflow for updating documentation of tiddlywiki
-tags: [TiddlyWiki5](../tags/tiddlywiki.md)
+tags: [TiddlyWiki5]
 date: 2020-05-07 05:26:59 +0530
 ---
 
