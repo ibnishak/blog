@@ -1,4 +1,4 @@
-baseurl = "https://ibnishak.gitlab.io/blog/"
+baseurl = "https://ibnishak.github.io/blog/"
 languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
