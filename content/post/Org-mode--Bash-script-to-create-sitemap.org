@@ -1,0 +1,194 @@
+#+TITLE: Bash script to write directory structure to org file
+#+AUTHOR: Riz
+#+DATE: 2019-05-16
+#+DRAFT: true
+#+DESCRIPTION: Write directory structure or a subset of it as a list in an org mode file
+#+tags:  ["org-mode" "bash" "emacs"]
+
+This is a bash script that will write the file structure of a given directory to an org mode file. By default, the script writes the file structure as plain list. However, I will explain the steps below enough so that you may create variations where file structure is written as org headlines. It will be rather easy to understand if we start out with an understanding of what we are planning to achieve.
+
+Let us assume  we have a directory structure like this
+#+BEGIN_EXAMPLE 
+.
+├── First--1.org
+├── First--2.org
+├── First--3.org
+├── First--4.org
+├── First--5.org
+├── FirstFolder
+│   ├── Mango--1.org
+│   ├── Mango--2.org
+│   ├── Mango--3.org
+│   ├── Mango--4.org
+│   └── Mango--5.org
+├── SecondFolder
+│   ├── Apple--1.org
+│   ├── Apple--2.org
+│   ├── Apple--3.org
+│   ├── Apple--4.org
+│   └── Apple--5.org
+#+END_EXAMPLE
+
+* Plain list
+The expected output is like this.
+#+BEGIN_EXAMPLE 
++ SecondFolder/
+ + [[file:./SecondFolder/Apple--5.org][Apple--5]]
+ + [[file:./SecondFolder/Apple--4.org][Apple--4]]
+ + [[file:./SecondFolder/Apple--3.org][Apple--3]]
+ + [[file:./SecondFolder/Apple--2.org][Apple--2]]
+ + [[file:./SecondFolder/Apple--1.org][Apple--1]]
++ FirstFolder/
+ + [[file:./FirstFolder/Mango--5.org][Mango--5]]
+ + [[file:./FirstFolder/Mango--4.org][Mango--4]]
+ + [[file:./FirstFolder/Mango--3.org][Mango--3]]
+ + [[file:./FirstFolder/Mango--2.org][Mango--2]]
+ + [[file:./FirstFolder/Mango--1.org][Mango--1]]
++ [[file:./First--5.org][First--5]]
++ [[file:./First--4.org][First--4]]
++ [[file:./First--3.org][First--3]]
++ [[file:./First--2.org][First--2]]
++ [[file:./First--1.org][First--1]]
+
+#+END_EXAMPLE
+
+** Script
+
+#+BEGIN_SRC bash :tangle no 
+  #!/usr/bin/env bash
+
+  buffer="tmp"
+  target="index.org"
+  dir="$1" #Take the first argument with which script is called and assign it to dir
+
+  if [ -z "$dir" ]; then
+      dir="."
+  fi
+  #  If user has not called the script with an argument, the script should just use the current directory. Here we are checking if the variable $dir is empty or not, and if empty, assign present working directory to it.
+
+  cd $dir
+
+  if [ -f "${target}" ]; then
+      rm -f "$target"
+  fi
+  # The $target is 'index.org'. If a file named 'index.org' already exists in the directory, remove it.
+
+
+
+  tree -P "*.org" -iftr --noreport --dirsfirst --prune \
+      | sed "/\.$/d" > "$buffer"
+  # -P : Pattern of files to include in the tree.
+  # -i : Tree will not print the indentation lines. 
+  # -f : Prints the full path prefix for each file.
+  # -t : Sort by modified time.
+  # -r : Reverse the sort, so that most recently modified appears on top.
+  # --noreport : Usually tree prints a summary of the structure at the end. In our case, it is not required. This flag turns off the report.
+  # --dirsfirst : Place directories first.
+  # --prune : Do not print empty directories.
+
+  # Sed deletes any line with only a single dot in it		
+
+  for f in $(cat "$buffer") #for every line in $buffer
+  do 
+      filename=$(basename $f) #Converts the line to name like "myfile.org"
+      filename="${filename%.*}" #Remove extension, so it becomes just "myfile""
+      slashes="${f//[^\/]}" #Distill the slashes from the path. It will look like "///" etc
+      levels="$(echo $slashes | tr '/' ' ')" #Change slashes to spaces. Variation is to change it to tabs by using "tr '/' '\t'"
+      if [ -f $f ]; then #If path is a file
+          echo "${levels}+ [[file:${f}][$filename]]" >> "$target" #Add $levels (number of spaces equalling number of forward slashes in path) followed by a + and then the link to file, and append it to $target
+      else #if path is a folder
+          foldername=$(echo $f | sed 's/\.\///') #Remove the "./" in the beginning
+          echo "${levels}+ ${foldername}/" >> "${target}" # Append it to $target as a string, not a link.
+      fi
+  done
+  rm -f "$buffer" #Remove the temporary buffer
+  echo "Sitemap successfully written to ${target}"
+
+#+END_SRC
+
+* Header hierarchy
+The expected output is like this.
+#+BEGIN_EXAMPLE 
+* SecondFolder/
+** [[file:./SecondFolder/Apple--5.org][Apple--5]]
+** [[file:./SecondFolder/Apple--4.org][Apple--4]]
+** [[file:./SecondFolder/Apple--3.org][Apple--3]]
+** [[file:./SecondFolder/Apple--2.org][Apple--2]]
+** [[file:./SecondFolder/Apple--1.org][Apple--1]]
+* FirstFolder/
+** [[file:./FirstFolder/Mango--5.org][Mango--5]]
+** [[file:./FirstFolder/Mango--4.org][Mango--4]]
+** [[file:./FirstFolder/Mango--3.org][Mango--3]]
+** [[file:./FirstFolder/Mango--2.org][Mango--2]]
+** [[file:./FirstFolder/Mango--1.org][Mango--1]]
+* [[file:./First--5.org][First--5]]
+* [[file:./First--4.org][First--4]]
+* [[file:./First--3.org][First--3]]
+* [[file:./First--2.org][First--2]]
+* [[file:./First--1.org][First--1]]
+
+#+END_EXAMPLE
+** Script
+#+BEGIN_SRC bash :tangle no 
+  #!/usr/bin/env bash
+
+  buffer="tmp"
+  target="index.org"
+  dir="$1" #Take the first argument with which script is called and assign it to dir
+
+  if [ -z "$dir" ]; then
+      dir="."
+  fi
+  #  If user has not called the script with an argument, the script should just use the current directory. Here we are checking if the variable $dir is empty or not, and if empty, assign present working directory to it.
+
+  cd $dir
+
+  if [ -f "${target}" ]; then
+      rm -f "$target"
+  fi
+  # The $target is 'index.org'. If a file named 'index.org' already exists in the directory, remove it.
+
+
+
+  tree -P "*.org" -iftr --noreport --dirsfirst --prune \
+      | sed "/\.$/d" > "$buffer"
+  # -P : Pattern of files to include in the tree.
+  # -i : Tree will not print the indentation lines. 
+  # -f : Prints the full path prefix for each file.
+  # -t : Sort by modified time.
+  # -r : Reverse the sort, so that most recently modified appears on top.
+  # --noreport : Usually tree prints a summary of the structure at the end. In our case, it is not required. This flag turns off the report.
+  # --dirsfirst : Place directories first.
+  # --prune : Do not print empty directories.
+
+  # Sed deletes any line with only a single dot in it		
+
+  for f in $(cat "$buffer") #for every line in $buffer
+  do 
+      filename=$(basename $f) #Converts the line to name like "myfile.org"
+      filename="${filename%.*}" #Remove extension, so it becomes just "myfile""
+      slashes="${f//[^\/]}" #Distill the slashes from the path. It will look like "///" etc
+      levels="$(echo $slashes | tr '/' '*')" #Change slashes to asterisks. 
+      if [ -f $f ]; then #If path is a file
+          echo "${levels} [[file:${f}][$filename]]" >> "$target" #Add $levels (number of asterisks equalling number of forward slashes in path) and then the link to file, and append it to $target
+      else #if path is a folder
+          foldername=$(echo $f | sed 's/\.\///') #Remove the "./" in the beginning
+          echo "${levels} ${foldername}/" >> "${target}" # Append it to $target as a string, not a link.
+      fi
+  done
+  rm -f "$buffer" #Remove the temporary buffer
+  echo "Sitemap successfully written to ${target}"
+
+#+END_SRC
+  
+* Multiple directories
+The script can be applied to multiple directories at the same time to multiple directories. Assuming the script is saved as =treefy.sh= and is made executable, the following script can be used to apply it to all the *level 1* subdirectories of the current folder using [[https://github.com/sharkdp/fd][fd]].
+
+#+BEGIN_SRC bash :tangle no
+    #!/usr/bin/env bash
+    set -e
+
+    fd . --max-depth 1 --type d -0 | xargs -0 -n1 treefy.sh
+#+END_SRC
+
+Alternatively you may use the linux build in [[http://man7.org/linux/man-pages/man1/find.1.html][find]]. 
