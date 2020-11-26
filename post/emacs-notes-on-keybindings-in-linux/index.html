@@ -1,0 +1,90 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>Emacs: Notes on keybindings in GNU+Linux | Hugo</title><meta name=description content="Using common shortcuts without breaking emacs"><link rel=stylesheet href=https://ibnishak.gitlab.io/blog/css/index.css><link rel=stylesheet href=https://ibnishak.gitlab.io/blog/css/classes.css><link rel=canonical href=https://ibnishak.gitlab.io/blog/post/emacs-notes-on-keybindings-in-linux/><link rel=alternate type=application/rss+xml href title=Hugo><link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css rel=stylesheet></head><body><header class=menus><nav><a href=/blog/>Home</a>
+<a href=/blog/about/>About</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank><i title=GitHub class="fab fa-github"></i></a><a href=https://ibnishak.gitlab.io/blog/index.xml target=_blank><i title=RSS class="fas fa-rss"></i></a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><h1 style=text-align:center>Emacs: Notes on keybindings in GNU+Linux</h1><div class=post-meta><time datetime=2019-09-18T00:00:00Z>September 18, 2019</time> &nbsp;
+Riz &nbsp;
+<i class="far fa-clock"></i>3 min
+13 s
+&nbsp;</div></header><h1 id=pointless-introduction>Pointless introduction</h1><p>Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.</p><p>Everyone and their grandmothers know that the shortcut for these are Ctrl+x, Ctrl+c and Ctrl+v. If you happen to flirt with terminals, then you need to remember that in most terminals the shortcuts are Ctrl+Shift+c and Ctrl+Shift+v. Now come to emacs, where the keybindings become Ctrl+w, Alt+w and Ctrl+y. The toll it takes on your muscle memory and frustration that ensues everytime you send SIGKILL instead of copying is no funny buisness.</p><h1 id=plan>Plan</h1><p>We are going to set up Emacs such that we can use the all the standard keybindings like: Ctrl+a to Select all Ctrl+s to Save Ctrl+d to add bookmark Ctrl+f to find Ctrl+z to undo Ctrl+x to cut Ctrl+c to copy Ctrl+v to paste</p><p>Since Emacs heavily uses Ctrl and Alt keys, we need to avoid messing with these modifier keys. So here is the plan</p><ul><li>Use <code>xmodmap</code> to convert CapsLock to Hyper key. So for every other software except Emacs, CapsLock acts as Hyper. All other modifier keys remain at their default position and usage.</li><li>In Emacs and Emacs alone, swap the Hyper and Ctrl keys, so that when you press Ctrl button in keyboard, Hyper is sent to Emacs, while pressing CapsLock button sends Ctrl to Emacs.</li><li>Finally set up keybindings like Hyper-x for cut, Hyper-c for copy in Emacs. Since Emacs is accepting Ctrl as Hyper, the actual keypress would be Ctrl+x, Ctrl+y etc</li></ul><h1 id=step-1-xmodmap>Step 1: Xmodmap</h1><ul><li>Run the following command</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    xmodmap -pke &gt; ~/.Xmodmap
+</code></pre></div><ul><li>Open <code>~/.Xmodmap</code>. Add the following code to the file.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    clear      lock
+    clear      mod1
+    clear      mod2
+    clear      mod3
+    clear      mod4
+    clear      mod5
+    keycode      66 <span style=color:#f92672>=</span> Hyper_L
+    add        mod1 <span style=color:#f92672>=</span> Alt_L Alt_R Meta_L
+    add        mod2 <span style=color:#f92672>=</span> Num_Lock
+    add        mod3 <span style=color:#f92672>=</span> Hyper_L
+    add        mod4 <span style=color:#f92672>=</span> Super_L Super_R
+    add        mod5 <span style=color:#f92672>=</span> Mode_switch ISO_Level3_Shift
+</code></pre></div><ul><li>Reload the xmodmap by running</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>xmodmap ~/.Xmodmap
+</code></pre></div><h1 id=step-2-emacs>Step 2: Emacs</h1><p>Add the following snippet to your <code>init.el</code> in <strong>Linux OS</strong>. If you are using Windows/Mac, find appropriate snippet from
+<a href=http://ergoemacs.org/emacs/emacs_hyper_super_keys.html>ergoemacs</a>.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(setq x-ctrl-keysym 'hyper) ;;In Emacs, treat Control key as hyper
+(setq x-hyper-keysym 'ctrl) ;; In Emacs, treat Hyper Key(Caps_Lock)  as Control
+</code></pre><h1 id=my-keybindings>My Keybindings</h1><p>I am using <a href=https://github.com/noctuid/general.el>general.el</a> for my keybindings. A subset of which looks as follows.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(use-package general
+  :defer 2
+  :init
+  (general-define-key
+   :states '(normal insert visual)
+   :keymaps 'override
+   &quot;M-x&quot; 'helm-M-x
+   &quot;H-a&quot; 'mark-whole-buffer
+   &quot;H-s&quot; 'save-buffer
+   &quot;H-d&quot; 'bookmark-set
+
+   &quot;H-z&quot; 'undo-tree-undo
+   Ctrl+Shift+z for Redo.
+   &quot;H-x&quot; 'kill-region
+   &quot;H-c&quot; 'copy-region-as-kill
+   &quot;H-v&quot; 'yank
+
+   &quot;H-f&quot; 'helm-swoop
+   &quot;H-F&quot; 'helm-projectile-ag
+   &quot;H-o&quot; 'fzf-projectile
+   &quot;H-n&quot; 'helm-find-files ;; Ctrl+n for new files
+   &quot;H-w&quot; 'kill-this-buffer  ;; Ctrl+w kills buffer
+   &quot;H-g&quot; 'avy-goto-char-2
+   &quot;H-h&quot; 'anzu-query-replace
+   &quot;H-H&quot; 'anzu-query-replace-regexp
+
+   &quot;H-&amp;lt;tab&amp;gt;&quot; 'helm-mini
+   &quot;H-*&quot; 'bookmark-jump
+   &quot;H-y&quot;  'yas-insert-snippet
+   &quot;H-`&quot; 'helm-register
+   &quot;H-M-`&quot; 'point-to-register
+   ))
+</code></pre><h1 id=13supthsup-function-key>13th Function Key</h1><p>Another key in the keyboard I hardly ever find using is the <code>Menu</code> key.
+You know, <a href=https://www.howtogeek.com/wp-content/uploads/2015/07/a-keyboard-shortcut-that-can-be-used-in-place-of-the-context-menu-key-01.jpg>that
+key</a>
+smugly sitting in between Right AltGr and Right
+Ctrl. I configured the Xmodmap so that it will act as
+F13. Since no normal keyboard has an F13 key, no
+shortcuts are assigned to this in any software. This gives us a array of
+possibilities regarding keybindings devoid of headaches. Add the
+following line to your <code>~/.Xmodmap</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-{.bash data-lang={.bash>keycode 135 <span style=color:#f92672>=</span> F13
+</code></pre></div><p>and reload your xmodmap by running</p><pre><code>    xmodmap ~/.Xmodmap
+</code></pre><h1 id=right-alt-as-f13>Right Alt as F13</h1><p>If <code>Menu</code> key is hard to reach for you, the Right Alt key is another
+option to be morphed into F13. The <code>~/.Xmodmap</code> will look like this:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-{.bash data-lang={.bash>clear      lock
+clear      mod1
+clear      mod2
+clear      mod3
+clear      mod4
+clear      mod5
+keycode      66 <span style=color:#f92672>=</span> Hyper_L
+keycode     108 <span style=color:#f92672>=</span> F13
+add        mod1 <span style=color:#f92672>=</span> Alt_L Meta_L
+add        mod2 <span style=color:#f92672>=</span> Num_Lock
+add        mod3 <span style=color:#f92672>=</span> Hyper_L
+add        mod4 <span style=color:#f92672>=</span> Super_L Super_R
+add        mod5 <span style=color:#f92672>=</span> Mode_switch ISO_Level3_Shift
+</code></pre></div><p>and reload your xmodmap by running</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    xmodmap ~/.Xmodmap
+</code></pre></div><h1 id=unrelated-tip>Unrelated tip</h1><p>Since you are in the business of modifying <code>~/.Xmodmap</code>, you may want to
+know that it can be also used to change the scrolling using mouse to
+<a href=https://jessequinnlee.com/2015/07/25/natural-scrolling-vs-reverse-scrolling/>natural
+scrolling</a>
+like those seen in Mac, as opposed to the default reverse scrolling.
+Here is the line to add to <code>~/.Xmodmap</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    pointer <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>4</span> <span style=color:#ae81ff>7</span> <span style=color:#ae81ff>6</span> <span style=color:#ae81ff>8</span> <span style=color:#ae81ff>9</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>11</span> <span style=color:#ae81ff>12</span>
+</code></pre></div><p>and reload your xmodmap by running</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    xmodmap ~/.Xmodmap
+</code></pre></div><footer><hr><div class=post-tags><i class="fas fa-tags"></i><a href=/blog/tags/emacs>emacs</a>
+&nbsp;</div></footer><div class=releated-post><h3>Related Posts</h3><i class="fas fa-paperclip"></i><a href=/blog/post/emacs-adding-clipboard-js-to-html-exports/>Emacs: Adding clipboad.js to HTML exports</a><br></div><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2020 &#183;
+<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
+<a href=#><i class="fas fa-chevron-up"></i></a></div><script src=/blog/js/lazyload.min.js></script><script>var lazyImage=new LazyLoad({container:document.getElementById('article')});</script></html>
