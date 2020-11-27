@@ -5,7 +5,7 @@ enableInlineShortcodes = true
 enableEmoji = true
 # pagination = 10
 
-title = "Hugo"
+title = "Treppenwitze"
 author = "Rizwan Ishak"
 copyright = "[Home](/) &#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)"
 
