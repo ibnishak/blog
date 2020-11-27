@@ -6,7 +6,7 @@ author: Riz
 
 description: 
 categories: []
-tags: []
+tags: ["advice"]
 
 draft: false
 enableDisqus : false
