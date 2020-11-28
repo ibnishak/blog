@@ -2,7 +2,7 @@
 <a href=/blog/about/>About</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank><i title=GitHub class="fab fa-github"></i></a><a href=https://ibnishak.github.io/blog/index.xml target=_blank><i title=RSS class="fas fa-rss"></i></a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><h1 style=text-align:center>Building markor from source code in linux</h1><div class=post-meta><time datetime=2019-12-12T00:00:00Z>December 12, 2019</time> &nbsp;
 Riz &nbsp;
 <i class="far fa-clock"></i>1 min
-4 s
+3 s
 &nbsp;</div></header><p>Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.</p><ul><li>If you do not have android-sdk installed, you need to install it first.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>mkdir $HOME/android-sdk-dl
 <span style=color:#66d9ef>if</span> test ! -e $HOME/android-sdk-dl/sdk-tools.zip ; <span style=color:#66d9ef>then</span> curl https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip &gt; $HOME/android-sdk-dl/sdk-tools.zip ; <span style=color:#66d9ef>fi</span>
 unzip -qq -n $HOME/android-sdk-dl/sdk-tools.zip -d $HOME/android-sdk
@@ -13,11 +13,8 @@ echo y | $HOME/android-sdk/tools/bin/sdkmanager <span style=color:#e6db74>&#39;p
 echo y | $HOME/android-sdk/tools/bin/sdkmanager <span style=color:#e6db74>&#39;extras;google;m2repository&#39;</span> 
 $HOME/android-sdk/tools/bin/sdkmanager --licenses
 export ANDROID_HOME<span style=color:#f92672>=</span>$HOME/android-sdk
-
-* Clone markor to $HOME/markor
-<span style=color:#e6db74>```</span>git
-git clone --depth<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> https://github.com/gsantner/markor.git <span style=color:#f92672>&amp;&amp;</span> cd markor
-</code></pre></div><ul><li>Then run the gradlew scripts</li></ul><pre><code>./gradlew --no-daemon clean
+</code></pre></div><ul><li>Clone markor to $HOME/markor</li></ul><pre><code class=language-git data-lang=git>git clone --depth=1 https://github.com/gsantner/markor.git &amp;&amp; cd markor
+</code></pre><ul><li>Then run the gradlew scripts</li></ul><pre><code>./gradlew --no-daemon clean
 ./gradlew --no-daemon build
 
 </code></pre><ul><li>Change directory to releases folder</li></ul><pre><code>cd app/build/outputs/apk/flavorDefault/release 
