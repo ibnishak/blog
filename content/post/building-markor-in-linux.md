@@ -22,6 +22,7 @@ echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-27'
 echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' 
 $HOME/android-sdk/tools/bin/sdkmanager --licenses
 export ANDROID_HOME=$HOME/android-sdk
+```
 
 * Clone markor to $HOME/markor
 ```git

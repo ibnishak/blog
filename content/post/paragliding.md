@@ -1,6 +1,6 @@
 ---
 title: A recommendation for Paragliding
-date: 2020-10-27T19:46:59+05:30
+date: 2020-11-12T19:46:59+05:30
 lastmod: 
 author: Riz
 
