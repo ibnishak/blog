@@ -15,7 +15,7 @@ copyright = "[Home](/) &#183; Theme [Simpleness](https://github.com/RainerChiang
   lazyImage = true
   enableMathJax = false # enable it in Front Matter
   enableReadingTime = true
-  favicon = "favicon.png"
+  favicon = "favicon.ico"
   startyear = "2019"
   description = "Thoughts, rants and notes"
 
