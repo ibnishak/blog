@@ -7,10 +7,10 @@
   {{- if or .Description .Site.Params.description }}
   <meta name="description" content="{{ .Description | default .Site.Params.description }}">
   {{- end }}
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" href="{{ .Site.Params.favicon }}">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.BaseURL }}apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.BaseURL }}favicon-32x32.png">
+  <link rel="icon" href="{{ .Site.BaseURL }}{{ .Site.Params.favicon }}">
+  <link rel="manifest" href="{{ .Site.BaseURL }}site.webmanifest">
 
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/index.css">
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/classes.css">
