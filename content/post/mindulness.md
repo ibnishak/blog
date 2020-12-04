@@ -1,5 +1,5 @@
 ---
-title: Mindulness
+title: Mindulness-What, Why and Why not
 date: 2020-12-04T15:53:59+05:30
 lastmod: 
 author: Riz
