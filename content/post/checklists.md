@@ -1,12 +1,12 @@
 ---
-title: Checklists-What, How and Why
+title: Checklists - What, How and Why
 date: 2020-11-29T13:54:24+05:30
 lastmod: 
 author: Riz
 
 description: 
-categories: []
-tags: ["advice"]
+categories: ["advice"]
+tags: []
 
 draft: false
 enableDisqus : false

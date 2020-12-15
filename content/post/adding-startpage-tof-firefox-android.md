@@ -1,6 +1,7 @@
 ---
 title: "Setting startpage.com as default search engine in Firefox for Android"
 date: 2019-10-14
+categories: ["digital"]
 tags: ["android"]
 author: Riz
 ---

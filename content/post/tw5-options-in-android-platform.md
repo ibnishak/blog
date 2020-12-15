@@ -1,21 +1,22 @@
 ---
 title: "TW5: Options in Android Platform"
 date: 2018-08-14
+categories: ["digital"]
 tags: ["tiddlywiki"]
 author: Riz
 ---
 
 Saving a TW5 wiki in android has 7 possible solutions. We shall take a quick look at each of them.
 
-* [Android Apps](#android-apps)
-    * [Tiddloid](#tiddloid)
-    * [Andtidwiki](#andtidwiki)
-    * [Webdav server](#webdav-server)
-* [Servers using Termux](#servers-using-termux)
-    * [Built in server.](#built-in-server)
-    * [Tiddlyserver.](#tiddlyserver)
-    * [Bob](#bob)
-    * [Widdly](#and-finally-the-winner-widdly-by-opennota)
+- [Android Apps](#android-apps)
+  - [Tiddloid](#tiddloid)
+  - [Andtidwiki](#andtidwiki)
+  - [Webdav server](#webdav-server)
+- [Servers using Termux](#servers-using-termux)
+  - [Built in server.](#built-in-server)
+  - [Tiddlyserver.](#tiddlyserver)
+  - [Bob](#bob)
+  - [And finally the winner: Widdly by Opennota](#and-finally-the-winner-widdly-by-opennota)
 
 
 <br/><br/>

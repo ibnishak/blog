@@ -5,8 +5,8 @@ lastmod:
 author: Riz
 
 description: 
-categories: []
-tags: []
+categories: ["digital"]
+tags: ["linux"]
 
 draft: false
 enableDisqus : false

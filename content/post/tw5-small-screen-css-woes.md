@@ -1,6 +1,7 @@
 ---
 title: "TW5: CSS woes with smaller screens"
 date: 2018-09-03
+categories: ["digital"]
 tags: ["tiddlywiki"]
 author: Riz
 ---

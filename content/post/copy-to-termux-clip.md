@@ -1,6 +1,7 @@
 ---
 title: "Vim: Copy and paste to termux clipboard"
 date: 2019-12-12
+categories: ["digital"]
 tags: ["android"]
 author: Riz
 ---

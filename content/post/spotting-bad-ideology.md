@@ -1,6 +1,7 @@
 ---
 title: "Spotting bad ideologies"
 date: 2019-09-18
+categories: ["advice"]
 tags: ["philosophy"]
 author: Riz
 description: "Personal set of criteria for identifying bad ideology."

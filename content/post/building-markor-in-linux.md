@@ -1,6 +1,7 @@
 ---
 title: "Building markor from source code in linux"
 date: 2019-12-12
+categories: ["digital"]
 tags: ["android"]
 author: Riz
 ---

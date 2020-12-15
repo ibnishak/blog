@@ -5,8 +5,8 @@ lastmod:
 author: Riz
 
 description: 
-categories: [note-taking]
-tags: []
+categories: [digital]
+tags: ["linux" "note-taking" "personal-knowledge-base"]
 
 draft: false
 enableDisqus : false
@@ -38,3 +38,11 @@ disableAutoCollapse: true
 1. Web-clipper add-on for browser.
 1. Secure cloud backups
 1. Tool-chain for easy publishing
+
+## Candidates
+1. Evernote: Privacy issues
+1. Onenote: Privacy issues
+1. Zim: No mobile app
+1. Org mode: Orgzly is a great mobile app. Unforunately it is more geared towards 'few-large-notes' kind of workflow, while I am looking at a 'many small notes with ability to convert it to large notes' kind of workflow
+1. Tiddlywiki: Not scalable. Mobile app is just a mobile version of the html page.
+1. Markdown notes - Markor in Mobile, VS codium in Linux: CURRENT

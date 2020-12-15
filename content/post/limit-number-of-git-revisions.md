@@ -5,8 +5,8 @@ lastmod:
 author: Riz
 
 description: 
-categories: []
-tags: []
+categories: ["digital"]
+tags: ["tip"]
 
 draft: false
 enableDisqus : false
