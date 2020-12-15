@@ -1,9 +1,9 @@
 ---
-title: "Emacs: Adding clipboad.js to HTML exports"
+title: "Emacs - Adding clipboad.js to HTML exports"
 date: 2019-09-18
 author: Riz
 categories: ["digital"]
-tags: ["emacs" "linux"]
+tags: ["emacs", "linux"]
 keywords: ["emacs", "clipboard", "codeblock", "clipboardjs", "export", "html"]
 ---
 

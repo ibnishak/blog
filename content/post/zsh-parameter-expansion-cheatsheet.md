@@ -2,7 +2,7 @@
 title: "zsh: Parameter expansion cheatsheet"
 date: 2019-11-24
 categories: ["digital"]
-tags: ["tip" "linux"]
+tags: ["tip", "linux"]
 author: Riz
 description: "String and path manipulation using zsh alone"
 ---

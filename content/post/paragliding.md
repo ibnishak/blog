@@ -5,7 +5,7 @@ lastmod:
 author: Riz
 
 description: 
-categories: []
+categories: ["general"]
 tags: []
 
 draft: false

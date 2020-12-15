@@ -1,12 +1,10 @@
 ---
-title: Criteria for Personal Knowledge Base
-date: 2020-10-03T18:46:19+05:30
-lastmod: 
+title: Personal Knowledge Base - Criteria and Candidates
+date: 2020-10-03
 author: Riz
 
-description: 
-categories: [digital]
-tags: ["linux" "note-taking" "personal-knowledge-base"]
+categories: ["digital"]
+tags: ["linux", "note-taking", "review", "workflow"]
 
 draft: false
 enableDisqus : false

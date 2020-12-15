@@ -1,6 +1,6 @@
 ---
 title: Time Blocking - What, Why and How
-date: 2020-11-27T13:30:51+05:30
+date: 2020-11-27
 lastmod: 
 author: Riz
 

@@ -1,5 +1,5 @@
 ---
-title: Limiting Number of Git Revisions-How
+title: Limiting Number of Git Revisions - How
 date: 2020-10-10T22:42:40+05:30
 lastmod: 
 author: Riz

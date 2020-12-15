@@ -3,7 +3,7 @@ title: "Emacs: Notes on keybindings in GNU+Linux"
 date: 2019-09-18
 author: Riz
 categories: ["digital"]
-tags: ["emacs" "linux"]
+tags: ["emacs","linux"]
 description: "Using common shortcuts without breaking emacs"
 ---
 
