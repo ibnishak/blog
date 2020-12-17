@@ -1,5 +1,5 @@
 ---
-title: "Spotting bad ideologies"
+title: "Bad ideologies - Criteria"
 date: 2019-09-18
 categories: ["advice"]
 tags: ["philosophy"]
@@ -26,4 +26,6 @@ _Set of normative beliefs and values that a person or other entity hold._
 2. Limits criticism of itself.
 3. Is not resilient enough to guide decision making in new and unforeseen circumstances.
 
-- See also: [Fallacies-Wikipedia](https://en.m.wikipedia.org/wiki/List_of_fallacies)
+- See also: [Fallacies-Wikipedia][1]
+
+[1]: https://en.m.wikipedia.org/wiki/List_of_fallacies

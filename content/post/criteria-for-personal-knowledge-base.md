@@ -40,7 +40,19 @@ disableAutoCollapse: true
 ## Candidates
 1. Evernote: Privacy issues
 1. Onenote: Privacy issues
+1. Notion: Privacy issues
+1. Roam: Privacy issues
 1. Zim: No mobile app
 1. Org mode: Orgzly is a great mobile app. Unforunately it is more geared towards 'few-large-notes' kind of workflow, while I am looking at a 'many small notes with ability to convert it to large notes' kind of workflow
-1. Tiddlywiki: Not scalable. Mobile app is just a mobile version of the html page.
-1. Markdown notes - Markor in Mobile, VS codium in Linux: CURRENT
+1. Tiddlywiki: Not scalable. [Usability in mobile][1] is mediocre.
+1. Obsidian: Very interesting project. However I was hard pressed to find a feature that is not available as a VSCode Plugin inorder to warrant the swtich to a non-opensource project.
+1. Markdown notes - Markor in Mobile, VS codium with plugins in Linux: CURRENT
+
+## Interesting links
+- [Artificial Brain Networked notebook app - Master list of Personal knowledge base softwares][2]
+- [List of Public Zettelkasten Wikis][3]
+
+
+[1]: https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/
+[2]: https://www.notion.so/Artificial-Brain-Networked-notebook-app-a131b468fc6f43218fb8105430304709
+[3]: https://wiki.nikitavoloboev.xyz/other/wiki-workflow#similar-wikis-i-liked
