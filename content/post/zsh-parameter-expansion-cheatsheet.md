@@ -1,6 +1,6 @@
 ---
 title: "zsh: Parameter expansion cheatsheet"
-date: 2019-11-24
+date: 2018-09-26
 categories: ["digital"]
 tags: ["tip", "linux"]
 author: Riz

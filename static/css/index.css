@@ -12,6 +12,13 @@
     font-style: normal;
   }
 }
+
+@font-face {
+  font-family: 'Meera';
+  src: local("Meera"), url("../fonts/Meera.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   scrollbar-color: #202324 #454a4d;
 }
@@ -51,6 +58,13 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body.poem-malayalam header h1, body.poem-malayalam #article p {
+  font-family: "Meera";
+}
+body.poem-malayalam #article p  {
+  white-space: pre-wrap;
+  font-size: 28px;
 }
 
 h1, h2, h3, h4, h5, h6 {

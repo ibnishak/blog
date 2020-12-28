@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default "en" }}">
 {{ partial "head.html" . }}
 
-<body>
+<body {{ with .Params.matter }} class="{{ . }}" {{ end }}>
   {{ partial "header.html" . }}
 
   {{- block "main" . }}{{- end }}

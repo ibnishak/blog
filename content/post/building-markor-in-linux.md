@@ -9,15 +9,16 @@ author: Riz
 
 Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.
 
-
 - If you do not have android-sdk installed, you need to install it first. Most package managers has it. Given below is a portable method.
 
 ```bash
 export ANDROID_SDK_ROOT="$HOME/android-sdk"
 
 if [[ ! -d ${ANDROID_SDK_ROOT}]]; then
+    mkdir -p ${ANDROID_SDK_ROOT}
     curl https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip > sdk-tools.zip 
-    unzip -qq -n sdk-tools.zip -d $HOME/android-sdk
+    unzip -qq -n sdk-tools.zip -d ${ANDROID_SDK_ROOT}
+    rm sdk-tools.zip
 fi
 echo y | ${ANDROID_SDK_ROOT}/tools/bin/sdkmanager 'tools'
 echo y | ${ANDROID_SDK_ROOT}/tools/bin/sdkmanager 'platform-tools' 
@@ -27,7 +28,7 @@ echo y | ${ANDROID_SDK_ROOT}/tools/bin/sdkmanager 'extras;google;m2repository'
 ${ANDROID_SDK_ROOT}/tools/bin/sdkmanager --licenses
 ```
 
-- Clone markor to $HOME/markor
+- Clone markor repo
 
 ```git
 git clone --depth=1 https://github.com/gsantner/markor.git && cd markor

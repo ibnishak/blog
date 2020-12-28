@@ -1,6 +1,6 @@
 ---
 title: "Adding custom language highlight and fonts to markor"
-date: 2019-11-24
+date: 2019-12-24
 categories: ["digital"]
 tags: ["android"]
 author: Riz
