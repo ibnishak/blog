@@ -3,12 +3,14 @@
 &nbsp;<h1 style=text-align:center>Building markor from source code in linux</h1><div class=post-meta><time datetime=2019-12-12T00:00:00Z>December 12, 2019</time> &nbsp;
 Riz &nbsp;
 <i class="far fa-clock"></i>1 min
-10 s
+11 s
 &nbsp;</div></header><p>Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.</p><ul><li>If you do not have android-sdk installed, you need to install it first. Most package managers has it. Given below is a portable method.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>export ANDROID_SDK_ROOT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$HOME<span style=color:#e6db74>/android-sdk&#34;</span>
 
 <span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> ! -d <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span><span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>
+    mkdir -p <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>
     curl https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip &gt; sdk-tools.zip 
-    unzip -qq -n sdk-tools.zip -d $HOME/android-sdk
+    unzip -qq -n sdk-tools.zip -d <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>
+    rm sdk-tools.zip
 <span style=color:#66d9ef>fi</span>
 echo y | <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/tools/bin/sdkmanager <span style=color:#e6db74>&#39;tools&#39;</span>
 echo y | <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/tools/bin/sdkmanager <span style=color:#e6db74>&#39;platform-tools&#39;</span> 
@@ -16,7 +18,7 @@ echo y | <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e
 echo y | <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/tools/bin/sdkmanager <span style=color:#e6db74>&#39;platforms;android-29&#39;</span> 
 echo y | <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/tools/bin/sdkmanager <span style=color:#e6db74>&#39;extras;google;m2repository&#39;</span> 
 <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/tools/bin/sdkmanager --licenses
-</code></pre></div><ul><li>Clone markor to $HOME/markor</li></ul><pre><code class=language-git data-lang=git>git clone --depth=1 https://github.com/gsantner/markor.git &amp;&amp; cd markor
+</code></pre></div><ul><li>Clone markor repo</li></ul><pre><code class=language-git data-lang=git>git clone --depth=1 https://github.com/gsantner/markor.git &amp;&amp; cd markor
 </code></pre><ul><li>Then run the gradlew scripts</li></ul><pre><code>./gradlew --no-daemon clean
 ./gradlew --no-daemon build
 
@@ -27,6 +29,6 @@ ls
 </code></pre></div><ul><li>Now we use the key just created to sign it.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/build-tools/28.0.3/apksigner sign --ks markor-release-key.jks --out markor-signed-aligned.apk markor-unsign-aligned.apk
 <span style=color:#e6db74>${</span>ANDROID_SDK_ROOT<span style=color:#e6db74>}</span>/build-tools/28.0.3/apksigner verify markor-signed-aligned.apk
 </code></pre></div><ul><li>Copy the apk to phone and install it.</li></ul><footer><hr><div class=post-tags><i class="fas fa-tags"></i><a href=/blog/tags/android>android</a>
-&nbsp;</div></footer><div class=releated-post><h3>Related Posts</h3><i class="fas fa-paperclip"></i><a href=/blog/post/copy-to-termux-clip/>Vim: Copy and paste to termux clipboard</a><br><i class="fas fa-paperclip"></i><a href=/blog/post/adding-custom-language-highlight-to-markor/>Adding custom language highlight and fonts to markor</a><br></div><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2020 &#183;
+&nbsp;</div></footer><div class=releated-post><h3>Related Posts</h3><i class="fas fa-paperclip"></i><a href=/blog/post/copy-to-termux-clip/>Vim: Copy and paste to termux clipboard</a><br></div><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2020 &#183;
 <a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
 <a href=#><i class="fas fa-chevron-up"></i></a></div><script src=/blog/js/lazyload.min.js></script><script>var lazyImage=new LazyLoad({container:document.getElementById('article')});</script></html>
