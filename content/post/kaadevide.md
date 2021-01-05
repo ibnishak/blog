@@ -6,7 +6,8 @@ author: Riz
 
 description: 
 categories: []
-tags: []
+tags: [malayalam]
+matter: poem-malayalam
 
 draft: false
 enableDisqus : false
