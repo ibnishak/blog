@@ -1,5 +1,5 @@
 ---
-title: About Disciplinig using Constant Fear
+title: About Disciplining using Constant Fear
 date: 2020-10-18T14:49:53+05:30
 lastmod: 
 author: Riz
