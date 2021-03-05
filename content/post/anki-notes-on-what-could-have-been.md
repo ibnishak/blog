@@ -1,6 +1,6 @@
 ---
 title: Anki - Reimagining
-date: 2021-02-28T09:37:55+05:30
+date: 2021-02-26T09:37:55+05:30
 lastmod: 
 author: Riz
 
@@ -69,7 +69,7 @@ system
         00000000003.yaml
     metadata
         00000000001.yaml
-            uuid, created, modified, easefactor, interval, model, path-to-note
+            uuid, created, modified, easefactor, interval, lastivl, highest-successful-interval, model, path-to-note, 
             revision-log
         00000000002.yaml
         00000000003.yaml
