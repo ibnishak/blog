@@ -8398,7 +8398,7 @@ very-muted-foreground: #888888</pre>
 <div created="20170118142420793" modified="20210304141828436" title="$:/state/tab/sidebar--1835078512">
 <pre>TableOfContents</pre>
 </div>
-<div list="$:/AdvancedSearch $:/anki-v2/styles TableOfContents" title="$:/StoryList">
+<div list="TableOfContents" title="$:/StoryList">
 <pre></pre>
 </div>
 <div bag="default" created="20161105155442170" modified="20170119075647749" revision="0" status="" tags="$:/tags/Stylesheet" title="$:/Stylesheet/Generic" type="text/css">
@@ -9056,8 +9056,12 @@ Cards in Learn queue comes from 2 different sources
 <div created="20210303181143802" modified="20210303181209702" tags="Variables" title="Starting Ease">
 <pre>Deck Configuration &gt; New Cards &gt; Starting Ease</pre>
 </div>
-<div caption="{{$:/language/SideBar/Contents/Caption}}" created="20210304184625525" list="[[What is a Queue]] [[Handling &quot;Learning&quot; Queue]] [[Handling &quot;Review&quot; Queue]] [[Handling Early Reviews]] [[Things to Note]]" modified="20210306022847992" tags="$:/tags/SideBar" title="TableOfContents" type="text/vnd.tiddlywiki">
-<pre>&lt;div class=&quot;desktop&quot;&gt;
+<div caption="{{$:/language/SideBar/Contents/Caption}}" created="20210304184625525" list="[[What is a Queue]] [[Handling &quot;Learning&quot; Queue]] [[Handling &quot;Review&quot; Queue]] [[Handling Early Reviews]] [[Things to Note]]" modified="20210306054628265" tags="$:/tags/SideBar" title="TableOfContents" type="text/vnd.tiddlywiki">
+<pre>\define myactions()
+&lt;$actionnavigat $to=&lt;&lt;navigateTo&gt;&gt;/&gt;
+\end
+
+&lt;div class=&quot;desktop&quot;&gt;
 &lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
 &lt;&lt;toc-selective-expandable 'TableOfContents'&gt;&gt;
