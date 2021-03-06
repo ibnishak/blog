@@ -35,8 +35,7 @@ If I was rebuilding Anki from scratch, what would I have done?
   - Notes could be structured and written for the sole purpose of card generation. However it would be bettern if notes were written for general purpose and there is some markup to indicate which part of notes should be used for card generation. This would help combat knowledge fragmentation
 - Use git for version control and regeneration of cards when notes are modified. The card generation is hooked to git commit (When you make a git commit/trigger card generation, git checks for modified files and generates cards from them)
 - Later support can be expanded to card generation from CSV files (Frozen field type questions), YAML, XML, HTML and plain text.
-  - Cloze deletion on XML based mindmaps could be used for studying for long form exams. 
-
+ 
 ## Cards
 - Generated cards, models, scheduling information, revlog are stored either as individual YAML/JSON files or in a portable NoSQL database file like boltDB or badger.
   - It is better to store in both formats (YAML and NoSQL). Text will allow version control and easy backup, while databases will allow fine grained search queries, stats generation etc.
@@ -44,7 +43,7 @@ If I was rebuilding Anki from scratch, what would I have done?
 - Linked cards, which will be shown in predefined order whenever its review is scheduled. 
   - Combining this with mind-palaces would be a good way to memorise lists and procedures
 - MCQ mode. A large list of options, and a set of questions with answers. During review, user will be shown the question, three randomly chosen items from the list combined with correct answer.
- 
+ - Cloze deletion on XML based mindmaps could be used for studying for long form exams. 
 
 ## Program
 - Backend written in Golang or Rust for cross-platform compilation.
@@ -54,6 +53,7 @@ If I was rebuilding Anki from scratch, what would I have done?
 - APIs for addon development. 
 - Scheduling algorithms that can be configured and even completely replaced.
   - In order to be completely replacable, scheduling algorithms should have no side effect other than returning next due date and ease factor.
+- History of each card should have implications on its own future intervals, as well as the intervals of other cards in deck which goes through similar history. Else we are making the same mistake over several cards. Interval after a review should therefore depend on 4 factors - History of card, Intervals of other cards who have been in similar situations during review, deck (to factor in difficulty of material), card type (to factor in technique used for studies).
 - Templating engines for creating models.
 - One or more folders can be served statically for viewing related informations.
 - For ease of doing backups, a 1 level folder structure could be implemented. Even that could be theoretically configured.

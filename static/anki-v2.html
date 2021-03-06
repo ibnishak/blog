@@ -329,9 +329,29 @@ Error message and password prompt
 <div created="20210305091542450" modified="20210305091554457" tags="" title="_restorePreviewCard">
 <pre>https://github.com/ankitects/anki/blob/5f9792392a953271eee21004e3a49b591999b9a7/pylib/anki/schedv2.py#L800</pre>
 </div>
-<div created="20210305054729441" modified="20210305064158140" tags="$:/tags/Stylesheet" title="$:/anki-v2/styles">
+<div created="20210305054729441" modified="20210306023817697" tags="$:/tags/Stylesheet" title="$:/anki-v2/styles">
 <pre>.source {
 text-align: right
+}
+
+@media screen and (max-width: 600px) {
+.desktop {
+     display:none;
+}
+
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;&gt;
+.tc-story-river {
+display: none;
+}
+&lt;/$reveal&gt;
+}
+
+@media screen and (min-width: 600px) {
+.mobile {
+     display:none;
+}
+
+
 }</pre>
 </div>
 <div created="20170119083436386" modified="20170119083436386" title="$:/config/Tiddlers/TitleLinks">
@@ -8363,10 +8383,10 @@ very-muted-foreground: #888888</pre>
 <div created="20170118142540942" modified="20170118142540942" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20170118144127461" modified="20210305082847658" title="$:/state/sidebar">
+<div created="20170118144127461" modified="20210306023213772" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
-<div created="20170118144204800" modified="20210305064047042" title="$:/state/tab--1498284803">
+<div created="20170118144204800" modified="20210306022900158" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/System</pre>
 </div>
 <div created="20170118141611480" modified="20210305074640824" title="$:/state/tab--1963855381">
@@ -8378,7 +8398,7 @@ very-muted-foreground: #888888</pre>
 <div created="20170118142420793" modified="20210304141828436" title="$:/state/tab/sidebar--1835078512">
 <pre>TableOfContents</pre>
 </div>
-<div list="$:/AdvancedSearch TableOfContents" title="$:/StoryList">
+<div list="$:/AdvancedSearch $:/anki-v2/styles TableOfContents" title="$:/StoryList">
 <pre></pre>
 </div>
 <div bag="default" created="20161105155442170" modified="20170119075647749" revision="0" status="" tags="$:/tags/Stylesheet" title="$:/Stylesheet/Generic" type="text/css">
@@ -8502,8 +8522,8 @@ pre {
 <div created="20170108123350712" list="$:/core/ui/ViewTemplate/title $:/core/ui/ViewTemplate/unfold $:/core/ui/ViewTemplate/classic $:/core/ui/ViewTemplate/body $:/core/ui/ViewTemplate/subtitle $:/core/ui/ViewTemplate/tags" modified="20170108123447483" title="$:/tags/ViewTemplate">
 <pre></pre>
 </div>
-<div created="20170118142655427" modified="20210305105627788" title="$:/temp/advancedsearch">
-<pre></pre>
+<div created="20170118142655427" modified="20210306022905829" title="$:/temp/advancedsearch">
+<pre>anki style</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -8519,7 +8539,7 @@ pre {
     }
 }</pre>
 </div>
-<div created="20210304142329697" modified="20210305105613817" title="$:/temp/search">
+<div created="20210304142329697" modified="20210306022738500" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20170108142337910" modified="20210304143522982" tags="$:/tags/Stylesheet" title="$:/tesseract/Hum/extra" type="text/css">
@@ -9036,14 +9056,25 @@ Cards in Learn queue comes from 2 different sources
 <div created="20210303181143802" modified="20210303181209702" tags="Variables" title="Starting Ease">
 <pre>Deck Configuration &gt; New Cards &gt; Starting Ease</pre>
 </div>
-<div caption="{{$:/language/SideBar/Contents/Caption}}" created="20210304184625525" list="[[What is a Queue]] [[Handling &quot;Learning&quot; Queue]] [[Handling &quot;Review&quot; Queue]] [[Handling Early Reviews]] [[Things to Note]]" modified="20210305083203728" tags="$:/tags/SideBar" title="TableOfContents" type="text/vnd.tiddlywiki">
-<pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+<div caption="{{$:/language/SideBar/Contents/Caption}}" created="20210304184625525" list="[[What is a Queue]] [[Handling &quot;Learning&quot; Queue]] [[Handling &quot;Review&quot; Queue]] [[Handling Early Reviews]] [[Things to Note]]" modified="20210306022847992" tags="$:/tags/SideBar" title="TableOfContents" type="text/vnd.tiddlywiki">
+<pre>&lt;div class=&quot;desktop&quot;&gt;
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
 
 &lt;&lt;toc-selective-expandable 'TableOfContents'&gt;&gt;
 
 &lt;/div&gt;
+&lt;/div&gt;
 
-</pre>
+
+&lt;div class=&quot;mobile&quot;&gt;
+&lt;$linkcatcher set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; actions=&lt;&lt;myactions&gt;&gt;&gt;
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+
+&lt;&lt;toc-selective-expandable 'TableOfContents'&gt;&gt;
+
+&lt;/div&gt;
+&lt;/$linkcatcher&gt;
+&lt;/div&gt;</pre>
 </div>
 <div created="20210305082443759" modified="20210305092637528" tags="TableOfContents" title="Things to Note">
 <pre># Some intervals calculated with the algorithms described below is usually passed to a fuzzing function before it is finalized. It means some random amount of time is added or subtracted from these intervals. I presume this is done so that the daily workload is somewhat evened out. {{_fuzzIvlRange||lt}}
