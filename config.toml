@@ -30,6 +30,10 @@ copyright = "[Home](/) &#183; Theme [Simpleness](https://github.com/RainerChiang
   name = "About"
   url = "/about/"
   weight = 2
+  [[menu.main]]
+  name = "Digital Garden"
+  url = "https://nilavara.surge.sh/index.html"
+  weight = 3
 
 [social]
   github = "https://github.com/ibnishak"
