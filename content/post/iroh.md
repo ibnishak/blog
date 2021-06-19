@@ -1,6 +1,6 @@
 ---
 title: Project Iroh
-date: 2021-06-18T08:33:25+05:30
+date: 2021-06-22T08:33:25+05:30
 lastmod:
 author: Riz
 
@@ -24,11 +24,11 @@ Project Iroh is a collection of scripts, programs and extensions which is used t
 At the core of Iroh is a command line interface written in Golang. It provides 3 commands
 
 1. init
-  Init command takes user input regarding where the markdown notes are stored, where do you want to keep the published notes etc. It would then create a `.meta` folder
+   Init command takes user input regarding where the markdown notes are stored, where do you want to keep the published notes etc. It would then create a `.meta` folder
 2. parse
-  Parse co
+   Parse co
 
-As mentioned above, it is a bit too messy for public consumption right now. 
+As mentioned above, it is a bit too messy for public consumption right now.
 
 ## VSCode and Plugins
 
