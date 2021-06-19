@@ -1,16 +1,16 @@
 ---
-title: ബാലശാപങ്ങള്‍- മധുസൂദനന്‍ നായര്‍ 
+title: ബാലശാപങ്ങള്‍- മധുസൂദനന്‍ നായര്‍
 date: 2021-01-04T20:19:07+05:30
-lastmod: 
+lastmod:
 author: Riz
 
-description: 
+description:
 categories: []
 tags: [malayalam]
 matter: poem-malayalam
 
 draft: false
-enableDisqus : false
+enableDisqus: false
 enableMathJax: false
 disableToC: false
 disableAutoCollapse: true
