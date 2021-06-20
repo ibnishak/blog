@@ -76,8 +76,7 @@ body.poem-malayalam #article p {
 
 @media only screen and (max-width: 600px)  {
 	body.poem-malayalam #article p {
-		white-space: pre-wrap;
-		font-size: 24px;
+		font-size: 18px;
 	}
 }
 
