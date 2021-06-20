@@ -1,6 +1,6 @@
 ---
 title: വാഴക്കുല -ചങ്ങമ്പുഴ
-date: 2021-06-19T20:53:32+05:30
+date: 2021-07-02T20:53:32+05:30
 lastmod:
 author: Riz
 description:

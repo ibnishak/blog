@@ -1,11 +1,12 @@
 ---
-title: Kaaka Kulichal
+title: കാക്ക കുളിച്ചാൽ കൊക്കാകുമോ - സച്ചിദാനന്ദൻ
 date: 2021-06-19T22:11:59+05:30
 lastmod:
 author: Riz
 description:
 categories: []
-tags: []
+tags: [malayalam]
+matter: poem-malayalam
 draft: false
 enableDisqus: false
 enableMathJax: false
