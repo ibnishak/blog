@@ -70,7 +70,7 @@ disableAutoCollapse: true
 3. Markdown Linkify: Unpublished, developed by self
    - Converts selected text to markdown links where link part is a slug of created from selection.
    - Upon creating a link it checks for presence of said file in the current folder, and if not found it will offer to create it with title formed by selection.
-4. Markdown Dated Notes
+4. Markdown Dated Notes: Unpublished, developed by self
    - The forward slash command of Foam plugin excised into a separate plugin. It can create wiki-links with dates as its contents
 
 All together it has around 17 plugins. In order to ensure that VSCode does not have to bear the burden of these plugins when used for purposes other than markdown editing, I created an alias in my shell as

@@ -32,12 +32,6 @@ As mentioned above, it is a bit too messy for public consumption right now.
 
 ## VSCode and Plugins
 
-Contributions of various vscode plugins to Iroh
-
-- Markdown Linkify
-
-  - Markdown: Linkify command, Ctrl+L shortcut, Creat the newly linked file if they do not exist
-
 - Mayukai dark theme
 
 ## Scripts and Other components

@@ -1,11 +1,11 @@
 ---
 title: പലവക - 3
-date: 2021-07-10T15:31:18+05:30
+date: 2021-11-10T15:31:18+05:30
 lastmod:
 author: Riz
 
 description:
-categories: []
+categories: [poem-malayalam]
 tags: [malayalam]
 matter: poem-malayalam
 
