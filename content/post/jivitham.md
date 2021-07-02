@@ -4,7 +4,7 @@ date: 2021-04-19T21:28:59+05:30
 lastmod:
 author: Riz
 description:
-categories: []
+categories: [poem-malayalam]
 tags: [malayalam]
 matter: poem-malayalam
 draft: false

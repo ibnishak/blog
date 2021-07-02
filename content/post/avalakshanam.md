@@ -5,7 +5,7 @@ lastmod:
 author: Riz
 
 description: 
-categories: []
+categories: [poem-malayalam]
 tags: [malayalam]
 matter: poem-malayalam
 

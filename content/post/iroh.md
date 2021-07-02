@@ -38,48 +38,6 @@ Contributions of various vscode plugins to Iroh
 
   - Markdown: Linkify command, Ctrl+L shortcut, Creat the newly linked file if they do not exist
 
-- Markdown IDE
-
-  - type `[` to trigger autocompletion for entering links to other Markdown files
-  - type `![` to trigger autocompletion for links to local image files.
-  - updates links when renaming files
-  - removes links when deleting files
-
-- Mzettel
-
-  - Mzettel - Note: Asks for a title. Creates a new note with **slugified title + extension** as filename and adds title as content.
-  - Mzettel - Note Link to Clipboard: Copies markdown link to clipboard in the format `[Title](filename)`
-  - Mzettel - Open in Browser: Opens current note in browser localhost.
-
-- Markdown All in One
-
-  - Ctrl+B, Ctrl+I shortcuts for bold
-  - Paste over as link
-  - List management [Changed order of list shortcuts]
-  - Toggle checkboxes, Toggle checkbox status
-  - Toggle preivew and close it with same shortcut
-  - Shortcuts for increasing and decreasing heading levels
-
-- Markdown notes
-
-  - Wikilinks, Create new files from wikilinks, Wikilinks in preview
-  - Hover peek
-
-- Markdown table formatter
-
-  - Formats table
-  - Provide lenses for sorting the table by different columns
-  - Provides below settings as customizable features
-    - Default justification
-    - Keep first and last pipes
-    - Space padding of columns
-    - Remove colons if same as default
-
-- Paste image
-- Md-graph
-- Spell check
-- Which-key
-- prettier
 - Mayukai dark theme
 
 ## Scripts and Other components
