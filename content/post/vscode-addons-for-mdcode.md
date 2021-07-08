@@ -60,11 +60,11 @@ disableAutoCollapse: true
     - Show table of contents fixed on the side of preview
 14. Themes: Mayukai, Cryptohack
 
-## Personal extensions and modifications
+## Personal extensions and modifications to existing ones.
 
 1. Markdown All in One
    - added the ability to toggle checkboxes similar to the way it toggles list.
-   - change the order of lists bullet point toggle. The numbered bullets appear right after the unordered lists.
+   - Change the order of lists bullet point toggle. The numbered bullets appear right after the unordered lists.
 2. Mzettel
    - Added the ability to open current note in a localhost server.
 3. Markdown Linkify: Unpublished, developed by self
