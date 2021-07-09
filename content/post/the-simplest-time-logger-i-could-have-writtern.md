@@ -20,24 +20,23 @@ A zsh script to take input from a form, and store it in a sqlite database.
 Dependecies: YAD, Sqlite
 
 ```zsh
-#!/usr/bin/env zsh
-
 ##########  VARIABLES  ################
-AREAS=$(echo 'Acad!Programming!Reading!Calories')
+AREAS=(Acad Programming Reading Calories) #Single words separated by spaces
 
 #######################################
 
+JA=$(echo ${(j:\!:)AREAS}) # Join Areas with ! because that is how yad wants it.
+
 data=$(yad --form --columns=2 --date-format="%Y-%m-%d"  \
 --field="Date::DT" "$(date +%Y-%m-%d)" \
---field="Area::CBE" "${AREAS}" \
---field="Units::NUM" "25") \
+--field="Area::CBE" "${JA}" \
+--field="Units::NUM" "25")
 
-dt=$(echo $data | awk -F'|' '{print $1}')
-ar=$(echo $data | awk -F'|' '{print $2}')
-un=$(echo $data | awk -F'|' '{print $3}')
+DTARR=("${(@s/|/)data}") # Split yad output to array
 
-if [ -z "$dt" ]
+if [ -z "$DTARR[1]" ] # If user had cancelled the yad window, exit
 then
+   echo "User cancellation"
    exit 1
 fi
 
@@ -49,7 +48,7 @@ CREATE TABLE IF NOT EXISTS data(
    UNITS        	INT 		NOT NULL
 );
 INSERT INTO data (DATE,AREA,UNITS)
-VALUES ( "$dt", "$ar", "$un" );
+VALUES ( "$DTARR[1]", "$DTARR[2]", "$DTARR[3]" );
 END_SQL
 ```
 
