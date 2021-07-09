@@ -1,0 +1,39 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>The Simplest Time Logger I Could Have Written | Treppenwitze</title><meta name=description content="Thoughts, rants and notes"><link rel=apple-touch-icon sizes=180x180 href=https://ibnishak.github.io/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://ibnishak.github.io/blog/favicon-32x32.png><link rel=icon href=https://ibnishak.github.io/blog/favicon.ico><link rel=manifest href=https://ibnishak.github.io/blog/site.webmanifest><link rel=stylesheet href=https://ibnishak.github.io/blog/css/index.css><link rel=stylesheet href=https://ibnishak.github.io/blog/css/classes.css><link rel=canonical href=https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/><link rel=alternate type=application/rss+xml href title=Treppenwitze><link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css rel=stylesheet></head><body><header class=menus><nav><a href=/blog/>Home</a>
+<a href=/blog/about/>About</a>
+<a href=https://nilavara.surge.sh/index.html>Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank><i title=GitHub class="fab fa-github"></i></a><a href=https://ibnishak.github.io/blog/index.xml target=_blank><i title=RSS class="fas fa-rss"></i></a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><h1 style=text-align:center>The Simplest Time Logger I Could Have Written</h1><div class=post-meta><time datetime=2021-07-09T20:37:38+05:30>July 09, 2021</time> &nbsp;
+Riz &nbsp;
+<i class="far fa-clock"></i>24 s
+&nbsp;</div></header><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>#!/usr/bin/env zsh
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>##########  VARIABLES  ################</span>
+AREAS<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo <span style=color:#e6db74>&#39;Acad!Programming!Reading!Calories&#39;</span><span style=color:#66d9ef>)</span>
+DIR<span style=color:#f92672>=</span>/home/richie/i/04-compass
+
+<span style=color:#75715e>#######################################</span>
+
+cd $DIR
+
+data<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>yad --form --columns<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --date-format<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%Y-%m-%d&#34;</span>  <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Date::DT&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>date +%Y-%m-%d<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Area::CBE&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>AREAS<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Units::NUM&#34;</span> <span style=color:#e6db74>&#34;25&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>
+dt<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $data | awk -F<span style=color:#e6db74>&#39;|&#39;</span> <span style=color:#e6db74>&#39;{print $1}&#39;</span><span style=color:#66d9ef>)</span>
+ar<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $data | awk -F<span style=color:#e6db74>&#39;|&#39;</span> <span style=color:#e6db74>&#39;{print $2}&#39;</span><span style=color:#66d9ef>)</span>
+un<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $data | awk -F<span style=color:#e6db74>&#39;|&#39;</span> <span style=color:#e6db74>&#39;{print $3}&#39;</span><span style=color:#66d9ef>)</span>
+
+echo $dt $ar $un
+
+sqlite3 tracker.db <span style=color:#e6db74>&lt;&lt;END_SQL
+</span><span style=color:#e6db74>CREATE TABLE IF NOT EXISTS data(
+</span><span style=color:#e6db74>   ID INTEGER PRIMARY KEY AUTOINCREMENT,
+</span><span style=color:#e6db74>   DATE           TEXT    NOT NULL,
+</span><span style=color:#e6db74>   AREA           TEXT    NOT NULL,
+</span><span style=color:#e6db74>   UNITS        	INT 		NOT NULL
+</span><span style=color:#e6db74>);
+</span><span style=color:#e6db74>INSERT INTO data (DATE,AREA,UNITS)
+</span><span style=color:#e6db74>VALUES ( &#34;$dt&#34;, &#34;$ar&#34;, &#34;$un&#34; );
+</span><span style=color:#e6db74>END_SQL</span>
+</code></pre></div><footer><hr><div class=post-tags></div></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2021 &#183;
+<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
+<a href=#><i class="fas fa-chevron-up"></i></a></div><script src=/blog/js/lazyload.min.js></script><script>var lazyImage=new LazyLoad({container:document.getElementById('article')});</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/components/prism-bash.min.js integrity="sha512-CILPDr/8BlkkElCeI+f2yMu0fzgwWqpQ0Cdr0busFfySJJ4SoCRivbT6+Z+SWPkjWwBil9NO0tHd6NSfpwiQaA==" crossorigin=anonymous></script></html>
