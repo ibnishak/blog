@@ -64,5 +64,6 @@ Path=/dir/where/database/should/be/kept
 Terminal=false
 Hidden=false
 ```
+The beauty of it is the flexibility. We can easily change this script for a CSV output, Markdown table or Tiddlywiki compatible output.
 
 Next stop - creating graphs from the tracker database.
