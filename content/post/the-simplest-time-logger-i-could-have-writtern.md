@@ -36,7 +36,10 @@ dt=$(echo $data | awk -F'|' '{print $1}')
 ar=$(echo $data | awk -F'|' '{print $2}')
 un=$(echo $data | awk -F'|' '{print $3}')
 
-echo $dt $ar $un
+if [ -z "$dt" ]
+then
+   exit 1
+fi
 
 sqlite3 tracker.db <<END_SQL
 CREATE TABLE IF NOT EXISTS data(
