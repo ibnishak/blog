@@ -2,25 +2,24 @@
 <a href=/blog/about/>About</a>
 <a href=https://nilavara.surge.sh/index.html>Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank><i title=GitHub class="fab fa-github"></i></a><a href=https://ibnishak.github.io/blog/index.xml target=_blank><i title=RSS class="fas fa-rss"></i></a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><h1 style=text-align:center>The Simplest Time Logger I Could Have Written</h1><div class=post-meta><time datetime=2021-07-09T20:37:38+05:30>July 09, 2021</time> &nbsp;
 Riz &nbsp;
-<i class="far fa-clock"></i>40 s
-&nbsp;</div></header><p>A zsh script to take input from a form, and store it in a sqlite database.</p><p>Dependecies: YAD, Sqlite</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>#!/usr/bin/env zsh
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>##########  VARIABLES  ################</span>
-AREAS<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo <span style=color:#e6db74>&#39;Acad!Programming!Reading!Calories&#39;</span><span style=color:#66d9ef>)</span>
+<i class="far fa-clock"></i>45 s
+&nbsp;</div></header><p>A zsh script to take input from a form, and store it in a sqlite database.</p><p>Dependecies: YAD, Sqlite</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>##########  VARIABLES  ################</span>
+AREAS<span style=color:#f92672>=(</span>Acad Programming Reading Calories<span style=color:#f92672>)</span> <span style=color:#75715e>#Single words separated by spaces</span>
 
 <span style=color:#75715e>#######################################</span>
 
+JA<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo <span style=color:#e6db74>${</span>(j:<span style=color:#ae81ff>\!</span>:)AREAS<span style=color:#e6db74>}</span><span style=color:#66d9ef>)</span> <span style=color:#75715e># Join Areas with ! because that is how yad wants it.</span>
+
 data<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>yad --form --columns<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --date-format<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%Y-%m-%d&#34;</span>  <span style=color:#ae81ff>\
 </span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Date::DT&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>date +%Y-%m-%d<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Area::CBE&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>AREAS<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Units::NUM&#34;</span> <span style=color:#e6db74>&#34;25&#34;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>
-dt<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $data | awk -F<span style=color:#e6db74>&#39;|&#39;</span> <span style=color:#e6db74>&#39;{print $1}&#39;</span><span style=color:#66d9ef>)</span>
-ar<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $data | awk -F<span style=color:#e6db74>&#39;|&#39;</span> <span style=color:#e6db74>&#39;{print $2}&#39;</span><span style=color:#66d9ef>)</span>
-un<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo $data | awk -F<span style=color:#e6db74>&#39;|&#39;</span> <span style=color:#e6db74>&#39;{print $3}&#39;</span><span style=color:#66d9ef>)</span>
+</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Area::CBE&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>JA<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Units::NUM&#34;</span> <span style=color:#e6db74>&#34;25&#34;</span><span style=color:#66d9ef>)</span>
 
-<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> -z <span style=color:#e6db74>&#34;</span>$dt<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>
+DTARR<span style=color:#f92672>=(</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>(@s/|/)data<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>)</span> <span style=color:#75715e># Split yad output to array</span>
+
+<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> -z <span style=color:#e6db74>&#34;</span>$DTARR<span style=color:#e6db74>[1]&#34;</span> <span style=color:#f92672>]</span> <span style=color:#75715e># If user had cancelled the yad window, exit</span>
 <span style=color:#66d9ef>then</span>
+   echo <span style=color:#e6db74>&#34;User cancellation&#34;</span>
    exit <span style=color:#ae81ff>1</span>
 <span style=color:#66d9ef>fi</span>
 
@@ -32,7 +31,7 @@ sqlite3 tracker.db <span style=color:#e6db74>&lt;&lt;END_SQL
 </span><span style=color:#e6db74>   UNITS        	INT 		NOT NULL
 </span><span style=color:#e6db74>);
 </span><span style=color:#e6db74>INSERT INTO data (DATE,AREA,UNITS)
-</span><span style=color:#e6db74>VALUES ( &#34;$dt&#34;, &#34;$ar&#34;, &#34;$un&#34; );
+</span><span style=color:#e6db74>VALUES ( &#34;$DTARR[1]&#34;, &#34;$DTARR[2]&#34;, &#34;$DTARR[3]&#34; );
 </span><span style=color:#e6db74>END_SQL</span>
 </code></pre></div><p>Create a desktop launcher for it by saving the following file as <code>Tracker.desktop</code> in your desktop. Remember to substitute paths appropriately.</p><pre><code>[Desktop Entry]
 Type=Application
