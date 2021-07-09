@@ -2,7 +2,7 @@
 <a href=/blog/about/>About</a>
 <a href=https://nilavara.surge.sh/index.html>Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank><i title=GitHub class="fab fa-github"></i></a><a href=https://ibnishak.github.io/blog/index.xml target=_blank><i title=RSS class="fas fa-rss"></i></a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><h1 style=text-align:center>The Simplest Time Logger I Could Have Written</h1><div class=post-meta><time datetime=2021-07-09T20:37:38+05:30>July 09, 2021</time> &nbsp;
 Riz &nbsp;
-<i class="far fa-clock"></i>45 s
+<i class="far fa-clock"></i>51 s
 &nbsp;</div></header><p>A zsh script to take input from a form, and store it in a sqlite database.</p><p>Dependecies: YAD, Sqlite</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>##########  VARIABLES  ################</span>
 AREAS<span style=color:#f92672>=(</span>Acad Programming Reading Calories<span style=color:#f92672>)</span> <span style=color:#75715e>#Single words separated by spaces</span>
 
@@ -41,6 +41,6 @@ Exec=/path/to/the/script
 Path=/dir/where/database/should/be/kept
 Terminal=false
 Hidden=false
-</code></pre><p>Next stop - creating graphs from the tracker database.</p><footer><hr><div class=post-tags></div></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2021 &#183;
+</code></pre><p>The beauty of it is the flexibility. We can easily change this script for a CSV output, Markdown table or Tiddlywiki compatible output.</p><p>Next stop - creating graphs from the tracker database.</p><footer><hr><div class=post-tags></div></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2021 &#183;
 <a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
 <a href=#><i class="fas fa-chevron-up"></i></a></div><script src=/blog/js/lazyload.min.js></script><script>var lazyImage=new LazyLoad({container:document.getElementById('article')});</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/components/prism-bash.min.js integrity="sha512-CILPDr/8BlkkElCeI+f2yMu0fzgwWqpQ0Cdr0busFfySJJ4SoCRivbT6+Z+SWPkjWwBil9NO0tHd6NSfpwiQaA==" crossorigin=anonymous></script></html>
