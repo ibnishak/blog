@@ -1,0 +1,78 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>Syncing Calibre With Git Annex | Treppenwitze</title><meta name=description content="Thoughts, rants and notes"><link rel=apple-touch-icon sizes=180x180 href=https://ibnishak.github.io/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://ibnishak.github.io/blog/favicon-32x32.png><link rel=icon href=https://ibnishak.github.io/blog/favicon.ico><link rel=manifest href=https://ibnishak.github.io/blog/site.webmanifest><link rel=stylesheet href=https://ibnishak.github.io/blog/css/index.css><link rel=stylesheet href=https://ibnishak.github.io/blog/css/classes.css><link rel=canonical href=https://ibnishak.github.io/blog/post/syncing-calibre-with-git-annex/><link rel=alternate type=application/rss+xml href title=Treppenwitze><link href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css rel=stylesheet></head><body><header class=menus><nav><a href=/blog/>Home</a>
+<a href=/blog/about/>About</a>
+<a href=https://nilavara.surge.sh/index.html>Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank><i title=GitHub class="fab fa-github"></i></a><a href=https://ibnishak.github.io/blog/index.xml target=_blank><i title=RSS class="fas fa-rss"></i></a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><h1 style=text-align:center>Syncing Calibre With Git Annex</h1><div class=post-meta><time datetime=2021-07-14T02:21:07+05:30>July 14, 2021</time> &nbsp;
+Riz &nbsp;
+<i class="far fa-clock"></i>1 min
+4 s
+&nbsp;</div></header><p>Assuming that you want to keep only metadata and covers in your laptop while the books itself in external hard drive.</p><p>Dependencies: Rsync, Git-Annex</p><ul><li>Place script in PATH</li><li>Edit the USER VARIABLES</li><li>Run the <code>init</code> command once</li><li>Run the <code>sync</code> command in all consequent runs</li><li>See help with <code>--help</code></li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>#!/usr/bin/env zsh
+</span><span style=color:#75715e></span>set -e <span style=color:#75715e># Exit on error</span>
+
+<span style=color:#75715e>#---------USER VARIABLES---------------#</span>
+SRCDIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/Documents/Library&#34;</span>
+TARGETDIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>HOME<span style=color:#e6db74>}</span><span style=color:#e6db74>/External/Library&#34;</span>
+<span style=color:#75715e>#--------------------------------------#</span>
+
+declare -r _VERSION<span style=color:#f92672>=</span>2.3.4
+declare -r _SCRIPT<span style=color:#f92672>=</span>$0
+
+<span style=color:#75715e># Init function takes 4 params dir1, name1, name2, dir2 in that order</span>
+<span style=color:#66d9ef>function</span> setup<span style=color:#f92672>(){</span>
+	<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d $1 <span style=color:#f92672>]</span> 
+	<span style=color:#66d9ef>then</span>
+			mkdir $1
+	<span style=color:#66d9ef>fi</span>
+	pushd $1
+	git init
+	git annex init $2
+<span style=color:#e6db74>&lt;&lt;END &gt; .gitignore
+</span><span style=color:#e6db74>metadata_db_prefs_backup.json
+</span><span style=color:#e6db74>metadata.db
+</span><span style=color:#e6db74>*.jpg
+</span><span style=color:#e6db74>*.opf
+</span><span style=color:#e6db74>END</span>
+	git config annex.largefiles <span style=color:#e6db74>&#34;include=* exclude=*.opf exclude=*.json exclude=*.db exclude=*.jpg&#34;</span>
+	git remote add $3 $4 
+	git annex add . 
+	git commit -a -m <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>date<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> 
+	popd
+<span style=color:#f92672>}</span>
+
+
+func init<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+	setup $SRCDIR <span style=color:#e6db74>&#34;SRC&#34;</span> <span style=color:#e6db74>&#34;TARGET&#34;</span> $TARGETDIR
+	setup $TARGETDIR <span style=color:#e6db74>&#34;TARGET&#34;</span> <span style=color:#e6db74>&#34;SRC&#34;</span> $SRCDIR
+<span style=color:#f92672>}</span>
+
+func sync<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+	pushd $SRCDIR
+	git annex add . 
+	git commit -a -m <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>date<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> 
+	git annex sync 
+	git annex move . --to TARGET 
+	rsync -av --delete --exclude<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;.git/&#34;</span> --include <span style=color:#e6db74>&#39;*.jpg&#39;</span> --include <span style=color:#e6db74>&#39;*.opf&#39;</span> --include <span style=color:#e6db74>&#39;metadata*&#39;</span> --include<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;*/&#34;</span> --exclude<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;*&#34;</span>  . $TARGETDIR 
+	popd
+
+	pushd $TARGETDIR
+	git annex sync 
+	popd
+<span style=color:#f92672>}</span>
+
+func helpmenu<span style=color:#f92672>(){</span>
+	echo <span style=color:#e6db74>&#34;This script has 2 commands&#34;</span>
+	echo <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>_SCRIPT<span style=color:#e6db74>}</span><span style=color:#e6db74> init&#34;</span>
+	echo <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>_SCRIPT<span style=color:#e6db74>}</span><span style=color:#e6db74> sync&#34;</span>
+<span style=color:#f92672>}</span>
+
+<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;--help&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+    helpmenu
+    exit <span style=color:#ae81ff>0</span>
+<span style=color:#66d9ef>elif</span> declare -f <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> &gt; /dev/null; <span style=color:#66d9ef>then</span>
+    <span style=color:#e6db74>&#34;</span>$@<span style=color:#e6db74>&#34;</span>
+<span style=color:#66d9ef>else</span>
+    echo <span style=color:#e6db74>&#34;&#39;</span>$1<span style=color:#e6db74>&#39; is not a known command&#34;</span> &gt;&amp;<span style=color:#ae81ff>2</span>
+    helpmenu
+    exit <span style=color:#ae81ff>1</span>
+<span style=color:#66d9ef>fi</span>
+</code></pre></div><footer><hr><div class=post-tags></div></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2021 &#183;
+<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
+<a href=#><i class="fas fa-chevron-up"></i></a></div><script src=/blog/js/lazyload.min.js></script><script>var lazyImage=new LazyLoad({container:document.getElementById('article')});</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/components/prism-bash.min.js integrity="sha512-CILPDr/8BlkkElCeI+f2yMu0fzgwWqpQ0Cdr0busFfySJJ4SoCRivbT6+Z+SWPkjWwBil9NO0tHd6NSfpwiQaA==" crossorigin=anonymous></script></html>
