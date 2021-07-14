@@ -32,7 +32,7 @@ copyright = "[Home](/) &#183; Theme [Simpleness](https://github.com/RainerChiang
   weight = 2
   [[menu.main]]
   name = "Digital Garden"
-  url = "https://nilavara.surge.sh/index.html"
+  url = "https://nilavara.surge.sh/?stackedNotes=000"
   weight = 3
 
 [social]

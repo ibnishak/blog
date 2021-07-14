@@ -19,11 +19,14 @@ Assuming that you want to keep only metadata and covers in your laptop while the
 
 Dependencies: Rsync, Git-Annex
 
-- Place script in PATH
-- Edit the USER VARIABLES
-- Run the `init` command once
-- Run the `sync` command in all consequent runs
-- See help with `--help`
+- Place script in PATH, name it `calibre-annex-sync.zsh` and make it executable.
+- Create 2 empty folders, one in your computer, other in external harddrive.
+- Edit the `USER VARIABLES` with absolute paths to the above 2 folders.
+- Run `calibre-annex-sync.zsh init` command.
+- Open Calibre. Start a new library in the folder in your computer.
+- Run the `calibre-annex-sync.zsh sync` to sync with external harddrive
+
+See help with `calibre-annex-sync.zsh --help`
 
 ```zsh
 #!/usr/bin/env zsh
