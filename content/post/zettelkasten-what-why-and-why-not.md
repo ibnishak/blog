@@ -1,12 +1,12 @@
 ---
-title: Zettelkasten What Why and Why Not
+title: Zettelkasten - What, Why, and Why Not
 date: 2021-07-14T20:11:40+05:30
-lastmod: 
+lastmod: 2021-07-15T06:30:12+05:30
 author: Riz
 
 description: 
-categories: []
-tags: []
+categories: ["digital"]
+tags: ["note-taking", "workflow"]
 
 draft: false
 enableDisqus : false
@@ -42,6 +42,13 @@ Source: [Defining Creativity Systems][6]
 - If I am to write an essay on this topic, what points are missing? Then write those notes and link it.
 - What does it relate to is an easier question to answer than where does it belong.
 
+## Workflow Principles
+This is more important than the workflow itself. From time to time, one should check their workflow against these principles. Your workflow should be able to: 
+
+1. Create positive experiences
+2. Create Learning
+3. Reduce the number of steps and decisions
+4. Do not attempt to drink the ocean. Filter, simplify and index.
 
 ## Why
 
@@ -56,6 +63,11 @@ Source: [Defining Creativity Systems][6]
 - It creates a lot of pressure on reading
 - It is time consuming
 - Other than Luhmann himself, no credible example of increased output due to zettelkasten.
+- Writing is thinking principle need not apply to all. For some, writing is recording of thinking.
+
+## Interesting links
+- [Why Mind mapping works][7]
+- [In what ways can we form useful relationships between notes?][8]
 
 [1]: https://en.wikipedia.org/wiki/Niklas_Luhmann
 [2]: https://twitter.com/soenke_ahrens?lang=en
@@ -63,3 +75,5 @@ Source: [Defining Creativity Systems][6]
 [4]: https://youtu.be/ljyo_WAJevQ?t=73
 [5]: https://philhoutz.medium.com/make-your-notes-work-for-you-the-secret-sauce-of-zettelkasten-cb901a3cce00
 [6]: http://evantravers.com/articles/2021/03/08/defining-creativity-systems/
+[7]: https://thefocuscourse.com/why-mind-mapping-works/
+[8]: https://medium.com/@nickmilo22/in-what-ways-can-we-form-useful-relationships-between-notes-9b9ec46973c6

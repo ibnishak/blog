@@ -5,8 +5,8 @@ lastmod:
 author: Riz
 
 description: 
-categories: []
-tags: []
+categories: ["digital"]
+tags: ["workflow", "linux"]
 
 draft: false
 enableDisqus : false
@@ -20,6 +20,8 @@ A zsh script to take input from a form, and store it in a sqlite database.
 Dependecies: YAD, Sqlite
 
 ```zsh
+#!/usr/bin/env zsh
+
 ##########  VARIABLES  ################
 AREAS=(Acad Programming Reading Calories) #Single words separated by spaces
 
@@ -64,6 +66,6 @@ Path=/dir/where/database/should/be/kept
 Terminal=false
 Hidden=false
 ```
-The beauty of it is the flexibility. We can easily change this script for a CSV output, Markdown table or Tiddlywiki compatible output.
+The beauty of it is the flexibility. We can easily change this script for a CSV output, Markdown table or Tiddlywiki compatible output. We can also take templated plain text notes using this.
 
 Next stop - creating graphs from the tracker database.
