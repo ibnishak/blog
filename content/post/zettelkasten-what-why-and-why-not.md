@@ -42,7 +42,7 @@ This is more important than the workflow itself. From time to time, one should c
 
 ## Organizational methods
 
-![](https://imgur.com/Aycm9Z9)
+[![Screenshot-2021-07-18-18-55-42.png](https://i.postimg.cc/rs0bwq3V/Screenshot-2021-07-18-18-55-42.png)](https://postimg.cc/zHNpdYq6)
 
 1. MOC or Map of Contents: This is a note with links to other notes, revolving around a topic. It could be arranged to reflect the hierarchy of notes.
 1. Mindmaps: Images to get a birds eye view of the content. It also helps to identify relationships that were not previously obvious. 
