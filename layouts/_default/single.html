@@ -2,33 +2,36 @@
 
 <article id="article">
   <header>
-  {{ if .Params.categories }}
-    <i class="fas fa-folder"></i>
+	<div class="cat-into">
+		{{ if .Params.categories }}
+    <span class="header-item">Category: 
     {{ range .Params.categories }}
     <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
     &nbsp;
     {{ end }}
+	</span>
   {{ end }}
+
+  {{ if .Params.tags }}
+  <span class="header-item">
+	&nbsp;&nbsp;| &nbsp;&nbsp; Tags: 
+   {{ range .Params.tags }}
+	 <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+	 &nbsp;
+   {{ end }}
+</span>
+ {{ end }}
+	</div>
 
     <h1 style="text-align: center;" >{{ .Title }}</h1>
     <div class="post-meta">
     {{ if .Date }}
-      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 02, 2006" }}</time> &nbsp; 
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "January 02, 2006" }}</time>  &nbsp; &nbsp;| 
     {{ end }}
-
-    {{ .Params.author }} &nbsp;
-
-    <!-- Valine Vistors Start -->
-    {{ if and .Site.Params.valine.enable (or (ne .Site.BaseURL "http://localhost:1313/") .Site.Params.valine.debug) }}
-      <i class="far fa-eye"></i>
-      <span id="{{ .Permalink | relURL }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-          <span class="leancloud-visitors-count"> {{ T "valinePV" }} </span>
-      </span> &nbsp;
-    {{ end }}
-    <!-- Valine Vistors End -->
+    <!-- &nbsp; &nbsp; {{ .Params.author }}   &nbsp; &nbsp; | -->
 
     {{ if .Site.Params.enableReadingTime }}
-      <i class="far fa-clock"></i>
+	&nbsp; &nbsp; Reading Time:
       {{ $readTime := mul (div (countwords .Content) 220.0) 60 }}
       {{ $minutes := math.Floor (div $readTime 60) }}
       {{ $seconds := mod $readTime 60 }}
@@ -53,15 +56,6 @@
     </time>
     <p></p>
     {{ end }}
-    <div class="post-tags">
-    {{ if .Params.tags }}
-      <i class="fas fa-tags"></i>
-      {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-        &nbsp;
-      {{ end }}
-    {{ end }}
-    </div>
   </footer>
   {{ end }}
 
