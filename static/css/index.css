@@ -54,7 +54,7 @@ body.poem-malayalam #article p {
 
 body.poem-malayalam #article p {
   white-space: pre-wrap;
-  font-size: 28px;
+  font-size: 22px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -93,6 +93,11 @@ a:hover {
 
 article a {
   color: rgb(61, 132, 255);
+}
+@media (prefers-color-scheme: light) {
+	article a {
+		color: rgb(44 78 139);
+	}
 }
 
 header time {
