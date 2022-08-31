@@ -1,27 +1,6 @@
-/* @media (min-width: 50em) {
-  @font-face {
-    font-family: "PT Sans";
-    src: local("PT Sans"), local("PTSans-Regular"),
-      url("../fonts/PTSans-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "PT Sans";
-    src: local("PT Sans Bold"), local("PTSans-Bold"),
-      url("../fonts/PTSans-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-  }
-} */
-@font-face {font-family: "Meera";
-	src: url("../fonts/Meera.woff2") format("woff2"), /* chrome、firefox */
-	url("../fonts/Meera.woff") format("woff"), /* chrome、firefox */
-	url("../fonts/Meera.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  }
 
 
+ /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;700&display=swap'); */
 
 * {
   scrollbar-color: #202324 #454a4d;
@@ -70,7 +49,7 @@ body {
 
 body.poem-malayalam header h1,
 body.poem-malayalam #article p {
-  font-family: "Meera";
+  font-family: "Noto Sans Malayalam";
 }
 
 body.poem-malayalam #article p {
