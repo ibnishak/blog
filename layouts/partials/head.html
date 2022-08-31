@@ -18,6 +18,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam&display=swap" rel="stylesheet">
   {{ end }}
+  {{ if .IsHome }}
+  <link rel="prefetch" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam&display=swap" as="style" />
+  {{ end }}
   <!-- <link rel="stylesheet" href="{{ .Site.BaseURL }}css/classes.css"> -->
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="alternate" type="application/rss+xml" href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" title="{{ .Site.Title }}">

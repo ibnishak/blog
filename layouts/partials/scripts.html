@@ -1,9 +1,11 @@
-{{ if and .Site.Params.lazyImage (not .IsHome) -}}
+<!-- {{ if and .Site.Params.lazyImage (not .IsHome) -}}
 <script src="{{ .Site.Params.staticPrefix }}{{ "js/lazyload.min.js" | relURL }}"></script>
 <script>
   var lazyImage = new LazyLoad({
     container: document.getElementById('article')
   });
 </script>
+{{ end }} -->
+{{ if in .Params.tags "shell" }} 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/components/prism-bash.min.js" integrity="sha512-CILPDr/8BlkkElCeI+f2yMu0fzgwWqpQ0Cdr0busFfySJJ4SoCRivbT6+Z+SWPkjWwBil9NO0tHd6NSfpwiQaA==" crossorigin="anonymous"></script>
 {{ end }}
