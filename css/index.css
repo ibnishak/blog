@@ -1,70 +1,68 @@
+:root {
 
+	--color-text: #e8e6e3;
+	--color-bg: #181a1b;
+	--color-link: rgb(112 201 255);
+  }
 
- /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;700&display=swap'); */
+/* @media (prefers-color-scheme: light) {
+:root {
+	--color-text: #333;
+	--color-bg: #fff;
+	--color-link:  rgb(44 78 139);
+}
+} */
 
 * {
-  scrollbar-color: #202324 #454a4d;
+	scrollbar-color: #202324 #454a4d;
 }
 
-@media (prefers-color-scheme: light) {
-  html {
-    background: #e8e6e3;
-    color: #181a1b;
-  }
+
+::-moz-selection {
+	color: #e8e6e3;
+	background: #004daa;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    background: #181a1b;
-    color: #e8e6e3;
-  }
-
-  ::-moz-selection {
-    color: #e8e6e3;
-    background: #004daa;
-  }
-
-  ::selection {
-    color: #e8e6e3;
-    background: #004daa;
-  }
+::selection {
+	color: #e8e6e3;
+	background: #004daa;
 }
 
 html {
-  font-size: 16px;
-  font-size: calc(0.8rem + 0.3vw);
+	background: var(--color-bg);
+	color: var(--color-text);
+	/* font-size: 16px; */
+	font-size: calc(0.8rem + 0.3vw);
 }
 
 body {
-  /* font-family: "PT Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-    "Segoe UI", "Roboto", sans-serif; */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  margin: 0;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-weight: 400;
+	line-height: 1.6;
+	margin: 0;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body.poem-malayalam header h1,
 body.poem-malayalam #article p {
-  font-family: "Noto Sans Malayalam";
+	font-family: "Noto Sans Malayalam";
 }
 
 body.poem-malayalam #article p {
-  white-space: pre-wrap;
-  font-size: 22px;
+	white-space: pre-wrap;
+	font-size: 22px;
 }
 
 @media only screen and (max-width: 600px) {
-  body.poem-malayalam #article p {
-    font-size: 18px;
-  }
+	body.poem-malayalam #article p {
+		font-size: 18px;
+	}
 }
 
 body.poem-english #article p {
-  white-space: pre-wrap;
+	white-space: pre-wrap;
 }
 
 h1,
@@ -73,212 +71,221 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 b,
 strong,
 th {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 a {
-  color: inherit;
-  text-decoration: inherit;
+	color: inherit;
+	text-decoration: inherit;
 }
 
 a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
+}
+
+header a:hover {
+	transition: color 0.2s cubic-bezier(.33,.66,.66,1);
+	text-decoration: none;
+	color: mediumspringgreen;
 }
 
 article a {
-  color: rgb(61, 132, 255);
-}
-@media (prefers-color-scheme: light) {
-	article a {
-		color: rgb(44 78 139);
-	}
+	color: var(--color-link);
+	transition: background 0.1s cubic-bezier(.33,.66,.66,1);
 }
 
+article a:hover {
+	/* text-decoration-color: currentcolor; */
+	text-decoration: none;
+	background-color: rgb(43, 48, 66);
+	border-radius: 5px;
+}
+
+
 header time {
-  color: #8e8e91;
+	color: #8e8e91;
 }
 
 hr {
-  border: 1px solid rgba(142, 142, 145, 0.3);
-  margin: 2em 0;
+	border: 1px solid rgba(142, 142, 145, 0.3);
+	margin: 2em 0;
 }
 
 article:not(:last-child) {
-  border-bottom: 1px solid rgba(142, 142, 145, 0.12);
+	border-bottom: 1px solid rgba(142, 142, 145, 0.12);
 }
 
 blockquote {
-  background: rgba(142, 142, 145, 0.06);
-  border-left: 3px solid rgba(142, 142, 145, 0.9);
-  padding: 1px 1.5em;
-  opacity: 0.75;
+	background: rgba(142, 142, 145, 0.06);
+	border-left: 3px solid rgba(142, 142, 145, 0.9);
+	padding: 1px 1.5em;
+	opacity: 0.75;
 }
 
 blockquote,
 figure {
-  margin: 1em 0;
+	margin: 1em 0;
 }
 
 img {
-  border-radius: 5px;
-  max-width: 100%;
-  height: auto;
-  margin: 0.5em 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+	border-radius: 5px;
+	max-width: 100%;
+	height: auto;
+	margin: 0.5em 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 
 table {
-  width: 100%;
-  border-spacing: 1px;
-  box-shadow: 0 0 0 1px rgba(142, 142, 145, 0.12) inset;
+	width: 100%;
+	border-spacing: 1px;
+	box-shadow: 0 0 0 1px rgba(142, 142, 145, 0.12) inset;
 }
 
 th,
 td {
-  padding: 0.5em 1em;
-  box-shadow: 0 0 0 1px rgba(142, 142, 145, 0.12);
+	padding: 0.5em 1em;
+	box-shadow: 0 0 0 1px rgba(142, 142, 145, 0.12);
 }
 
 tr:hover,
 tr:nth-child(odd) td {
-  background: rgba(142, 142, 145, 0.04);
+	background: rgba(142, 142, 145, 0.04);
 }
 
 pre {
-  background: rgba(142, 142, 145, 0.12);
-  border-radius: 2px;
-  font-size: 0.8em;
-  font-family: "Courier New", Courier, monospace;
-  margin: 1.5em 0;
-  padding: 0.8em 1.2em;
-  overflow-x: auto;
+	background: rgba(142, 142, 145, 0.12);
+	border-radius: 2px;
+	font-size: 0.8em;
+	font-family: "Courier New", Courier, monospace;
+	margin: 1.5em 0;
+	padding: 0.8em 1.2em;
+	overflow-x: auto;
 }
 
-:not(pre) > code {
-  font-size: 0.9em;
-  background: rgba(142, 142, 145, 0.15);
-  border-radius: 2px;
-  margin: 0 0.1em;
-  padding: 0.2em 0.4em;
+:not(pre)>code {
+	font-size: 0.9em;
+	background: rgba(142, 142, 145, 0.15);
+	border-radius: 2px;
+	margin: 0 0.1em;
+	padding: 0.2em 0.4em;
 }
 
-body > header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 0 0.6em rgba(28, 29, 34, 0.05);
-  border-bottom: 1px solid rgba(142, 142, 145, 0.16);
+body>header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.02);
+	box-shadow: 0 0 0.6em rgba(28, 29, 34, 0.05);
+	border-bottom: 1px solid rgba(142, 142, 145, 0.16);
 }
 
-body > header > a {
-  font-size: 1.3em;
+body>header>a {
+	font-size: 1.3em;
 }
 
 article header {
-  margin-bottom: 1.5em;
+	margin-bottom: 1.5em;
 }
 
 article header h1 {
-  font-size: 1.8em;
-  margin: 0 0 0.1em;
+	font-size: 1.8em;
+	margin: 0 0 0.1em;
 }
 
 nav {
-  margin: 0.5em -0.8em;
+	margin: 0.5em -0.8em;
 }
 
 nav a {
-  margin: 0.5em 0.8em;
+	margin: 0.5em 0.8em;
 }
 
 footer hr {
-  width: 45%;
-  border-style: dashed;
-  margin-bottom: 1em;
+	width: 45%;
+	border-style: dashed;
+	margin-bottom: 1em;
 }
 
-body > header,
-body > article,
-body > footer {
-  padding: 1.5em;
+body>header,
+body>article,
+body>footer {
+	padding: 1.5em;
 }
 
 @media (min-width: 32em) {
-  body > header,
-  body > article,
-  body > footer {
-    padding: 1.75em calc(38% - 12em);
-  }
+
+	body>header,
+	body>article,
+	body>footer {
+		padding: 1.75em calc(38% - 12em);
+	}
 }
 
 li p {
-  margin: 0;
+	margin: 0;
 }
 
 
 .archive li {
 	font-size: 1.1em;
-  }
-  
-  .archive time {
+}
+
+.archive time {
 	display: inline-block;
 	min-width: 10ch;
 	margin: 0 .2em;
-  }
-  
-  .hidden {
+}
+
+.hidden {
 	display: none;
-  }
-  
-  .more {
+}
+
+.more {
 	margin: 2em 0 1em;
-  }
-  
-  .more a {
+}
+
+.more a {
 	border-radius: 2px;
 	border: 1.5px solid #68f;
 	padding: .4em .8em;
 	transition: .2s;
-  }
-  
-  .more a:hover {
+}
+
+.more a:hover {
 	color: #fff;
 	background: #68f;
 	text-decoration: inherit;
-  }
-  
-  /***** custom *****/
-  .fontawesome a {
+}
+
+/***** custom *****/
+.fontawesome a {
 	text-decoration: none;
-  }
-  
-  .post-meta {
+}
+
+.post-meta {
 	color: #8e8e91;
-  }
-  
-  .comments-item {
+}
+
+.comments-item {
 	margin-top: 10%;
-  }
-  
-  .foot {
-	/* font-family: "PT Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", sans-serif; */
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",sans-serif;
+}
+
+.foot {
 	margin: 1%;
 	color: #8e8e91;
 	text-align: center;
-  }
-  
-  .foot a:hover {
+}
+
+.foot a:hover {
 	text-decoration: underline;
 	color: #0000EE;
-  }
+}
