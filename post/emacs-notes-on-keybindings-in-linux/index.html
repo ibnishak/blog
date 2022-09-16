@@ -27,9 +27,9 @@
     add        mod5 <span style=color:#f92672>=</span> Mode_switch ISO_Level3_Shift
 </code></pre></div><ul><li>Reload the xmodmap by running</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>xmodmap ~/.Xmodmap
 </code></pre></div><h1 id=step-2-emacs>Step 2: Emacs</h1><p>Add the following snippet to your <code>init.el</code> in <strong>Linux OS</strong>. If you are using Windows/Mac, find appropriate snippet from
-<a href=http://ergoemacs.org/emacs/emacs_hyper_super_keys.html>ergoemacs</a>.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(setq x-ctrl-keysym 'hyper) ;;In Emacs, treat Control key as hyper
+<a href=http://ergoemacs.org/emacs/emacs_hyper_super_keys.html target=_blank>ergoemacs</a>.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(setq x-ctrl-keysym 'hyper) ;;In Emacs, treat Control key as hyper
 (setq x-hyper-keysym 'ctrl) ;; In Emacs, treat Hyper Key(Caps_Lock)  as Control
-</code></pre><h1 id=my-keybindings>My Keybindings</h1><p>I am using <a href=https://github.com/noctuid/general.el>general.el</a> for my keybindings. A subset of which looks as follows.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(use-package general
+</code></pre><h1 id=my-keybindings>My Keybindings</h1><p>I am using <a href=https://github.com/noctuid/general.el target=_blank>general.el</a> for my keybindings. A subset of which looks as follows.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(use-package general
   :defer 2
   :init
   (general-define-key
@@ -62,7 +62,7 @@
    &quot;H-M-`&quot; 'point-to-register
    ))
 </code></pre><h1 id=13supthsup-function-key>13th Function Key</h1><p>Another key in the keyboard I hardly ever find using is the <code>Menu</code> key.
-You know, <a href=https://www.howtogeek.com/wp-content/uploads/2015/07/a-keyboard-shortcut-that-can-be-used-in-place-of-the-context-menu-key-01.jpg>that
+You know, <a href=https://www.howtogeek.com/wp-content/uploads/2015/07/a-keyboard-shortcut-that-can-be-used-in-place-of-the-context-menu-key-01.jpg target=_blank>that
 key</a>
 smugly sitting in between Right AltGr and Right
 Ctrl. I configured the Xmodmap so that it will act as
@@ -88,7 +88,7 @@ add        mod5 <span style=color:#f92672>=</span> Mode_switch ISO_Level3_Shift
 </code></pre></div><p>and reload your xmodmap by running</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    xmodmap ~/.Xmodmap
 </code></pre></div><h1 id=unrelated-tip>Unrelated tip</h1><p>Since you are in the business of modifying <code>~/.Xmodmap</code>, you may want to
 know that it can be also used to change the scrolling using mouse to
-<a href=https://jessequinnlee.com/2015/07/25/natural-scrolling-vs-reverse-scrolling/>natural
+<a href=https://jessequinnlee.com/2015/07/25/natural-scrolling-vs-reverse-scrolling/ target=_blank>natural
 scrolling</a>
 like those seen in Mac, as opposed to the default reverse scrolling.
 Here is the line to add to <code>~/.Xmodmap</code>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    pointer <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span> <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>4</span> <span style=color:#ae81ff>7</span> <span style=color:#ae81ff>6</span> <span style=color:#ae81ff>8</span> <span style=color:#ae81ff>9</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>11</span> <span style=color:#ae81ff>12</span>
