@@ -6,12 +6,12 @@ author: Riz
 
 description: 
 categories: []
-tags: []
+tags: [firefox, browser, digital-workflow]
 
 draft: false
 enableDisqus : false
 enableMathJax: false
-disableToC: false
+disableToC: true
 disableAutoCollapse: true
 ---
 
