@@ -1,8 +1,10 @@
 :root {
-
 	--color-text: #e8e6e3;
 	--color-bg: #181a1b;
 	--color-link: rgb(112 201 255);
+    --sidenote-width: 12rem;
+    --sidenote-margin: 4.8rem;
+    --text-size: calc(0.8rem + 0.3vw);
   }
 
 /* @media (prefers-color-scheme: light) {
@@ -290,3 +292,80 @@ li p {
 	text-decoration: underline;
 	color: #0000EE;
 }
+
+
+.sidenote {
+  display: inline;
+}
+
+.sidenote__label {
+  color: #81d2c7;
+  vertical-align: super;
+  font-size: 12px;
+  display: inline-block;
+}
+
+
+.sidenote__checkbox {
+  display: none;
+}
+
+/* Hidden, but accessible to browsers that don't do CSS (e.g. screenreaders, Pocket) */
+.sidenote__content-parenthesis {
+  position: absolute;
+  left: -99999px;
+  top: auto;
+}
+
+/* For narrow viewports, the sidenote is hidden by default and shown when the checkbox is checked. */
+@media screen and (max-width: 767px) {
+
+  .sidenote__checkbox~.sidenote__content {
+    position: absolute;
+    left: -99999px;
+    top: auto;
+  }
+
+  .sidenote__checkbox:checked~.sidenote__content {
+    position: relative;
+    left: auto;
+
+    /* Don't break up line containing the sidenote */
+    float: left;
+    min-width: 100%;
+
+    display: block;
+    margin: 0.8rem 0;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .sidenote__button {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+  }
+
+  .sidenote__button:not(:hover):focus::after {
+    display: inline;
+  }
+
+  .sidenote__checkbox:checked~.sidenote__button::after {
+    content: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sidenote {
+    --sidenote-width: 12rem;
+    --sidenote-margin: 4.8rem;
+    cursor: default;
+  }
+  .sidenote__content {
+	display: block;
+	position: relative;
+	float: right;
+	margin-right: -22vw;
+	width: var(--sidenote-width);
+  }
+}
+

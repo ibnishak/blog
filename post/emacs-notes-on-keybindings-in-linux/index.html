@@ -11,8 +11,8 @@
 &nbsp;</span></div><h1 style=text-align:center>Emacs: Notes on keybindings in GNU+Linux</h1><div class=post-meta><time datetime=2019-09-18T00:00:00Z>September 18, 2019</time> &nbsp; &nbsp;|
 &nbsp; &nbsp; Reading Time:
 3 min
-13 s
-&nbsp;</div></header><h1 id=pointless-introduction>Pointless introduction</h1><p>Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.</p><p>Everyone and their grandmothers know that the shortcut for these are Ctrl+x, Ctrl+c and Ctrl+v. If you happen to flirt with terminals, then you need to remember that in most terminals the shortcuts are Ctrl+Shift+c and Ctrl+Shift+v. Now come to emacs, where the keybindings become Ctrl+w, Alt+w and Ctrl+y. The toll it takes on your muscle memory and frustration that ensues everytime you send SIGKILL instead of copying is no funny buisness.</p><h1 id=plan>Plan</h1><p>We are going to set up Emacs such that we can use the all the standard keybindings like: Ctrl+a to Select all Ctrl+s to Save Ctrl+d to add bookmark Ctrl+f to find Ctrl+z to undo Ctrl+x to cut Ctrl+c to copy Ctrl+v to paste</p><p>Since Emacs heavily uses Ctrl and Alt keys, we need to avoid messing with these modifier keys. So here is the plan</p><ul><li>Use <code>xmodmap</code> to convert CapsLock to Hyper key. So for every other software except Emacs, CapsLock acts as Hyper. All other modifier keys remain at their default position and usage.</li><li>In Emacs and Emacs alone, swap the Hyper and Ctrl keys, so that when you press Ctrl button in keyboard, Hyper is sent to Emacs, while pressing CapsLock button sends Ctrl to Emacs.</li><li>Finally set up keybindings like Hyper-x for cut, Hyper-c for copy in Emacs. Since Emacs is accepting Ctrl as Hyper, the actual keypress would be Ctrl+x, Ctrl+y etc</li></ul><h1 id=step-1-xmodmap>Step 1: Xmodmap</h1><ul><li>Run the following command</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    xmodmap -pke &gt; ~/.Xmodmap
+33 s
+&nbsp;</div></header><h1 id=pointless-introduction>Pointless introduction</h1><p>Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.</p><p>Everyone and their grandmothers know that the shortcut for these are <kbd>Ctrl+x</kbd>, <kbd>Ctrl+c</kbd> and <kbd>Ctrl+v</kbd>. If you happen to flirt with terminals, then you need to remember that in most terminals the shortcuts are <kbd>Ctrl+Shift+c</kbd> and <kbd>Ctrl+Shift+v</kbd>. Now come to emacs, where the keybindings become <kbd>Ctrl+w</kbd>, <kbd>Alt+w</kbd> and <kbd>Ctrl+y</kbd>. The toll it takes on your muscle memory and frustration that ensues everytime you send SIGKILL instead of copying is no funny buisness.</p><h1 id=plan>Plan</h1><p>We are going to set up Emacs such that we can use the all the standard keybindings like: <kbd>Ctrl+a</kbd> to Select all <kbd>Ctrl+s</kbd> to Save <kbd>Ctrl+d</kbd> to add bookmark <kbd>Ctrl+f</kbd> to find <kbd>Ctrl+z</kbd> to undo <kbd>Ctrl+x</kbd> to cut <kbd>Ctrl+c</kbd> to copy <kbd>Ctrl+v</kbd> to paste</p><p>Since Emacs heavily uses Ctrl and Alt keys, we need to avoid messing with these modifier keys. So here is the plan</p><ul><li>Use <code>xmodmap</code> to convert <kbd>CapsLock</kbd> to <kbd>Hyper</kbd> key. So for every other software except Emacs, <kbd>CapsLock</kbd> acts as <kbd>Hyper</kbd>. All other modifier keys remain at their default position and usage.</li><li>In Emacs and Emacs alone, swap the <kbd>Hyper</kbd> and <kbd>Ctrl</kbd> keys, so that when you press <kbd>Ctrl</kbd> button in keyboard, <kbd>Hyper</kbd> is sent to Emacs, while pressing <kbd>CapsLock</kbd> button sends <kbd>Ctrl</kbd> to Emacs.</li><li>Finally set up keybindings like <kbd>Hyper-x</kbd> for cut, <kbd>Hyper-c</kbd> for copy in Emacs. Since Emacs is accepting <kbd>Ctrl</kbd> as <kbd>Hyper</kbd>, the actual keypress would be <kbd>Ctrl+x</kbd>, <kbd>Ctrl+y</kbd> etc</li></ul><h1 id=step-1-xmodmap>Step 1: Xmodmap</h1><ul><li>Run the following command</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    xmodmap -pke &gt; ~/.Xmodmap
 </code></pre></div><ul><li>Open <code>~/.Xmodmap</code>. Add the following code to the file.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>    clear      lock
     clear      mod1
     clear      mod2
@@ -26,10 +26,14 @@
     add        mod4 <span style=color:#f92672>=</span> Super_L Super_R
     add        mod5 <span style=color:#f92672>=</span> Mode_switch ISO_Level3_Shift
 </code></pre></div><ul><li>Reload the xmodmap by running</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>xmodmap ~/.Xmodmap
-</code></pre></div><h1 id=step-2-emacs>Step 2: Emacs</h1><p>Add the following snippet to your <code>init.el</code> in <strong>Linux OS</strong>. If you are using Windows/Mac, find appropriate snippet from
+</code></pre></div><div class=alert>It is possible that keycodes vary in your keyboard. If the above codes
+does not work after reloading, try using
+<a href=https://linux.die.net/man/1/xev class=alert-link>xev</a></div><h1 id=step-2-emacs>Step 2: Emacs</h1><p>Add the following snippet to your <code>init.el</code> in <strong>Linux OS</strong>. If you are using Windows/Mac, find appropriate snippet from
 <a href=http://ergoemacs.org/emacs/emacs_hyper_super_keys.html target=_blank>ergoemacs</a>.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(setq x-ctrl-keysym 'hyper) ;;In Emacs, treat Control key as hyper
 (setq x-hyper-keysym 'ctrl) ;; In Emacs, treat Hyper Key(Caps_Lock)  as Control
-</code></pre><h1 id=my-keybindings>My Keybindings</h1><p>I am using <a href=https://github.com/noctuid/general.el target=_blank>general.el</a> for my keybindings. A subset of which looks as follows.</p><pre><code class=language-{.commonlisp data-lang={.commonlisp>(use-package general
+</code></pre><h1 id=my-keybindings>My Keybindings</h1><p>I am using <a href=https://github.com/noctuid/general.el target=_blank>general.el</a> for my keybindings. A subset of which looks as follows.</p><div class=alert>The following snippet depends on packages like general.el, helm,
+undo-tree, helm-swoop, avy, anzu, yasnippet. You may modify the packages
+as per your personal preferences</div><pre><code class=language-{.commonlisp data-lang={.commonlisp>(use-package general
   :defer 2
   :init
   (general-define-key
@@ -61,12 +65,12 @@
    &quot;H-`&quot; 'helm-register
    &quot;H-M-`&quot; 'point-to-register
    ))
-</code></pre><h1 id=13supthsup-function-key>13th Function Key</h1><p>Another key in the keyboard I hardly ever find using is the <code>Menu</code> key.
+</code></pre></div><h1 id=13supthsup-function-key>13<sup>th</sup> Function Key</h1><p>Another key in the keyboard I hardly ever find using is the <code>Menu</code> key.
 You know, <a href=https://www.howtogeek.com/wp-content/uploads/2015/07/a-keyboard-shortcut-that-can-be-used-in-place-of-the-context-menu-key-01.jpg target=_blank>that
 key</a>
-smugly sitting in between Right AltGr and Right
-Ctrl. I configured the Xmodmap so that it will act as
-F13. Since no normal keyboard has an F13 key, no
+smugly sitting in between <kbd>Right AltGr</kbd> and <kbd>Right
+Ctrl</kbd>. I configured the Xmodmap so that it will act as
+<kbd>F13</kbd>. Since no normal keyboard has an <kbd>F13</kbd> key, no
 shortcuts are assigned to this in any software. This gives us a array of
 possibilities regarding keybindings devoid of headaches. Add the
 following line to your <code>~/.Xmodmap</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-{.bash data-lang={.bash>keycode 135 <span style=color:#f92672>=</span> F13
