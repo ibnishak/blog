@@ -1,0 +1,14 @@
+<span class="sidenote"><input
+    aria-label="Show sidenote"
+    type="checkbox"
+    id="{{ with .Get 0 }}{{ . }}{{ end }}"
+    class="sidenote__checkbox"><label
+    tabindex="0"
+    title=""
+    class="sidenote__label"
+    aria-describedby="sidenote-1"
+    for="{{ with .Get 0 }}{{ . }}{{ end }}"
+    >^{{ with .Get 0 }}{{ . }}{{ end }}</label><small
+    id="sidenote-1"
+    class="sidenote__content"><span class="sidenote__content-parenthesis"
+    > (sidenote: </span>{{ with .Get 0 }}{{ . }}{{ end }}: {{ with .Get 1 }}{{ . }}{{ end }}<span class="sidenote__content-parenthesis">)</span></small></span>
