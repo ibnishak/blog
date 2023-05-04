@@ -1,49 +1,142 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>The Simplest Time Logger I Could Have Written | Treppenwitze</title><meta name=description content="Thoughts, rants and notes"><link rel=apple-touch-icon sizes=180x180 href=https://ibnishak.github.io/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://ibnishak.github.io/blog/favicon-32x32.png><link rel=icon href=https://ibnishak.github.io/blog/favicon.ico><link rel=manifest href=https://ibnishak.github.io/blog/site.webmanifest><link rel=stylesheet href=https://ibnishak.github.io/blog/css/index.css><link rel=canonical href=https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/><link rel=alternate type=application/rss+xml href title=Treppenwitze></head><body><header class=menus><nav><a href=/blog/>Home</a>
-<a href=/blog/about/>About</a>
-<a href="https://nilavara.surge.sh/?stackedNotes=000">Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank>GitHub</a>
-<a href=https://ibnishak.github.io/blog/index.xml target=_blank>RSS</a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><div class=cat-into><span class=header-item>Category:
-<a href=/blog/categories/digital>digital</a>
-&nbsp;</span>
-<span class=header-item>&nbsp;&nbsp;| &nbsp;&nbsp; Tags:
-<a href=/blog/tags/workflow>workflow</a>
-&nbsp;
-<a href=/blog/tags/linux>linux</a>
-&nbsp;</span></div><h1 style=text-align:center>The Simplest Time Logger I Could Have Written</h1><div class=post-meta><time datetime=2021-07-09T20:37:38+05:30>July 09, 2021</time> &nbsp; &nbsp;|
-&nbsp; &nbsp; Reading Time:
-54 s
-&nbsp;</div></header><p>A zsh script to take input from a form, and store it in a sqlite database.</p><p>Dependecies: YAD, Sqlite</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>#!/usr/bin/env zsh
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>##########  VARIABLES  ################</span>
-AREAS<span style=color:#f92672>=(</span>Acad Programming Reading Calories<span style=color:#f92672>)</span> <span style=color:#75715e>#Single words separated by spaces</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.111.3">
 
-<span style=color:#75715e>#######################################</span>
+  <title> The Simplest Time Logger I Could Have Written |  Treppenwitze</title>
+  <meta name="description" content="Thoughts, rants and notes">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ibnishak.github.io/blog/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ibnishak.github.io/blog/favicon-32x32.png">
+  <link rel="icon" href="https://ibnishak.github.io/blog/favicon.ico">
+  <link rel="manifest" href="https://ibnishak.github.io/blog/site.webmanifest">
 
-JA<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>echo <span style=color:#e6db74>${</span>(j:<span style=color:#ae81ff>\!</span>:)AREAS<span style=color:#e6db74>}</span><span style=color:#66d9ef>)</span> <span style=color:#75715e># Join Areas with ! because that is how yad wants it.</span>
+  <link rel="stylesheet" href="https://ibnishak.github.io/blog/css/index.css">
+  
+  
+  
+  <link rel="canonical" href="https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/">
+  <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
 
-data<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>yad --form --columns<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --date-format<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%Y-%m-%d&#34;</span>  <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Date::DT&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>date +%Y-%m-%d<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Area::CBE&#34;</span> <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>JA<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
-</span><span style=color:#ae81ff></span>--field<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Units::NUM&#34;</span> <span style=color:#e6db74>&#34;25&#34;</span><span style=color:#66d9ef>)</span>
+</head>
 
-DTARR<span style=color:#f92672>=(</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>(@s/|/)data<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span><span style=color:#f92672>)</span> <span style=color:#75715e># Split yad output to array</span>
+<body >
+  <header class="menus">
+  
 
-<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> -z <span style=color:#e6db74>&#34;</span>$DTARR<span style=color:#e6db74>[1]&#34;</span> <span style=color:#f92672>]</span> <span style=color:#75715e># If user had cancelled the yad window, exit</span>
-<span style=color:#66d9ef>then</span>
-   echo <span style=color:#e6db74>&#34;User cancellation&#34;</span>
-   exit <span style=color:#ae81ff>1</span>
-<span style=color:#66d9ef>fi</span>
+  <nav >
+    
+    <a href="/blog/"> Home</a>
+    
+    <a href="/blog/about/"> About</a>
+    
+    <a href="https://nilavara.surge.sh/?stackedNotes=000"> Digital Garden</a>
+    
+  </nav>
 
-sqlite3 tracker.db <span style=color:#e6db74>&lt;&lt;END_SQL
-</span><span style=color:#e6db74>CREATE TABLE IF NOT EXISTS data(
-</span><span style=color:#e6db74>   ID INTEGER PRIMARY KEY AUTOINCREMENT,
-</span><span style=color:#e6db74>   DATE           TEXT    NOT NULL,
-</span><span style=color:#e6db74>   AREA           TEXT    NOT NULL,
-</span><span style=color:#e6db74>   UNITS        	INT 		NOT NULL
-</span><span style=color:#e6db74>);
-</span><span style=color:#e6db74>INSERT INTO data (DATE,AREA,UNITS)
-</span><span style=color:#e6db74>VALUES ( &#34;$DTARR[1]&#34;, &#34;$DTARR[2]&#34;, &#34;$DTARR[3]&#34; );
-</span><span style=color:#e6db74>END_SQL</span>
-</code></pre></div><p>Create a desktop launcher for it by saving the following file as <code>Tracker.desktop</code> in your desktop. Remember to substitute paths appropriately.</p><pre><code>[Desktop Entry]
+  <nav class="fontawesome">
+    
+    <a href="https://github.com/ibnishak" target="_blank">
+        
+		GitHub
+    </a>
+    
+    
+    <a href="https://ibnishak.github.io/blog/index.xml" target="_blank">
+        
+		RSS
+    </a>
+    
+  </nav>
+  
+  
+  <div class="hidden description">Thoughts, rants and notes</div>
+  
+</header>
+
+<article id="article">
+  <header>
+	<div class="cat-into">
+		
+    <span class="header-item">Category: 
+    
+    <a href="/categories/digital">digital</a>
+    &nbsp;
+    
+	</span>
+  
+
+  
+  <span class="header-item">
+	&nbsp;&nbsp;| &nbsp;&nbsp; Tags: 
+   
+	 <a href="/tags/workflow">workflow</a>
+	 &nbsp;
+   
+	 <a href="/tags/linux">linux</a>
+	 &nbsp;
+   
+</span>
+ 
+	</div>
+
+    <h1 style="text-align: center;" >The Simplest Time Logger I Could Have Written</h1>
+    <div class="post-meta">
+    
+      <time datetime="2021-07-09T20:37:38&#43;05:30">July 09, 2021</time>  &nbsp; &nbsp;| 
+    
+    
+
+    
+	&nbsp; &nbsp; Reading Time:
+      
+      
+      
+
+      
+      54 s
+      &nbsp;
+    
+    </div>
+  </header>
+
+  <p>A zsh script to take input from a form, and store it in a sqlite database.</p>
+<p>Dependecies: YAD, Sqlite</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env zsh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##########  VARIABLES  ################</span>
+</span></span><span style="display:flex;"><span>AREAS<span style="color:#f92672">=(</span>Acad Programming Reading Calories<span style="color:#f92672">)</span> <span style="color:#75715e">#Single words separated by spaces</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#######################################</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>JA<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">${</span>(j:<span style="color:#ae81ff">\!</span>:)AREAS<span style="color:#e6db74">}</span><span style="color:#66d9ef">)</span> <span style="color:#75715e"># Join Areas with ! because that is how yad wants it.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>yad --form --columns<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> --date-format<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;%Y-%m-%d&#34;</span>  <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--field<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Date::DT&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>date +%Y-%m-%d<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--field<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Area::CBE&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>JA<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--field<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Units::NUM&#34;</span> <span style="color:#e6db74">&#34;25&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DTARR<span style="color:#f92672">=(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>(@s/|/)data<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">)</span> <span style="color:#75715e"># Split yad output to array</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$DTARR<span style="color:#e6db74">[1]&#34;</span> <span style="color:#f92672">]</span> <span style="color:#75715e"># If user had cancelled the yad window, exit</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>   echo <span style="color:#e6db74">&#34;User cancellation&#34;</span>
+</span></span><span style="display:flex;"><span>   exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sqlite3 tracker.db <span style="color:#e6db74">&lt;&lt;END_SQL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CREATE TABLE IF NOT EXISTS data(
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   ID INTEGER PRIMARY KEY AUTOINCREMENT,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   DATE           TEXT    NOT NULL,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   AREA           TEXT    NOT NULL,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   UNITS        	INT 		NOT NULL
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">INSERT INTO data (DATE,AREA,UNITS)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">VALUES ( &#34;$DTARR[1]&#34;, &#34;$DTARR[2]&#34;, &#34;$DTARR[3]&#34; );
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">END_SQL</span>
+</span></span></code></pre></div><p>Create a desktop launcher for it by saving the following file as <code>Tracker.desktop</code> in your desktop. Remember to substitute paths appropriately.</p>
+<pre tabindex="0"><code>[Desktop Entry]
 Type=Application
 Icon=/path/to/any/icon
 Name=Tracker
@@ -51,6 +144,72 @@ Exec=/path/to/the/script
 Path=/dir/where/database/should/be/kept
 Terminal=false
 Hidden=false
-</code></pre><p>The beauty of it is the flexibility. We can easily change this script for a CSV output, Markdown table or Tiddlywiki compatible output. We can also take templated plain text notes using this.</p><p>Next stop - creating graphs from the tracker database.</p><footer><hr></footer><div class=releated-post><h3>Related Posts</h3><a href=/blog/post/criteria-for-personal-knowledge-base/>Personal Knowledge Base - Criteria and Candidates</a><br><a href=/blog/post/caps-to-hyper/>Converting CapsLock to Hyper key with XKB</a><br><a href=/blog/post/arch-linux-sudoers/>Arch Linux Sudoers</a><br><a href=/blog/post/dotfile-management_criteria-and-candidates/>Dotfile Management - Criteria and Candidates</a><br><a href=/blog/post/arch_yadm-update-alias/>Alias for updating YADM</a><br></div><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2022 &#183;
-<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
-<a href=# aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5.0 01.708.0l6 6a.5.5.0 01-.708.708L8 5.707l-5.646 5.647a.5.5.0 01-.708-.708l6-6z"/></svg></a></div></html>
+</code></pre><p>The beauty of it is the flexibility. We can easily change this script for a CSV output, Markdown table or Tiddlywiki compatible output. We can also take templated plain text notes using this.</p>
+<p>Next stop - creating graphs from the tracker database.</p>
+
+
+  
+  <footer>
+    <hr>
+    
+  </footer>
+  
+
+  
+
+<div class="releated-post">
+  <h3>Related Posts</h3>
+  
+  
+  <a href="/blog/post/criteria-for-personal-knowledge-base/">Personal Knowledge Base - Criteria and Candidates</a>
+  <br>
+  
+  
+  <a href="/blog/post/caps-to-hyper/">Converting CapsLock to Hyper key with XKB</a>
+  <br>
+  
+  
+  <a href="/blog/post/arch-linux-sudoers/">Arch Linux Sudoers</a>
+  <br>
+  
+  
+  <a href="/blog/post/dotfile-management_criteria-and-candidates/">Dotfile Management - Criteria and Candidates</a>
+  <br>
+  
+  
+  <a href="/blog/post/arch_yadm-update-alias/">Alias for updating YADM</a>
+  <br>
+  
+</div>
+
+
+  <div class="comments">
+
+
+
+</div>
+
+</article>
+
+
+
+  
+  
+  
+</body>
+<div class="foot">
+  
+  
+    &copy; 2019 - 2023 &#183; 
+    <a href="/" target="_blank">Home</a> · Theme <a href="https://github.com/RainerChiang/simpleness" target="_blank">Simpleness</a> Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> &#183;
+    <a href="#" aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+	  </svg></a>
+  
+
+  
+</div>
+
+
+
+</html>

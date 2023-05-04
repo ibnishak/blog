@@ -1,11 +1,246 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>Vscode Addons for Markdown based Personal knowledge base | Treppenwitze</title><meta name=description content="Thoughts, rants and notes"><link rel=apple-touch-icon sizes=180x180 href=https://ibnishak.github.io/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://ibnishak.github.io/blog/favicon-32x32.png><link rel=icon href=https://ibnishak.github.io/blog/favicon.ico><link rel=manifest href=https://ibnishak.github.io/blog/site.webmanifest><link rel=stylesheet href=https://ibnishak.github.io/blog/css/index.css><link rel=canonical href=https://ibnishak.github.io/blog/post/vscode-addons-for-mdcode/><link rel=alternate type=application/rss+xml href title=Treppenwitze></head><body><header class=menus><nav><a href=/blog/>Home</a>
-<a href=/blog/about/>About</a>
-<a href="https://nilavara.surge.sh/?stackedNotes=000">Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank>GitHub</a>
-<a href=https://ibnishak.github.io/blog/index.xml target=_blank>RSS</a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><div class=cat-into></div><h1 style=text-align:center>Vscode Addons for Markdown based Personal knowledge base</h1><div class=post-meta><time datetime=2021-07-01T21:04:15+05:30>July 01, 2021</time> &nbsp; &nbsp;|
-&nbsp; &nbsp; Reading Time:
-2 min
-26 s
-&nbsp;</div></header><ol><li>Markdown All in One<ul><li>It provides basic shortcuts like Ctrl+B for bold, Ctrl+V for Italics, Marking/Un-marking checkboxes as done, increase/decrease heading levels etc.</li><li>It provides a single shortcut for toggling markdown preview, unlike VSCode default which maps opening and closing preview to 2 different shortcuts</li><li>When copy an external link, you simply need to select the target words in note and press Ctrl+V to get a properly formatted link.</li><li>It continues list bullets automatically and can switch between list formats easily.</li></ul></li><li>Markdown Notes<ul><li>Provides Wiki-links, back-links, hover peak of notes.</li><li>It creates non-existing notes automatically when the wiki-link is clicked.</li><li>In preview, wiki-links appear as normal links.</li></ul></li><li>Markdown table formatter<ul><li>Formats table.</li><li>Provide lenses for sorting the table by different columns.</li><li>Provides settings given below as customizable features.<ul><li>Default justification.</li><li>Keep first and last pipes.</li><li>Space padding of columns.</li><li>Remove colons if same as default justification.</li></ul></li></ul></li><li>Markdown IDE<ul><li>type <code>[</code> to trigger autocompletion for entering links to other Markdown files.</li><li>type <code>![</code> to trigger autocompletion for links to local image files.</li><li>updates links when renaming files.</li><li>removes links when deleting files.</li></ul></li><li>MD-Graph<ul><li>Faster graph showing links between files</li><li>ability to see graph of the current file only</li></ul></li><li>Mzettel<ul><li>Create a new note from given title, with zettelkasten IDs added and converted into slug</li><li>Copy link to current note to clipboard</li></ul></li><li>Paste Image<ul><li>Pastes image from clipboard as markdown links and stores the image in relative folders</li></ul></li><li>Code-spell-checker<ul><li>Spell checker. Worked better than <code>ban.spellright</code> extension.</li></ul></li><li>Which-key<ul><li>Brings Emacs hydra behavior to VSCode</li></ul></li><li>Prettier<ul><li>Beautifies the markdown file. Can be triggered on save.</li></ul></li><li>Trigger task on save<ul><li>Allows you to run tasks saved in <code>./.vscode/tasks.json</code> to be run on save. I use it to publish the current note whenever it is saved.</li></ul></li><li>Markless<ul><li>Enables to hide the markdown symbols used for markup. Also shows titles with larger font size according to hierarchy amd links as pretty links.</li></ul></li><li>Markdown preview enhanced<ul><li>Math-jax and PlantUML in preview</li><li>Automatic scroll sync with the editor</li><li>Show table of contents fixed on the side of preview</li></ul></li><li>Themes: Mayukai, Cryptohack</li></ol><h2 id=personal-extensions-and-modifications-to-existing-ones>Personal extensions and modifications to existing ones.</h2><ol><li>Markdown All in One<ul><li>added the ability to toggle checkboxes similar to the way it toggles list.</li><li>Change the order of lists bullet point toggle. The numbered bullets appear right after the unordered lists.</li></ul></li><li>Mzettel<ul><li>Added the ability to open current note in a localhost server.</li></ul></li><li>Markdown Linkify: Unpublished, developed by self<ul><li>Converts selected text to markdown links where link part is a slug of created from selection.</li><li>Upon creating a link it checks for presence of said file in the current folder, and if not found it will offer to create it with title formed by selection.</li></ul></li><li>Markdown Dated Notes: Unpublished, developed by self<ul><li>The forward slash command of Foam plugin excised into a separate plugin. It can create wiki-links with dates as its contents</li></ul></li></ol><p>All together it has around 17 plugins. In order to ensure that VSCode does not have to bear the burden of these plugins when used for purposes other than markdown editing, I created an alias in my shell as</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh>alias mdcode<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;codium --extensions-dir ~/.local/share/mdcode/extensions --user-data-dir ~/.local/share/mdcode/usr-dir </span>$@<span style=color:#e6db74>
-</span></code></pre></div><p>So whenever I open any markdown folder in vscode, I open it from shell as <code>mdcode .</code></p><footer><hr></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2022 &#183;
-<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
-<a href=# aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5.0 01.708.0l6 6a.5.5.0 01-.708.708L8 5.707l-5.646 5.647a.5.5.0 01-.708-.708l6-6z"/></svg></a></div></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.111.3">
+
+  <title> Vscode Addons for Markdown based Personal knowledge base |  Treppenwitze</title>
+  <meta name="description" content="Thoughts, rants and notes">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ibnishak.github.io/blog/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ibnishak.github.io/blog/favicon-32x32.png">
+  <link rel="icon" href="https://ibnishak.github.io/blog/favicon.ico">
+  <link rel="manifest" href="https://ibnishak.github.io/blog/site.webmanifest">
+
+  <link rel="stylesheet" href="https://ibnishak.github.io/blog/css/index.css">
+  
+  
+  
+  <link rel="canonical" href="https://ibnishak.github.io/blog/post/vscode-addons-for-mdcode/">
+  <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
+
+</head>
+
+<body >
+  <header class="menus">
+  
+
+  <nav >
+    
+    <a href="/blog/"> Home</a>
+    
+    <a href="/blog/about/"> About</a>
+    
+    <a href="https://nilavara.surge.sh/?stackedNotes=000"> Digital Garden</a>
+    
+  </nav>
+
+  <nav class="fontawesome">
+    
+    <a href="https://github.com/ibnishak" target="_blank">
+        
+		GitHub
+    </a>
+    
+    
+    <a href="https://ibnishak.github.io/blog/index.xml" target="_blank">
+        
+		RSS
+    </a>
+    
+  </nav>
+  
+  
+  <div class="hidden description">Thoughts, rants and notes</div>
+  
+</header>
+
+<article id="article">
+  <header>
+	<div class="cat-into">
+		
+
+  
+	</div>
+
+    <h1 style="text-align: center;" >Vscode Addons for Markdown based Personal knowledge base</h1>
+    <div class="post-meta">
+    
+      <time datetime="2021-07-01T21:04:15&#43;05:30">July 01, 2021</time>  &nbsp; &nbsp;| 
+    
+    
+
+    
+	&nbsp; &nbsp; Reading Time:
+      
+      
+      
+
+      
+        2 min
+      
+      26 s
+      &nbsp;
+    
+    </div>
+  </header>
+
+  <ol>
+<li>Markdown All in One
+<ul>
+<li>It provides basic shortcuts like Ctrl+B for bold, Ctrl+V for Italics, Marking/Un-marking checkboxes as done, increase/decrease heading levels etc.</li>
+<li>It provides a single shortcut for toggling markdown preview, unlike VSCode default which maps opening and closing preview to 2 different shortcuts</li>
+<li>When copy an external link, you simply need to select the target words in note and press Ctrl+V to get a properly formatted link.</li>
+<li>It continues list bullets automatically and can switch between list formats easily.</li>
+</ul>
+</li>
+<li>Markdown Notes
+<ul>
+<li>Provides Wiki-links, back-links, hover peak of notes.</li>
+<li>It creates non-existing notes automatically when the wiki-link is clicked.</li>
+<li>In preview, wiki-links appear as normal links.</li>
+</ul>
+</li>
+<li>Markdown table formatter
+<ul>
+<li>Formats table.</li>
+<li>Provide lenses for sorting the table by different columns.</li>
+<li>Provides settings given below as customizable features.
+<ul>
+<li>Default justification.</li>
+<li>Keep first and last pipes.</li>
+<li>Space padding of columns.</li>
+<li>Remove colons if same as default justification.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Markdown IDE
+<ul>
+<li>type <code>[</code> to trigger autocompletion for entering links to other Markdown files.</li>
+<li>type <code>![</code> to trigger autocompletion for links to local image files.</li>
+<li>updates links when renaming files.</li>
+<li>removes links when deleting files.</li>
+</ul>
+</li>
+<li>MD-Graph
+<ul>
+<li>Faster graph showing links between files</li>
+<li>ability to see graph of the current file only</li>
+</ul>
+</li>
+<li>Mzettel
+<ul>
+<li>Create a new note from given title, with zettelkasten IDs added and converted into slug</li>
+<li>Copy link to current note to clipboard</li>
+</ul>
+</li>
+<li>Paste Image
+<ul>
+<li>Pastes image from clipboard as markdown links and stores the image in relative folders</li>
+</ul>
+</li>
+<li>Code-spell-checker
+<ul>
+<li>Spell checker. Worked better than <code>ban.spellright</code> extension.</li>
+</ul>
+</li>
+<li>Which-key
+<ul>
+<li>Brings Emacs hydra behavior to VSCode</li>
+</ul>
+</li>
+<li>Prettier
+<ul>
+<li>Beautifies the markdown file. Can be triggered on save.</li>
+</ul>
+</li>
+<li>Trigger task on save
+<ul>
+<li>Allows you to run tasks saved in <code>./.vscode/tasks.json</code> to be run on save. I use it to publish the current note whenever it is saved.</li>
+</ul>
+</li>
+<li>Markless
+<ul>
+<li>Enables to hide the markdown symbols used for markup. Also shows titles with larger font size according to hierarchy amd links as pretty links.</li>
+</ul>
+</li>
+<li>Markdown preview enhanced
+<ul>
+<li>Math-jax and PlantUML in preview</li>
+<li>Automatic scroll sync with the editor</li>
+<li>Show table of contents fixed on the side of preview</li>
+</ul>
+</li>
+<li>Themes: Mayukai, Cryptohack</li>
+</ol>
+<h2 id="personal-extensions-and-modifications-to-existing-ones">Personal extensions and modifications to existing ones.</h2>
+<ol>
+<li>Markdown All in One
+<ul>
+<li>added the ability to toggle checkboxes similar to the way it toggles list.</li>
+<li>Change the order of lists bullet point toggle. The numbered bullets appear right after the unordered lists.</li>
+</ul>
+</li>
+<li>Mzettel
+<ul>
+<li>Added the ability to open current note in a localhost server.</li>
+</ul>
+</li>
+<li>Markdown Linkify: Unpublished, developed by self
+<ul>
+<li>Converts selected text to markdown links where link part is a slug of created from selection.</li>
+<li>Upon creating a link it checks for presence of said file in the current folder, and if not found it will offer to create it with title formed by selection.</li>
+</ul>
+</li>
+<li>Markdown Dated Notes: Unpublished, developed by self
+<ul>
+<li>The forward slash command of Foam plugin excised into a separate plugin. It can create wiki-links with dates as its contents</li>
+</ul>
+</li>
+</ol>
+<p>All together it has around 17 plugins. In order to ensure that VSCode does not have to bear the burden of these plugins when used for purposes other than markdown editing, I created an alias in my shell as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span>alias mdcode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;codium --extensions-dir ~/.local/share/mdcode/extensions --user-data-dir ~/.local/share/mdcode/usr-dir </span>$@<span style="color:#e6db74">
+</span></span></span></code></pre></div><p>So whenever I open any markdown folder in vscode, I open it from shell as <code>mdcode .</code></p>
+
+
+  
+  <footer>
+    <hr>
+    
+  </footer>
+  
+
+  
+
+
+  <div class="comments">
+
+
+
+</div>
+
+</article>
+
+
+
+  
+  
+  
+</body>
+<div class="foot">
+  
+  
+    &copy; 2019 - 2023 &#183; 
+    <a href="/" target="_blank">Home</a> · Theme <a href="https://github.com/RainerChiang/simpleness" target="_blank">Simpleness</a> Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> &#183;
+    <a href="#" aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+	  </svg></a>
+  
+
+  
+</div>
+
+
+
+</html>

@@ -1,61 +1,202 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>zsh: Parameter expansion cheatsheet | Treppenwitze</title><meta name=description content="String and path manipulation using zsh alone"><link rel=apple-touch-icon sizes=180x180 href=https://ibnishak.github.io/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://ibnishak.github.io/blog/favicon-32x32.png><link rel=icon href=https://ibnishak.github.io/blog/favicon.ico><link rel=manifest href=https://ibnishak.github.io/blog/site.webmanifest><link rel=stylesheet href=https://ibnishak.github.io/blog/css/index.css><link rel=canonical href=https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/><link rel=alternate type=application/rss+xml href title=Treppenwitze></head><body><header class=menus><nav><a href=/blog/>Home</a>
-<a href=/blog/about/>About</a>
-<a href="https://nilavara.surge.sh/?stackedNotes=000">Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank>GitHub</a>
-<a href=https://ibnishak.github.io/blog/index.xml target=_blank>RSS</a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><div class=cat-into><span class=header-item>Category:
-<a href=/blog/categories/digital>digital</a>
-&nbsp;</span>
-<span class=header-item>&nbsp;&nbsp;| &nbsp;&nbsp; Tags:
-<a href=/blog/tags/tip>tip</a>
-&nbsp;
-<a href=/blog/tags/linux>linux</a>
-&nbsp;</span></div><h1 style=text-align:center>zsh: Parameter expansion cheatsheet</h1><div class=post-meta><time datetime=2018-09-26T00:00:00Z>September 26, 2018</time> &nbsp; &nbsp;|
-&nbsp; &nbsp; Reading Time:
-32 s
-&nbsp;</div></header><h2 id=parent-directory>Parent directory</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>echo $PWD
-<span style=color:#75715e># /home/learning/pf/zsh/zsh2.00/src</span>
-echo $PWD:h
-<span style=color:#75715e># /home/learning/pf/zsh/zsh2.00</span>
-</code></pre></div><h2 id=grandparent-directry>Grandparent directry</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>echo $PWD:h:h
-<span style=color:#75715e># /home/learning/pf/zsh</span>
-</code></pre></div><h2 id=current-dir-without-path>Current dir without path</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>echo $PWD:t
-<span style=color:#75715e># src</span>
-</code></pre></div><h2 id=extracting-file-name-and-extension>Extracting file name and extension</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>name<span style=color:#f92672>=</span>foo.c
-echo $name:r
-<span style=color:#75715e># foo</span>
-echo $name:e
-<span style=color:#75715e># c</span>
-</code></pre></div><h2 id=substituting-parts-of-variable>Substituting parts of variable</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>name<span style=color:#f92672>=</span>foo.c
-echo $name:s/foo/bar/ 
-<span style=color:#75715e># bar.c</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.111.3">
 
-</code></pre></div><p>Mass renaming of files</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>ls
-<span style=color:#75715e># foo.c    foo.h    foo.o    foo.pro</span>
-<span style=color:#66d9ef>for</span> i in foo.*; mv $i $i:s/foo/bar/
-ls
-<span style=color:#75715e># bar.c    bar.h    bar.o    bar.pro</span>
+  <title> zsh: Parameter expansion cheatsheet |  Treppenwitze</title>
+  <meta name="description" content="String and path manipulation using zsh alone">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ibnishak.github.io/blog/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ibnishak.github.io/blog/favicon-32x32.png">
+  <link rel="icon" href="https://ibnishak.github.io/blog/favicon.ico">
+  <link rel="manifest" href="https://ibnishak.github.io/blog/site.webmanifest">
 
-</code></pre></div><h2 id=uppercasing-and-lower-casing>Uppercasing and Lower casing</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>xx<span style=color:#f92672>=</span>Test
-echo $xx:u
-<span style=color:#75715e># TEST</span>
-echo $xx:l
-<span style=color:#75715e># test</span>
-</code></pre></div><h2 id=cutting-patterns-from-beginning-and-end>Cutting patterns from beginning and end</h2><ul><li>Cut from end</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>echo $PWD
-<span style=color:#75715e># /home/learning/pf/zsh/zsh2.00/src</span>
-echo <span style=color:#e6db74>${</span>PWD%/*<span style=color:#e6db74>}</span>
-<span style=color:#75715e># /home/learning/pf/zsh/zsh2.00</span>
-echo <span style=color:#e6db74>${</span>PWD%/*/*<span style=color:#e6db74>}</span>
-<span style=color:#75715e>#/home/learning/pf/zsh</span>
+  <link rel="stylesheet" href="https://ibnishak.github.io/blog/css/index.css">
+  
+  
+  
+  <link rel="canonical" href="https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/">
+  <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
 
-name<span style=color:#f92672>=</span>foo.c
-echo <span style=color:#e6db74>${</span>name%.*<span style=color:#e6db74>}</span>
-<span style=color:#75715e># foo</span>
-</code></pre></div><ul><li>Cut from beginning</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>
-echo <span style=color:#e6db74>${</span>PWD##*/<span style=color:#e6db74>}</span>
-<span style=color:#75715e># src</span>
+</head>
 
-name<span style=color:#f92672>=</span>foo.c
-echo <span style=color:#e6db74>${</span>name#*.<span style=color:#e6db74>}</span>
-<span style=color:#75715e># c</span>
-</code></pre></div><footer><hr></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2022 &#183;
-<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
-<a href=# aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5.0 01.708.0l6 6a.5.5.0 01-.708.708L8 5.707l-5.646 5.647a.5.5.0 01-.708-.708l6-6z"/></svg></a></div></html>
+<body >
+  <header class="menus">
+  
+
+  <nav >
+    
+    <a href="/blog/"> Home</a>
+    
+    <a href="/blog/about/"> About</a>
+    
+    <a href="https://nilavara.surge.sh/?stackedNotes=000"> Digital Garden</a>
+    
+  </nav>
+
+  <nav class="fontawesome">
+    
+    <a href="https://github.com/ibnishak" target="_blank">
+        
+		GitHub
+    </a>
+    
+    
+    <a href="https://ibnishak.github.io/blog/index.xml" target="_blank">
+        
+		RSS
+    </a>
+    
+  </nav>
+  
+  
+  <div class="hidden description">Thoughts, rants and notes</div>
+  
+</header>
+
+<article id="article">
+  <header>
+	<div class="cat-into">
+		
+    <span class="header-item">Category: 
+    
+    <a href="/categories/digital">digital</a>
+    &nbsp;
+    
+	</span>
+  
+
+  
+  <span class="header-item">
+	&nbsp;&nbsp;| &nbsp;&nbsp; Tags: 
+   
+	 <a href="/tags/tip">tip</a>
+	 &nbsp;
+   
+	 <a href="/tags/linux">linux</a>
+	 &nbsp;
+   
+</span>
+ 
+	</div>
+
+    <h1 style="text-align: center;" >zsh: Parameter expansion cheatsheet</h1>
+    <div class="post-meta">
+    
+      <time datetime="2018-09-26T00:00:00Z">September 26, 2018</time>  &nbsp; &nbsp;| 
+    
+    
+
+    
+	&nbsp; &nbsp; Reading Time:
+      
+      
+      
+
+      
+      32 s
+      &nbsp;
+    
+    </div>
+  </header>
+
+  <h2 id="parent-directory">Parent directory</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo $PWD
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00/src</span>
+</span></span><span style="display:flex;"><span>echo $PWD:h
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00</span>
+</span></span></code></pre></div><h2 id="grandparent-directry">Grandparent directry</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo $PWD:h:h
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /home/learning/pf/zsh</span>
+</span></span></code></pre></div><h2 id="current-dir-without-path">Current dir without path</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo $PWD:t
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># src</span>
+</span></span></code></pre></div><h2 id="extracting-file-name-and-extension">Extracting file name and extension</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>name<span style="color:#f92672">=</span>foo.c
+</span></span><span style="display:flex;"><span>echo $name:r
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># foo</span>
+</span></span><span style="display:flex;"><span>echo $name:e
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># c</span>
+</span></span></code></pre></div><h2 id="substituting-parts-of-variable">Substituting parts of variable</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>name<span style="color:#f92672">=</span>foo.c
+</span></span><span style="display:flex;"><span>echo $name:s/foo/bar/ 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># bar.c</span>
+</span></span></code></pre></div><p>Mass renaming of files</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># foo.c    foo.h    foo.o    foo.pro</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i in foo.*; mv $i $i:s/foo/bar/
+</span></span><span style="display:flex;"><span>ls
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># bar.c    bar.h    bar.o    bar.pro</span>
+</span></span></code></pre></div><h2 id="uppercasing-and-lower-casing">Uppercasing and Lower casing</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xx<span style="color:#f92672">=</span>Test
+</span></span><span style="display:flex;"><span>echo $xx:u
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># TEST</span>
+</span></span><span style="display:flex;"><span>echo $xx:l
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test</span>
+</span></span></code></pre></div><h2 id="cutting-patterns-from-beginning-and-end">Cutting patterns from beginning and end</h2>
+<ul>
+<li>Cut from end</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo $PWD
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00/src</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>PWD%/*<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>PWD%/*/*<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#/home/learning/pf/zsh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>name<span style="color:#f92672">=</span>foo.c
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>name%.*<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># foo</span>
+</span></span></code></pre></div><ul>
+<li>Cut from beginning</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>PWD##*/<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># src</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>name<span style="color:#f92672">=</span>foo.c
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">${</span>name#*.<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># c</span>
+</span></span></code></pre></div>
+
+  
+  <footer>
+    <hr>
+    
+  </footer>
+  
+
+  
+
+
+  <div class="comments">
+
+
+
+</div>
+
+</article>
+
+
+
+  
+  
+  
+</body>
+<div class="foot">
+  
+  
+    &copy; 2019 - 2023 &#183; 
+    <a href="/" target="_blank">Home</a> · Theme <a href="https://github.com/RainerChiang/simpleness" target="_blank">Simpleness</a> Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> &#183;
+    <a href="#" aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+	  </svg></a>
+  
+
+  
+</div>
+
+
+
+</html>

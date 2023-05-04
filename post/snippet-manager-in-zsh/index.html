@@ -1,90 +1,222 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.74.3"><title>Snippet Manager in Zsh | Treppenwitze</title><meta name=description content="Thoughts, rants and notes"><link rel=apple-touch-icon sizes=180x180 href=https://ibnishak.github.io/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=https://ibnishak.github.io/blog/favicon-32x32.png><link rel=icon href=https://ibnishak.github.io/blog/favicon.ico><link rel=manifest href=https://ibnishak.github.io/blog/site.webmanifest><link rel=stylesheet href=https://ibnishak.github.io/blog/css/index.css><link rel=canonical href=https://ibnishak.github.io/blog/post/snippet-manager-in-zsh/><link rel=alternate type=application/rss+xml href title=Treppenwitze></head><body><header class=menus><nav><a href=/blog/>Home</a>
-<a href=/blog/about/>About</a>
-<a href="https://nilavara.surge.sh/?stackedNotes=000">Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank>GitHub</a>
-<a href=https://ibnishak.github.io/blog/index.xml target=_blank>RSS</a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><div class=cat-into></div><h1 style=text-align:center>Snippet Manager in Zsh</h1><div class=post-meta><time datetime=2021-07-21T01:13:42+05:30>July 21, 2021</time> &nbsp; &nbsp;|
-&nbsp; &nbsp; Reading Time:
-59 s
-&nbsp;</div></header><ol><li>Save it as <code>snippets.zsh</code> in your <code>$PATH</code></li><li>Make it executable</li></ol><p>Usage</p><ol><li>To create a new golang snippet</li></ol><pre><code>snippets.zsh -d go -n
-</code></pre><ol start=2><li>To create a new zsh snippet</li></ol><pre><code>snippets.zsh -d zsh -n
-</code></pre><ol start=3><li>To copy a golang snippet to clipboard</li></ol><pre><code>snippets.zsh -d go -l
-</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-zsh data-lang=zsh><span style=color:#75715e>#!/usr/bin/env zsh
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>##------------USER VARIABLES---------------##</span>
-SNIPDIR<span style=color:#f92672>=</span>/path/to/snippet/dir
-EDITOR<span style=color:#f92672>=(</span>leafpad<span style=color:#f92672>)</span> <span style=color:#75715e># Do not remove the brackets</span>
-export FZF_DEFAULT_OPTS<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;
-</span><span style=color:#e6db74>--reverse
-</span><span style=color:#e6db74>--margin 3%
-</span><span style=color:#e6db74>--color=dark
-</span><span style=color:#e6db74>--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
-</span><span style=color:#e6db74>--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
-</span><span style=color:#e6db74>&#39;</span>
-<span style=color:#75715e>##-----------------------------------------##</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.111.3">
 
-slugify<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-echo $1 |                                                                                                                              
-        iconv -t ascii//TRANSLIT |                                                                                
-        sed -E <span style=color:#e6db74>&#39;s/[~\^]+//g&#39;</span> |                                                         
-        sed -E <span style=color:#e6db74>&#39;s/[^a-zA-Z0-9]+/-/g&#39;</span> |                          
-        sed -E <span style=color:#e6db74>&#39;s/^-+\|-+$//g&#39;</span> | 
-        sed -E <span style=color:#e6db74>&#39;s/^-+//g&#39;</span> | 
-        sed -E <span style=color:#e6db74>&#39;s/-+$//g&#39;</span> | 
-        tr A-Z a-z
-<span style=color:#f92672>}</span>
+  <title> Snippet Manager in Zsh |  Treppenwitze</title>
+  <meta name="description" content="Thoughts, rants and notes">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ibnishak.github.io/blog/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ibnishak.github.io/blog/favicon-32x32.png">
+  <link rel="icon" href="https://ibnishak.github.io/blog/favicon.ico">
+  <link rel="manifest" href="https://ibnishak.github.io/blog/site.webmanifest">
+
+  <link rel="stylesheet" href="https://ibnishak.github.io/blog/css/index.css">
+  
+  
+  
+  <link rel="canonical" href="https://ibnishak.github.io/blog/post/snippet-manager-in-zsh/">
+  <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
+
+</head>
+
+<body >
+  <header class="menus">
+  
+
+  <nav >
+    
+    <a href="/blog/"> Home</a>
+    
+    <a href="/blog/about/"> About</a>
+    
+    <a href="https://nilavara.surge.sh/?stackedNotes=000"> Digital Garden</a>
+    
+  </nav>
+
+  <nav class="fontawesome">
+    
+    <a href="https://github.com/ibnishak" target="_blank">
+        
+		GitHub
+    </a>
+    
+    
+    <a href="https://ibnishak.github.io/blog/index.xml" target="_blank">
+        
+		RSS
+    </a>
+    
+  </nav>
+  
+  
+  <div class="hidden description">Thoughts, rants and notes</div>
+  
+</header>
+
+<article id="article">
+  <header>
+	<div class="cat-into">
+		
+
+  
+	</div>
+
+    <h1 style="text-align: center;" >Snippet Manager in Zsh</h1>
+    <div class="post-meta">
+    
+      <time datetime="2021-07-21T01:13:42&#43;05:30">July 21, 2021</time>  &nbsp; &nbsp;| 
+    
+    
+
+    
+	&nbsp; &nbsp; Reading Time:
+      
+      
+      
+
+      
+      59 s
+      &nbsp;
+    
+    </div>
+  </header>
+
+  <ol>
+<li>Save it as <code>snippets.zsh</code> in your <code>$PATH</code></li>
+<li>Make it executable</li>
+</ol>
+<p>Usage</p>
+<ol>
+<li>To create a new golang snippet</li>
+</ol>
+<pre tabindex="0"><code>snippets.zsh -d go -n
+</code></pre><ol start="2">
+<li>To create a new zsh snippet</li>
+</ol>
+<pre tabindex="0"><code>snippets.zsh -d zsh -n
+</code></pre><ol start="3">
+<li>To copy a golang snippet to clipboard</li>
+</ol>
+<pre tabindex="0"><code>snippets.zsh -d go -l
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-zsh" data-lang="zsh"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env zsh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##------------USER VARIABLES---------------##</span>
+</span></span><span style="display:flex;"><span>SNIPDIR<span style="color:#f92672">=</span>/path/to/snippet/dir
+</span></span><span style="display:flex;"><span>EDITOR<span style="color:#f92672">=(</span>leafpad<span style="color:#f92672">)</span> <span style="color:#75715e"># Do not remove the brackets</span>
+</span></span><span style="display:flex;"><span>export FZF_DEFAULT_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--reverse
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--margin 3%
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--color=dark
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">##-----------------------------------------##</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>slugify<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>echo $1 |                                                                                                                              
+</span></span><span style="display:flex;"><span>        iconv -t ascii//TRANSLIT |                                                                                
+</span></span><span style="display:flex;"><span>        sed -E <span style="color:#e6db74">&#39;s/[~\^]+//g&#39;</span> |                                                         
+</span></span><span style="display:flex;"><span>        sed -E <span style="color:#e6db74">&#39;s/[^a-zA-Z0-9]+/-/g&#39;</span> |                          
+</span></span><span style="display:flex;"><span>        sed -E <span style="color:#e6db74">&#39;s/^-+\|-+$//g&#39;</span> | 
+</span></span><span style="display:flex;"><span>        sed -E <span style="color:#e6db74">&#39;s/^-+//g&#39;</span> | 
+</span></span><span style="display:flex;"><span>        sed -E <span style="color:#e6db74">&#39;s/-+$//g&#39;</span> | 
+</span></span><span style="display:flex;"><span>        tr A-Z a-z
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>new<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	TMP<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>mktemp /tmp/quick-note.XXXXXX<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">${</span>EDITOR<span style="color:#e6db74">}</span> <span style="color:#e6db74">${</span>TMP<span style="color:#e6db74">}</span> 
+</span></span><span style="display:flex;"><span>	TITLE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>head -n <span style="color:#ae81ff">1</span> <span style="color:#e6db74">${</span>TMP<span style="color:#e6db74">}</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	fn<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>slugify <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>TITLE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>.<span style="color:#e6db74">${</span>LANG<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>	tail -n +2 <span style="color:#e6db74">${</span>TMP<span style="color:#e6db74">}</span> &gt; $fn
+</span></span><span style="display:flex;"><span>	echo $TITLE &gt;&gt; index
+</span></span><span style="display:flex;"><span>	rm <span style="color:#e6db74">${</span>TMP<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>launch<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	TITLE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>cat index | fzf<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>	fn<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>slugify <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>TITLE<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>.<span style="color:#e6db74">${</span>LANG<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>	cat <span style="color:#e6db74">${</span>fn<span style="color:#e6db74">}</span> | xsel --clipboard 
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    notify-send -i <span style="color:#e6db74">&#34;notification-message-IM&#34;</span> <span style="color:#e6db74">&#39;Snippet Copied!&#39;</span> <span style="color:#e6db74">&#34;</span>$TITLE<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>			notify-send -i <span style="color:#e6db74">&#34;notification-message-IM&#34;</span> <span style="color:#e6db74">&#39;ERROR&#39;</span> <span style="color:#e6db74">&#34;Unknown error&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> getopts <span style="color:#e6db74">&#39;nld:&#39;</span> z
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> $z in
+</span></span><span style="display:flex;"><span>    n<span style="color:#f92672">)</span> ACTION<span style="color:#f92672">=</span>NEW ;;
+</span></span><span style="display:flex;"><span>    l<span style="color:#f92672">)</span> ACTION<span style="color:#f92672">=</span>LAUNCH ;;
+</span></span><span style="display:flex;"><span>    d<span style="color:#f92672">)</span> LANG<span style="color:#f92672">=</span>$OPTARG ;;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pushd <span style="color:#e6db74">${</span>SNIPDIR<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">${</span>LANG<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>          notify-send -i <span style="color:#e6db74">&#34;notification-message-IM&#34;</span> <span style="color:#e6db74">&#39;ERROR&#39;</span> <span style="color:#e6db74">&#34;Language is empty&#34;</span>
+</span></span><span style="display:flex;"><span>          exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">${</span>LANG<span style="color:#e6db74">}</span> <span style="color:#f92672">]</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>        mkdir <span style="color:#e6db74">${</span>LANG<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    pushd <span style="color:#e6db74">${</span>LANG<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> $ACTION in
+</span></span><span style="display:flex;"><span>        NEW<span style="color:#f92672">)</span>    new    ;;
+</span></span><span style="display:flex;"><span>        LAUNCH<span style="color:#f92672">)</span> launch ;;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">esac</span>
+</span></span><span style="display:flex;"><span>    popd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>popd
+</span></span></code></pre></div>
+
+  
+  <footer>
+    <hr>
+    
+  </footer>
+  
+
+  
 
 
-new<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-	TMP<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>mktemp /tmp/quick-note.XXXXXX<span style=color:#66d9ef>)</span>
-	<span style=color:#e6db74>${</span>EDITOR<span style=color:#e6db74>}</span> <span style=color:#e6db74>${</span>TMP<span style=color:#e6db74>}</span> 
-	TITLE<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>head -n <span style=color:#ae81ff>1</span> <span style=color:#e6db74>${</span>TMP<span style=color:#e6db74>}</span><span style=color:#66d9ef>)</span>
-	fn<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>slugify <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TITLE<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>.<span style=color:#e6db74>${</span>LANG<span style=color:#e6db74>}</span>
-	tail -n +2 <span style=color:#e6db74>${</span>TMP<span style=color:#e6db74>}</span> &gt; $fn
-	echo $TITLE &gt;&gt; index
-	rm <span style=color:#e6db74>${</span>TMP<span style=color:#e6db74>}</span>
-<span style=color:#f92672>}</span>
-
-launch<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-	TITLE<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>cat index | fzf<span style=color:#66d9ef>)</span>
-	fn<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>slugify <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>TITLE<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>)</span>.<span style=color:#e6db74>${</span>LANG<span style=color:#e6db74>}</span>
-	cat <span style=color:#e6db74>${</span>fn<span style=color:#e6db74>}</span> | xsel --clipboard 
-	<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> $? -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
-    notify-send -i <span style=color:#e6db74>&#34;notification-message-IM&#34;</span> <span style=color:#e6db74>&#39;Snippet Copied!&#39;</span> <span style=color:#e6db74>&#34;</span>$TITLE<span style=color:#e6db74>&#34;</span>
-	<span style=color:#66d9ef>else</span>
-			notify-send -i <span style=color:#e6db74>&#34;notification-message-IM&#34;</span> <span style=color:#e6db74>&#39;ERROR&#39;</span> <span style=color:#e6db74>&#34;Unknown error&#34;</span>
-	<span style=color:#66d9ef>fi</span>
-<span style=color:#f92672>}</span>
+  <div class="comments">
 
 
-<span style=color:#66d9ef>while</span> getopts <span style=color:#e6db74>&#39;nld:&#39;</span> z
-<span style=color:#66d9ef>do</span>
-  <span style=color:#66d9ef>case</span> $z in
-    n<span style=color:#f92672>)</span> ACTION<span style=color:#f92672>=</span>NEW ;;
-    l<span style=color:#f92672>)</span> ACTION<span style=color:#f92672>=</span>LAUNCH ;;
-    d<span style=color:#f92672>)</span> LANG<span style=color:#f92672>=</span>$OPTARG ;;
-  <span style=color:#66d9ef>esac</span>
-<span style=color:#66d9ef>done</span>
 
-pushd <span style=color:#e6db74>${</span>SNIPDIR<span style=color:#e6db74>}</span>
+</div>
 
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> -z <span style=color:#e6db74>${</span>LANG<span style=color:#e6db74>}</span> <span style=color:#f92672>]</span>
-    <span style=color:#66d9ef>then</span>
-          notify-send -i <span style=color:#e6db74>&#34;notification-message-IM&#34;</span> <span style=color:#e6db74>&#39;ERROR&#39;</span> <span style=color:#e6db74>&#34;Language is empty&#34;</span>
-          exit <span style=color:#ae81ff>1</span>
-    <span style=color:#66d9ef>fi</span>
+</article>
 
-    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>${</span>LANG<span style=color:#e6db74>}</span> <span style=color:#f92672>]</span> 
-    <span style=color:#66d9ef>then</span>
-        mkdir <span style=color:#e6db74>${</span>LANG<span style=color:#e6db74>}</span>
-    <span style=color:#66d9ef>fi</span>
 
-    pushd <span style=color:#e6db74>${</span>LANG<span style=color:#e6db74>}</span>
-    <span style=color:#66d9ef>case</span> $ACTION in
-        NEW<span style=color:#f92672>)</span>    new    ;;
-        LAUNCH<span style=color:#f92672>)</span> launch ;;
-      <span style=color:#66d9ef>esac</span>
-    popd
 
-popd
-</code></pre></div><footer><hr></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2022 &#183;
-<a href=/>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness>Simpleness</a> Powered by <a href=https://gohugo.io/>Hugo</a> &#183;
-<a href=# aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5.0 01.708.0l6 6a.5.5.0 01-.708.708L8 5.707l-5.646 5.647a.5.5.0 01-.708-.708l6-6z"/></svg></a></div></html>
+  
+  
+  
+</body>
+<div class="foot">
+  
+  
+    &copy; 2019 - 2023 &#183; 
+    <a href="/" target="_blank">Home</a> · Theme <a href="https://github.com/RainerChiang/simpleness" target="_blank">Simpleness</a> Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> &#183;
+    <a href="#" aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+	  </svg></a>
+  
+
+  
+</div>
+
+
+
+</html>

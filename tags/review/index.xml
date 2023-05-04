@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>review on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/review/</link><description>Recent content in review on Treppenwitze</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>Essential criteria. Mobile first. Privacy. Cross platform. At least Linux and Android must be supported. Scalable. Ability to cross link notes. Desired criteria. Fast search and navigation. Semi automation of organization. Bottom up organization. Fast input. Least effort for initial setup, but extendable according to personal requirements. Ideal criteria Complete portability The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>review on Treppenwitze</title>
+    <link>https://ibnishak.github.io/blog/tags/review/</link>
+    <description>Recent content in review on Treppenwitze</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright>
+    <lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Personal Knowledge Base - Criteria and Candidates</title>
+      <link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link>
+      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid>
+      <description>Essential criteria. Mobile first. Privacy. Cross platform. At least Linux and Android must be supported. Scalable. Ability to cross link notes. Desired criteria. Fast search and navigation. Semi automation of organization. Bottom up organization. Fast input. Least effort for initial setup, but extendable according to personal requirements. Ideal criteria Complete portability The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?</description>
+    </item>
+    
+  </channel>
+</rss>
