@@ -2,3 +2,5 @@ public
 .hugo_build.lock
 .obsidian
 content/post/000.md
+node_modules
+package-lock.json
