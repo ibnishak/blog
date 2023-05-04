@@ -1,175 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>digital on Treppenwitze</title>
-    <link>https://ibnishak.github.io/blog/categories/digital/</link>
-    <description>Recent content in digital on Treppenwitze</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright>
-    <lastBuildDate>Wed, 14 Jul 2021 20:11:40 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/categories/digital/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Zettelkasten - What, Why, and Why Not</title>
-      <link>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</link>
-      <pubDate>Wed, 14 Jul 2021 20:11:40 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</guid>
-      <description>Zettelkasten is a workflow used by Niklas Luhmann. It is popularized in recent times by Sohnke Ahren
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>digital on Treppenwitze</title><link>https://ibnishak.github.io/blog/categories/digital/</link><description>Recent content in digital on Treppenwitze</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Mon, 03 Oct 2022 14:50:05 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/categories/digital/index.xml" rel="self" type="application/rss+xml"/><item><title>Set up, run jobs and troubleshoot</title><link>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot-fcron/</link><pubDate>Mon, 03 Oct 2022 14:50:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot-fcron/</guid><description>Install Fcron Ensure that an Fcron group is created cat /etc/group | grep fcron # Should output something like this: fcron❌23 Add current user to Fcron group (Need Root) sudo usermod -a -G fcron $USER You might have to re-login after the last command.
+Open the fcrontab fcrontab -e An empty text file should open. This is where we define what tasks to run and when to run them. However, first we add the necessary environment variables SHELL=/usr/bin/zsh DISPLAY=:0 Now we can tasks one per line.</description></item><item><title>Zettelkasten - What, Why, and Why Not</title><link>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</link><pubDate>Wed, 14 Jul 2021 20:11:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</guid><description>Zettelkasten is a workflow used by Niklas Luhmann. It is popularized in recent times by Sohnke Ahren
 Source
-Import your highlights. Ensure that you add metadata to the top including appropriate tags and source. These are called reference notes. It is like inbox in GTD workflow Take Literature Notes Summarise Explain idea enough to stand on its own, without the context of the book or the associated highlight. Note your insights and questions regarding it.</description>
-    </item>
-    
-    <item>
-      <title>The Simplest Time Logger I Could Have Written</title>
-      <link>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</link>
-      <pubDate>Fri, 09 Jul 2021 20:37:38 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</guid>
-      <description>A zsh script to take input from a form, and store it in a sqlite database.
+Import your highlights. Ensure that you add metadata to the top including appropriate tags and source. These are called reference notes. It is like inbox in GTD workflow Take Literature Notes Summarise Explain idea enough to stand on its own, without the context of the book or the associated highlight. Note your insights and questions regarding it.</description></item><item><title>The Simplest Time Logger I Could Have Written</title><link>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</link><pubDate>Fri, 09 Jul 2021 20:37:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</guid><description>A zsh script to take input from a form, and store it in a sqlite database.
 Dependecies: YAD, Sqlite
-#!/usr/bin/env zsh ########## VARIABLES ################ AREAS=(Acad Programming Reading Calories) #Single words separated by spaces ####################################### JA=$(echo ${(j:\!:)AREAS}) # Join Areas with ! because that is how yad wants it. data=$(yad --form --columns=2 --date-format=&amp;#34;%Y-%m-%d&amp;#34; \ --field=&amp;#34;Date::DT&amp;#34; &amp;#34;$(date +%Y-%m-%d)&amp;#34; \ --field=&amp;#34;Area::CBE&amp;#34; &amp;#34;${JA}&amp;#34; \ --field=&amp;#34;Units::NUM&amp;#34; &amp;#34;25&amp;#34;) DTARR=(&amp;#34;${(@s/|/)data}&amp;#34;) # Split yad output to array if [ -z &amp;#34;$DTARR[1]&amp;#34; ] # If user had cancelled the yad window, exit then echo &amp;#34;User cancellation&amp;#34; exit 1 fi sqlite3 tracker.</description>
-    </item>
-    
-    <item>
-      <title>Converting CapsLock to Hyper key with XKB</title>
-      <link>https://ibnishak.github.io/blog/post/caps-to-hyper/</link>
-      <pubDate>Sat, 26 Dec 2020 22:54:47 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/caps-to-hyper/</guid>
-      <description>Warning: While doing this, my cat decided to take a walk over my keyboard because I ignored her attempts to gain my attention for sometime. I saved the file not realizing that there were some syntax errors due to the cat walk. Next time I tried to login, my keyboard wouldn&amp;rsquo;t work. I couldn&amp;rsquo;t switch to console. The arch linux fall back did not help either. Finally I had to do a clean install of my OS.</description>
-    </item>
-    
-    <item>
-      <title>Arch Linux Sudoers</title>
-      <link>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</link>
-      <pubDate>Tue, 15 Dec 2020 20:53:19 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</guid>
-      <description>Arch Linux: Sudoers Sudoer files is the configuration file for sudo command. It is located at /etc/sudoers.
+#!/usr/bin/env zsh ########## VARIABLES ################ AREAS=(Acad Programming Reading Calories) #Single words separated by spaces ####################################### JA=$(echo ${(j:\!:)AREAS}) # Join Areas with ! because that is how yad wants it. data=$(yad --form --columns=2 --date-format=&amp;#34;%Y-%m-%d&amp;#34; \ --field=&amp;#34;Date::DT&amp;#34; &amp;#34;$(date +%Y-%m-%d)&amp;#34; \ --field=&amp;#34;Area::CBE&amp;#34; &amp;#34;${JA}&amp;#34; \ --field=&amp;#34;Units::NUM&amp;#34; &amp;#34;25&amp;#34;) DTARR=(&amp;#34;${(@s/|/)data}&amp;#34;) # Split yad output to array if [ -z &amp;#34;$DTARR[1]&amp;#34; ] # If user had cancelled the yad window, exit then echo &amp;#34;User cancellation&amp;#34; exit 1 fi sqlite3 tracker.</description></item><item><title>Converting CapsLock to Hyper key with XKB</title><link>https://ibnishak.github.io/blog/post/caps-to-hyper/</link><pubDate>Sat, 26 Dec 2020 22:54:47 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/caps-to-hyper/</guid><description>Warning: While doing this, my cat decided to take a walk over my keyboard because I ignored her attempts to gain my attention for sometime. I saved the file not realizing that there were some syntax errors due to the cat walk. Next time I tried to login, my keyboard wouldn&amp;rsquo;t work. I couldn&amp;rsquo;t switch to console. The arch linux fall back did not help either. Finally I had to do a clean install of my OS.</description></item><item><title>Arch Linux Sudoers</title><link>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</link><pubDate>Tue, 15 Dec 2020 20:53:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</guid><description>Arch Linux: Sudoers Sudoer files is the configuration file for sudo command. It is located at /etc/sudoers.
 Editing Sudoer It MUST be edited using the command sudo visudo. Behind the scenes this command creates a temporary file, checks for any errors once you save and finally replace the original file.
-However editing in vi can be a pain. You can change it to any terminal editors using the command in the form below.</description>
-    </item>
-    
-    <item>
-      <title>Alias for updating YADM</title>
-      <link>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</link>
-      <pubDate>Mon, 07 Dec 2020 21:15:38 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</guid>
-      <description>Yadm update alias Ref: YADM
+However editing in vi can be a pain. You can change it to any terminal editors using the command in the form below.</description></item><item><title>Alias for updating YADM</title><link>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</link><pubDate>Mon, 07 Dec 2020 21:15:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</guid><description>Yadm update alias Ref: YADM
 Open ~/.config/yadm/repo.git/config and add the following
-[alias] update = !git add -u &amp;amp;&amp;amp; git commit -m \&amp;#34;$(date)\&amp;#34; &amp;amp;&amp;amp; git push Now when you give the command yadm update, yadm will update all the exisiting files in repo, commit it with date and try to push to orgin. For bonus, you can add ssh keys to github/gitlab accounts and set this on a cron job to completely automate backing up of your configuration.</description>
-    </item>
-    
-    <item>
-      <title>Creating customized Reddit RSS feeds of top links</title>
-      <link>https://ibnishak.github.io/blog/post/reddit-rss/</link>
-      <pubDate>Tue, 17 Nov 2020 17:40:28 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/reddit-rss/</guid>
-      <description>Add the following snippet to any subreddit url
+[alias] update = !git add -u &amp;amp;&amp;amp; git commit -m \&amp;#34;$(date)\&amp;#34; &amp;amp;&amp;amp; git push Now when you give the command yadm update, yadm will update all the exisiting files in repo, commit it with date and try to push to orgin. For bonus, you can add ssh keys to github/gitlab accounts and set this on a cron job to completely automate backing up of your configuration.</description></item><item><title>Creating customized Reddit RSS feeds of top links</title><link>https://ibnishak.github.io/blog/post/reddit-rss/</link><pubDate>Tue, 17 Nov 2020 17:40:28 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/reddit-rss/</guid><description>Add the following snippet to any subreddit url
 /top.rss?t=week&amp;amp;amp;limit=25 Example
-https://www.reddit.com/r/askreddit/top.rss?t=week&amp;amp;amp;limit=25 </description>
-    </item>
-    
-    <item>
-      <title>Limiting Number of Git Revisions - How</title>
-      <link>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</link>
-      <pubDate>Sat, 10 Oct 2020 22:42:40 +0530</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</guid>
-      <description>What Whenever a git commit is made, you are essentially creating a snapshot of the directory tree with some optimisations. This is great for software development workflow. However if you are using git to version control something like a personal knowledge base, keeping snapshots all the way back to origin is unnecessary.
-Git provides facilities to prune old commits. We make use of this facility to keep only last 5 commits.</description>
-    </item>
-    
-    <item>
-      <title>Personal Knowledge Base - Criteria and Candidates</title>
-      <link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link>
-      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid>
-      <description>Essential criteria. Mobile first. Privacy. Cross platform. At least Linux and Android must be supported. Scalable. Ability to cross link notes. Desired criteria. Fast search and navigation. Semi automation of organization. Bottom up organization. Fast input. Least effort for initial setup, but extendable according to personal requirements. Ideal criteria Complete portability The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?</description>
-    </item>
-    
-    <item>
-      <title>Adding custom language highlight and fonts to markor</title>
-      <link>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</link>
-      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</guid>
-      <description>Custom Language Highlight Markor has inbuilt support for syntax highlighting of a select few languages. However markor comes bundled with prism js. This means adding syntax highlighting for any of 199 languages supported by prism is a matter of two steps
-Go to prism CDN and copy the link corresponding to your language. In the markor app, open Settings&amp;gt;View mode and add the the following snippet to Inject -&amp;gt; head after changing the link.</description>
-    </item>
-    
-    <item>
-      <title>Building markor from source code in linux</title>
-      <link>https://ibnishak.github.io/blog/post/building-markor-in-linux/</link>
-      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/building-markor-in-linux/</guid>
-      <description>Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.
-If you do not have android-sdk installed, you need to install it first. Most package managers has it. Given below is a portable method. export ANDROID_SDK_ROOT=&amp;#34;$HOME/android-sdk&amp;#34; if [[ !</description>
-    </item>
-    
-    <item>
-      <title>Vim: Copy and paste to termux clipboard</title>
-      <link>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</link>
-      <pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</guid>
-      <description>Copying to system clipboard from vim is usually done by using the &amp;ldquo;+ register. Unfortunately this will not work in termux. Here is a workaround to cut, copy and paste from android clipboard. Remember that you need termux-apk tools for this to work.
-Add the following to vimrc vnoremap &amp;lt;C-x&amp;gt; :!termux-clipboard-set&amp;lt;CR&amp;gt; vnoremap &amp;lt;C-c&amp;gt; :w !termux-clipboard-set&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt; inoremap &amp;lt;C-v&amp;gt; &amp;lt;ESC&amp;gt;:read !termux-clipboard-get&amp;lt;CR&amp;gt;i Source the vimrc or reload vim. In visual mode, you can now use &amp;ldquo;Ctrl-x&amp;rdquo; to cut, &amp;ldquo;Ctrl-c&amp;rdquo; to copy to termux clipboard.</description>
-    </item>
-    
-    <item>
-      <title>Emacs - Adding clipboad.js to HTML exports</title>
-      <link>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</link>
-      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</guid>
-      <description>Clipboard.js is a javascript solution to add copy buttons to &amp;lt;pre&amp;gt; or &amp;lt;code&amp;gt; regions in your html file. F
+https://www.reddit.com/r/askreddit/top.rss?t=week&amp;amp;amp;limit=25</description></item><item><title>Limiting Number of Git Revisions - How</title><link>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</link><pubDate>Sat, 10 Oct 2020 22:42:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</guid><description>What Whenever a git commit is made, you are essentially creating a snapshot of the directory tree with some optimisations. This is great for software development workflow. However if you are using git to version control something like a personal knowledge base, keeping snapshots all the way back to origin is unnecessary.
+Git provides facilities to prune old commits. We make use of this facility to keep only last 5 commits.</description></item><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>Essential criteria. Mobile first. Privacy. Cross platform. At least Linux and Android must be supported. Scalable. Ability to cross link notes. Desired criteria. Fast search and navigation. Semi automation of organization. Bottom up organization. Fast input. Least effort for initial setup, but extendable according to personal requirements. Ideal criteria Complete portability The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?</description></item><item><title>Adding custom language highlight and fonts to markor</title><link>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</link><pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</guid><description>Custom Language Highlight Markor has inbuilt support for syntax highlighting of a select few languages. However markor comes bundled with prism js. This means adding syntax highlighting for any of 199 languages supported by prism is a matter of two steps
+Go to prism CDN and copy the link corresponding to your language. In the markor app, open Settings&amp;gt;View mode and add the the following snippet to Inject -&amp;gt; head after changing the link.</description></item><item><title>Building markor from source code in linux</title><link>https://ibnishak.github.io/blog/post/building-markor-in-linux/</link><pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/building-markor-in-linux/</guid><description>Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.
+If you do not have android-sdk installed, you need to install it first. Most package managers has it. Given below is a portable method. export ANDROID_SDK_ROOT=&amp;#34;$HOME/android-sdk&amp;#34; if [[ !</description></item><item><title>Vim: Copy and paste to termux clipboard</title><link>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</link><pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</guid><description>Copying to system clipboard from vim is usually done by using the &amp;ldquo;+ register. Unfortunately this will not work in termux. Here is a workaround to cut, copy and paste from android clipboard. Remember that you need termux-apk tools for this to work.
+Add the following to vimrc vnoremap &amp;lt;C-x&amp;gt; :!termux-clipboard-set&amp;lt;CR&amp;gt; vnoremap &amp;lt;C-c&amp;gt; :w !termux-clipboard-set&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt; inoremap &amp;lt;C-v&amp;gt; &amp;lt;ESC&amp;gt;:read !termux-clipboard-get&amp;lt;CR&amp;gt;i Source the vimrc or reload vim. In visual mode, you can now use &amp;ldquo;Ctrl-x&amp;rdquo; to cut, &amp;ldquo;Ctrl-c&amp;rdquo; to copy to termux clipboard.</description></item><item><title>Emacs - Adding clipboad.js to HTML exports</title><link>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</guid><description>Clipboard.js is a javascript solution to add copy buttons to &amp;lt;pre&amp;gt; or &amp;lt;code&amp;gt; regions in your html file. F
 Since many of the Emacs community use org-publish for blogging, it seems like a good idea to note how to include clipboard.js snippets in the org mode html exports.
-Add the following to your init.el (defun org-html-src-block (src-block contents info) &amp;#34;Transcode a SRC-BLOCK element from Org to HTML. CONTENTS holds the contents of the item.</description>
-    </item>
-    
-    <item>
-      <title>Emacs: Notes on keybindings in GNU&#43;Linux</title>
-      <link>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</link>
-      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</guid>
-      <description>Pointless introduction Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.</description>
-    </item>
-    
-    <item>
-      <title>zsh: Parameter expansion cheatsheet</title>
-      <link>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</link>
-      <pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</guid>
-      <description>Parent directory echo $PWD # /home/learning/pf/zsh/zsh2.00/src echo $PWD:h # /home/learning/pf/zsh/zsh2.00 Grandparent directry echo $PWD:h:h # /home/learning/pf/zsh Current dir without path echo $PWD:t # src Extracting file name and extension name=foo.c echo $name:r # foo echo $name:e # c Substituting parts of variable name=foo.c echo $name:s/foo/bar/ # bar.c Mass renaming of files
-ls # foo.c foo.h foo.o foo.pro for i in foo.*; mv $i $i:s/foo/bar/ ls # bar.c bar.h bar.o bar.pro Uppercasing and Lower casing xx=Test echo $xx:u # TEST echo $xx:l # test Cutting patterns from beginning and end Cut from end echo $PWD # /home/learning/pf/zsh/zsh2.</description>
-    </item>
-    
-    <item>
-      <title>TW5: Options in Android Platform</title>
-      <link>https://ibnishak.github.io/blog/post/tw5-options-in-android-platform/</link>
-      <pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/tw5-options-in-android-platform/</guid>
-      <description>Saving a TW5 wiki in android has 7 possible solutions. We shall take a quick look at each of them.
-Android Apps Tiddloid Andtidwiki Webdav server Servers using Termux Built in server. Tiddlyserver. Bob And finally the winner: Widdly by Opennota Android Apps Tiddloid Tiddloid is the latest android app to save tiddlywiki in android. It is surprisingly good. It allows you to add TW5s stored anywhere in your internal memory, saves without glitches and even has dark mode.</description>
-    </item>
-    
-    <item>
-      <title>TW5: CSS woes with smaller screens</title>
-      <link>https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/</link>
-      <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/</guid>
-      <description>We will keep this strictly to the ease o use of TW5 on smaller screens. I have been using TW5 for 4 years now, at the end of which I reached 2 conclusions.
-It is not intended to handle large amount of data. It is not well adapted for mobile platform. The first problem had solutions - categorize and split the data. The second problem took a long time for a satisfactory resolution.</description>
-    </item>
-    
-  </channel>
-</rss>
+Add the following to your init.el (defun org-html-src-block (src-block contents info) &amp;#34;Transcode a SRC-BLOCK element from Org to HTML. CONTENTS holds the contents of the item.</description></item><item><title>Emacs: Notes on keybindings in GNU+Linux</title><link>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</guid><description>Pointless introduction Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.</description></item><item><title>zsh: Parameter expansion cheatsheet</title><link>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</link><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</guid><description>Parent directory echo $PWD # /home/learning/pf/zsh/zsh2.00/src echo $PWD:h # /home/learning/pf/zsh/zsh2.00 Grandparent directry echo $PWD:h:h # /home/learning/pf/zsh Current dir without path echo $PWD:t # src Extracting file name and extension name=foo.c echo $name:r # foo echo $name:e # c Substituting parts of variable name=foo.c echo $name:s/foo/bar/ # bar.c Mass renaming of files
+ls # foo.c foo.h foo.o foo.pro for i in foo.*; mv $i $i:s/foo/bar/ ls # bar.c bar.h bar.o bar.pro Uppercasing and Lower casing xx=Test echo $xx:u # TEST echo $xx:l # test Cutting patterns from beginning and end Cut from end echo $PWD # /home/learning/pf/zsh/zsh2.</description></item><item><title>TW5: Options in Android Platform</title><link>https://ibnishak.github.io/blog/post/tw5-options-in-android-platform/</link><pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/tw5-options-in-android-platform/</guid><description>Saving a TW5 wiki in android has 7 possible solutions. We shall take a quick look at each of them.
+Android Apps Tiddloid Andtidwiki Webdav server Servers using Termux Built in server. Tiddlyserver. Bob And finally the winner: Widdly by Opennota Android Apps Tiddloid Tiddloid is the latest android app to save tiddlywiki in android. It is surprisingly good. It allows you to add TW5s stored anywhere in your internal memory, saves without glitches and even has dark mode.</description></item><item><title>TW5: CSS woes with smaller screens</title><link>https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/</link><pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/</guid><description>We will keep this strictly to the ease o use of TW5 on smaller screens. I have been using TW5 for 4 years now, at the end of which I reached 2 conclusions.
+It is not intended to handle large amount of data. It is not well adapted for mobile platform. The first problem had solutions - categorize and split the data. The second problem took a long time for a satisfactory resolution.</description></item></channel></rss>
