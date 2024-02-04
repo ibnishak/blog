@@ -15,9 +15,6 @@ disableToC: false
 disableAutoCollapse: true
 ---
 
-
-
-
 # Knowledge Acquisition
 
 Knowledge acquisition should come in 2 forms - deliberate and free-flowing.

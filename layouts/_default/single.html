@@ -44,8 +44,8 @@
     {{ end }}
     </div>
   </header>
-
-  {{ .Content }}
+  {{ partial "content-wikilinks" . }}
+  {{/*  {{ .Content }}  */}}
 
   {{ if or (gt .Params.tags 0) .Lastmod }}
   <footer>
