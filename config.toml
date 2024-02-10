@@ -59,3 +59,4 @@ tag = "tags"
 
 [markup.goldmark.renderer]
     unsafe= true
+	hardWraps = true

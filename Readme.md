@@ -4,6 +4,8 @@ Irregularly updated blog about random things. See at https://ibnishak.github.io/
 
 Feel free to start issues if you have any comments.
 
+## Build
+- 
 
 Categories: Digital, Advice, Language, Opinion, General
-Tags: Linux, ANdroid, Tip, Workflow, Malayalam 
+Tags: Linux, Android, Tip, Workflow, Malayalam 
