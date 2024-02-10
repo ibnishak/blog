@@ -1,30 +1,194 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Treppenwitze</title><link>https://ibnishak.github.io/blog/post/</link><description>Recent content in Posts on Treppenwitze</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Sun, 30 Apr 2023 14:10:18 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Login Without Display Manager</title><link>https://ibnishak.github.io/blog/post/login-without-display-manager/</link><pubDate>Sun, 30 Apr 2023 14:10:18 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/login-without-display-manager/</guid><description>Add the following to /etc/zsh/zprofile
-if [[ -z &amp;#34;$DISPLAY&amp;#34; ]] &amp;amp;&amp;amp; [[ $(tty) = /dev/tty1 ]]; then exec startx fi</description></item><item><title>Set up, run jobs and troubleshoot</title><link>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot-fcron/</link><pubDate>Mon, 03 Oct 2022 14:50:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot-fcron/</guid><description>Install Fcron Ensure that an Fcron group is created cat /etc/group | grep fcron # Should output something like this: fcron:x:23 Add current user to Fcron group (Need Root) sudo usermod -a -G fcron $USER You might have to re-login after the last command.
+if [[ -z &amp;#34;$DISPLAY&amp;#34; ]] &amp;amp;&amp;amp; [[ $(tty) = /dev/tty1 ]]; then exec startx fi</description></item><item><title>Fcron - Set up, run jobs and troubleshoot</title><link>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot-fcron/</link><pubDate>Mon, 03 Oct 2022 14:50:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot-fcron/</guid><description>Install Fcron Ensure that an Fcron group is created cat /etc/group | grep fcron # Should output something like this: fcron:x:23 Add current user to Fcron group (Need Root) sudo usermod -a -G fcron $USER You might have to re-login after the last command.
 Open the fcrontab fcrontab -e An empty text file should open. This is where we define what tasks to run and when to run them. However, first we add the necessary environment variables SHELL=/usr/bin/zsh DISPLAY=:0 Now we can tasks one per line.</description></item><item><title>Ways to Benchmark neovim startup</title><link>https://ibnishak.github.io/blog/post/measuring-effect-of-colorscheme-on-neovim/</link><pubDate>Thu, 29 Sep 2022 01:38:09 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/measuring-effect-of-colorscheme-on-neovim/</guid><description>Use builtin statup time profiler Run the following snippet in your terminal. Replace neovide with the nvim gui you are using.
 neovide -- --startuptime vim-startup-times.txt It will create a file calle vim-startup-times.txt in the current path detailing the effect of each plugin, file read and other things.
 Using vim-startup time Download and install vim-startuptime from Github and run it as
 vim-startuptime -vimpath nvim It will automatically start and close vim 10 times (configurable) and measure statup times each time.</description></item><item><title>Interesting Firefox Addons and Other things</title><link>https://ibnishak.github.io/blog/post/interesting-firefox-addons/</link><pubDate>Thu, 15 Sep 2022 16:10:01 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/interesting-firefox-addons/</guid><description>Tagspaces Web Clipper: This Add-on will help you to save web pages or parts of them as files, for later reading or organizing with app such as TagSpaces&amp;rsquo; desktop. Webscrapbook: Archive webpages offline, organize and highlight text in webpages. Single-Filez: Better sibling of Single File Addon. Webpage is saved as a self extracting zip file and webpage resources like fonts, images, stylesheets etc are saved as separate files. Nevertheless, you can view webpage in your browser without extracting - coz magic.</description></item><item><title>How to Add Website Shortcuts to Plank Dock</title><link>https://ibnishak.github.io/blog/post/how-to-add-website-shortcuts-to-plank-dock/</link><pubDate>Wed, 14 Sep 2022 20:24:33 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/how-to-add-website-shortcuts-to-plank-dock/</guid><description> Create a file named ~/.local/share/applications/Youtube.desktop with following content. Remember to replace myusername appropriately. [Desktop Entry] Type=Application Icon=/home/myusername/.local/share/applications/youtube.svg Name=Youtube Exec=firefox-developer-edition https://www.youtube.com/ Terminal=false Hidden=false Keywords=youtube;video;entertainment Categories=Internet Comment=Youtube Quit plank. Create a file named ~/.config/plank/dock1/launchers/Youtube.dockitem with following content. Remember to replace myusername appropriately. [PlankDockItemPreferences] Launcher=file:///home/myusername/.local/share/applications/Youtube.desktop Restart plank Things to note:
 Use a helper program to make desktop files. I recomment Arronax In the desktop entry, Keywords, Categories and Comments are optional If you are adding Keywords, separate them with semicolon</description></item><item><title>Malayalam Phonetic Typing aka Transliteration in Arch Linux</title><link>https://ibnishak.github.io/blog/post/malayalam-phonetic-typing-aka-transliteration-in-arch-linux/</link><pubDate>Sun, 04 Sep 2022 19:52:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/malayalam-phonetic-typing-aka-transliteration-in-arch-linux/</guid><description>Install iBus and related libraries yay -S ibus ibus-m17n m17n-db Download Swanalekha inpput method lib and copy to to /usr/share/m17n/ wget http://swanalekha.smc.org.in/m17n/ml-swanalekha.mim sudo cp ml-swanalekha.mim /usr/share/m17n/ml-swanalekha.mim Start ibus daemon ibus-daemon -drxR Open ibus preferences ibus-setup Switch to Input Method Tab, Click Add and search for Malayalam - ml-swanalekha and add it. If needed, change hotkey for switching input methods. Restart ibus daemon ibus-daemon -rdx Also ensure that you have some malayalam fonts installed in your system.</description></item><item><title>About Selfcare</title><link>https://ibnishak.github.io/blog/post/about-selfcare/</link><pubDate>Fri, 02 Sep 2022 11:04:10 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/about-selfcare/</guid><description>Self care is not just about indulging onself. It is about being consistent with habits that might not have direct impact on productivity.
-Self care is the fuel in your car. It gives you strength to process the trauma.</description></item><item><title>Knowledge Acquisition</title><link>https://ibnishak.github.io/blog/post/knowledge-acquisition/</link><pubDate>Thu, 17 Feb 2022 11:48:33 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/knowledge-acquisition/</guid><description>Knowledge Acquisition Knowledge acquisition should come in 2 forms - deliberate and free-flowing.
+Self care is the fuel in your car. It gives you strength to process the trauma.</description></item><item><title>Book notes - A guide to good life</title><link>https://ibnishak.github.io/blog/post/a-guide-to-good-life/</link><pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/a-guide-to-good-life/</guid><description>Guide to Good Life Chapter 4: Negative Visualization He robs present ills of their power who has perceived their coming beforehand. - Seneca All things everywhere are perishable. - Epictetus It helps to prevent and reverse hedonistic adaptation. Hedonistic adaptation is the reason we find our new TV or job or relationship as flawed and boring. The easiest way for us to gain #happiness is to learn how to want the things we already have.</description></item><item><title>Knowledge Acquisition</title><link>https://ibnishak.github.io/blog/post/knowledge-acquisition/</link><pubDate>Thu, 17 Feb 2022 11:48:33 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/knowledge-acquisition/</guid><description>Knowledge Acquisition Knowledge acquisition should come in 2 forms - deliberate and free-flowing.
 Deliberate knowledge acquisition in 3 fields
-Personal: Observe our patterns of behavior, and understand whether or not it aligns with goals one has set for himself. Observing oneself also inevitably brings to light one&amp;rsquo;s strengths and weaknesses, and allows the opportunity to experiment with them. [[Journaling]]. [[Quantified self]]. [[Mindfulness]]/[[Metacognition]] Professional: In real life, one must earn a living.</description></item><item><title>മിഴിനീരു - സച്ചിദാനന്ദൻ</title><link>https://ibnishak.github.io/blog/post/mizhineeru/</link><pubDate>Mon, 06 Dec 2021 21:49:34 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/mizhineeru/</guid><description>മിഴിനീരുണങ്ങിടാ- മൊരു നാൾ, വരൂ വീണ്ടു- മൊരു വട്ടം പാവാട ചുറ്റി.
-ചിരികളും പൂക്കളും മഴവില്ലു മീണ്ടോരു മൃതർ തൻ കിനാക്കളുമായി.
-നിറയെയുണ്ടാമപ്പോൾ കിളികളും കനികളും പുഴകളിൽ തെളിനീരും കാടും .
-ഒരു പക്ഷേയുണ്ടാകു- മൊരു മാവിൻ കൊമ്പിലെൻ കുറുകിക്കുണുങ്ങുമാത്മാവും.</description></item><item><title>മുക്കുറ്റിച്ചെടി ചോദിക്കുന്നു - പി.മധുസൂദനന്‍</title><link>https://ibnishak.github.io/blog/post/mukkuttichedi/</link><pubDate>Sat, 20 Nov 2021 15:36:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/mukkuttichedi/</guid><description>മുക്കുറ്റിച്ചെടി ചോദിക്കുന്നു തരുമോ സ്വാതന്ത്ര്യം ഒരു പൂവെങ്കിലുമെന്റേതായി വിടര്‍ത്തി നിറുത്തീടാന്‍ നിങ്ങടെയാകാം ആകാശം നിങ്ങടെയാകാം മണ്ണും പക്ഷെ ഒരു പൂവെങ്കിലുമെന്റേതായി പുലരാനൊരു മോഹം</description></item><item><title>പലവക - 3</title><link>https://ibnishak.github.io/blog/post/palavaka3/</link><pubDate>Wed, 10 Nov 2021 15:31:18 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka3/</guid><description>കരുതുവതിഹ ചെയ്യവയ്യ ചെയ്യാൻ വരുതി ലഭിച്ചതിൽ നിന്നിടാ വിചാരം പരമഹിതമറിഞ്ഞുകൂട, യായു സ്ഥിരതയുമില്ലതിനിന്ദ്യമീ നരത്വം (എഴുത്തച്ചൻ)
-സ്നേഹമെന്താണെന്നറിഞ്ഞിരുന്നില്ല ഞാൻ ഓമനേ നീ മുന്നിലെത്തുവോളം സ്നേഹിക്കുവാനായ്‌ പഠിപ്പിച്ചു നീ നിന്റെ സാഹചര്യത്താൽ പിശാചിനേയും (ചങ്ങമ്പുഴ)
-അറിഞ്ഞതിൽ പാതി പറയാതെ പോയി പറഞ്ഞതിൽ പാതി പതിരായും പോയി പകുതി ഹൃത്തിനാൽ പൊറുക്കുമ്പോൾ നീ പകുതി ഹൃത്തിനാൽ വെറുത്തുകൊള്ളുക ഇതെന്റെ രക്തമാണിതെന്റെ മാംസമാ- ണെടുത്തുകൊള്ളുക (ബാലചന്ദ്രൻ ചുള്ളിക്കാട്)
-പാഥസാം നിചയം വാർന്നൊഴിഞ്ഞളവു- സേതുബന്‌ധനോദ്യോഗമെന്തെടോ? (ഉണ്ണായി വാര്യർ )
-തന്നതില്ല പരനുള്ളു കാട്ടുവാ- നൊന്നുമേ നരനുപായമീശ്വരൻ ഇന്നു ഭാഷയിതപൂർണമിങ്ങഹോ വന്നുപോം പിഴയുമർത്ഥശങ്കയാൽ (നളിനി, കുമാരനാശാൻ)
-അന്ധകാരത്തിൽ പരസ്പരം കൊല്ലുന്ന ബന്ധങ്ങൾ തൻ മഹാഭ്രാന്താലയങ്ങളിൽ കുന്തിരിക്കപ്പുക ഭ്രൂണബലിയുടെ ഗന്ധം മറയ്ക്കും വിഹാരംഗളിൽ എങ്ങൂമൊടുങ്ങാത്ത ജീവിതാസക്തികൾ തൂങ്ങിമരിച്ച വഴിയമ്പലങ്ങളിൽ കാരമുള്ളിന്റെ കിരീടവും ചൂടി നാം തേടി നടന്നതു സൗഖ്യമോ മൃത്യുവോ?</description></item><item><title>വാഴക്കുല -ചങ്ങമ്പുഴ</title><link>https://ibnishak.github.io/blog/post/vazhakkula/</link><pubDate>Tue, 02 Nov 2021 20:53:32 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/vazhakkula/</guid><description>മലയാപ്പുലയനാ മാടത്തിന്‍മുറ്റത്തു മഴ വന്ന നാളൊരു വാഴ നട്ടു. മനതാരിലാശകള്‍പോലതിലോരോരോ മരതകക്കൂമ്പു പൊടിച്ചുവന്നു. അരുമാക്കിടാങ്ങളിലോന്നായതിനേയു- മഴകിപ്പുലക്കള്ളിയോമനിച്ചു.
-മഴയെല്ലാം പോയപ്പോള്‍, മാനം തെളിഞ്ഞപ്പോള്‍ മലയന്‍റെ മാടത്ത പാട്ടുപാടി. മരമെല്ലാം പൂത്തപ്പോള്‍, കുളിര്‍കാറ്റു വന്നപ്പോള്‍ മലയന്‍റെ മാടവും പൂക്കള്‍ ചൂടി. വയലില്‍ വിരിപ്പൂ വിതയ്ക്കേണ്ട കാലമായ്‌ വളരെ പ്പണിപ്പാടു വന്നു കൂടി. ഉഴുകുവാന്‍ രാവിലെ പോകും മലയനു- മഴകിയും-പോരുമ്പോളന്തിയാവും.
-ചെറുവാഴത്തയ്യിനു വെള്ളമൊഴിക്കുവാന്‍ മറവിപറ്റാറില്ലവര്‍ക്കു ചെറ്റും, അനുദിനമങ്ങനെ ശുശ്രൂഷചെയ്കയാ- ലതുവേഗവേഗം വളര്‍ന്നുവന്നു; അജപാലബാലനില്‍ ഗ്രാമീണബാലത- ന്നനുരാഗകന്ദളമെന്നപോലെ!
-പകലോക്കെപ്പൈതങ്ങളാ വാഴത്തൈത്തണല്‍- പ്പരവതാനിക്കുമേല്‍ ചെന്നിരിക്കും. പൊരിയും വയറുമായുച്ചക്കൊടുംവെയില്‍ ചൊരിയുമ്പോ,ഴുതപ്പുലാക്കിടങ്ങള്‍, അവിടെയിരുന്നു കളിപ്പതു കാണ്‍കി, ലേ- തലിയാത്ത ഹൃത്തുമലിഞ്ഞു പോകും!
-കരയും ചിരിക്കു,മിടയ്ക്കിടെ ത്തമ്മിലാ- &amp;lsquo;ക്കരുമാടിക്കുട്ടന്മാര്‍&amp;rsquo; മല്ലടിക്കും! അതു കാണ്‍കെ പ്പൊരിവെയിലിന്‍ ഹൃദയത്തില്‍ ക്കൂടിയു- മലിവിന്‍റെ നനവൊരു നിഴല്‍ വിരിക്കും!</description></item><item><title>Little Things</title><link>https://ibnishak.github.io/blog/post/little-things/</link><pubDate>Wed, 20 Oct 2021 16:18:06 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/little-things/</guid><description>Mama, take this badge off of me, I can&amp;rsquo;t use it anymore. It&amp;rsquo;s gettin&amp;rsquo; dark&amp;hellip; too dark to see, I feel like I&amp;rsquo;m knockin&amp;rsquo; on heaven&amp;rsquo;s door. (Robert Allen Zimmerman)
-“Do you hear the people sing Lost in the valley of the night? It is the music of a people Who are climbing to the light. For the wretched of the earth There is a flame that never dies. Even the darkest night will end And the sun will rise.</description></item><item><title>പലവക - 4</title><link>https://ibnishak.github.io/blog/post/palavaka4/</link><pubDate>Tue, 28 Sep 2021 16:12:20 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka4/</guid><description>തിരികെ യാത്രയായ്, ഈ കൊടുങ്കാറ്റിന്റെ ഗതിതിരിക്കുന്ന ഭിത്തികള്‍ തീര്‍ത്തിടും, ഇനിമതിയില്ലയീവഴി, നിര്‍ത്തി ഞാന്‍, ഒടുവിലത്തെ പ്രണയകവിതയും. എഴുതിടാതിരിക്കുന്നു ഞാനെങ്കിലും, പ്രണയമൊറ്റക്കെഴുതി നിറക്കുന്നു; മുറിവിലെല്ലാം കടുത്ത ദുഃഖത്തിന്റെ ലിപികളില്‍ പേന കുത്തിനോവിക്കുന്നു (? ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
-വഴിമറന്നോരു കുട്ടിയെപ്പോലെ ഞാന്‍ എഴുതുവാനൊന്നുമില്ലാതെ നില്കവേ മഴനനഞ്ഞു കടന്നുപോകുന്നെന്റെ പ്രണയജീവിതശവഘോഷയാത്രകള്‍ (? ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
-ഇനിയുമെഴുതുവാനൊന്നുമേ ബാക്കിയില്ലി- തിനെയെഴുതി ഞാന്‍ നന്നേ മടുത്തുപോയ് പ്രണയമെന്നോരു വിരസ പ്രമേയത്തില്‍ കവിതയേറെയും ശുഷ്കമായ്,നഷ്ടമായ്. എഴുതിവയ്ക്കാം പ്രണയിച്ച പെണ്ണിന്റെ ഹരിത വര്‍ണ്ണം തുടിക്കും ഞരമ്പിനെ, അതിനു മുകളിലെ കണ്‍കളെ, എന്റെ കൈ- വിരലുകള്‍ തൊട്ട പൊള്ളും കവിളിനെ. (? ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
-ഇവര്‍ ഇനിയുംവരും വരാതിരിക്കാനാവില്ല കാരണം ഈ കവാടം ഒരിക്കലും ഇവര്‍ക്കു മുന്നില്‍ അടയുന്നില്ല, പ്രണയമെന്നപോലെ ഓര്‍മകളും ഒരിക്കലും മരിക്കുന്നുമില്ല.</description></item><item><title>കഴിയുമീ രാവെനിക്കേറ്റവും - പാബ്ലോ നെരൂദ</title><link>https://ibnishak.github.io/blog/post/kazhiumii/</link><pubDate>Mon, 20 Sep 2021 16:03:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kazhiumii/</guid><description>കഴിയുമീ രാവെനിക്കേറ്റവും ദുഃഖ- ഭരിതമായ വരികളെഴുതുവാൻ ശിഥിലമായ്‌ രാത്രി, നീലനക്ഷത്രങ്ങ- ളകലെയായ്‌ വിറകൊള്ളുന്നു ഇങ്ങനെ ഗഗനവീഥിയിൽ ചുറ്റിക്കറങ്ങുന്ന വിരഹിയാം നിശാമാരുതൻ പാടുന്നു കഴിയുമീ രാത്രിയേറ്റവും വേദനാ ഭരിതമായ പദങ്ങൾ പാടുവാൻ അവളെ ഞാൻ പണ്ടു പ്രണയിച്ചിരു,ന്നെന്നെ യവളുമെപ്പൊഴോ പ്രണയിച്ചിരുന്നിടാം ഇതു കണക്കെത്ര രാത്രികൾ നീളെ ഞാ- നവളെ വാരിയെടുത്തിതെൻ കൈകളിൽ അതിരെഴാത്ത ഗഗനത്തിനു കീഴിൽ അവളെ ഞാനുമ്മവെച്ചു തെരുതെരേ മതിമറന്നെന്നെ സ്നേഹിച്ചിരുന്നവൾ അവളെയും ഞാൻ പലപ്പൊഴും സ്നേഹിച്ചþ​‍ു പ്രണയനിർഭരം നിശ്ചലദീപ്തമാ മിഴികളെയാരു മോഹിച്ചുപോയിടാ? കഴിയുമീ രാവിലേറ്റവും സങ്കട- ഭരിതമായ വരികൾ കുറിക്കുവാൻ കഴിയുമെന്നേക്കുമായവൾ പോയെന്നും ഇനിയവളെന്റെയല്ലെന്നുമോർക്കുവാൻ നിശവിശാലം അവളുടെ വേർപാടി- ലതിവിശാലമാകുന്നതു കേൾക്കുവാൻ ഹിമകണങ്ങൾ പുൽത്തട്ടിലെന്നപോൽ കവിതയാത്മാവിലിറ്റിറ്റു വീഴുന്നു അതിവിദൂരത്തിലേതൊരാൾ പാടുന്നു ഹൃദയം തേങ്ങുന്നു അരികിലേക്കൊന്നണയുവാനെന്നപോൽ അവളെയെൻ കാഴ്ച്ച തേടുന്നു പിന്നെയും അരികിലില്ലവളെങ്കിലുമെൻ മനം അവളെയിപ്പോഴും തേടുന്നു; അന്നത്തെ നിശയുമാ വെണ്ണിലാവിൽ തിളങ്ങുന്ന മരുനിരകളും മാറിയില്ലെങ്കിലും ഇനിയൊരിക്കലും നമ്മളന്നത്തെയാ പ്രണയിതാക്കളല്ലത്രമേൽ മാറി നാം1 ഇനിയൊരിക്കലും സ്നേഹിക്കയില്ല ഞാ- നവളെയെന്നതു നിശ്ചയം, എങ്കിലു- മവളെയത്രമേൽ സ്നേഹിച്ചിരുന്നു ഞാൻ ഒടുവിലന്യന്റെ അന്യന്റെയാമവൾ അവളെ ഞാൻ സ്നേഹിച്ചപോൽ മറ്റൊരാൾ അവളുടെ നാദം സൗവർണ ദീപ്തംതമാ മൃദുലമേനി അനന്തമാം കണ്ണുകൾ ഇനിയൊരിക്കലും സ്നേഹിക്കയില്ല ഞാ- നവളെ-എങ്കിലും സ്നേഹിച്ചുപോയിടാം പ്രണയമെത്രമേൽ ഹൃസ്വം, വിസ്മൃതി യതിലുമെത്രയോ ദീർഘം, ഇതുപോലെ പല നിശകളിലുമെന്റെയീ കൈകളി- ലവളെ വാരിയെടുക്കയാലാകണം ഹൃദയമിത്രമേലാകുലമാകുന്ന- തവളെയെന്നേക്കുമായി പിരിഞ്ഞതിൽ അവൾ സഹിപ്പിച്ച ദുഃഖശതങ്ങളിൽ ഒടുവിലത്തെ?</description></item><item><title>ഭയം - ദ്രുപദ് ഗൗതം</title><link>https://ibnishak.github.io/blog/post/bhayam/</link><pubDate>Sun, 12 Sep 2021 15:56:07 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/bhayam/</guid><description>മരം എന്ന ക്ലാസിലെ ഒരില പോലും അനങ്ങുന്നില്ല. നിശ്ശബ്ദത എന്ന പട്ടിക്കൂട് വ്യവസ്ഥിതി ആരുടെയോ പേരെഴുതി വെക്കുന്നു. വിയർത്ത് ഓടി വന്ന കാറ്റിനെ ചുണ്ടിൽ ഒരു വിരലൊട്ടിച്ചു നിർത്തിയിട്ടുണ്ട് വരാന്തയിൽ…! ഒരു മിണ്ടൽ ചുണ്ടോളം വന്ന് വറ്റിപ്പോകുന്നു…! വാതിൽവരെയെത്തിയ ഒരു ചിരി തിരിഞ്ഞോടുന്നു…! ചുമരും ചാരിയിരുന്ന് ഉറങ്ങിപ്പോയി അനാഥമായൊരക്ഷരം….! ഭയം ഒരു രാജ്യമാണ്. അവിടെ നിശ്ശബ്ദത ഒരു (ആ)ഭരണമാണ്.</description></item><item><title>ചോര തുടിക്കും ചെറുകയ്യുകളേ - വൈലോപ്പിള്ളി</title><link>https://ibnishak.github.io/blog/post/chora-thudikkum/</link><pubDate>Mon, 23 Aug 2021 15:52:56 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/chora-thudikkum/</guid><description>ചോര തുടിക്കും ചെറുകയ്യുകളേ പേറുക വന്നീ പന്തങ്ങൾ ഏറിയ തലമുറയേന്തിയ പാരിൻ വാരൊളി മംഗള കന്ദങ്ങൾ പണ്ടു പിതാമഹർ കാട്ടിൻ നടുവിൽ ചിന്തകളുരസിടുമക്കാലം വന്നു പിറന്നിതു ചെന്നിണമോലും വാളു കണക്കൊരു തീനാളം സഞ്ചിതമാകുമിരുട്ടുകളെല്ലാം സംഭ്രമമാർന്നോരന്നേരം മാനവർ കണ്ടാരഗ്നിസ്മിതമതിൽ മന്നിലെ വിണ്ണിൻ വാഗ്ദാനം ആയിരമായിരമാത്തീ ചുംബിച്ചാളി വിടർന്നൊരു പന്തങ്ങൾ പാണിയിലേന്തി പാടിപ്പാടിപ്പാരിലെ യുവജന വൃന്ദങ്ങൾ കാലപ്പെരുവഴിയൂടെ പോന്നിതു കാണെക്കാണെ കമനീയം കാടും പടലും വെണ്ണീറാക്കി കനകക്കതിരിനു വളമേകി കഠിന മിരുമ്പു കുഴമ്പാക്കിപ്പല കരുനിര വാർത്തു പണിക്കേകി അറിവിൻ തിരികൾ കൊളുത്തിക്കലകൾക്കാവേശത്തിൻ ചൂടേകി മാലോടിഴയും മർത്ത്യാത്മാവിനു മേലോട്ടുയരാൻ ചിറകുതകി പാരിൽ മനുഷ്യ പുരോഗമനക്കൊടി പാറിച്ചവയീ പന്തങ്ങൾ മെത്തിടു മിരുളിലിതിലെത്ര ചമച്ചു പുത്തൻ പുലരിച്ചന്തങ്ങൾ ധൃഷ്ടത കൂടുമധർമ്മ ശതത്തിൻ പട്ടട തീർത്തു പന്തങ്ങൾ പാവനമംഗളഭാവി പഥത്തിൽ പട്ടു വിരിച്ചു പന്തങ്ങൾ മർത്ത്യ ചരിത്രം മിന്നലിലെഴുതീയിത്തുടു നാരാചന്തങ്ങൾ പോയ്മറവാർന്നവർ ഞങ്ങൾക്കേകി കൈമുതലായീപ്പന്തങ്ങൾ ഹൃദയനിണത്താൽ തൈലം നൽകി പ്രാണമരുത്താൽ തെളിവേകി മാനികൾ ഞങ്ങളെടുത്തു നടന്നു വാനിനെ മുകരും പന്തങ്ങൾ ഉച്ചലമാക്കീയൂഴിയെ, ഞങ്ങടെയുജ്ജ്വല ഹൃദയസ്പന്ദങ്ങൾ അടിമച്ചങ്ങല നീറ്റിയുടപ്പാൻ അഭിനവ ലോകം നിർമ്മിപ്പാൻ ആശയ്ക്കൊത്തു തുണച്ചു ഞങ്ങളെ ആളിക്കത്തും പന്തങ്ങൾ കൂരിരുളിൻ വിരിമാറു പിളർത്തീച്ചോരകുടിയ്ക്കും ദന്തങ്ങൾ വാങ്ങുകയായി ഞങ്ങൾ, കരുത്തൊടു വാങ്ങുക വന്നീപ്പന്തങ്ങൾ എരിയും ചൂട്ടുകളേന്തിത്താരകൾ വരിയായ്‌ മുകളിൽ പോകുമ്പോൾ ചോര തുടിയ്ക്കും ചെറുകയ്യുകളേ പേറുക വന്നീപ്പന്തങ്ങൾ എണ്ണീടാത്തൊരു പുരുഷായുസ്സുകൾ വെണ്ണീറാകാം പുകയാകാം പൊലിമയൊടെന്നും പൊങ്ങുക പുത്തൻ തലമുറയേന്തും പന്തങ്ങൾ കത്തിന വിരലാൽ ചൂണ്ടുന്നുണ്ടവ മർത്ത്യ പുരോഗതി മാർഗ്ഗങ്ങൾ ഗൂഢതടത്തിൽ മൃഗീയത മരുവും കാടുകളുണ്ടവ, കരിയട്ടെ വാരുറ്റോരു നവീനയുഗത്തിൻ വാകത്തോപ്പുകൾ വിരിയട്ടെ അസ്മദനശ്വര പൈതൃകമാമീയഗ്നി വീടർത്തും സ്ക്കന്ദങ്ങൾ ആകെയുടച്ചീടട്ടേ മന്നിലെ നാകപുരത്തിൻ ബന്ധങ്ങൾ ചോര തുടിയ്ക്കും ചെറുകയ്യുകളേ പേറുക വന്നീപ്പന്തങ്ങൾ</description></item><item><title>മഴ കൊള്ളരുതെന്നു വച്ചു മാത്രമല്ല - ഒലാവ് എഛ് ഹോഗ്</title><link>https://ibnishak.github.io/blog/post/mazha-kollaruth/</link><pubDate>Mon, 16 Aug 2021 15:46:55 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/mazha-kollaruth/</guid><description>മഴ കൊള്ളരുതെന്നു വച്ചു മാത്രമല്ല, വഴിയരികിലെ പഴയൊരോക്കുമരത്തിനടിയില്‍ ഞാന്‍ ചെന്നു നിന്നത്; പടര്‍ന്ന മേലാപ്പിനടിയില്‍ സുരക്ഷിതനാണു ഞാനെന്നെനിക്കു തോന്നിയിരുന്നു, ഒരു ജന്മാന്തരസൌഹൃദമാവണം ഞങ്ങളെയവിടെ ഒരുമിപ്പിച്ചുനിര്‍ത്തിയതും, നിശ്ശബ്ദരായി, ഇലകളില്‍ മഴയിറ്റുന്നതു കേട്ടും, നിറം കെട്ട പകലിലേക്കു കണ്ണയച്ചും, കാത്തും, അറിഞ്ഞും.
-ഒലാവ് എഛ് ഹോഗ് (പരിഭാഷ: രവികുമാര്‍)</description></item><item><title>വീട് - ഒ എൻ വി</title><link>https://ibnishak.github.io/blog/post/veedu/</link><pubDate>Sun, 08 Aug 2021 15:50:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/veedu/</guid><description>ഇവിടെയുമെനിക്കൊരു വീടുണ്ട്‌- കുന്നിന്റെ നിറുകയിൽ, ചുറ്റിലും പച്ചത്തഴപ്പിന്റെ തിരകളിളകിയാർക്കുന്നു കടൽപോൽ-കാലമാ തിരതഴുകിയെത്തുന്നു പുലരിയാ,യുച്ചയായ്‌, കതിരുകൾ ചമതപോലെരിയുന്ന സന്ധ്യയായ്‌ മിഴികളിൽ ചേക്കേറിടുമിരുൾപ്പക്ഷിയായ്‌ ഇവിടെയീ വീടിന്റെയിറയത്തിരുന്നു ഞാൻ എവിടെയോ തീകത്തിയാളുന്നതറിയുന്നു ചൂഴുന്ന പച്ചത്തഴപ്പിൻ ഞൊറികളിൽ ചൂളമടിക്കും ചുടുകാറ്റിഴയുന്നു എവിടെയുമെനിക്കൊരു വീടുണ്ട്‌ കുരിശിലൊരു കാപ്പിരിക്രിസ്തു മരിച്ചുയിർ ത്തെഴുന്നേൽക്കുമിരുളാണ്ട ഭൂഖണ്ഡസീമയിൽ പാതിരാസൂര്യന്റെ നാടുകളിൽ മർത്യന്റെ ജാതകം മാറ്റികുറിക്കുമിടങ്ങളിൽ മഞ്ഞൂരുകി മന്ദാകിനികളാകും ദിക്കിൽ നെഞ്ഞുരുകിയടിമകൾ മടയ്ക്കും തടങ്ങളിൽ ഉഴുതിട്ട മണ്ണിൽ നവധാന്യം വിതച്ചു വേർ- പ്പുതിരുവോർ കതിർകൊയ്തു പാടും നിലങ്ങളിൽ ആകാശചുംബികളി, ലഴുക്കിന്റെ ചേരിക- ളധോലോകവും ചേർന്നതാം മഹാനഗരികളിൽ അദ്രിമകുടങ്ങളിൽ സമുദ്രത്തിലെ ദ്വീപ- വൃത്തളിൽ ദേശദേശാന്തരങ്ങളിൽ എവിടെയുമെനിക്കൊരു വീടുണ്ട്‌- ഞാനുമു- ണ്ടെഴുതി മുഴുമിക്കാതെന്റെ കവിതയും, കാണുവാ- നുഴറുന്ന നല്ല മനുഷ്യരും അവരൊത്തു നുകരാൻ കൊതിക്കുന്ന വാഴ്‌വിന്റെ ലഹരിയും പകയറ്റ നോട്ടവും പതിരറ്റ മൊഴികളു- മധികമാം കരുതലും കരുണയും കൂടിപ്പാർക്കു- മൊരു വീടെനിക്കുണ്ടതിൻ കൊച്ചുതിണ്ണമേൽ വെറുതേയിരുന്നു ഞാൻ പാടുന്നു- വിഹ്വല നിമിഷങ്ങളേ നിങ്ങളീ വീടൊഴിയുക നിറവാർന്ന കേവലാഹ്ലാദമേ പോരിക</description></item><item><title>Snippet Manager in Zsh</title><link>https://ibnishak.github.io/blog/post/snippet-manager-in-zsh/</link><pubDate>Wed, 21 Jul 2021 01:13:42 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/snippet-manager-in-zsh/</guid><description>Save it as snippets.zsh in your $PATH Make it executable Usage
+Personal: Observe our patterns of behavior, and understand whether or not it aligns with goals one has set for himself. Observing oneself also inevitably brings to light one&amp;rsquo;s strengths and weaknesses, and allows the opportunity to experiment with them. [[Journaling]]. [[Quantified self]]. [[Mindfulness]]/[[Metacognition]] Professional: In real life, one must earn a living.</description></item><item><title>മിഴിനീരു - സച്ചിദാനന്ദൻ</title><link>https://ibnishak.github.io/blog/post/mizhineeru/</link><pubDate>Mon, 06 Dec 2021 21:49:34 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/mizhineeru/</guid><description>മിഴിനീരുണങ്ങിടാ-
+മൊരു നാൾ, വരൂ വീണ്ടു-
+മൊരു വട്ടം പാവാട ചുറ്റി.
+ചിരികളും പൂക്കളും
+മഴവില്ലു മീണ്ടോരു
+മൃതർ തൻ കിനാക്കളുമായി.
+നിറയെയുണ്ടാമപ്പോൾ
+കിളികളും കനികളും
+പുഴകളിൽ തെളിനീരും കാടും .
+ഒരു പക്ഷേയുണ്ടാകു-
+മൊരു മാവിൻ കൊമ്പിലെൻ
+കുറുകിക്കുണുങ്ങുമാത്മാവും.</description></item><item><title>മുക്കുറ്റിച്ചെടി ചോദിക്കുന്നു - പി.മധുസൂദനന്‍</title><link>https://ibnishak.github.io/blog/post/mukkuttichedi/</link><pubDate>Sat, 20 Nov 2021 15:36:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/mukkuttichedi/</guid><description>മുക്കുറ്റിച്ചെടി ചോദിക്കുന്നു തരുമോ സ്വാതന്ത്ര്യം
+ഒരു പൂവെങ്കിലുമെന്റേതായി വിടര്‍ത്തി നിറുത്തീടാന്‍
+നിങ്ങടെയാകാം ആകാശം
+നിങ്ങടെയാകാം മണ്ണും പക്ഷെ ഒരു പൂവെങ്കിലുമെന്റേതായി പുലരാനൊരു മോഹം</description></item><item><title>പലവക - 3</title><link>https://ibnishak.github.io/blog/post/palavaka3/</link><pubDate>Wed, 10 Nov 2021 15:31:18 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka3/</guid><description>കരുതുവതിഹ ചെയ്യവയ്യ ചെയ്യാൻ
+വരുതി ലഭിച്ചതിൽ നിന്നിടാ വിചാരം
+പരമഹിതമറിഞ്ഞുകൂട, യായു
+സ്ഥിരതയുമില്ലതിനിന്ദ്യമീ നരത്വം
+(എഴുത്തച്ചൻ)
+സ്നേഹമെന്താണെന്നറിഞ്ഞിരുന്നില്ല ഞാൻ
+ഓമനേ നീ മുന്നിലെത്തുവോളം
+സ്നേഹിക്കുവാനായ്‌ പഠിപ്പിച്ചു നീ നിന്റെ
+സാഹചര്യത്താൽ പിശാചിനേയും
+(ചങ്ങമ്പുഴ)
+അറിഞ്ഞതിൽ പാതി പറയാതെ പോയി
+പറഞ്ഞതിൽ പാതി പതിരായും പോയി
+പകുതി ഹൃത്തിനാൽ പൊറുക്കുമ്പോൾ നീ
+പകുതി ഹൃത്തിനാൽ വെറുത്തുകൊള്ളുക
+ഇതെന്റെ രക്തമാണിതെന്റെ മാംസമാ-
+ണെടുത്തുകൊള്ളുക
+(ബാലചന്ദ്രൻ ചുള്ളിക്കാട്)
+പാഥസാം നിചയം വാർന്നൊഴിഞ്ഞളവു-
+സേതുബന്‌ധനോദ്യോഗമെന്തെടോ?
+(ഉണ്ണായി വാര്യർ )
+തന്നതില്ല പരനുള്ളു കാട്ടുവാ-
+നൊന്നുമേ നരനുപായമീശ്വരൻ
+ഇന്നു ഭാഷയിതപൂർണമിങ്ങഹോ
+വന്നുപോം പിഴയുമർത്ഥശങ്കയാൽ
+(നളിനി, കുമാരനാശാൻ)
+അന്ധകാരത്തിൽ പരസ്പരം കൊല്ലുന്ന
+ബന്ധങ്ങൾ തൻ മഹാഭ്രാന്താലയങ്ങളിൽ
+കുന്തിരിക്കപ്പുക ഭ്രൂണബലിയുടെ</description></item><item><title>വാഴക്കുല -ചങ്ങമ്പുഴ</title><link>https://ibnishak.github.io/blog/post/vazhakkula/</link><pubDate>Tue, 02 Nov 2021 20:53:32 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/vazhakkula/</guid><description>മലയാപ്പുലയനാ മാടത്തിന്‍മുറ്റത്തു
+മഴ വന്ന നാളൊരു വാഴ നട്ടു.
+മനതാരിലാശകള്‍പോലതിലോരോരോ
+മരതകക്കൂമ്പു പൊടിച്ചുവന്നു.
+അരുമാക്കിടാങ്ങളിലോന്നായതിനേയു-
+മഴകിപ്പുലക്കള്ളിയോമനിച്ചു.
+മഴയെല്ലാം പോയപ്പോള്‍, മാനം തെളിഞ്ഞപ്പോള്‍
+മലയന്‍റെ മാടത്ത പാട്ടുപാടി.
+മരമെല്ലാം പൂത്തപ്പോള്‍, കുളിര്‍കാറ്റു വന്നപ്പോള്‍
+മലയന്‍റെ മാടവും പൂക്കള്‍ ചൂടി.
+വയലില്‍ വിരിപ്പൂ വിതയ്ക്കേണ്ട കാലമായ്‌
+വളരെ പ്പണിപ്പാടു വന്നു കൂടി.
+ഉഴുകുവാന്‍ രാവിലെ പോകും മലയനു-
+മഴകിയും-പോരുമ്പോളന്തിയാവും.
+ചെറുവാഴത്തയ്യിനു വെള്ളമൊഴിക്കുവാന്‍
+മറവിപറ്റാറില്ലവര്‍ക്കു ചെറ്റും,
+അനുദിനമങ്ങനെ ശുശ്രൂഷചെയ്കയാ-
+ലതുവേഗവേഗം വളര്‍ന്നുവന്നു;
+അജപാലബാലനില്‍ ഗ്രാമീണബാലത-
+ന്നനുരാഗകന്ദളമെന്നപോലെ!
+പകലോക്കെപ്പൈതങ്ങളാ വാഴത്തൈത്തണല്‍-
+പ്പരവതാനിക്കുമേല്‍ ചെന്നിരിക്കും.
+പൊരിയും വയറുമായുച്ചക്കൊടുംവെയില്‍
+ചൊരിയുമ്പോ,ഴുതപ്പുലാക്കിടങ്ങള്‍,
+അവിടെയിരുന്നു കളിപ്പതു കാണ്‍കി, ലേ-
+തലിയാത്ത ഹൃത്തുമലിഞ്ഞു പോകും!
+കരയും ചിരിക്കു,മിടയ്ക്കിടെ ത്തമ്മിലാ-
+&amp;lsquo;ക്കരുമാടിക്കുട്ടന്മാര്‍&amp;rsquo; മല്ലടിക്കും!</description></item><item><title>Little Things</title><link>https://ibnishak.github.io/blog/post/little-things/</link><pubDate>Wed, 20 Oct 2021 16:18:06 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/little-things/</guid><description>Mama, take this badge off of me,
+I can&amp;rsquo;t use it anymore.
+It&amp;rsquo;s gettin&amp;rsquo; dark&amp;hellip; too dark to see,
+I feel like I&amp;rsquo;m knockin&amp;rsquo; on heaven&amp;rsquo;s door.
+(Robert Allen Zimmerman)
+“Do you hear the people sing
+Lost in the valley of the night?
+It is the music of a people
+Who are climbing to the light.
+For the wretched of the earth
+There is a flame that never dies.
+Even the darkest night will end</description></item><item><title>പലവക - 4</title><link>https://ibnishak.github.io/blog/post/palavaka4/</link><pubDate>Tue, 28 Sep 2021 16:12:20 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka4/</guid><description>തിരികെ യാത്രയായ്, ഈ കൊടുങ്കാറ്റിന്റെ
+ഗതിതിരിക്കുന്ന ഭിത്തികള്‍ തീര്‍ത്തിടും,
+ഇനിമതിയില്ലയീവഴി, നിര്‍ത്തി ഞാന്‍,
+ഒടുവിലത്തെ പ്രണയകവിതയും.
+എഴുതിടാതിരിക്കുന്നു ഞാനെങ്കിലും,
+പ്രണയമൊറ്റക്കെഴുതി നിറക്കുന്നു;
+മുറിവിലെല്ലാം കടുത്ത ദുഃഖത്തിന്റെ
+ലിപികളില്‍ പേന കുത്തിനോവിക്കുന്നു
+(? ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
+വഴിമറന്നോരു കുട്ടിയെപ്പോലെ ഞാന്‍
+എഴുതുവാനൊന്നുമില്ലാതെ നില്കവേ
+മഴനനഞ്ഞു കടന്നുപോകുന്നെന്റെ
+പ്രണയജീവിതശവഘോഷയാത്രകള്‍
+(? ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
+ഇനിയുമെഴുതുവാനൊന്നുമേ ബാക്കിയില്ലി-
+തിനെയെഴുതി ഞാന്‍ നന്നേ മടുത്തുപോയ്
+പ്രണയമെന്നോരു വിരസ പ്രമേയത്തില്‍
+കവിതയേറെയും ശുഷ്കമായ്,നഷ്ടമായ്.
+എഴുതിവയ്ക്കാം പ്രണയിച്ച പെണ്ണിന്റെ
+ഹരിത വര്‍ണ്ണം തുടിക്കും ഞരമ്പിനെ,
+അതിനു മുകളിലെ കണ്‍കളെ, എന്റെ കൈ-
+വിരലുകള്‍ തൊട്ട പൊള്ളും കവിളിനെ.
+(? ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
+ഇവര്‍ ഇനിയുംവരും
+വരാതിരിക്കാനാവില്ല
+കാരണം</description></item><item><title>കഴിയുമീ രാവെനിക്കേറ്റവും - പാബ്ലോ നെരൂദ</title><link>https://ibnishak.github.io/blog/post/kazhiumii/</link><pubDate>Mon, 20 Sep 2021 16:03:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kazhiumii/</guid><description>കഴിയുമീ രാവെനിക്കേറ്റവും ദുഃഖ-
+ഭരിതമായ വരികളെഴുതുവാൻ
+ശിഥിലമായ്‌ രാത്രി, നീലനക്ഷത്രങ്ങ-
+ളകലെയായ്‌ വിറകൊള്ളുന്നു ഇങ്ങനെ
+ഗഗനവീഥിയിൽ ചുറ്റിക്കറങ്ങുന്ന
+വിരഹിയാം നിശാമാരുതൻ പാടുന്നു
+കഴിയുമീ രാത്രിയേറ്റവും വേദനാ
+ഭരിതമായ പദങ്ങൾ പാടുവാൻ
+അവളെ ഞാൻ പണ്ടു പ്രണയിച്ചിരു,ന്നെന്നെ
+യവളുമെപ്പൊഴോ പ്രണയിച്ചിരുന്നിടാം
+ഇതു കണക്കെത്ര രാത്രികൾ നീളെ ഞാ-
+നവളെ വാരിയെടുത്തിതെൻ കൈകളിൽ
+അതിരെഴാത്ത ഗഗനത്തിനു കീഴിൽ
+അവളെ ഞാനുമ്മവെച്ചു തെരുതെരേ
+മതിമറന്നെന്നെ സ്നേഹിച്ചിരുന്നവൾ
+അവളെയും ഞാൻ പലപ്പൊഴും സ്നേഹിച്ചþ​‍ു
+പ്രണയനിർഭരം നിശ്ചലദീപ്തമാ
+മിഴികളെയാരു മോഹിച്ചുപോയിടാ?
+കഴിയുമീ രാവിലേറ്റവും സങ്കട-
+ഭരിതമായ വരികൾ കുറിക്കുവാൻ
+കഴിയുമെന്നേക്കുമായവൾ പോയെന്നും
+ഇനിയവളെന്റെയല്ലെന്നുമോർക്കുവാൻ
+നിശവിശാലം അവളുടെ വേർപാടി-
+ലതിവിശാലമാകുന്നതു കേൾക്കുവാൻ
+ഹിമകണങ്ങൾ പുൽത്തട്ടിലെന്നപോൽ
+കവിതയാത്മാവിലിറ്റിറ്റു വീഴുന്നു</description></item><item><title>ഭയം - ദ്രുപദ് ഗൗതം</title><link>https://ibnishak.github.io/blog/post/bhayam/</link><pubDate>Sun, 12 Sep 2021 15:56:07 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/bhayam/</guid><description>മരം എന്ന ക്ലാസിലെ ഒരില പോലും അനങ്ങുന്നില്ല. നിശ്ശബ്ദത എന്ന പട്ടിക്കൂട് വ്യവസ്ഥിതി ആരുടെയോ പേരെഴുതി വെക്കുന്നു. വിയർത്ത് ഓടി വന്ന കാറ്റിനെ ചുണ്ടിൽ ഒരു വിരലൊട്ടിച്ചു നിർത്തിയിട്ടുണ്ട് വരാന്തയിൽ…! ഒരു മിണ്ടൽ ചുണ്ടോളം വന്ന് വറ്റിപ്പോകുന്നു…!
+വാതിൽവരെയെത്തിയ ഒരു ചിരി തിരിഞ്ഞോടുന്നു…!
+ചുമരും ചാരിയിരുന്ന് ഉറങ്ങിപ്പോയി അനാഥമായൊരക്ഷരം….! ഭയം
+ഒരു രാജ്യമാണ്. അവിടെ നിശ്ശബ്ദത ഒരു (ആ)ഭരണമാണ്.</description></item><item><title>ചോര തുടിക്കും ചെറുകയ്യുകളേ - വൈലോപ്പിള്ളി</title><link>https://ibnishak.github.io/blog/post/chora-thudikkum/</link><pubDate>Mon, 23 Aug 2021 15:52:56 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/chora-thudikkum/</guid><description>ചോര തുടിക്കും ചെറുകയ്യുകളേ പേറുക വന്നീ പന്തങ്ങൾ
+ഏറിയ തലമുറയേന്തിയ പാരിൻ വാരൊളി മംഗള കന്ദങ്ങൾ
+പണ്ടു പിതാമഹർ കാട്ടിൻ നടുവിൽ ചിന്തകളുരസിടുമക്കാലം
+വന്നു പിറന്നിതു ചെന്നിണമോലും വാളു കണക്കൊരു തീനാളം
+സഞ്ചിതമാകുമിരുട്ടുകളെല്ലാം സംഭ്രമമാർന്നോരന്നേരം
+മാനവർ കണ്ടാരഗ്നിസ്മിതമതിൽ മന്നിലെ വിണ്ണിൻ വാഗ്ദാനം
+ആയിരമായിരമാത്തീ ചുംബിച്ചാളി വിടർന്നൊരു പന്തങ്ങൾ
+പാണിയിലേന്തി പാടിപ്പാടിപ്പാരിലെ യുവജന വൃന്ദങ്ങൾ
+കാലപ്പെരുവഴിയൂടെ പോന്നിതു കാണെക്കാണെ കമനീയം
+കാടും പടലും വെണ്ണീറാക്കി കനകക്കതിരിനു വളമേകി
+കഠിന മിരുമ്പു കുഴമ്പാക്കിപ്പല കരുനിര വാർത്തു പണിക്കേകി
+അറിവിൻ തിരികൾ കൊളുത്തിക്കലകൾക്കാവേശത്തിൻ ചൂടേകി
+മാലോടിഴയും മർത്ത്യാത്മാവിനു മേലോട്ടുയരാൻ ചിറകുതകി
+പാരിൽ മനുഷ്യ പുരോഗമനക്കൊടി പാറിച്ചവയീ പന്തങ്ങൾ
+മെത്തിടു മിരുളിലിതിലെത്ര ചമച്ചു പുത്തൻ പുലരിച്ചന്തങ്ങൾ</description></item><item><title>മഴ കൊള്ളരുതെന്നു വച്ചു മാത്രമല്ല - ഒലാവ് എഛ് ഹോഗ്</title><link>https://ibnishak.github.io/blog/post/mazha-kollaruth/</link><pubDate>Mon, 16 Aug 2021 15:46:55 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/mazha-kollaruth/</guid><description>മഴ കൊള്ളരുതെന്നു വച്ചു മാത്രമല്ല,
+വഴിയരികിലെ പഴയൊരോക്കുമരത്തിനടിയില്‍
+ഞാന്‍ ചെന്നു നിന്നത്;
+പടര്‍ന്ന മേലാപ്പിനടിയില്‍
+സുരക്ഷിതനാണു ഞാനെന്നെനിക്കു തോന്നിയിരുന്നു,
+ഒരു ജന്മാന്തരസൌഹൃദമാവണം
+ഞങ്ങളെയവിടെ ഒരുമിപ്പിച്ചുനിര്‍ത്തിയതും,
+നിശ്ശബ്ദരായി,
+ഇലകളില്‍ മഴയിറ്റുന്നതു കേട്ടും,
+നിറം കെട്ട പകലിലേക്കു കണ്ണയച്ചും,
+കാത്തും, അറിഞ്ഞും.
+ഒലാവ് എഛ് ഹോഗ് (പരിഭാഷ: രവികുമാര്‍)</description></item><item><title>വീട് - ഒ എൻ വി</title><link>https://ibnishak.github.io/blog/post/veedu/</link><pubDate>Sun, 08 Aug 2021 15:50:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/veedu/</guid><description>ഇവിടെയുമെനിക്കൊരു വീടുണ്ട്‌- കുന്നിന്റെ
+നിറുകയിൽ, ചുറ്റിലും പച്ചത്തഴപ്പിന്റെ
+തിരകളിളകിയാർക്കുന്നു കടൽപോൽ-കാലമാ
+തിരതഴുകിയെത്തുന്നു പുലരിയാ,യുച്ചയായ്‌,
+കതിരുകൾ ചമതപോലെരിയുന്ന സന്ധ്യയായ്‌
+മിഴികളിൽ ചേക്കേറിടുമിരുൾപ്പക്ഷിയായ്‌
+ഇവിടെയീ വീടിന്റെയിറയത്തിരുന്നു ഞാൻ
+എവിടെയോ തീകത്തിയാളുന്നതറിയുന്നു
+ചൂഴുന്ന പച്ചത്തഴപ്പിൻ ഞൊറികളിൽ
+ചൂളമടിക്കും ചുടുകാറ്റിഴയുന്നു
+എവിടെയുമെനിക്കൊരു വീടുണ്ട്‌
+കുരിശിലൊരു കാപ്പിരിക്രിസ്തു മരിച്ചുയിർ
+ത്തെഴുന്നേൽക്കുമിരുളാണ്ട ഭൂഖണ്ഡസീമയിൽ
+പാതിരാസൂര്യന്റെ നാടുകളിൽ മർത്യന്റെ
+ജാതകം മാറ്റികുറിക്കുമിടങ്ങളിൽ
+മഞ്ഞൂരുകി മന്ദാകിനികളാകും ദിക്കിൽ
+നെഞ്ഞുരുകിയടിമകൾ മടയ്ക്കും തടങ്ങളിൽ
+ഉഴുതിട്ട മണ്ണിൽ നവധാന്യം വിതച്ചു വേർ-
+പ്പുതിരുവോർ കതിർകൊയ്തു പാടും നിലങ്ങളിൽ
+ആകാശചുംബികളി, ലഴുക്കിന്റെ ചേരിക-
+ളധോലോകവും ചേർന്നതാം മഹാനഗരികളിൽ
+അദ്രിമകുടങ്ങളിൽ സമുദ്രത്തിലെ ദ്വീപ-
+വൃത്തളിൽ ദേശദേശാന്തരങ്ങളിൽ
+എവിടെയുമെനിക്കൊരു വീടുണ്ട്‌- ഞാനുമു-
+ണ്ടെഴുതി മുഴുമിക്കാതെന്റെ കവിതയും, കാണുവാ-</description></item><item><title>Snippet Manager in Zsh</title><link>https://ibnishak.github.io/blog/post/snippet-manager-in-zsh/</link><pubDate>Wed, 21 Jul 2021 01:13:42 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/snippet-manager-in-zsh/</guid><description>Save it as snippets.zsh in your $PATH Make it executable Usage
 To create a new golang snippet snippets.zsh -d go -n To create a new zsh snippet snippets.zsh -d zsh -n To copy a golang snippet to clipboard snippets.zsh -d go -l #!/usr/bin/env zsh ##------------USER VARIABLES---------------## SNIPDIR=/path/to/snippet/dir EDITOR=(leafpad) # Do not remove the brackets export FZF_DEFAULT_OPTS=&amp;#39; --reverse --margin 3% --color=dark --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7 &amp;#39; ##-----------------------------------------## slugify() { echo $1 | iconv -t ascii//TRANSLIT | sed -E &amp;#39;s/[~\^]+//g&amp;#39; | sed -E &amp;#39;s/[^a-zA-Z0-9]+/-/g&amp;#39; | sed -E &amp;#39;s/^-+\|-+$//g&amp;#39; | sed -E &amp;#39;s/^-+//g&amp;#39; | sed -E &amp;#39;s/-+$//g&amp;#39; | tr A-Z a-z } new() { TMP=$(mktemp /tmp/quick-note.</description></item><item><title>The Imperfect Notebook</title><link>https://ibnishak.github.io/blog/post/the-imperfect-notebook/</link><pubDate>Mon, 19 Jul 2021 23:37:01 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/the-imperfect-notebook/</guid><description>So I put together an imperfect notebook/planner/journal/organizer/bullet-journal. I was irritated by the insta-slime worthy notebooks I see around. So for the heck of it, I decided to see what is at the opposite end.
 All I did was buy a bunch of newsprint sheets (the cheapest paper available) and few ring binders. I cut up each sheet to 8, punched a few holes and bound them with the ring binder. If you find an old filofax or binder to give it some protection in this harsh and cruel world, I understand that.</description></item><item><title>Zettelkasten - What, Why, and Why Not</title><link>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</link><pubDate>Wed, 14 Jul 2021 20:11:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</guid><description>Zettelkasten is a workflow used by Niklas Luhmann. It is popularized in recent times by Sohnke Ahren
 Source
@@ -32,49 +196,315 @@ Import your highlights. Ensure that you add metadata to the top including approp
 Dependencies: Rsync, Git-Annex
 Place script in PATH, name it calibre-annex-sync.zsh and make it executable. Create 2 empty folders, one in your computer, other in external harddrive. Edit the USER VARIABLES with absolute paths to the above 2 folders. Run calibre-annex-sync.zsh init command. Open Calibre. Start a new library in the folder in your computer.</description></item><item><title>The Simplest Time Logger I Could Have Written</title><link>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</link><pubDate>Fri, 09 Jul 2021 20:37:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</guid><description>A zsh script to take input from a form, and store it in a sqlite database.
 Dependecies: YAD, Sqlite
-#!/usr/bin/env zsh ########## VARIABLES ################ AREAS=(Acad Programming Reading Calories) #Single words separated by spaces ####################################### JA=$(echo ${(j:\!:)AREAS}) # Join Areas with ! because that is how yad wants it. data=$(yad --form --columns=2 --date-format=&amp;#34;%Y-%m-%d&amp;#34; \ --field=&amp;#34;Date::DT&amp;#34; &amp;#34;$(date +%Y-%m-%d)&amp;#34; \ --field=&amp;#34;Area::CBE&amp;#34; &amp;#34;${JA}&amp;#34; \ --field=&amp;#34;Units::NUM&amp;#34; &amp;#34;25&amp;#34;) DTARR=(&amp;#34;${(@s/|/)data}&amp;#34;) # Split yad output to array if [ -z &amp;#34;$DTARR[1]&amp;#34; ] # If user had cancelled the yad window, exit then echo &amp;#34;User cancellation&amp;#34; exit 1 fi sqlite3 tracker.</description></item><item><title>Vscode Addons for Markdown based Personal knowledge base</title><link>https://ibnishak.github.io/blog/post/vscode-addons-for-mdcode/</link><pubDate>Thu, 01 Jul 2021 21:04:15 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/vscode-addons-for-mdcode/</guid><description>Markdown All in One It provides basic shortcuts like Ctrl+B for bold, Ctrl+V for Italics, Marking/Un-marking checkboxes as done, increase/decrease heading levels etc. It provides a single shortcut for toggling markdown preview, unlike VSCode default which maps opening and closing preview to 2 different shortcuts When copy an external link, you simply need to select the target words in note and press Ctrl+V to get a properly formatted link. It continues list bullets automatically and can switch between list formats easily.</description></item><item><title>കാക്ക കുളിച്ചാൽ കൊക്കാകുമോ - സച്ചിദാനന്ദൻ</title><link>https://ibnishak.github.io/blog/post/kaaka-kulichal/</link><pubDate>Sat, 19 Jun 2021 22:11:59 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kaaka-kulichal/</guid><description>കാക്ക കുളിച്ചാൽ കൊക്കാകുമോ? കാക്കയ്ക്കു കൊക്കാകണ്ടെങ്കിലോ? കൊക്കിന്റെ നാണംകെട്ട ഉയരവും കണ്ണടച്ചുള്ള ധ്യാനവും, മടിയൻ പറക്കലും തൊണ്ടയിലെ മുള്ളും, കുറുക്കന്റെ വിരുന്നും ആമയെയുമേന്തി ആകാശം കടക്കലും കാക്കയ്ക്കു വേണ്ടെങ്കിലോ? കാക്ക കുളിക്കുന്നതു കൊക്കാകാനല്ല, സ്വന്തം കറുപ്പ്‌ ഒന്നുകൂടി തിളങ്ങാനാണെങ്കിലോ? അല്ലാ, കൊക്കു കുളിച്ചാൽ കാക്കയാകുമോ? കാക്കയുടെ ചക്കക്കറുപ്പും, കല്ലിട്ടു വെള്ളം കുടിക്കുന്ന ബുദ്ധിയും പ്രവചനശക്തിയും, പിതൃക്കളുടെ ആത്മാവുമേറ്റി, മനുഷ്യർക്കു പിടികൊടുക്കാത്ത പറക്കലും ആപത്തുകാലത്തെ ഒരുമയും മണ്ടൻ കൊക്കിനു സ്വപ്നം കാണാനാവുമോ?</description></item><item><title>ഓര്‍ക്കുക - ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്</title><link>https://ibnishak.github.io/blog/post/orkkuka/</link><pubDate>Fri, 18 Jun 2021 09:25:52 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/orkkuka/</guid><description>നീ കരഞ്ഞാല്‍ മുറിപ്പെടുന്നതെന്റെ ഹൃദയമാണ് നീ പൊഴിക്കുന്ന ഓരോ തുള്ളി കണ്ണീരും മുള്ളായുടക്കുന്നത് എന്റെ നെഞ്ഞിലാണ് നിന്റെ വ്യാകുലതകളില്‍ ചോര്‍ന്നു പോവുന്നത് എന്റെ ധൈര്യമാണ് നിന്റെ ഓരോ നെടുവീര്‍പ്പും ചുട്ടു പൊള്ളിക്കുന്നത് എന്റെ ആത്മാവിനെയാണ് നീ നീയല്ലാതെയാകുമ്പോള്‍ എനിക്ക് നഷ്ടമാവുന്നത് എന്നെ തന്നെയാണ്</description></item><item><title>മനോഹരം മഹാവനം - കടമ്മനിട്ട</title><link>https://ibnishak.github.io/blog/post/manoharam-mahavanam/</link><pubDate>Sat, 12 Jun 2021 18:14:11 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/manoharam-mahavanam/</guid><description>Translation of the following lines of Robert Frost
-The woods are lovely, dark and deep But I have promises to keep, And miles to go before I sleep, And miles to go before I sleep,
-മനോഹരം മഹാവനം ഇരുണ്ടഗാധമെങ്കിലും അനേകമുണ്ട് കാത്തിടേണ്ട മാമക പ്രതിജ്ഞകള്‍ അനക്കമറ്റു നിദ്രയില്‍ ലയിപ്പതിന്നു മുന്പിലായ് എനിക്കതീവ ദൂരമുണ്ടവിശ്രമം നടക്കുവാന്‍
-കടമ്മനിട്ട</description></item><item><title>കാഴ്ച പിരിയും നേരത്തിനപ്പുറം - അമയ</title><link>https://ibnishak.github.io/blog/post/kazhcha-piriyum/</link><pubDate>Tue, 25 May 2021 15:06:56 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kazhcha-piriyum/</guid><description>കാഴ്ച പിരിയും നേരത്തിനപ്പുറം കാറ്റുപിടിച്ചൊരു മഴ പാഞ്ഞെത്തും, നിന്നെ നനക്കും; അതെന്നെ കുതിർക്കും. ഇടയിലെ തൂക്കുപാലത്തെ തകർക്കും, ഉരുൾ പൊട്ടും&amp;hellip; ഘടികാര സമയം കൈയ്യടക്കിയ കാലത്തെ എത്രമേൽ കൈപ്പിടിയിലൊതുക്കാനാവും നമുക്ക്. കാടുകൾ പെരും നദികളായൊഴുകും കാലം വരേക്കും, നമുക്ക് കരൾ പകുത്ത് കഴിയാം</description></item><item><title>നാറാണത്തു ഭ്രാന്തന്‍ - വി.മധുസൂദനന്‍ നായര്‍</title><link>https://ibnishak.github.io/blog/post/naranath/</link><pubDate>Wed, 19 May 2021 21:11:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/naranath/</guid><description>പന്ത്രണ്ടു മക്കളെ പെറ്റൊരമ്മേ നിന്റെ മക്കളില്‍ ഞാനാണു ഭ്രാന്തന്‍ പന്ത്രണ്ടു രാശിയും നീറ്റുമമ്മേ നിന്റെ മക്കളില്‍ ഞാനാണനാഥന്‍ എന്റെ സിരയില്‍ നുരക്കും പുഴുക്കളില്ലാ കണ്ണിലിരവിന്റെ പാഷാണ തിമിരമില്ലാ ഉള്ളിലഗ്നികോണില്‍ കാറ്റുരഞ്ഞു തീചീറ്റുന്ന നഗ്നമാം ദുസ്വർഗ്ഗ കാമമില്ല വഴ്‌വിന്‍ ചെതുമ്പിച്ച വാതിലുകളടയുന്ന പാഴ്‌നിഴല്‍ പുറ്റുകള്‍ കിതപ്പാറ്റി ഉലയുന്ന ചിതകെട്ടി കേവലത ധ്യനത്തിലുറയുന്ന ചുടുകാട്ടിലെരിയാതെരിഞ്ഞ തിരിയായ്‌ നേരു ചികയുന്ന ഞാനാണു ഭ്രന്തന്‍ മൂകമുരുകുന്ന ഞാനാണു മൂഢന്‍
-കോയ്മയുടെ കോലങ്ങളെരിയുന്ന ജീവിത ചുടലക്കു കൂട്ടിരിക്കുമ്പോള്‍ കോവിലുകളെല്ലാമൊടുങ്ങുന്ന കോവിലില്‍ കഴകത്തിനെത്തി നില്‍ക്കുമ്പോള്‍ കോലായിലീകാലമൊരു മന്തുകാലുമായ്‌ തീ കായുവാനിരിക്കുന്നു ചീര്‍ത്ത കൂനന്‍ കിനാക്കള്‍തന്‍ കുന്നിലേക്കീ മേഘ കാമങ്ങള്‍ കല്ലുരുട്ടുന്നു ഒട്ടിവലിയുന്ന ദിശയെട്ടുമുപശാന്തിയുടെ മൊട്ടുകള്‍ തിരഞ്ഞു നട കൊള്‍കേ ഓര്‍മയിലൊരൂടുവഴി വരരുചിപ്പഴമയുടെ നേര്‍വ്വരയിലേക്കു തിരിയുന്നു</description></item><item><title>വെളിപാട് - ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്</title><link>https://ibnishak.github.io/blog/post/velipaad/</link><pubDate>Mon, 03 May 2021 21:50:42 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/velipaad/</guid><description>വേടന്‍ അമ്പുരക്കുന്നതു എന്റെ ഹൃദയത്തില്‍ തന്നെയാണു എന്നിട്ടും മുനയുടെ മൂര്‍ച്ച എന്റെ കവിതക്കില്ല നിറയൊഴിക്കുന്നതു എന്റെ നെഞ്ചിലേക്കുതന്നെയാണു എന്നിട്ടും കുഴലിന്റെ സംഗീതം എന്റെ കവിതക്കില്ല കുളമ്പുകള്‍ ചവിട്ടിയരക്കുന്നതു എന്റെ മാംസം തന്നെയാണ് എന്നിട്ടും പടക്കുതിരകളുടെ മരണവേഗത എന്റെ വാക്കുകള്‍ക്കില്ല ഞെരിഞ്ഞു തകരുന്നതു എന്റെ തോളെല്ലുകള്‍ തന്നെയാണ് എന്നിട്ടും പല്ലക്കുചുമക്കുന്നവനെപ്പൊലെ എന്റെ ആശയങ്ങള്‍ വിയര്‍ക്കുന്നില്ല ആളിക്കത്തുന്നതു എന്റെ സ്വപ്നങ്ങള്‍തന്നെയാണു എന്നിട്ടും എന്റെ കവിത ചുട്ടുപഴുക്കുന്നില്ല ഓര്‍മ്മകളുടെ ഒരു കാളരാത്രിഒടുങ്ങുമ്പൊള്‍ എനിക്കു വെളിപാടുണ്ടാവുന്നു ഒരു ദിവസം സ്വന്തം ജനത ഗായകനില്‍ ഗര്‍ജ്ജിക്കും ലഹരിപിടിപ്പിക്കുന്ന ഈരടികള്‍ ഞങ്ങള്‍ക്കു വേണ്ടാ ചോര കുടിപ്പിക്കുന്ന കൂരടികള്‍ ഞങ്ങള്‍ക്കു തരൂ വേരുപിടിപ്പിക്കുന്ന നീരടികള്‍ ഞങ്ങള്‍ക്കു തരൂ അതെ അപ്പൊള്‍ അവന്‍ തോറ്റമ്പാട്ടുകള്‍ നിര്‍ത്തി മാറ്റമ്പാട്ടുകള്‍ പാടും കരയുന്ന വാക്കുകള്‍ക്കു പകരം കത്തുന്ന വാക്കുകള്‍ വായിക്കും.</description></item><item><title>പലവക - 2</title><link>https://ibnishak.github.io/blog/post/palavaka2/</link><pubDate>Tue, 27 Apr 2021 15:09:00 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka2/</guid><description>മരണങ്ങളുടെ സാക്ഷിയായ പാളത്തിലൂടെ നിരര്‍ത്ഥകതയുടെ അര്‍ത്ഥമറിഞ്ഞ് ഒരാള്‍ നടക്കുന്നു (? അയ്യ‌പ്പ‌ന്‍)
-ഒരു പ്രേമലേഖനത്തിന്റെ വിരാമത്തിലെത്തും മുമ്പ് ഇടയ്ക്കുള്ള വാക്കുകളെ ചിതലെടുത്തിരിക്കുന്നു (? അയ്യ‌പ്പ‌ന്‍)
-ഞാൻ തിരഞ്ഞെടുക്കുന്ന വഴികളൊക്കയും നിന്നിൽ അവസാനിക്കുന്നു (? അയ്യ‌പ്പ‌ന്‍)
-എനിക്ക് വീണു കിട്ടുന്ന ദുഖങ്ങളാണ് എന്റെ വരികള്‍. (? അയ്യ‌പ്പ‌ന്‍)
-ഒരിക്കല്‍ നിന്നെയൊന്ന് മറക്കാന്‍ നോക്കിയതോര്‍ക്കുന്നു‌ വിഷം കുടിക്കാതെ തന്നെ‌ അന്ന് വിഷം കുടിച്ചവന്റെ അസ്വ‌സ്ഥതയും പരാക്ര‌മവും ഞാനെന്തന്നറിഞ്ഞതോര്‍ക്കുന്നു‌ (അയ്യ‌പ്പ‌ന്‍)
-നിന്നോ‌ളമൊരു നിഴലുമെന്നെ‌യലട്ടിയിട്ടില്ല‌ നിന്നോ‌ളമൊരു വസന്തവും എന്നില്‍ വേരിട്ടി‌ട്ടു‌മില്ല‌ (അയ്യ‌പ്പ‌ന്‍)
-നീയറിയുന്നുവോ? ചോലമരങ്ങളിൽ സായഹ്നമോരോന്നിരുണ്ടുതൂങ്ങുന്നതും നീണ്ടമൌനത്തിലെക്കെന്റെ രാപ്പക്ഷികൾ നീലച്ചിറകു കുഴഞ്ഞു വീഴുന്നതും (അയ്യ‌പ്പ‌ന്‍)
-ഇലകളായ് ഇനി നമ്മള്‍ പുനര്‍ജനിക്കുമെങ്കില്‍ ഒരേ വൃക്ഷത്തില്‍ പിറക്കണം എനിക്കൊരു കാമിനിയല്ല ആനന്ദത്താലും ദുഖത്താലും കണ്ണ് നിറഞ്ഞൊരു പെങ്ങളില വേണം (അയ്യ‌പ്പ‌ന്‍)</description></item><item><title>ജീവിതം - ഡി. വിനയചന്ദ്രൻ</title><link>https://ibnishak.github.io/blog/post/jivitham/</link><pubDate>Mon, 19 Apr 2021 21:28:59 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/jivitham/</guid><description>ആ കലണ്ടറിന്നറ്റത്തിരിയ്ക്കുന്നു ദിക്കിലെട്ടുകാലുള്ളൊരു ജീവിതം ആ കുളത്തിന്റെ വക്കത്തിരിയ്ക്കുന്നു എത്തി നോക്കി കൊതിയ്ക്കുന്ന ജീവിതം
-പിണ്ഡമുണ്ട് പറക്കുന്നു ജീവിതം രണ്ടു മൂന്നായ് മിടിയ്ക്കുന്നു ജീവിതം ആ മുലപ്പാൽ കുടിയ്ക്കുന്നു ജീവിതം ആ മുഖത്തുമ്മവെയ്ക്കുന്നു ജീവിതം
-കുന്നിറങ്ങിയും പെയ്യുന്നു ജീവിതം കുമ്പിളിൽ വെയിൽ കോരുന്നു ജീവിതം തുമ്പയിൽ തുടികൊട്ടുന്നു ജീവിതം കമ്പിളി പുതപ്പാകുന്നു ജീവിതം
-മൺഭരണിയിൽ മാളുന്നു ജീവിതം മണ്ണടരിൽനിന്നാർക്കുന്നു ജീവിതം ഒറ്റ നക്ഷത്രമാശിച്ചുദിച്ച നാൾ പട്ടുന്നൂൽ പുഴുവാകുന്നു ജീവിതം
-കയ്യുനീട്ടി കരയുന്നു ജീവിതം കയ്യുനോക്കി ചിരിയ്ക്കുന്നു ജീവിതം ഒട്ടകപുറത്തേറുന്നു ചന്ദ്രനായ് ഒട്ടുമാഞ്ഞും തെളിഞ്ഞുമീ ജീവിതം
-മൺകുളത്തിൽ വരച്ചുമായ്ക്കുന്നിതാ കണ്ണീൽ ദീപം കൊളുത്തുന്ന ജീവിതം ഒറ്റരാത്രിയിൽ ചൂട്ടുകത്തിച്ചു കൊണ്ട- ക്കരയ്ക്ക് കടക്കുന്നു ജീവിതം</description></item><item><title>ഇനിയെൻ വിഷാദങ്ങൾ</title><link>https://ibnishak.github.io/blog/post/iniyen-vishadangal/</link><pubDate>Sat, 03 Apr 2021 21:25:02 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/iniyen-vishadangal/</guid><description>ഇനിയെൻ വിഷാദങ്ങൾ ഉയിരോളം നനയിച്ച മഴ വിട്ട് കുടിലിലേക്കേറി നിൽക്കാം പൊയ്പ്പോയ കാല,മൊരാന്തലായ് മുനിയുന്ന റാന്തലിൻ തിരി മെല്ലെ താഴ്ത്തി വെക്കാം. പൂക്കാലമണയില്ല,യെങ്കിലും ഹൃദയത്തിൽ പൂവാക പെയ്യുന്ന തണലു തേടാം ജീവനിൽ തളിരേകു,മിഷ്ടവും ഹർഷവും സുസ്മിതം ചാലിച്ചു പങ്കുവെക്കാം. (രചന - ?)</description></item><item><title>ഓര്‍മ്മ - ഡി വിനയചന്ദ്രന്‍</title><link>https://ibnishak.github.io/blog/post/orma/</link><pubDate>Thu, 25 Mar 2021 22:07:57 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/orma/</guid><description>ഈ വഴിയേ പലരും പോയിട്ടുണ്ടെങ്കിലും വഴിയില്‍ കുഴഞ്ഞു വീണു മരിച്ച ഒരാളെ മാത്രമേ നാട്ടുകാര്‍ ഓര്‍ക്കുന്നുള്ളൂ.
-അയാളുടെ സഞ്ചിയില്‍ കുന്നിമണികളും മഞ്ചാടിക്കുരുക്കളും ഉണ്ടായിരുന്നു ഒരമ്മയുടെയും കുട്ടിയുടെയും പടമുണ്ടായിരുന്നതു കൊണ്ട് അമ്മമാര്‍ അയാളെ ഓര്‍ക്കുന്നുണ്ട്.
-കുഴിച്ചിടുമ്പോള്‍ ഒരു കീറു വെളിച്ചം മായാതെ ദേഹത്തു തങ്ങി നിന്നതിനാല്‍ മണ്‍‌വെട്ടിയും തൊഴിലാളികളും അയാളെ മറന്നിട്ടില്ല.
-സഞ്ചിയിലുണ്ടായിരുന്ന വിത്തുകള്‍ വളര്‍ന്നു പൂവും കായുമായതിനാല്‍ മണ്ണും മരവും തേനും ആകാശവും അയാളെ ഓര്‍ത്തുകൊണ്ടിരിക്കും.
-കിനാവു കാണാത്ത ദിനങ്ങളില്‍ ആളുകള്‍ ചോദിച്ചുകൊണ്ടിരിക്കും എന്തിനായിരുന്നു ആ കുന്നിമണികള്‍? ഈ വഴിയേ പലരും പോയെങ്കിലും ഒരാളെ മാത്രമേ എല്ലാവരും ഓര്‍ക്കുന്നുള്ളൂ.</description></item><item><title>പലവക</title><link>https://ibnishak.github.io/blog/post/palavaka/</link><pubDate>Fri, 12 Mar 2021 21:36:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka/</guid><description>തമ്മിൽ കണ്ടില്ലെങ്കിലും, ഈ വഴിയിലെവിടെയെങ്കിലും നമ്മൾ ഇരുവരും നടക്കുന്നുണ്ടെന്ന് അറിയുന്നതുതന്നെ ഒരു ആശ്വാസമാണ് !!! (ആനന്ദ് )
-ഭൂമിക്കടിയില്‍ വേരുകള്‍ കൊണ്ട് കെട്ടിപ്പിടിക്കുന്നു ഇലകള്‍ തമ്മില്‍ തൊടുമെന്ന് പേടിച്ച് നാം അകറ്റി നട്ട മരങ്ങള്‍ (വീരാന്‍കുട്ടി)
-നീല ലിറ്റ്മസിനപ്പുറം കത്തുന്ന തീ നാളമാരുടെ മനസ്സാണ് ഉര്‍വ്വരമായ മണ്ണില്‍ വിതയ്ക്കുന്ന കണ്ണുകളെല്ലാമാരുടേതാണ്.? (അയ്യപ്പന്‍)
-ഒന്നും പറഞ്ഞില്ലിതേവരെ നീ ഇതാ നമ്മെ കടന്നുപോകുന്നു മഴകളും മഞ്ഞും വെയിലും വിഷാദവര്‍ഷങ്ങളും ഒന്നും പറഞ്ഞില്ലിതേവരെ നീ ഇതാ എന്‍റെ കണ്ണടയാറായ് നിലാവസ്തമിക്കാറായ് (ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
-ഒരു വിലപ്പെട്ട ജന്മം മുഴുവനും വെറുമൊരു വാക്കിനക്കരെയിക്കരെ കടവു തോണി കിട്ടാതെ നില്‍ക്കുന്നവര്‍ (ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
-ആകാശമെല്ലാം നരക്കുന്നതിന്‍ മുന്‍പ് ജീവനില്‍ നിന്നും ഇല കൊഴിയും മുന്‍പ്‌ പോകൂ; മരണം തണുത്ത ചുണ്ടാലെന്റെ പ്രാണനെച്ചുംബിച്ചെടുക്കുന്നതിന്‍ മുന്‍പ്‌ ഹേമന്തമെത്തി മനസ്സില്‍ ശവക്കച്ച മൂടുന്നതിന്‍ മുന്‍പ്, അന്ധ സഞ്ചാരി തന്‍ ഗാനം നിലക്കുന്നതിന്‍ മുന്‍പ്‌ സമുദ്രം ഒരായിരം നാവിനാല്‍ ദൂരാല്‍ വിളിക്കുന്നു നിന്നെ (ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)</description></item><item><title>എന്റെ ശവപ്പെട്ടി ചുമക്കുന്നവരോട് - അയ്യ‌പ്പ‌ന്‍</title><link>https://ibnishak.github.io/blog/post/ente-savappetti/</link><pubDate>Mon, 01 Mar 2021 15:11:54 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/ente-savappetti/</guid><description>എന്റെ ശവപ്പെട്ടി ചുമക്കുന്നവരോട് ഒസ്യത്തില് ഇല്ലാത്ത ഒരു രഹസ്യം പറയാനുണ്ട് എന്റെ ഹൃദയത്തിന്റെ സ്ഥാനത്ത് ഒരു പൂവുണ്ടായിരിക്കും ജിജ്ഞാസയുടെ ദിവസങ്ങളില് പ്രേമത്തിന്റെ- ആത്മതത്വം പറഞ്ഞു തന്നവളുടെ ഉപഹാരം മണ്ണ് മൂടുന്നതിന് മുമ്പ് ഹൃദയത്തില് നിന്നും ആ പൂവ് പറിക്കണം ദലങള് കൊണ്ട് മുഖം മൂടണം രേഖകള് മാഞ്ഞ കൈവെള്ളയിലും ഒരു ദലം പൂവിലൂടെ എനിക്കു തിരിച്ചു പോകണം മരണത്തിന്റെ തൊട്ടുമുമ്പുള്ള നിമിഷം ഈ സത്യം പറയാന് സമയമില്ലായിരിക്കും ഒഴിച്ച് തന്ന തണുത്ത വെള്ളത്തീലൂടെ അത് മൃതിയിലേക്ക് ഒലിച്ചുപോകും ഇല്ലെങ്കില് ഈ ശവപ്പെട്ടി മൂടാതെ പോകൂ ഇനിയെന്റെ ചങ്ങാതികള് മരിച്ചവരാണല്ലൊ!</description></item><item><title>Anki V2 Scheduler in Plain English</title><link>https://ibnishak.github.io/blog/post/anki-v2-scheduler/</link><pubDate>Sun, 28 Feb 2021 17:58:48 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/anki-v2-scheduler/</guid><description>This post has been moved here and written in a tiddlywiki.</description></item><item><title>Anki - Reimagining</title><link>https://ibnishak.github.io/blog/post/anki-notes-on-what-could-have-been/</link><pubDate>Fri, 26 Feb 2021 09:37:55 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/anki-notes-on-what-could-have-been/</guid><description>Anki SRS software&amp;rsquo;s major functions can be listed as
+#!/usr/bin/env zsh ########## VARIABLES ################ AREAS=(Acad Programming Reading Calories) #Single words separated by spaces ####################################### JA=$(echo ${(j:\!:)AREAS}) # Join Areas with ! because that is how yad wants it. data=$(yad --form --columns=2 --date-format=&amp;#34;%Y-%m-%d&amp;#34; \ --field=&amp;#34;Date::DT&amp;#34; &amp;#34;$(date +%Y-%m-%d)&amp;#34; \ --field=&amp;#34;Area::CBE&amp;#34; &amp;#34;${JA}&amp;#34; \ --field=&amp;#34;Units::NUM&amp;#34; &amp;#34;25&amp;#34;) DTARR=(&amp;#34;${(@s/|/)data}&amp;#34;) # Split yad output to array if [ -z &amp;#34;$DTARR[1]&amp;#34; ] # If user had cancelled the yad window, exit then echo &amp;#34;User cancellation&amp;#34; exit 1 fi sqlite3 tracker.</description></item><item><title>Vscode Addons for Markdown based Personal knowledge base</title><link>https://ibnishak.github.io/blog/post/vscode-addons-for-mdcode/</link><pubDate>Thu, 01 Jul 2021 21:04:15 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/vscode-addons-for-mdcode/</guid><description>Markdown All in One It provides basic shortcuts like Ctrl+B for bold, Ctrl+V for Italics, Marking/Un-marking checkboxes as done, increase/decrease heading levels etc. It provides a single shortcut for toggling markdown preview, unlike VSCode default which maps opening and closing preview to 2 different shortcuts When copy an external link, you simply need to select the target words in note and press Ctrl+V to get a properly formatted link. It continues list bullets automatically and can switch between list formats easily.</description></item><item><title>കാക്ക കുളിച്ചാൽ കൊക്കാകുമോ - സച്ചിദാനന്ദൻ</title><link>https://ibnishak.github.io/blog/post/kaaka-kulichal/</link><pubDate>Sat, 19 Jun 2021 22:11:59 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kaaka-kulichal/</guid><description>കാക്ക കുളിച്ചാൽ കൊക്കാകുമോ?
+കാക്കയ്ക്കു കൊക്കാകണ്ടെങ്കിലോ?
+കൊക്കിന്റെ നാണംകെട്ട ഉയരവും
+കണ്ണടച്ചുള്ള ധ്യാനവും, മടിയൻ പറക്കലും
+തൊണ്ടയിലെ മുള്ളും, കുറുക്കന്റെ വിരുന്നും
+ആമയെയുമേന്തി ആകാശം കടക്കലും
+കാക്കയ്ക്കു വേണ്ടെങ്കിലോ?
+കാക്ക കുളിക്കുന്നതു കൊക്കാകാനല്ല,
+സ്വന്തം കറുപ്പ്‌ ഒന്നുകൂടി തിളങ്ങാനാണെങ്കിലോ?
+അല്ലാ, കൊക്കു കുളിച്ചാൽ കാക്കയാകുമോ?
+കാക്കയുടെ ചക്കക്കറുപ്പും,
+കല്ലിട്ടു വെള്ളം കുടിക്കുന്ന ബുദ്ധിയും
+പ്രവചനശക്തിയും, പിതൃക്കളുടെ ആത്മാവുമേറ്റി,
+മനുഷ്യർക്കു പിടികൊടുക്കാത്ത പറക്കലും
+ആപത്തുകാലത്തെ ഒരുമയും
+മണ്ടൻ കൊക്കിനു സ്വപ്നം കാണാനാവുമോ?</description></item><item><title>ഓര്‍ക്കുക - ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്</title><link>https://ibnishak.github.io/blog/post/orkkuka/</link><pubDate>Fri, 18 Jun 2021 09:25:52 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/orkkuka/</guid><description>നീ കരഞ്ഞാല്‍
+മുറിപ്പെടുന്നതെന്റെ ഹൃദയമാണ്
+നീ പൊഴിക്കുന്ന
+ഓരോ തുള്ളി കണ്ണീരും
+മുള്ളായുടക്കുന്നത്
+എന്റെ നെഞ്ഞിലാണ്
+നിന്റെ വ്യാകുലതകളില്‍
+ചോര്‍ന്നു പോവുന്നത്
+എന്റെ ധൈര്യമാണ്
+നിന്റെ ഓരോ നെടുവീര്‍പ്പും
+ചുട്ടു പൊള്ളിക്കുന്നത്
+എന്റെ ആത്മാവിനെയാണ്
+നീ നീയല്ലാതെയാകുമ്പോള്‍
+എനിക്ക് നഷ്ടമാവുന്നത്
+എന്നെ തന്നെയാണ്</description></item><item><title>മനോഹരം മഹാവനം - കടമ്മനിട്ട</title><link>https://ibnishak.github.io/blog/post/manoharam-mahavanam/</link><pubDate>Sat, 12 Jun 2021 18:14:11 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/manoharam-mahavanam/</guid><description>Translation of the following lines of Robert Frost
+The woods are lovely, dark and deep
+But I have promises to keep,
+And miles to go before I sleep,
+And miles to go before I sleep,
+മനോഹരം മഹാവനം ഇരുണ്ടഗാധമെങ്കിലും
+അനേകമുണ്ട് കാത്തിടേണ്ട മാമക പ്രതിജ്ഞകള്‍
+അനക്കമറ്റു നിദ്രയില്‍ ലയിപ്പതിന്നു മുന്പിലായ്
+എനിക്കതീവ ദൂരമുണ്ടവിശ്രമം നടക്കുവാന്‍
+കടമ്മനിട്ട</description></item><item><title>കാഴ്ച പിരിയും നേരത്തിനപ്പുറം - അമയ</title><link>https://ibnishak.github.io/blog/post/kazhcha-piriyum/</link><pubDate>Tue, 25 May 2021 15:06:56 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kazhcha-piriyum/</guid><description>കാഴ്ച പിരിയും
+നേരത്തിനപ്പുറം
+കാറ്റുപിടിച്ചൊരു
+മഴ പാഞ്ഞെത്തും,
+നിന്നെ നനക്കും;
+അതെന്നെ കുതിർക്കും.
+ഇടയിലെ തൂക്കുപാലത്തെ തകർക്കും,
+ഉരുൾ പൊട്ടും&amp;hellip;
+ഘടികാര സമയം
+കൈയ്യടക്കിയ കാലത്തെ
+എത്രമേൽ കൈപ്പിടിയിലൊതുക്കാനാവും നമുക്ക്.
+കാടുകൾ പെരും നദികളായൊഴുകും
+കാലം വരേക്കും,
+നമുക്ക് കരൾ
+പകുത്ത് കഴിയാം</description></item><item><title>നാറാണത്തു ഭ്രാന്തന്‍ - വി.മധുസൂദനന്‍ നായര്‍</title><link>https://ibnishak.github.io/blog/post/naranath/</link><pubDate>Wed, 19 May 2021 21:11:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/naranath/</guid><description>പന്ത്രണ്ടു മക്കളെ പെറ്റൊരമ്മേ
+നിന്റെ മക്കളില്‍ ഞാനാണു ഭ്രാന്തന്‍
+പന്ത്രണ്ടു രാശിയും നീറ്റുമമ്മേ
+നിന്റെ മക്കളില്‍ ഞാനാണനാഥന്‍
+എന്റെ സിരയില്‍ നുരക്കും പുഴുക്കളില്ലാ
+കണ്ണിലിരവിന്റെ പാഷാണ തിമിരമില്ലാ
+ഉള്ളിലഗ്നികോണില്‍ കാറ്റുരഞ്ഞു തീചീറ്റുന്ന
+നഗ്നമാം ദുസ്വർഗ്ഗ കാമമില്ല
+വഴ്‌വിന്‍ ചെതുമ്പിച്ച വാതിലുകളടയുന്ന
+പാഴ്‌നിഴല്‍ പുറ്റുകള്‍ കിതപ്പാറ്റി ഉലയുന്ന
+ചിതകെട്ടി കേവലത ധ്യനത്തിലുറയുന്ന
+ചുടുകാട്ടിലെരിയാതെരിഞ്ഞ തിരിയായ്‌
+നേരു ചികയുന്ന ഞാനാണു ഭ്രന്തന്‍
+മൂകമുരുകുന്ന ഞാനാണു മൂഢന്‍
+കോയ്മയുടെ കോലങ്ങളെരിയുന്ന ജീവിത
+ചുടലക്കു കൂട്ടിരിക്കുമ്പോള്‍
+കോവിലുകളെല്ലാമൊടുങ്ങുന്ന കോവിലില്‍
+കഴകത്തിനെത്തി നില്‍ക്കുമ്പോള്‍
+കോലായിലീകാലമൊരു മന്തുകാലുമായ്‌
+തീ കായുവാനിരിക്കുന്നു
+ചീര്‍ത്ത കൂനന്‍ കിനാക്കള്‍തന്‍ കുന്നിലേക്കീ
+മേഘ കാമങ്ങള്‍ കല്ലുരുട്ടുന്നു
+ഒട്ടിവലിയുന്ന ദിശയെട്ടുമുപശാന്തിയുടെ
+മൊട്ടുകള്‍ തിരഞ്ഞു നട കൊള്‍കേ</description></item><item><title>വെളിപാട് - ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്</title><link>https://ibnishak.github.io/blog/post/velipaad/</link><pubDate>Mon, 03 May 2021 21:50:42 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/velipaad/</guid><description>വേടന്‍ അമ്പുരക്കുന്നതു
+എന്റെ ഹൃദയത്തില്‍ തന്നെയാണു
+എന്നിട്ടും മുനയുടെ മൂര്‍ച്ച എന്റെ കവിതക്കില്ല
+നിറയൊഴിക്കുന്നതു
+എന്റെ നെഞ്ചിലേക്കുതന്നെയാണു
+എന്നിട്ടും കുഴലിന്റെ സംഗീതം
+എന്റെ കവിതക്കില്ല
+കുളമ്പുകള്‍ ചവിട്ടിയരക്കുന്നതു
+എന്റെ മാംസം തന്നെയാണ്
+എന്നിട്ടും പടക്കുതിരകളുടെ
+മരണവേഗത എന്റെ വാക്കുകള്‍ക്കില്ല
+ഞെരിഞ്ഞു തകരുന്നതു എന്റെ തോളെല്ലുകള്‍ തന്നെയാണ്
+എന്നിട്ടും പല്ലക്കുചുമക്കുന്നവനെപ്പൊലെ
+എന്റെ ആശയങ്ങള്‍ വിയര്‍ക്കുന്നില്ല
+ആളിക്കത്തുന്നതു എന്റെ സ്വപ്നങ്ങള്‍തന്നെയാണു
+എന്നിട്ടും എന്റെ കവിത ചുട്ടുപഴുക്കുന്നില്ല
+ഓര്‍മ്മകളുടെ ഒരു കാളരാത്രിഒടുങ്ങുമ്പൊള്‍
+എനിക്കു വെളിപാടുണ്ടാവുന്നു
+ഒരു ദിവസം സ്വന്തം ജനത
+ഗായകനില്‍ ഗര്‍ജ്ജിക്കും
+ലഹരിപിടിപ്പിക്കുന്ന ഈരടികള്‍
+ഞങ്ങള്‍ക്കു വേണ്ടാ
+ചോര കുടിപ്പിക്കുന്ന കൂരടികള്‍ ഞങ്ങള്‍ക്കു തരൂ
+വേരുപിടിപ്പിക്കുന്ന നീരടികള്‍ ഞങ്ങള്‍ക്കു തരൂ
+അതെ</description></item><item><title>പലവക - 2</title><link>https://ibnishak.github.io/blog/post/palavaka2/</link><pubDate>Tue, 27 Apr 2021 15:09:00 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka2/</guid><description>മരണങ്ങളുടെ സാക്ഷിയായ
+പാളത്തിലൂടെ നിരര്‍ത്ഥകതയുടെ
+അര്‍ത്ഥമറിഞ്ഞ് ഒരാള്‍ നടക്കുന്നു
+(? അയ്യ‌പ്പ‌ന്‍)
+ഒരു പ്രേമലേഖനത്തിന്റെ
+വിരാമത്തിലെത്തും മുമ്പ്
+ഇടയ്ക്കുള്ള വാക്കുകളെ ചിതലെടുത്തിരിക്കുന്നു
+(? അയ്യ‌പ്പ‌ന്‍)
+ഞാൻ തിരഞ്ഞെടുക്കുന്ന വഴികളൊക്കയും
+നിന്നിൽ അവസാനിക്കുന്നു
+(? അയ്യ‌പ്പ‌ന്‍)
+എനിക്ക് വീണു കിട്ടുന്ന ദുഖങ്ങളാണ് എന്റെ വരികള്‍.
+(? അയ്യ‌പ്പ‌ന്‍)
+ഒരിക്കല്‍ നിന്നെയൊന്ന്
+മറക്കാന്‍ നോക്കിയതോര്‍ക്കുന്നു‌
+വിഷം കുടിക്കാതെ തന്നെ‌
+അന്ന് വിഷം കുടിച്ചവന്റെ
+അസ്വ‌സ്ഥതയും പരാക്ര‌മവും
+ഞാനെന്തന്നറിഞ്ഞതോര്‍ക്കുന്നു‌
+(അയ്യ‌പ്പ‌ന്‍)
+നിന്നോ‌ളമൊരു നിഴലുമെന്നെ‌യലട്ടിയിട്ടില്ല‌
+നിന്നോ‌ളമൊരു വസന്തവും എന്നില്‍ വേരിട്ടി‌ട്ടു‌മില്ല‌
+(അയ്യ‌പ്പ‌ന്‍)
+നീയറിയുന്നുവോ? ചോലമരങ്ങളിൽ
+സായഹ്നമോരോന്നിരുണ്ടുതൂങ്ങുന്നതും
+നീണ്ടമൌനത്തിലെക്കെന്റെ രാപ്പക്ഷികൾ
+നീലച്ചിറകു കുഴഞ്ഞു വീഴുന്നതും
+(അയ്യ‌പ്പ‌ന്‍)
+ഇലകളായ് ഇനി നമ്മള്‍ പുനര്‍ജനിക്കുമെങ്കില്‍
+ഒരേ വൃക്ഷത്തില്‍ പിറക്കണം എനിക്കൊരു</description></item><item><title>ജീവിതം - ഡി. വിനയചന്ദ്രൻ</title><link>https://ibnishak.github.io/blog/post/jivitham/</link><pubDate>Mon, 19 Apr 2021 21:28:59 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/jivitham/</guid><description>ആ കലണ്ടറിന്നറ്റത്തിരിയ്ക്കുന്നു
+ദിക്കിലെട്ടുകാലുള്ളൊരു ജീവിതം
+ആ കുളത്തിന്റെ വക്കത്തിരിയ്ക്കുന്നു
+എത്തി നോക്കി കൊതിയ്ക്കുന്ന ജീവിതം
+പിണ്ഡമുണ്ട് പറക്കുന്നു ജീവിതം
+രണ്ടു മൂന്നായ് മിടിയ്ക്കുന്നു ജീവിതം
+ആ മുലപ്പാൽ കുടിയ്ക്കുന്നു ജീവിതം
+ആ മുഖത്തുമ്മവെയ്ക്കുന്നു ജീവിതം
+കുന്നിറങ്ങിയും പെയ്യുന്നു ജീവിതം
+കുമ്പിളിൽ വെയിൽ കോരുന്നു ജീവിതം
+തുമ്പയിൽ തുടികൊട്ടുന്നു ജീവിതം
+കമ്പിളി പുതപ്പാകുന്നു ജീവിതം
+മൺഭരണിയിൽ മാളുന്നു ജീവിതം
+മണ്ണടരിൽനിന്നാർക്കുന്നു ജീവിതം
+ഒറ്റ നക്ഷത്രമാശിച്ചുദിച്ച നാൾ
+പട്ടുന്നൂൽ പുഴുവാകുന്നു ജീവിതം
+കയ്യുനീട്ടി കരയുന്നു ജീവിതം
+കയ്യുനോക്കി ചിരിയ്ക്കുന്നു ജീവിതം
+ഒട്ടകപുറത്തേറുന്നു ചന്ദ്രനായ്
+ഒട്ടുമാഞ്ഞും തെളിഞ്ഞുമീ ജീവിതം
+മൺകുളത്തിൽ വരച്ചുമായ്ക്കുന്നിതാ
+കണ്ണീൽ ദീപം കൊളുത്തുന്ന ജീവിതം
+ഒറ്റരാത്രിയിൽ ചൂട്ടുകത്തിച്ചു കൊണ്ട-
+ക്കരയ്ക്ക് കടക്കുന്നു ജീവിതം</description></item><item><title>ഇനിയെൻ വിഷാദങ്ങൾ</title><link>https://ibnishak.github.io/blog/post/iniyen-vishadangal/</link><pubDate>Sat, 03 Apr 2021 21:25:02 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/iniyen-vishadangal/</guid><description>ഇനിയെൻ വിഷാദങ്ങൾ ഉയിരോളം നനയിച്ച
+മഴ വിട്ട് കുടിലിലേക്കേറി നിൽക്കാം
+പൊയ്പ്പോയ കാല,മൊരാന്തലായ് മുനിയുന്ന
+റാന്തലിൻ തിരി മെല്ലെ താഴ്ത്തി വെക്കാം.
+പൂക്കാലമണയില്ല,യെങ്കിലും ഹൃദയത്തിൽ
+പൂവാക പെയ്യുന്ന തണലു തേടാം
+ജീവനിൽ തളിരേകു,മിഷ്ടവും ഹർഷവും
+സുസ്മിതം ചാലിച്ചു പങ്കുവെക്കാം.
+(രചന - ?)</description></item><item><title>ഓര്‍മ്മ - ഡി വിനയചന്ദ്രന്‍</title><link>https://ibnishak.github.io/blog/post/orma/</link><pubDate>Thu, 25 Mar 2021 22:07:57 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/orma/</guid><description>ഈ വഴിയേ പലരും പോയിട്ടുണ്ടെങ്കിലും
+വഴിയില്‍ കുഴഞ്ഞു വീണു മരിച്ച ഒരാളെ മാത്രമേ
+നാട്ടുകാര്‍ ഓര്‍ക്കുന്നുള്ളൂ.
+അയാളുടെ സഞ്ചിയില്‍ കുന്നിമണികളും
+മഞ്ചാടിക്കുരുക്കളും ഉണ്ടായിരുന്നു
+ഒരമ്മയുടെയും കുട്ടിയുടെയും പടമുണ്ടായിരുന്നതു കൊണ്ട്
+അമ്മമാര്‍ അയാളെ ഓര്‍ക്കുന്നുണ്ട്.
+കുഴിച്ചിടുമ്പോള്‍ ഒരു കീറു വെളിച്ചം
+മായാതെ ദേഹത്തു തങ്ങി നിന്നതിനാല്‍
+മണ്‍‌വെട്ടിയും തൊഴിലാളികളും അയാളെ മറന്നിട്ടില്ല.
+സഞ്ചിയിലുണ്ടായിരുന്ന വിത്തുകള്‍
+വളര്‍ന്നു പൂവും കായുമായതിനാല്‍
+മണ്ണും മരവും തേനും ആകാശവും
+അയാളെ ഓര്‍ത്തുകൊണ്ടിരിക്കും.
+കിനാവു കാണാത്ത ദിനങ്ങളില്‍
+ആളുകള്‍ ചോദിച്ചുകൊണ്ടിരിക്കും
+എന്തിനായിരുന്നു ആ കുന്നിമണികള്‍?
+ഈ വഴിയേ പലരും പോയെങ്കിലും
+ഒരാളെ മാത്രമേ എല്ലാവരും ഓര്‍ക്കുന്നുള്ളൂ.</description></item><item><title>പലവക</title><link>https://ibnishak.github.io/blog/post/palavaka/</link><pubDate>Fri, 12 Mar 2021 21:36:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/palavaka/</guid><description>തമ്മിൽ കണ്ടില്ലെങ്കിലും,
+ഈ വഴിയിലെവിടെയെങ്കിലും നമ്മൾ ഇരുവരും
+നടക്കുന്നുണ്ടെന്ന് അറിയുന്നതുതന്നെ ഒരു ആശ്വാസമാണ് !!!
+(ആനന്ദ് )
+ഭൂമിക്കടിയില്‍ വേരുകള്‍ കൊണ്ട്
+കെട്ടിപ്പിടിക്കുന്നു
+ഇലകള്‍ തമ്മില്‍ തൊടുമെന്ന് പേടിച്ച്
+നാം അകറ്റി നട്ട മരങ്ങള്‍
+(വീരാന്‍കുട്ടി)
+നീല ലിറ്റ്മസിനപ്പുറം കത്തുന്ന
+തീ നാളമാരുടെ മനസ്സാണ്
+ഉര്‍വ്വരമായ മണ്ണില്‍ വിതയ്ക്കുന്ന
+കണ്ണുകളെല്ലാമാരുടേതാണ്.?
+(അയ്യപ്പന്‍)
+ഒന്നും പറഞ്ഞില്ലിതേവരെ നീ
+ഇതാ നമ്മെ കടന്നുപോകുന്നു
+മഴകളും മഞ്ഞും വെയിലും
+വിഷാദവര്‍ഷങ്ങളും ഒന്നും പറഞ്ഞില്ലിതേവരെ നീ
+ഇതാ എന്‍റെ കണ്ണടയാറായ്
+നിലാവസ്തമിക്കാറായ്
+(ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
+ഒരു വിലപ്പെട്ട ജന്മം മുഴുവനും
+വെറുമൊരു വാക്കിനക്കരെയിക്കരെ
+കടവു തോണി കിട്ടാതെ നില്‍ക്കുന്നവര്‍
+(ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്)
+ആകാശമെല്ലാം നരക്കുന്നതിന്‍ മുന്‍പ്</description></item><item><title>എന്റെ ശവപ്പെട്ടി ചുമക്കുന്നവരോട് - അയ്യ‌പ്പ‌ന്‍</title><link>https://ibnishak.github.io/blog/post/ente-savappetti/</link><pubDate>Mon, 01 Mar 2021 15:11:54 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/ente-savappetti/</guid><description>എന്റെ ശവപ്പെട്ടി ചുമക്കുന്നവരോട്
+ഒസ്യത്തില് ഇല്ലാത്ത ഒരു രഹസ്യം പറയാനുണ്ട്
+എന്റെ ഹൃദയത്തിന്റെ സ്ഥാനത്ത് ഒരു പൂവുണ്ടായിരിക്കും
+ജിജ്ഞാസയുടെ ദിവസങ്ങളില് പ്രേമത്തിന്റെ-
+ആത്മതത്വം പറഞ്ഞു തന്നവളുടെ ഉപഹാരം
+മണ്ണ് മൂടുന്നതിന് മുമ്പ്
+ഹൃദയത്തില് നിന്നും ആ പൂവ് പറിക്കണം
+ദലങള് കൊണ്ട് മുഖം മൂടണം
+രേഖകള് മാഞ്ഞ കൈവെള്ളയിലും ഒരു ദലം
+പൂവിലൂടെ എനിക്കു തിരിച്ചു പോകണം
+മരണത്തിന്റെ തൊട്ടുമുമ്പുള്ള നിമിഷം
+ഈ സത്യം പറയാന് സമയമില്ലായിരിക്കും
+ഒഴിച്ച് തന്ന തണുത്ത വെള്ളത്തീലൂടെ
+അത് മൃതിയിലേക്ക് ഒലിച്ചുപോകും
+ഇല്ലെങ്കില് ഈ ശവപ്പെട്ടി മൂടാതെ പോകൂ
+ഇനിയെന്റെ ചങ്ങാതികള് മരിച്ചവരാണല്ലൊ!</description></item><item><title>Anki V2 Scheduler in Plain English</title><link>https://ibnishak.github.io/blog/post/anki-v2-scheduler/</link><pubDate>Sun, 28 Feb 2021 17:58:48 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/anki-v2-scheduler/</guid><description>This post has been moved here and written in a tiddlywiki.</description></item><item><title>Anki - Reimagining</title><link>https://ibnishak.github.io/blog/post/anki-notes-on-what-could-have-been/</link><pubDate>Fri, 26 Feb 2021 09:37:55 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/anki-notes-on-what-could-have-been/</guid><description>Anki SRS software&amp;rsquo;s major functions can be listed as
 Create Notes Generate cards from Notes Schedule cards according to spaced repetition algorithms Present cards to user according to schedule Provide interface for searching and reasonable organization of notes Synchronise notes and scheduling information to cloud Anki desktop application does all of these very well.
-Qt based App for input, search, organization and review. Notes, cards and scheduling information are stored in SQlite Free 1 GB cloud space for synchronisation If I was rebuilding Anki from scratch, what would I have done?</description></item><item><title>Anki - Notes on things as they are now</title><link>https://ibnishak.github.io/blog/post/anki-general-notes/</link><pubDate>Sun, 21 Feb 2021 06:57:13 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/anki-general-notes/</guid><description>Card types Image occlusion: Piotr Wozniak has backed image occlusion in the 20 rules of information retention ModifiedCloze: Title, Cloze, Extras ModifiedBasic: Title, Front, Options, Back, Extras Justification for Title field It helps to collect repeated text to a separate field and put frozen field addon to good use Title: Osteomyelitis - Organism causeing the following type Cloze: Feathery - {{c1::Mycobacterium}} Title: Osteomyelitis - Organism causing the following type Cloze: Ivory - {{c1::Syphilis}} It ties up related cards well in card browser, at a more granular level than tags could afford.</description></item><item><title>സത്രത്തിലെ അവസാന രാത്രി - ശാന്തി ജയറാം</title><link>https://ibnishak.github.io/blog/post/sathrathile/</link><pubDate>Tue, 05 Jan 2021 21:47:59 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/sathrathile/</guid><description>നിന്‍ ചുടുനിശ്വാസമെന്‍ ചില്ലയില്‍ വന്നുതൂങ്ങുന്ന രാവുകള്‍ക്കപ്പുറം അന്തമില്ലാതെ നീളുന്ന പാതയില്‍ പണ്ടൊരിക്കല്‍ നാം കണ്ടിരുന്നില്ലയോ വിധുരനായൊരീ രാത്രിയെപ്പിന്നെയും കരിപുരട്ടുന്ന പേടിസ്വപ്നങ്ങലില്‍ പരതിനോക്കുന്നു നമ്മള്‍ തന്‍ കൈവിരല്‍ പഴയകാലത്തെയൊന്നു തൊട്ടീടുവാന്‍
-മര്‍ത്യബന്ധങ്ങളെന്‍ രാസശാലയില്‍ മൃ‌ത്യുവോളം പുകഞ്ഞുതീരുമ്പൊഴും ശൂന്യമേതോ ശവക്കോട്ടപോലതില്‍ ധൂമശില്പങ്ങള്‍ മാഞ്ഞുപോകുമ്പൊഴും ഒട്ടുനേരമീ സത്രത്തില്‍ നിന്നുടന്‍ വിട്ടുപോകാന്‍ മടിച്ചിരിക്കുന്നു ഞാന്‍ കെട്ടുപോകും നിമിഷങ്ങളില്‍ സ്വയം നഷ്ടമാകാന്‍ കൊതിച്ചുപോകുന്നു ഞാന്‍
-പോയകാലമേ നിന്‍ വിഴുപ്പേന്തുവാന്‍ ലോകവീഥിയിലേകയാകുമ്പൊഴും പ്രേമശര്‍ക്കരപ്പാനിയില്‍ വീണൊരീ പ്രേതരൂപങ്ങള്‍ നൃ‌ത്തമാടുമ്പൊഴും നാണമില്ലാതെ പിന്നെയും പിന്നെയും ജീവിതത്തെപ്പുണര്‍ന്നുറങ്ങുന്നു ഞാന്‍ നിന്‍ ചേതസിന്‍ കണ്ണാടിയാം മിഴി- ച്ചില്ലില്‍ നോക്കിത്തപസ്സുചെയ്യുന്നു ഞാന്‍
-നിന്‍ കിനാവിന്റെ നീലിച്ചരാത്രിയില്‍ വെണ്ണിലാവായലിഞ്ഞു ചേര്‍ന്നീടുവാന്‍ നിന്റെയുള്ളില്‍ ഘനീഭവിച്ചോര്‍മ്മതന്‍ കണ്ണുനീരായ്‌ക്കൊഴിഞ്ഞുവീണീടുവാന്‍ വ്യര്‍ഥമാമെന്‍ പകല്‍ക്കിനാപ്പക്ഷികള്‍ സത്യമോര്‍ക്കാതെ കൂടൊരുക്കുന്നുവോ</description></item><item><title>ചിത - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/chitha/</link><pubDate>Tue, 05 Jan 2021 19:52:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/chitha/</guid><description>മോഹശതങ്ങള്‍ ദഹിക്കും ചിതയില്‍ ചാരിയിരിക്കുന്നേന്‍ ഒരു ബീഡി കൊളുത്തി വലിക്കുന്നേന്‍ കറകള്‍ ചുവയ്‌ക്കും പുകയുടെ ചുരുളുകള്‍ ഊതി രസിക്കുന്നേന്‍ വലയം തീര്‍ക്കും പുകയുടെ ചാരനിറത്തിന്‍ വക്കിലലിഞ്ഞു ലയിക്കാന്‍ വ്യാമോഹിക്കുന്നേന്‍ അമ്പി‌ളി നീറി മരിച്ചു ദഹിച്ചോരബരമാകെ അസ്ഥികളൂര്‍ന്നു കിടപ്പതു കണ്ടസ്വ‌സ്ഥതയാര്‍ത്തന്നാള്‍ ചൂടിന്‍ ചിറകുകളില്‍ ചെറുകരിമുകിലായ് ചുറ്റിയലഞ്ഞന്നാള്‍ തിരകള്‍ തെറകള്‍ നിവര്‍ക്കും കടലിന്‍ കരയിലടിഞ്ഞു മുടിഞ്ഞൊരു നൂറ്റണ്ടുകളില്‍ പരവശമായി ഉണര്‍ന്നുകിടന്നനാള്‍ കണ്ണില്‍ കുത്തിയ കൈവിരലുകള്‍ ഉള്ളിലുടക്കിയ വാരിയെല്ലുകള്‍ ഊരിയെടുക്കെ എന്നിലുറങ്ങിയ മോഹശതങ്ങള്‍ മരിച്ചേപോയ് ഞാന്‍ വേദനകൊണ്ടു ചിരിച്ചേപോയ് ചേതന കൂട്ടിയ ചിതയില്‍ ചോരയിനാല്‍ നെയ് കോരിയ ചിതയില്‍ മോഹശതങ്ങള്‍ ദഹിക്കും ചിതയില്‍ ചാരിയിരിക്കുന്നേന്‍ ഒരു ബീഡി വലിച്ചു രസിക്കുന്നേന്‍</description></item><item><title>ബാലശാപങ്ങള്‍- മധുസൂദനന്‍ നായര്‍</title><link>https://ibnishak.github.io/blog/post/balasapangal/</link><pubDate>Mon, 04 Jan 2021 20:19:07 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/balasapangal/</guid><description>ഞാന്‍ കെട്ടിയ കളിവീടെന്തിനിടിച്ചുതകര്‍ത്തൂ നീ ഞാന്‍ കൂട്ടിയ കഞ്ഞീം കറിയും തൂവിയതെന്തിനു നീ ഞാന്‍ വിട്ടൊരു കൊച്ചോടത്തിനെ മുക്കിയതെന്തിനു നീ ഞാന്‍ വിട്ടുപറത്തിയ പട്ടമറുത്തതുമെന്തിനു നീ
-ഞാന്‍ കേള്‍ക്കും കഥകളില്‍ വന്നു മറുത്തു പറഞ്ഞില്ലേ ഞാന്‍ വീശിയ വര്‍ണ്ണച്ചിറകുമൊടിച്ചു കളഞ്ഞില്ലേ ഞാനാടിയൊരുഞ്ഞാല്‍ പാട്ടു് മുറിച്ചു് കളഞ്ഞില്ലേ ഞാന്‍ നട്ടൊരു പിച്ചകവള്ളി പുഴക്കിയെറിഞ്ഞില്ലേ
-കണ്‍പൊത്തിച്ചെന്നുടെ വായില്‍ കയ്പും കനലും നീ വെച്ചു കാണാതെയടുത്തു് മറഞ്ഞെന്‍ കാതില്‍ നീ പേടികള്‍ കൂവി ഒരുകാര്യം കാണിക്കാമെന്നതിദൂരം പായിച്ചെന്നെ കരിമുള്ളിന്‍ കൂടലിലാക്കി കരയിച്ചതു് നീയല്ലെ?
-ദൈവത്തെയടുത്തുവരുത്തി വരം തരുവിക്കാമെന്നോതി തലയില്‍ തീച്ചട്ടിയുമേന്തിത്തുള്ളിച്ചതു് നീയല്ലേ ഒളികല്ലാലെന്നെയെറിഞ്ഞിട്ടവനാണെന്നെങ്ങൊ ചൂണ്ടി ചളി കുഴയും ചിരിയാല്‍ കയ്യിലെ മധുരം നീ കട്ടില്ലേ</description></item><item><title>കാടെവിടെ മക്കളേ - അയ്യപ്പപ്പണിക്കര്‍</title><link>https://ibnishak.github.io/blog/post/kaadevide/</link><pubDate>Sat, 02 Jan 2021 20:12:39 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kaadevide/</guid><description>കാടെവിടെ മക്കളേ? മേടെവിടെ മക്കളേ? കാട്ടു പുൽത്തകിടിയുടെ വേരെവിടെ മക്കളേ? കാട്ടുപൂഞ്ചോലയുടെ കുളിരെവിടെ മക്കളേ! കാറ്റുകള്‍ പുലര്‍ന്ന പൂങ്കാവെവിടെ മക്കളേ? കുട്ടിക്കരിംകുയില്‍ കൂവിത്തിമിര്‍ക്കുന്ന കുട്ടനാടന്‍ പുഞ്ചയെവിടെന്‍റെ മക്കളേ?
-പച്ചപ്പനന്തത്ത പാറിക്കളിക്കുന്ന പ്ലാവുകള്‍ മാവുകളുമെവിടെന്‍റെ മക്കളേ?
-പായല്‍ച്ചുരുള്‍ ചുറ്റി ദാഹനീര്‍ തേടാത്ത കായലും തോടുകളുമെവിടെന്‍റെ മക്കളേ?
-ചാകരമഹോത്സവപ്പെരുനാളിലലയടി- ച്ചാര്‍ക്കുന്ന കടലോരമെവിടെന്‍റെ മക്കളേ?
-കാര്‍ഷിക ഗവേഷണക്കശപിശയില്‍ വാടാത്ത കാറ്റുവീഴാക്കേരതരുവെവിടെ മക്കളേ?
-ഫാക്ടറിപ്പുകയുറഞ്ഞാസ്ത്മാ വലിക്കാത്തൊ രോക്സിജന്‍ വീശുന്ന നാടെവിടെ മക്കളേ?
-ശാസ്ത്രഗതി കൈവിരല്‍ത്തുമ്പാല്‍ നയിക്കുന്ന തീര്‍ത്ഥാടകര്‍ ചേര്‍ന്ന നാടെവിടെ മക്കളേ?
-പത്തിരിക്കറി കൂട്ടി മണവാട്ടി നുണയുന്നൊ- രൊപ്പനകള്‍ പാടുന്ന നാടെവിടെ മക്കളേ?
-മരവും മനുഷ്യരും കിളിയും മൃഗങ്ങളും ചെടിയും ചെടിക്കാത്ത നാടെവിടെ മക്കളേ?</description></item><item><title>Converting CapsLock to Hyper key with XKB</title><link>https://ibnishak.github.io/blog/post/caps-to-hyper/</link><pubDate>Sat, 26 Dec 2020 22:54:47 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/caps-to-hyper/</guid><description>Warning: While doing this, my cat decided to take a walk over my keyboard because I ignored her attempts to gain my attention for sometime. I saved the file not realizing that there were some syntax errors due to the cat walk. Next time I tried to login, my keyboard wouldn&amp;rsquo;t work. I couldn&amp;rsquo;t switch to console. The arch linux fall back did not help either. Finally I had to do a clean install of my OS.</description></item><item><title>Complement System</title><link>https://ibnishak.github.io/blog/post/complement-system/</link><pubDate>Thu, 17 Dec 2020 21:52:31 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/complement-system/</guid><description>Classic pathway Requirements for activation of classic pathway Limitations of Classic pathway and How body overcomes them Alternate Pathway Lectin Pathway More ways to help killing pathogens Pathologies of Alternate Pathway Pathologies due to defective complement regulation and deficiencies Major causes of hypocomplementemia C3b Convertase Misc Collection of 20 proteins mainly produced in liver C1 from GIT mucosa Another source of complement proteins in macrophages Classic pathway Antigen enters body.</description></item><item><title>About bjp, politics and friendship</title><link>https://ibnishak.github.io/blog/post/about-bjp/</link><pubDate>Wed, 16 Dec 2020 17:40:28 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/about-bjp/</guid><description>Simple facts first.
-BJP is a communal fascist organization who repeatedly publicised their intend via actions to oppress and commit murderous rampages against every minority of my country. Their very existence points to the location of a purulent abscess in our collective psyche. Every supporter of this political virus is aiding, abetting and openly signalling willingness to support what will amount to genocide if they are let to have their way.</description></item><item><title>Arch Linux Sudoers</title><link>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</link><pubDate>Tue, 15 Dec 2020 20:53:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</guid><description>Arch Linux: Sudoers Sudoer files is the configuration file for sudo command. It is located at /etc/sudoers.
+Qt based App for input, search, organization and review. Notes, cards and scheduling information are stored in SQlite Free 1 GB cloud space for synchronisation If I was rebuilding Anki from scratch, what would I have done?</description></item><item><title>Anki - Notes on things as they are now</title><link>https://ibnishak.github.io/blog/post/anki-general-notes/</link><pubDate>Sun, 21 Feb 2021 06:57:13 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/anki-general-notes/</guid><description>Card types Image occlusion: Piotr Wozniak has backed image occlusion in the 20 rules of information retention ModifiedCloze: Title, Cloze, Extras ModifiedBasic: Title, Front, Options, Back, Extras Justification for Title field It helps to collect repeated text to a separate field and put frozen field addon to good use Title: Osteomyelitis - Organism causeing the following type Cloze: Feathery - {{c1::Mycobacterium}} Title: Osteomyelitis - Organism causing the following type Cloze: Ivory - {{c1::Syphilis}} It ties up related cards well in card browser, at a more granular level than tags could afford.</description></item><item><title>സത്രത്തിലെ അവസാന രാത്രി - ശാന്തി ജയറാം</title><link>https://ibnishak.github.io/blog/post/sathrathile/</link><pubDate>Tue, 05 Jan 2021 21:47:59 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/sathrathile/</guid><description>നിന്‍ ചുടുനിശ്വാസമെന്‍ ചില്ലയില്‍
+വന്നുതൂങ്ങുന്ന രാവുകള്‍ക്കപ്പുറം
+അന്തമില്ലാതെ നീളുന്ന പാതയില്‍
+പണ്ടൊരിക്കല്‍ നാം കണ്ടിരുന്നില്ലയോ
+വിധുരനായൊരീ രാത്രിയെപ്പിന്നെയും
+കരിപുരട്ടുന്ന പേടിസ്വപ്നങ്ങലില്‍
+പരതിനോക്കുന്നു നമ്മള്‍ തന്‍ കൈവിരല്‍
+പഴയകാലത്തെയൊന്നു തൊട്ടീടുവാന്‍
+മര്‍ത്യബന്ധങ്ങളെന്‍ രാസശാലയില്‍
+മൃ‌ത്യുവോളം പുകഞ്ഞുതീരുമ്പൊഴും
+ശൂന്യമേതോ ശവക്കോട്ടപോലതില്‍
+ധൂമശില്പങ്ങള്‍ മാഞ്ഞുപോകുമ്പൊഴും
+ഒട്ടുനേരമീ സത്രത്തില്‍ നിന്നുടന്‍
+വിട്ടുപോകാന്‍ മടിച്ചിരിക്കുന്നു ഞാന്‍
+കെട്ടുപോകും നിമിഷങ്ങളില്‍ സ്വയം
+നഷ്ടമാകാന്‍ കൊതിച്ചുപോകുന്നു ഞാന്‍
+പോയകാലമേ നിന്‍ വിഴുപ്പേന്തുവാന്‍
+ലോകവീഥിയിലേകയാകുമ്പൊഴും
+പ്രേമശര്‍ക്കരപ്പാനിയില്‍ വീണൊരീ
+പ്രേതരൂപങ്ങള്‍ നൃ‌ത്തമാടുമ്പൊഴും
+നാണമില്ലാതെ പിന്നെയും പിന്നെയും
+ജീവിതത്തെപ്പുണര്‍ന്നുറങ്ങുന്നു ഞാന്‍
+നിന്‍ ചേതസിന്‍ കണ്ണാടിയാം മിഴി-
+ച്ചില്ലില്‍ നോക്കിത്തപസ്സുചെയ്യുന്നു ഞാന്‍
+നിന്‍ കിനാവിന്റെ നീലിച്ചരാത്രിയില്‍
+വെണ്ണിലാവായലിഞ്ഞു ചേര്‍ന്നീടുവാന്‍
+നിന്റെയുള്ളില്‍ ഘനീഭവിച്ചോര്‍മ്മതന്‍
+കണ്ണുനീരായ്‌ക്കൊഴിഞ്ഞുവീണീടുവാന്‍
+വ്യര്‍ഥമാമെന്‍ പകല്‍ക്കിനാപ്പക്ഷികള്‍</description></item><item><title>ചിത - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/chitha/</link><pubDate>Tue, 05 Jan 2021 19:52:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/chitha/</guid><description>മോഹശതങ്ങള്‍ ദഹിക്കും ചിതയില്‍
+ചാരിയിരിക്കുന്നേന്‍
+ഒരു ബീഡി കൊളുത്തി വലിക്കുന്നേന്‍
+കറകള്‍ ചുവയ്‌ക്കും പുകയുടെ ചുരുളുകള്‍
+ഊതി രസിക്കുന്നേന്‍
+വലയം തീര്‍ക്കും പുകയുടെ ചാരനിറത്തിന്‍
+വക്കിലലിഞ്ഞു ലയിക്കാന്‍ വ്യാമോഹിക്കുന്നേന്‍
+അമ്പി‌ളി നീറി മരിച്ചു ദഹിച്ചോരബരമാകെ
+അസ്ഥികളൂര്‍ന്നു കിടപ്പതു കണ്ടസ്വ‌സ്ഥതയാര്‍ത്തന്നാള്‍
+ചൂടിന്‍ ചിറകുകളില്‍ ചെറുകരിമുകിലായ്
+ചുറ്റിയലഞ്ഞന്നാള്‍
+തിരകള്‍ തെറകള്‍ നിവര്‍ക്കും കടലിന്‍
+കരയിലടിഞ്ഞു മുടിഞ്ഞൊരു നൂറ്റണ്ടുകളില്‍
+പരവശമായി ഉണര്‍ന്നുകിടന്നനാള്‍
+കണ്ണില്‍ കുത്തിയ കൈവിരലുകള്‍
+ഉള്ളിലുടക്കിയ വാരിയെല്ലുകള്‍
+ഊരിയെടുക്കെ
+എന്നിലുറങ്ങിയ മോഹശതങ്ങള്‍ മരിച്ചേപോയ്
+ഞാന്‍ വേദനകൊണ്ടു ചിരിച്ചേപോയ്
+ചേതന കൂട്ടിയ ചിതയില്‍
+ചോരയിനാല്‍ നെയ് കോരിയ ചിതയില്‍
+മോഹശതങ്ങള്‍ ദഹിക്കും ചിതയില്‍
+ചാരിയിരിക്കുന്നേന്‍
+ഒരു ബീഡി വലിച്ചു രസിക്കുന്നേന്‍</description></item><item><title>ബാലശാപങ്ങള്‍- മധുസൂദനന്‍ നായര്‍</title><link>https://ibnishak.github.io/blog/post/balasapangal/</link><pubDate>Mon, 04 Jan 2021 20:19:07 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/balasapangal/</guid><description>ഞാന്‍ കെട്ടിയ കളിവീടെന്തിനിടിച്ചുതകര്‍ത്തൂ നീ
+ഞാന്‍ കൂട്ടിയ കഞ്ഞീം കറിയും തൂവിയതെന്തിനു നീ
+ഞാന്‍ വിട്ടൊരു കൊച്ചോടത്തിനെ മുക്കിയതെന്തിനു നീ
+ഞാന്‍ വിട്ടുപറത്തിയ പട്ടമറുത്തതുമെന്തിനു നീ
+ഞാന്‍ കേള്‍ക്കും കഥകളില്‍ വന്നു മറുത്തു പറഞ്ഞില്ലേ
+ഞാന്‍ വീശിയ വര്‍ണ്ണച്ചിറകുമൊടിച്ചു കളഞ്ഞില്ലേ
+ഞാനാടിയൊരുഞ്ഞാല്‍ പാട്ടു് മുറിച്ചു് കളഞ്ഞില്ലേ
+ഞാന്‍ നട്ടൊരു പിച്ചകവള്ളി പുഴക്കിയെറിഞ്ഞില്ലേ
+കണ്‍പൊത്തിച്ചെന്നുടെ വായില്‍ കയ്പും കനലും നീ വെച്ചു
+കാണാതെയടുത്തു് മറഞ്ഞെന്‍ കാതില്‍ നീ പേടികള്‍ കൂവി
+ഒരുകാര്യം കാണിക്കാമെന്നതിദൂരം പായിച്ചെന്നെ
+കരിമുള്ളിന്‍ കൂടലിലാക്കി കരയിച്ചതു് നീയല്ലെ?
+ദൈവത്തെയടുത്തുവരുത്തി വരം തരുവിക്കാമെന്നോതി
+തലയില്‍ തീച്ചട്ടിയുമേന്തിത്തുള്ളിച്ചതു് നീയല്ലേ
+ഒളികല്ലാലെന്നെയെറിഞ്ഞിട്ടവനാണെന്നെങ്ങൊ ചൂണ്ടി
+ചളി കുഴയും ചിരിയാല്‍ കയ്യിലെ മധുരം നീ കട്ടില്ലേ</description></item><item><title>കാടെവിടെ മക്കളേ - അയ്യപ്പപ്പണിക്കര്‍</title><link>https://ibnishak.github.io/blog/post/kaadevide/</link><pubDate>Sat, 02 Jan 2021 20:12:39 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/kaadevide/</guid><description>കാടെവിടെ മക്കളേ? മേടെവിടെ മക്കളേ?
+കാട്ടു പുൽത്തകിടിയുടെ വേരെവിടെ മക്കളേ?
+കാട്ടുപൂഞ്ചോലയുടെ കുളിരെവിടെ മക്കളേ!
+കാറ്റുകള്‍ പുലര്‍ന്ന പൂങ്കാവെവിടെ മക്കളേ?
+കുട്ടിക്കരിംകുയില്‍ കൂവിത്തിമിര്‍ക്കുന്ന
+കുട്ടനാടന്‍ പുഞ്ചയെവിടെന്‍റെ മക്കളേ?
+പച്ചപ്പനന്തത്ത പാറിക്കളിക്കുന്ന
+പ്ലാവുകള്‍ മാവുകളുമെവിടെന്‍റെ മക്കളേ?
+പായല്‍ച്ചുരുള്‍ ചുറ്റി ദാഹനീര്‍ തേടാത്ത
+കായലും തോടുകളുമെവിടെന്‍റെ മക്കളേ?
+ചാകരമഹോത്സവപ്പെരുനാളിലലയടി-
+ച്ചാര്‍ക്കുന്ന കടലോരമെവിടെന്‍റെ മക്കളേ?
+കാര്‍ഷിക ഗവേഷണക്കശപിശയില്‍ വാടാത്ത
+കാറ്റുവീഴാക്കേരതരുവെവിടെ മക്കളേ?
+ഫാക്ടറിപ്പുകയുറഞ്ഞാസ്ത്മാ വലിക്കാത്തൊ
+രോക്സിജന്‍ വീശുന്ന നാടെവിടെ മക്കളേ?
+ശാസ്ത്രഗതി കൈവിരല്‍ത്തുമ്പാല്‍ നയിക്കുന്ന
+തീര്‍ത്ഥാടകര്‍ ചേര്‍ന്ന നാടെവിടെ മക്കളേ?
+പത്തിരിക്കറി കൂട്ടി മണവാട്ടി നുണയുന്നൊ-
+രൊപ്പനകള്‍ പാടുന്ന നാടെവിടെ മക്കളേ?
+മരവും മനുഷ്യരും കിളിയും മൃഗങ്ങളും
+ചെടിയും ചെടിക്കാത്ത നാടെവിടെ മക്കളേ?</description></item><item><title>Converting CapsLock to Hyper key with XKB</title><link>https://ibnishak.github.io/blog/post/caps-to-hyper/</link><pubDate>Sat, 26 Dec 2020 22:54:47 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/caps-to-hyper/</guid><description>Warning: While doing this, my cat decided to take a walk over my keyboard because I ignored her attempts to gain my attention for sometime. I saved the file not realizing that there were some syntax errors due to the cat walk. Next time I tried to login, my keyboard wouldn&amp;rsquo;t work. I couldn&amp;rsquo;t switch to console. The arch linux fall back did not help either. Finally I had to do a clean install of my OS.</description></item><item><title>Complement System</title><link>https://ibnishak.github.io/blog/post/complement-system/</link><pubDate>Thu, 17 Dec 2020 21:52:31 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/complement-system/</guid><description>Classic pathway Requirements for activation of classic pathway Limitations of Classic pathway and How body overcomes them Alternate Pathway Lectin Pathway More ways to help killing pathogens Pathologies of Alternate Pathway Pathologies due to defective complement regulation and deficiencies Major causes of hypocomplementemia C3b Convertase Misc Collection of 20 proteins mainly produced in liver C1 from GIT mucosa Another source of complement proteins in macrophages Classic pathway Antigen enters body.</description></item><item><title>About bjp, politics and friendship</title><link>https://ibnishak.github.io/blog/post/about-bjp/</link><pubDate>Wed, 16 Dec 2020 17:40:28 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/about-bjp/</guid><description>Simple facts first.
+BJP is a communal fascist organization who repeatedly publicised their intend via actions to oppress and commit murderous rampages against every minority of my country. Their very existence points to the location of a purulent abscess in our collective psyche.
+Every supporter of this political virus is aiding, abetting and openly signalling willingness to support what will amount to genocide if they are let to have their way.</description></item><item><title>Arch Linux Sudoers</title><link>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</link><pubDate>Tue, 15 Dec 2020 20:53:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</guid><description>Arch Linux: Sudoers Sudoer files is the configuration file for sudo command. It is located at /etc/sudoers.
 Editing Sudoer It MUST be edited using the command sudo visudo. Behind the scenes this command creates a temporary file, checks for any errors once you save and finally replace the original file.
 However editing in vi can be a pain. You can change it to any terminal editors using the command in the form below.</description></item><item><title>Dotfile Management - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/dotfile-management_criteria-and-candidates/</link><pubDate>Thu, 10 Dec 2020 22:00:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/dotfile-management_criteria-and-candidates/</guid><description>Essential NOT symlinking. Some programs (eg: XFCE) will overwrite symlinks. NOT copying. The config files itself should be the source of truth. ie, If the config files are edited, the changes should automatically reflect in the dotfiles vault. Version control. If the config files ought be edited without worry, they need be reversible to previous states Scriptable Desirable Simple command structure Ability to encrypt files Ability to ignore files based on OS or other parameters Bootstrapping - Ability to run some scripts automatically on first run.</description></item><item><title>Alias for updating YADM</title><link>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</link><pubDate>Mon, 07 Dec 2020 21:15:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</guid><description>Yadm update alias Ref: YADM
 Open ~/.config/yadm/repo.git/config and add the following
@@ -86,20 +516,99 @@ https://www.reddit.com/r/askreddit/top.rss?t=week&amp;amp;amp;limit=25</descript
 I hope things are fine. This is a note to remind you of one particular things - disciplining your children by constant fear.
 Constant fear is oppression.
 Oppressors cannot remain in power for eternity. Oppressed will not love their oppressors. So when you grow old and weak, your only hope is that you have broken your kids into a deranged intellectual gymnasts who can love their oppressors.</description></item><item><title>Limiting Number of Git Revisions - How</title><link>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</link><pubDate>Sat, 10 Oct 2020 22:42:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</guid><description>What Whenever a git commit is made, you are essentially creating a snapshot of the directory tree with some optimisations. This is great for software development workflow. However if you are using git to version control something like a personal knowledge base, keeping snapshots all the way back to origin is unnecessary.
-Git provides facilities to prune old commits. We make use of this facility to keep only last 5 commits.</description></item><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>Essential criteria. Mobile first. Privacy. Cross platform. At least Linux and Android must be supported. Scalable. Ability to cross link notes. Desired criteria. Fast search and navigation. Semi automation of organization. Bottom up organization. Fast input. Least effort for initial setup, but extendable according to personal requirements. Ideal criteria Complete portability The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?</description></item><item><title>ഒരുനാളിരവില്‍ - അയ്യപ്പപണിക്കര്‍</title><link>https://ibnishak.github.io/blog/post/orunaal-iravil/</link><pubDate>Mon, 28 Sep 2020 06:56:36 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/orunaal-iravil/</guid><description>ഒരുനാളിരവില്‍ പാതാളങ്ങളി- ലേറിയിറങ്ങി നടക്കെക്കണ്ടേ- നൊരുവന്‍ മേശക്കരികിലിരുന്നു വരക്കുന്നുണ്ടു മനുഷ്യചരിത്രം
-ജനനം ജനനം മൃതിയുടെ ജനനം മൃതിയെന്നാല്‍ ജനനത്തിന്‍ മരണം എവനുമിരുന്നു മരിക്കുകയത്രെ, മതിയതിനാലീ വിധുര വിലാപം. കാലമതീവ വിശാലം കളയുക- കരയും ശീലം കാമിനി നാമിനി.
-അയ്യപ്പപണിക്കര്‍</description></item><item><title>പക്ഷികളൊക്കെ പലവഴിവന്നൊരു - എഴുത്തച്ചന്‍</title><link>https://ibnishak.github.io/blog/post/pakshikalokke/</link><pubDate>Wed, 16 Sep 2020 08:37:50 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/pakshikalokke/</guid><description>പക്ഷികളൊക്കെ പലവഴിവന്നൊരു വൃക്ഷത്തെയാശ്രയിച്ചൊട്ടു നേരം വസിച്ചൊ- ക്കെയോരോ വഴി പിന്നെ പറന്നുപോം, ദു:ഖിക്കുമാറില്ലതിന്നവരാരുമേ
-എഴുത്തച്ചന്‍</description></item><item><title>അധികനേരമായി സന്ദശകര്‍ക്കുള്ള - ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്</title><link>https://ibnishak.github.io/blog/post/adhika-neramay/</link><pubDate>Tue, 08 Sep 2020 09:03:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/adhika-neramay/</guid><description>അധികനേരമായി സന്ദശകര്‍ക്കുള്ള മുറിയില്‍ മൌനം കുടിച്ചിരിക്കുന്നു നാം. അധികനേരമായി സന്ദശകര്‍ക്കുള്ള മുറിയില്‍ മൌനം കുടിച്ചിരിക്കുന്നു നാം. ജനലിനപ്പുറം ജീവിതം പോലെയീ പകല്‍ വെളിച്ചം പൊലിഞ്ഞു പോകുന്നതും, ചിറകു പൂട്ടുവാന്‍ കൂട്ടിലേക്കോര്‍മ്മതന്‍ കിളികളൊക്കെ പറന്നു പോകുന്നതും, ഒരു നിമിഷം മറന്നൂ പരസ്പരം മിഴികളില്‍ നമ്മള്‍ നഷ്ടപ്പെടുന്നുവോ. മുറുകിയോ നെഞ്ചിടിപ്പിന്റെ താളവും, നിറയെ സംഗീതമുള്ള നിശ്വാസവും.
-പറയുവാനുണ്ട് പൊന്‍ ചെമ്പകം പൂത്ത കരളു പണ്ടേ കരിഞ്ഞു പോയെങ്കിലും, കറ പിടിച്ചോരെന്‍ ചുണ്ടില്‍ തുളുമ്പുവാന്‍ കവിത പോലും വരണ്ടു പോയെങ്കിലും, ചിറകു നീര്‍ത്തുവാനാവാതെ തൊണ്ടയില്‍ പിടയുകയാണൊരേകാന്ത രോദനം, സ്മരണതന്‍ ദൂര സാഗരം തേടിയെന്‍ ഹൃദയരേഖകള്‍ നീളുന്നു പിന്നെയും.
-കനകമൈലാഞ്ചിനീരില്‍ തുടുത്ത നിന്‍ വിരല്‍ തൊടുമ്പോള്‍ കിനാവു ചുരന്നതും നെടിയ കണ്ണിലെ കൃഷ്ണകാന്തങ്ങള്‍ തന്‍ കിരണമേറ്റെന്റെ ചില്ലകള്‍ പൂത്തതും മറവിയില്‍ മാഞ്ഞു പോയ നിന്‍ കുങ്കുമ- ത്തരി പുരണ്ട ചിദംബര സന്ധ്യകള്‍</description></item><item><title>ചന്ദനക്കാട്ടിലെ താമരപ്പൊയ്കയില്‍ - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/chandanakkatile/</link><pubDate>Fri, 21 Aug 2020 21:19:47 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/chandanakkatile/</guid><description>ചന്ദനക്കാട്ടിലെ താമരപ്പൊയ്കയില്‍ കല്മ‌ഷം തൂകിക്കരി കലക്കും വെണ്‍കളി പൂശിയ വെണ്മുകില്‍ഭിത്തിയില്‍ കാര്‍മഷികൊണ്ടു കളം വരയ്ക്കും അക്കളം പുക്കു ഞാനത്തലിന്‍ വേതാള നൃത്തം ചവിട്ടിയലറി നില്ക്കും ആവില്ല നിങ്ങള്‍ക്കടക്കുവാനെന്റെയീ ഭാവങ്ങളീമന്നിന്‍ ഭാവമത്.
-താറും കുറ്റിച്ചൂലും, കടമ്മനിട്ട രാമകൃഷ്ണന്‍</description></item><item><title>അവലക്ഷണം - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/avalakshanam/</link><pubDate>Thu, 13 Aug 2020 21:05:20 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/avalakshanam/</guid><description>കൈവെള്ളയില്‍ കറുത്ത പുള്ളി കൈനോട്ടക്കാരന്‍ പറഞ്ഞു: അവലക്ഷണം അപായം വിഷഭയം അഗ്നിഭയം ജലഭയം മിത്രദോഷം മാനഹാനി അരചകോപം വിരഹദു:ഖം ദുര്‍മരണം ലക്ഷണക്കേട് മാറ്റാതെ രക്ഷയില്ലെന്ന് വന്നു. മണിബന്ധമറുത്ത് കൈപ്പത്തി കളഞ്ഞ് അയാള്‍ രക്ഷപ്പെട്ടു. തല കളഞ്ഞ് തലയിലെഴുത്തിന്റെ കേട് മാറ്റാമെന്ന തത്ത്വം അങ്ങനെ അയാള്‍ കണ്ടുപിടിച്ചു. ലോകവുമാഹ്ലാദിച്ചു.
-കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</description></item><item><title>ഞാനിവിടെയാണ് - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/njaniviteyaan/</link><pubDate>Mon, 03 Aug 2020 11:03:22 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/njaniviteyaan/</guid><description>ഞാനിവിടെയുണ്ട് ഈ സാഗരത്തിന്റെ രൗദ്രഗാനങ്ങളില്‍ ഈ സാഗരത്തിന്റെ ശ്യാമഗര്‍ഭങ്ങളില്‍ നീരവം നീര്‍ത്തുള്ളിയോര്‍ക്കുന്ന ചിപ്പിതന്‍ രാഗവിവശമാമുള്‍ത്തുടിപ്പില്‍ ഏതോ മരതകദ്വീപിന്റെ നെഞ്ചിടി- പ്പൂറിയൊഴുക്കിട്ടയുഷ്ണവേഗങ്ങളില്‍ ആശ്ചര്യ‌ശക്തി പ്രവാഹചുഴികളില്‍ അന്തര്‍ഗതങ്ങളുറഞ്ഞ ഹിമാനിയില്‍ ആശപൂണ്ടാശ്വാസമറ്റത്തിരകളില്‍ ആടിയുയര്‍ന്നു തളര്‍ന്നു പിന്‍വാങ്ങിയും ആവേശമോടു കുതിച്ചുകിതച്ച‌ഗ്നി‌- മോഹങ്ങളായി, നീരാവിയായ്, നീറ്റലായ് അല്ലല്ല‌, ഞാനീ കറുത്ത‌ കയങ്ങളില്‍ കാലമെറിഞ്ഞ കുടത്തിലെ ഭൂതമായ് കാത്തിരിപ്‌പൂ ബന്ധനമുക്തിക്കു ദാഹമായ്. ഞാനിവിടെയുണ്ട്, ഈ കാനനത്തിന്റെ മേഘസ്വപ്നങ്ങളില്‍ മേയും മൃ‌ഗങ്ങള്‍തന്‍ നിര്‍വ്യാജനേത്രങ്ങള്‍ പേറുന്ന സംഭ്രമശോകഭയങ്ങളില്‍ കറ്റക്കിടാവിന്‍ കുളമ്പൊലിക്കായ്, കാതു- വട്ടംപിടിക്കും ഹരിണിമാര്‍ഗങ്ങളില്‍ ആഴത്തില്‍നിന്നുയര്‍ന്നാകാശനീലയില്‍ ശാഖകള്‍ നീട്ടിയുഴറും മരത്തിന്‍ ഹരിതദു:ഖങ്ങളില്‍ ഞെട്ടറ്റു ഭൂമിയില്‍ വീണ പഴത്തിന്റെ പൊട്ടിച്ചിതറിയ ശോണസ്മരണയില്‍ മാനത്തുകണ്ണികള്‍ മല്ലടിക്കെ, മുകര്‍ന്നൂറി- ച്ചിരിക്കുമുദാര സരിത്തിന്‍ ഹൃ‌ദയഭാവങ്ങളില്‍ അല്ലല്ല, ഞാനീക്കറുത്ത വനത്തില്‍ വിറയ്‌ക്കുന്ന പുല്ലകള്‍ വായ്‌മൂടി നില്ക്കും ഗുഹയിലെ പുള്ളിപ്പുലിയുടെ പല്ലിന്നു താളമായ്, താംബൂലമായ് താടിയെല്ലിന്‍ ചലനമായ്‌ തീരുന്നു നിത്യനായ് ഞാനിവിടെയുണ്ട്, ഈ വ്യോമസംഗീത നാദഭേദങ്ങളില്‍ ഈ വര്‍ണസംയോഗസഞ്ചലനങ്ങളില്‍ ചക്രവാതങ്ങളില്‍, ശക്തിരൂപങ്ങളില്‍ ചക്രവാളങ്ങള്‍ക്കുമപ്പുറത്തപ്പുറത്തഗ്നിഗോളങ്ങളില്‍ ഗോളസംഘാത സംശ്ലേഷണങ്ങളില്‍ അല്ലല്ല ഞാനീക്കറുത്ത നഭസ്സില്‍ പകലിന്റെ കണ്ണുനീരായ്, ച്ചുടുഗദ്‌ഗദധാരയായ് ധാര മുറിഞ്ഞുപിടയുന്ന ബിന്ദുവായ് ഏരകപ്പുല്ലിന്റെ കണ്ണില്‍ ഞൊടിയിടനേരം പ്രകാശമായ് മാറുന്നു നിത്യനായ് അല്ലല്ല തോഴരേ, ഞാനിവിടെയാണ്!</description></item><item><title>Note</title><link>https://ibnishak.github.io/blog/post/note/</link><pubDate>Fri, 14 Feb 2020 22:05:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/note/</guid><description>No matter how far and fast you run, you cannot outrun a brain that actively wants to kill you.
+Git provides facilities to prune old commits. We make use of this facility to keep only last 5 commits.</description></item><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>Essential criteria. Mobile first. Privacy. Cross platform. At least Linux and Android must be supported. Scalable. Ability to cross link notes. Desired criteria. Fast search and navigation. Semi automation of organization. Bottom up organization. Fast input. Least effort for initial setup, but extendable according to personal requirements. Ideal criteria Complete portability The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?</description></item><item><title>ഒരുനാളിരവില്‍ - അയ്യപ്പപണിക്കര്‍</title><link>https://ibnishak.github.io/blog/post/orunaal-iravil/</link><pubDate>Mon, 28 Sep 2020 06:56:36 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/orunaal-iravil/</guid><description>ഒരുനാളിരവില്‍ പാതാളങ്ങളി-
+ലേറിയിറങ്ങി നടക്കെക്കണ്ടേ-
+നൊരുവന്‍ മേശക്കരികിലിരുന്നു
+വരക്കുന്നുണ്ടു മനുഷ്യചരിത്രം
+ജനനം ജനനം മൃതിയുടെ ജനനം
+മൃതിയെന്നാല്‍ ജനനത്തിന്‍ മരണം
+എവനുമിരുന്നു മരിക്കുകയത്രെ,
+മതിയതിനാലീ വിധുര വിലാപം.
+കാലമതീവ വിശാലം കളയുക-
+കരയും ശീലം കാമിനി നാമിനി.
+അയ്യപ്പപണിക്കര്‍</description></item><item><title>പക്ഷികളൊക്കെ പലവഴിവന്നൊരു - എഴുത്തച്ചന്‍</title><link>https://ibnishak.github.io/blog/post/pakshikalokke/</link><pubDate>Wed, 16 Sep 2020 08:37:50 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/pakshikalokke/</guid><description>പക്ഷികളൊക്കെ പലവഴിവന്നൊരു
+വൃക്ഷത്തെയാശ്രയിച്ചൊട്ടു നേരം വസിച്ചൊ-
+ക്കെയോരോ വഴി പിന്നെ പറന്നുപോം,
+ദു:ഖിക്കുമാറില്ലതിന്നവരാരുമേ
+എഴുത്തച്ചന്‍</description></item><item><title>അധികനേരമായി സന്ദശകര്‍ക്കുള്ള - ബാലചന്ദ്രന്‍ ചുള്ളിക്കാട്</title><link>https://ibnishak.github.io/blog/post/adhika-neramay/</link><pubDate>Tue, 08 Sep 2020 09:03:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/adhika-neramay/</guid><description>അധികനേരമായി സന്ദശകര്‍ക്കുള്ള
+മുറിയില്‍ മൌനം കുടിച്ചിരിക്കുന്നു നാം.
+അധികനേരമായി സന്ദശകര്‍ക്കുള്ള
+മുറിയില്‍ മൌനം കുടിച്ചിരിക്കുന്നു നാം.
+ജനലിനപ്പുറം ജീവിതം പോലെയീ
+പകല്‍ വെളിച്ചം പൊലിഞ്ഞു പോകുന്നതും,
+ചിറകു പൂട്ടുവാന്‍ കൂട്ടിലേക്കോര്‍മ്മതന്‍
+കിളികളൊക്കെ പറന്നു പോകുന്നതും,
+ഒരു നിമിഷം മറന്നൂ പരസ്പരം
+മിഴികളില്‍ നമ്മള്‍ നഷ്ടപ്പെടുന്നുവോ.
+മുറുകിയോ നെഞ്ചിടിപ്പിന്റെ താളവും,
+നിറയെ സംഗീതമുള്ള നിശ്വാസവും.
+പറയുവാനുണ്ട് പൊന്‍ ചെമ്പകം പൂത്ത
+കരളു പണ്ടേ കരിഞ്ഞു പോയെങ്കിലും,
+കറ പിടിച്ചോരെന്‍ ചുണ്ടില്‍ തുളുമ്പുവാന്‍
+കവിത പോലും വരണ്ടു പോയെങ്കിലും,
+ചിറകു നീര്‍ത്തുവാനാവാതെ തൊണ്ടയില്‍
+പിടയുകയാണൊരേകാന്ത രോദനം,
+സ്മരണതന്‍ ദൂര സാഗരം തേടിയെന്‍
+ഹൃദയരേഖകള്‍ നീളുന്നു പിന്നെയും.
+കനകമൈലാഞ്ചിനീരില്‍ തുടുത്ത നിന്‍
+വിരല്‍ തൊടുമ്പോള്‍ കിനാവു ചുരന്നതും</description></item><item><title>ചന്ദനക്കാട്ടിലെ താമരപ്പൊയ്കയില്‍ - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/chandanakkatile/</link><pubDate>Fri, 21 Aug 2020 21:19:47 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/chandanakkatile/</guid><description>ചന്ദനക്കാട്ടിലെ താമരപ്പൊയ്കയില്‍
+കല്മ‌ഷം തൂകിക്കരി കലക്കും
+വെണ്‍കളി പൂശിയ വെണ്മുകില്‍ഭിത്തിയില്‍
+കാര്‍മഷികൊണ്ടു കളം വരയ്ക്കും
+അക്കളം പുക്കു ഞാനത്തലിന്‍ വേതാള
+നൃത്തം ചവിട്ടിയലറി നില്ക്കും
+ആവില്ല നിങ്ങള്‍ക്കടക്കുവാനെന്റെയീ
+ഭാവങ്ങളീമന്നിന്‍ ഭാവമത്.
+താറും കുറ്റിച്ചൂലും, കടമ്മനിട്ട രാമകൃഷ്ണന്‍</description></item><item><title>അവലക്ഷണം - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/avalakshanam/</link><pubDate>Thu, 13 Aug 2020 21:05:20 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/avalakshanam/</guid><description>കൈവെള്ളയില്‍ കറുത്ത പുള്ളി
+കൈനോട്ടക്കാരന്‍ പറഞ്ഞു:
+അവലക്ഷണം അപായം
+വിഷഭയം അഗ്നിഭയം ജലഭയം
+മിത്രദോഷം മാനഹാനി
+അരചകോപം വിരഹദു:ഖം ദുര്‍മരണം
+ലക്ഷണക്കേട് മാറ്റാതെ രക്ഷയില്ലെന്ന് വന്നു.
+മണിബന്ധമറുത്ത് കൈപ്പത്തി കളഞ്ഞ്
+അയാള്‍ രക്ഷപ്പെട്ടു.
+തല കളഞ്ഞ് തലയിലെഴുത്തിന്റെ കേട്
+മാറ്റാമെന്ന തത്ത്വം അങ്ങനെ
+അയാള്‍ കണ്ടുപിടിച്ചു.
+ലോകവുമാഹ്ലാദിച്ചു.
+കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</description></item><item><title>ഞാനിവിടെയാണ് - കടമ്മനിട്ട രാമകൃ‌ഷ്ണന്‍</title><link>https://ibnishak.github.io/blog/post/njaniviteyaan/</link><pubDate>Mon, 03 Aug 2020 11:03:22 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/njaniviteyaan/</guid><description>ഞാനിവിടെയുണ്ട്
+ഈ സാഗരത്തിന്റെ രൗദ്രഗാനങ്ങളില്‍
+ഈ സാഗരത്തിന്റെ ശ്യാമഗര്‍ഭങ്ങളില്‍
+നീരവം നീര്‍ത്തുള്ളിയോര്‍ക്കുന്ന ചിപ്പിതന്‍
+രാഗവിവശമാമുള്‍ത്തുടിപ്പില്‍
+ഏതോ മരതകദ്വീപിന്റെ നെഞ്ചിടി-
+പ്പൂറിയൊഴുക്കിട്ടയുഷ്ണവേഗങ്ങളില്‍
+ആശ്ചര്യ‌ശക്തി പ്രവാഹചുഴികളില്‍
+അന്തര്‍ഗതങ്ങളുറഞ്ഞ ഹിമാനിയില്‍
+ആശപൂണ്ടാശ്വാസമറ്റത്തിരകളില്‍
+ആടിയുയര്‍ന്നു തളര്‍ന്നു പിന്‍വാങ്ങിയും
+ആവേശമോടു കുതിച്ചുകിതച്ച‌ഗ്നി‌-
+മോഹങ്ങളായി, നീരാവിയായ്, നീറ്റലായ്
+അല്ലല്ല‌, ഞാനീ കറുത്ത‌ കയങ്ങളില്‍
+കാലമെറിഞ്ഞ കുടത്തിലെ ഭൂതമായ്
+കാത്തിരിപ്‌പൂ ബന്ധനമുക്തിക്കു ദാഹമായ്.
+ഞാനിവിടെയുണ്ട്,
+ഈ കാനനത്തിന്റെ മേഘസ്വപ്നങ്ങളില്‍
+മേയും മൃ‌ഗങ്ങള്‍തന്‍ നിര്‍വ്യാജനേത്രങ്ങള്‍
+പേറുന്ന സംഭ്രമശോകഭയങ്ങളില്‍
+കറ്റക്കിടാവിന്‍ കുളമ്പൊലിക്കായ്, കാതു-
+വട്ടംപിടിക്കും ഹരിണിമാര്‍ഗങ്ങളില്‍
+ആഴത്തില്‍നിന്നുയര്‍ന്നാകാശനീലയില്‍
+ശാഖകള്‍ നീട്ടിയുഴറും മരത്തിന്‍
+ഹരിതദു:ഖങ്ങളില്‍
+ഞെട്ടറ്റു ഭൂമിയില്‍ വീണ പഴത്തിന്റെ
+പൊട്ടിച്ചിതറിയ ശോണസ്മരണയില്‍
+മാനത്തുകണ്ണികള്‍ മല്ലടിക്കെ, മുകര്‍ന്നൂറി-
+ച്ചിരിക്കുമുദാര സരിത്തിന്‍ ഹൃ‌ദയഭാവങ്ങളില്‍
+അല്ലല്ല, ഞാനീക്കറുത്ത വനത്തില്‍</description></item><item><title>Note</title><link>https://ibnishak.github.io/blog/post/note/</link><pubDate>Fri, 14 Feb 2020 22:05:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/note/</guid><description>No matter how far and fast you run, you cannot outrun a brain that actively wants to kill you.
 People tend to think such ramblings are a cry for help. People have tried to help. Earnest, empathetic well intentioned people with expertise. Unfortunately there is only so much someone outside can help against an opponent that is so relentless as your own brain.
 Some decisions are not emotional. I have debated with myself the necessity of suicide since I was 15.</description></item><item><title>Adding custom language highlight and fonts to markor</title><link>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</link><pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</guid><description>Custom Language Highlight Markor has inbuilt support for syntax highlighting of a select few languages. However markor comes bundled with prism js. This means adding syntax highlighting for any of 199 languages supported by prism is a matter of two steps
 Go to prism CDN and copy the link corresponding to your language. In the markor app, open Settings&amp;gt;View mode and add the the following snippet to Inject -&amp;gt; head after changing the link.</description></item><item><title>Building markor from source code in linux</title><link>https://ibnishak.github.io/blog/post/building-markor-in-linux/</link><pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/building-markor-in-linux/</guid><description>Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.
 If you do not have android-sdk installed, you need to install it first. Most package managers has it. Given below is a portable method. export ANDROID_SDK_ROOT=&amp;#34;$HOME/android-sdk&amp;#34; if [[ !</description></item><item><title>Vim: Copy and paste to termux clipboard</title><link>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</link><pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</guid><description>Copying to system clipboard from vim is usually done by using the &amp;ldquo;+ register. Unfortunately this will not work in termux. Here is a workaround to cut, copy and paste from android clipboard. Remember that you need termux-apk tools for this to work.
 Add the following to vimrc vnoremap &amp;lt;C-x&amp;gt; :!termux-clipboard-set&amp;lt;CR&amp;gt; vnoremap &amp;lt;C-c&amp;gt; :w !termux-clipboard-set&amp;lt;CR&amp;gt;&amp;lt;CR&amp;gt; inoremap &amp;lt;C-v&amp;gt; &amp;lt;ESC&amp;gt;:read !termux-clipboard-get&amp;lt;CR&amp;gt;i Source the vimrc or reload vim. In visual mode, you can now use &amp;ldquo;Ctrl-x&amp;rdquo; to cut, &amp;ldquo;Ctrl-c&amp;rdquo; to copy to termux clipboard.</description></item><item><title>Bad ideologies - Criteria</title><link>https://ibnishak.github.io/blog/post/spotting-bad-ideology/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/spotting-bad-ideology/</guid><description>&amp;ldquo;Doubt each old thing you know. Require current evidence. Make it prove itself to be true today. Otherwise, let it go.&amp;rdquo; - really cannot remember who said it.
-What is an ideology An ideology is a coherent set of ideas that should help you make sense of the world. Set of normative beliefs and values that a person or other entity hold.
+What is an ideology An ideology is a coherent set of ideas that should help you make sense of the world.
+Set of normative beliefs and values that a person or other entity hold.
 Normative : Standard for evaluating or making judgments about behavior or outcomes.</description></item><item><title>Emacs - Adding clipboad.js to HTML exports</title><link>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</guid><description>Clipboard.js is a javascript solution to add copy buttons to &amp;lt;pre&amp;gt; or &amp;lt;code&amp;gt; regions in your html file. F
 Since many of the Emacs community use org-publish for blogging, it seems like a good idea to note how to include clipboard.js snippets in the org mode html exports.
 Add the following to your init.el (defun org-html-src-block (src-block contents info) &amp;#34;Transcode a SRC-BLOCK element from Org to HTML. CONTENTS holds the contents of the item.</description></item><item><title>Emacs: Notes on keybindings in GNU+Linux</title><link>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</guid><description>Pointless introduction Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.</description></item><item><title>zsh: Parameter expansion cheatsheet</title><link>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</link><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</guid><description>Parent directory echo $PWD # /home/learning/pf/zsh/zsh2.00/src echo $PWD:h # /home/learning/pf/zsh/zsh2.00 Grandparent directry echo $PWD:h:h # /home/learning/pf/zsh Current dir without path echo $PWD:t # src Extracting file name and extension name=foo.c echo $name:r # foo echo $name:e # c Substituting parts of variable name=foo.c echo $name:s/foo/bar/ # bar.c Mass renaming of files
