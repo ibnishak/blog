@@ -1,5 +1,5 @@
 ---
-title: Book notes - A guide to good life
+title: Book Notes - A Guide to Good Life
 date: 2022-02-22
 lastmod: 2024-02-10T23:37:26 +05:30
 author: Riz
@@ -14,9 +14,7 @@ enableMathJax: false
 disableToC: false
 disableAutoCollapse: true
 ---
-	
-	
-# Guide to Good Life
+
 
 ## Chapter 4: Negative Visualization
 - He robs present ills of their power who has perceived their coming beforehand. - Seneca

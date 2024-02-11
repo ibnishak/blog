@@ -1,12 +1,12 @@
 ---
 title: Knowledge Acquisition
 date: 2022-02-17T11:48:33+05:30
-lastmod: 2024-02-05T00:31:47+05:30
+lastmod: 2024-02-11T13:06:16+05:30
 author: Riz
 
 description: 
 categories: []
-tags: [education]
+tags: []
 
 draft: false
 enableDisqus : false
@@ -14,6 +14,7 @@ enableMathJax: false
 disableToC: false
 disableAutoCollapse: true
 ---
+
 
 # Knowledge Acquisition
 

@@ -4,7 +4,11 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"log"
 	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
 	"text/template"
 	"time"
 
@@ -49,7 +53,7 @@ func main() {
 		fmt.Printf("ERROR: %s", err.Error())
 		os.Exit(1)
 	}
-	blogDatelo := "2006-01-02T15:04:05 -07:00"
+	blogDatelo := "2006-01-02T15:04:05-07:00"
 	out := Post{
 		Title:      intakefm.Title,
 		Date:       tm.Format(blogDatelo),
@@ -62,11 +66,19 @@ func main() {
 		fmt.Printf("ERROR: %s", err.Error())
 		os.Exit(1)
 	}
-	err = tmpl.Execute(os.Stdout, out)
+
+	outFile := generateOutFileName(file)
+	f, err := os.Create(outFile)
 	if err != nil {
 		fmt.Printf("ERROR: %s", err.Error())
 		os.Exit(1)
 	}
+	err = tmpl.Execute(f, out)
+	if err != nil {
+		fmt.Printf("ERROR: %s", err.Error())
+		os.Exit(1)
+	}
+	fmt.Println(outFile)
 }
 
 func osReadFile(file string) ([]byte, error) {
@@ -105,27 +117,40 @@ func osReadFile(file string) ([]byte, error) {
 
 func getTmpl(out Post) (*template.Template, error) {
 	const postStruct = `---
-	title: {{ .Title }}
-	date: {{ .Date }}
-	lastmod: {{ .LastMod }}
-	author: Riz
-	
-	description: 
-	categories: []
-	tags: [{{ .Tags}}]
-	
-	draft: false
-	enableDisqus : false
-	enableMathJax: false
-	disableToC: false
-	disableAutoCollapse: true
-	---
-	
-	{{ .Body }}`
+title: {{ .Title }}
+date: {{ .Date }}
+lastmod: {{ .LastMod }}
+author: Riz
+
+description: 
+categories: []
+tags: []
+
+draft: false
+enableDisqus : false
+enableMathJax: false
+disableToC: false
+disableAutoCollapse: true
+---
+
+{{ .Body }}`
 	tmp := template.New("Template")
 	tmpl, err := tmp.Parse(postStruct)
 	if err != nil {
 		return nil, err
 	}
 	return tmpl, nil
+}
+
+func generateOutFileName(file string) string {
+	basename := filepath.Base(file)
+	noext := strings.TrimSuffix(basename, filepath.Ext(basename))
+	reg, err := regexp.Compile("[^a-zA-Z0-9]+")
+	if err != nil {
+		log.Fatal(err)
+	}
+	slug := reg.ReplaceAllString(noext, "-")
+	s := strings.ToLower(slug)
+	o := filepath.Join("./content/post", s) + ".md"
+	return o
 }
