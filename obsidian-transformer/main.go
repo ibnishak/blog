@@ -16,7 +16,6 @@ type Post struct {
 	Title      string
 	Date       string
 	LastMod    string
-	Tags       string
 	Categories []string
 	Body       string
 }
@@ -25,7 +24,6 @@ func main() {
 	var intakefm struct {
 		Title string `yaml:"title"`
 		ID    string `yaml:"id"`
-		Tags  string `yaml:"tags"`
 	}
 
 	file := os.Args[1:][0]
@@ -56,7 +54,6 @@ func main() {
 		Title:      intakefm.Title,
 		Date:       tm.Format(blogDatelo),
 		LastMod:    time.Now().Format(blogDatelo),
-		Tags:       intakefm.Tags,
 		Categories: []string{},
 		Body:       string(body),
 	}
