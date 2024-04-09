@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.124.1">
+
+  <title> Bash script to write directory structure to org file |  Treppenwitze</title>
+  <meta name="description" content="Write directory structure or a subset of it as a list in an org mode file">
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/blog/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+  <link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+  <link rel="manifest" href="http://localhost:1313/blog/site.webmanifest">
+
+  <link rel="stylesheet" href="http://localhost:1313/blog/css/index.css">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/blog/post/org-mode--bash-script-to-create-sitemap/">
+  <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
+
+</head>
+
+<body >
+  <header class="menus">
+  
+
+  <nav >
+    
+    <a href="/blog/"> Home</a>
+    
+    <a href="/blog/about/"> About</a>
+    
+    <a href="https://nilavara.surge.sh/?stackedNotes=000"> Digital Garden</a>
+    
+  </nav>
+
+  <nav class="fontawesome">
+    
+    <a href="https://github.com/ibnishak" target="_blank">
+        
+		GitHub
+    </a>
+    
+    
+    <a href="http://localhost:1313/blog/index.xml" target="_blank">
+        
+		RSS
+    </a>
+    
+  </nav>
+  
+  
+  <div class="hidden description">Thoughts, rants and notes</div>
+  
+</header>
+
+<article id="article">
+  <header>
+	<div class="cat-into">
+		
+
+  
+	</div>
+
+    <h1 style="text-align: center;" >Bash script to write directory structure to org file</h1>
+    <div class="post-meta">
+    
+      <time datetime="2019-05-16T00:00:00Z">May 16, 2019</time>  &nbsp; &nbsp;| 
+    
+    
+
+    
+	&nbsp; &nbsp; Reading Time:
+      
+      
+      
+
+      
+        4 min
+      
+      36 s
+      &nbsp;
+    
+    </div>
+  </header>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<p>This is a bash script that will write the file structure of a given directory to an org mode file. By default, the script writes the file structure as plain list. However, I will explain the steps below enough so that you may create variations where file structure is written as org headlines. It will be rather easy to understand if we start out with an understanding of what we are planning to achieve.</p>
+<p>Let us assume  we have a directory structure like this<br>
+#+BEGIN_EXAMPLE<br>
+.<br>
+├── First&ndash;1.org<br>
+├── First&ndash;2.org<br>
+├── First&ndash;3.org<br>
+├── First&ndash;4.org<br>
+├── First&ndash;5.org<br>
+├── FirstFolder<br>
+│   ├── Mango&ndash;1.org<br>
+│   ├── Mango&ndash;2.org<br>
+│   ├── Mango&ndash;3.org<br>
+│   ├── Mango&ndash;4.org<br>
+│   └── Mango&ndash;5.org<br>
+├── SecondFolder<br>
+│   ├── Apple&ndash;1.org<br>
+│   ├── Apple&ndash;2.org<br>
+│   ├── Apple&ndash;3.org<br>
+│   ├── Apple&ndash;4.org<br>
+│   └── Apple&ndash;5.org<br>
+#+END_EXAMPLE</p>
+<ul>
+<li>Plain list<br>
+The expected output is like this.<br>
+#+BEGIN_EXAMPLE</li>
+</ul>
+<ul>
+<li>SecondFolder/</li>
+<li>[[file:./SecondFolder/Apple&ndash;5.org][Apple&ndash;5]]</li>
+<li>[[file:./SecondFolder/Apple&ndash;4.org][Apple&ndash;4]]</li>
+<li>[[file:./SecondFolder/Apple&ndash;3.org][Apple&ndash;3]]</li>
+<li>[[file:./SecondFolder/Apple&ndash;2.org][Apple&ndash;2]]</li>
+<li>[[file:./SecondFolder/Apple&ndash;1.org][Apple&ndash;1]]</li>
+<li>FirstFolder/</li>
+<li>[[file:./FirstFolder/Mango&ndash;5.org][Mango&ndash;5]]</li>
+<li>[[file:./FirstFolder/Mango&ndash;4.org][Mango&ndash;4]]</li>
+<li>[[file:./FirstFolder/Mango&ndash;3.org][Mango&ndash;3]]</li>
+<li>[[file:./FirstFolder/Mango&ndash;2.org][Mango&ndash;2]]</li>
+<li>[[file:./FirstFolder/Mango&ndash;1.org][Mango&ndash;1]]</li>
+<li>[[file:./First&ndash;5.org][First&ndash;5]]</li>
+<li>[[file:./First&ndash;4.org][First&ndash;4]]</li>
+<li>[[file:./First&ndash;3.org][First&ndash;3]]</li>
+<li>[[file:./First&ndash;2.org][First&ndash;2]]</li>
+<li>[[file:./First&ndash;1.org][First&ndash;1]]</li>
+</ul>
+<p>#+END_EXAMPLE</p>
+<p>** Script</p>
+<p>#+BEGIN_SRC bash :tangle no<br>
+#!/usr/bin/env bash</p>
+<p>buffer=&ldquo;tmp&rdquo;<br>
+target=&ldquo;index.org&rdquo;<br>
+dir=&quot;$1&quot; #Take the first argument with which script is called and assign it to dir</p>
+<p>if [ -z &ldquo;$dir&rdquo; ]; then<br>
+dir=&quot;.&quot;<br>
+fi</p>
+<h1 id="if-user-has-not-called-the-script-with-an-argument-the-script-should-just-use-the-current-directory-here-we-are-checking-if-the-variable-dir-is-empty-or-not-and-if-empty-assign-present-working-directory-to-it">If user has not called the script with an argument, the script should just use the current directory. Here we are checking if the variable $dir is empty or not, and if empty, assign present working directory to it.</h1>
+<p>cd $dir</p>
+<p>if [ -f &ldquo;${target}&rdquo; ]; then<br>
+rm -f &ldquo;$target&rdquo;<br>
+fi</p>
+<h1 id="the-target-is-indexorg-if-a-file-named-indexorg-already-exists-in-the-directory-remove-it">The $target is &lsquo;index.org&rsquo;. If a file named &lsquo;index.org&rsquo; already exists in the directory, remove it.</h1>
+<p>tree -P &ldquo;*.org&rdquo; -iftr &ndash;noreport &ndash;dirsfirst &ndash;prune <br>
+| sed &ldquo;/.$/d&rdquo; &gt; &ldquo;$buffer&rdquo;</p>
+<h1 id="-p--pattern-of-files-to-include-in-the-tree">-P : Pattern of files to include in the tree.</h1>
+<h1 id="-i--tree-will-not-print-the-indentation-lines">-i : Tree will not print the indentation lines.</h1>
+<h1 id="-f--prints-the-full-path-prefix-for-each-file">-f : Prints the full path prefix for each file.</h1>
+<h1 id="-t--sort-by-modified-time">-t : Sort by modified time.</h1>
+<h1 id="-r--reverse-the-sort-so-that-most-recently-modified-appears-on-top">-r : Reverse the sort, so that most recently modified appears on top.</h1>
+<h1 id="--noreport--usually-tree-prints-a-summary-of-the-structure-at-the-end-in-our-case-it-is-not-required-this-flag-turns-off-the-report">&ndash;noreport : Usually tree prints a summary of the structure at the end. In our case, it is not required. This flag turns off the report.</h1>
+<h1 id="--dirsfirst--place-directories-first">&ndash;dirsfirst : Place directories first.</h1>
+<h1 id="--prune--do-not-print-empty-directories">&ndash;prune : Do not print empty directories.</h1>
+<h1 id="sed-deletes-any-line-with-only-a-single-dot-in-it">Sed deletes any line with only a single dot in it</h1>
+<p>for f in $(cat &ldquo;$buffer&rdquo;) #for every line in $buffer<br>
+do<br>
+filename=$(basename $f) #Converts the line to name like &ldquo;myfile.org&rdquo;<br>
+filename=&quot;${filename%.*}&quot; #Remove extension, so it becomes just &ldquo;myfile&rdquo;&quot;<br>
+slashes=&quot;${f//[^/]}&quot; #Distill the slashes from the path. It will look like &ldquo;///&rdquo; etc<br>
+levels=&quot;$(echo $slashes | tr &lsquo;/&rsquo; &rsquo; &lsquo;)&quot; #Change slashes to spaces. Variation is to change it to tabs by using &ldquo;tr &lsquo;/&rsquo; &lsquo;\t&rsquo;&rdquo;<br>
+if [ -f $f ]; then #If path is a file<br>
+echo &ldquo;${levels}+ [[file:${f}][$filename]]&rdquo; &raquo; &ldquo;$target&rdquo; #Add $levels (number of spaces equalling number of forward slashes in path) followed by a + and then the link to file, and append it to $target<br>
+else #if path is a folder<br>
+foldername=$(echo $f | sed &rsquo;s/.///&rsquo;) #Remove the &ldquo;./&rdquo; in the beginning<br>
+echo &ldquo;${levels}+ ${foldername}/&rdquo; &raquo; &ldquo;${target}&rdquo; # Append it to $target as a string, not a link.<br>
+fi<br>
+done<br>
+rm -f &ldquo;$buffer&rdquo; #Remove the temporary buffer<br>
+echo &ldquo;Sitemap successfully written to ${target}&rdquo;</p>
+<p>#+END_SRC</p>
+<ul>
+<li>Header hierarchy<br>
+The expected output is like this.<br>
+#+BEGIN_EXAMPLE</li>
+<li>SecondFolder/<br>
+** [[file:./SecondFolder/Apple&ndash;5.org][Apple&ndash;5]]<br>
+** [[file:./SecondFolder/Apple&ndash;4.org][Apple&ndash;4]]<br>
+** [[file:./SecondFolder/Apple&ndash;3.org][Apple&ndash;3]]<br>
+** [[file:./SecondFolder/Apple&ndash;2.org][Apple&ndash;2]]<br>
+** [[file:./SecondFolder/Apple&ndash;1.org][Apple&ndash;1]]</li>
+<li>FirstFolder/<br>
+** [[file:./FirstFolder/Mango&ndash;5.org][Mango&ndash;5]]<br>
+** [[file:./FirstFolder/Mango&ndash;4.org][Mango&ndash;4]]<br>
+** [[file:./FirstFolder/Mango&ndash;3.org][Mango&ndash;3]]<br>
+** [[file:./FirstFolder/Mango&ndash;2.org][Mango&ndash;2]]<br>
+** [[file:./FirstFolder/Mango&ndash;1.org][Mango&ndash;1]]</li>
+<li>[[file:./First&ndash;5.org][First&ndash;5]]</li>
+<li>[[file:./First&ndash;4.org][First&ndash;4]]</li>
+<li>[[file:./First&ndash;3.org][First&ndash;3]]</li>
+<li>[[file:./First&ndash;2.org][First&ndash;2]]</li>
+<li>[[file:./First&ndash;1.org][First&ndash;1]]</li>
+</ul>
+<p>#+END_EXAMPLE<br>
+** Script<br>
+#+BEGIN_SRC bash :tangle no<br>
+#!/usr/bin/env bash</p>
+<p>buffer=&ldquo;tmp&rdquo;<br>
+target=&ldquo;index.org&rdquo;<br>
+dir=&quot;$1&quot; #Take the first argument with which script is called and assign it to dir</p>
+<p>if [ -z &ldquo;$dir&rdquo; ]; then<br>
+dir=&quot;.&quot;<br>
+fi</p>
+<h1 id="if-user-has-not-called-the-script-with-an-argument-the-script-should-just-use-the-current-directory-here-we-are-checking-if-the-variable-dir-is-empty-or-not-and-if-empty-assign-present-working-directory-to-it-1">If user has not called the script with an argument, the script should just use the current directory. Here we are checking if the variable $dir is empty or not, and if empty, assign present working directory to it.</h1>
+<p>cd $dir</p>
+<p>if [ -f &ldquo;${target}&rdquo; ]; then<br>
+rm -f &ldquo;$target&rdquo;<br>
+fi</p>
+<h1 id="the-target-is-indexorg-if-a-file-named-indexorg-already-exists-in-the-directory-remove-it-1">The $target is &lsquo;index.org&rsquo;. If a file named &lsquo;index.org&rsquo; already exists in the directory, remove it.</h1>
+<p>tree -P &ldquo;*.org&rdquo; -iftr &ndash;noreport &ndash;dirsfirst &ndash;prune <br>
+| sed &ldquo;/.$/d&rdquo; &gt; &ldquo;$buffer&rdquo;</p>
+<h1 id="-p--pattern-of-files-to-include-in-the-tree-1">-P : Pattern of files to include in the tree.</h1>
+<h1 id="-i--tree-will-not-print-the-indentation-lines-1">-i : Tree will not print the indentation lines.</h1>
+<h1 id="-f--prints-the-full-path-prefix-for-each-file-1">-f : Prints the full path prefix for each file.</h1>
+<h1 id="-t--sort-by-modified-time-1">-t : Sort by modified time.</h1>
+<h1 id="-r--reverse-the-sort-so-that-most-recently-modified-appears-on-top-1">-r : Reverse the sort, so that most recently modified appears on top.</h1>
+<h1 id="--noreport--usually-tree-prints-a-summary-of-the-structure-at-the-end-in-our-case-it-is-not-required-this-flag-turns-off-the-report-1">&ndash;noreport : Usually tree prints a summary of the structure at the end. In our case, it is not required. This flag turns off the report.</h1>
+<h1 id="--dirsfirst--place-directories-first-1">&ndash;dirsfirst : Place directories first.</h1>
+<h1 id="--prune--do-not-print-empty-directories-1">&ndash;prune : Do not print empty directories.</h1>
+<h1 id="sed-deletes-any-line-with-only-a-single-dot-in-it-1">Sed deletes any line with only a single dot in it</h1>
+<p>for f in $(cat &ldquo;$buffer&rdquo;) #for every line in $buffer<br>
+do<br>
+filename=$(basename $f) #Converts the line to name like &ldquo;myfile.org&rdquo;<br>
+filename=&quot;${filename%.<em>}&quot; #Remove extension, so it becomes just &ldquo;myfile&rdquo;&quot;<br>
+slashes=&quot;${f//[^/]}&quot; #Distill the slashes from the path. It will look like &ldquo;///&rdquo; etc<br>
+levels=&quot;$(echo $slashes | tr &lsquo;/&rsquo; &lsquo;</em>&rsquo;)&quot; #Change slashes to asterisks.<br>
+if [ -f $f ]; then #If path is a file<br>
+echo &ldquo;${levels} [[file:${f}][$filename]]&rdquo; &raquo; &ldquo;$target&rdquo; #Add $levels (number of asterisks equalling number of forward slashes in path) and then the link to file, and append it to $target<br>
+else #if path is a folder<br>
+foldername=$(echo $f | sed &rsquo;s/.///&rsquo;) #Remove the &ldquo;./&rdquo; in the beginning<br>
+echo &ldquo;${levels} ${foldername}/&rdquo; &raquo; &ldquo;${target}&rdquo; # Append it to $target as a string, not a link.<br>
+fi<br>
+done<br>
+rm -f &ldquo;$buffer&rdquo; #Remove the temporary buffer<br>
+echo &ldquo;Sitemap successfully written to ${target}&rdquo;</p>
+<p>#+END_SRC</p>
+<ul>
+<li>Multiple directories<br>
+The script can be applied to multiple directories at the same time to multiple directories. Assuming the script is saved as =treefy.sh= and is made executable, the following script can be used to apply it to all the <em>level 1</em> subdirectories of the current folder using [[https://github.com/sharkdp/fd][fd]].</li>
+</ul>
+<p>#+BEGIN_SRC bash :tangle no<br>
+#!/usr/bin/env bash<br>
+set -e</p>
+<pre><code>fd . --max-depth 1 --type d -0 | xargs -0 -n1 treefy.sh
+</code></pre>
+<p>#+END_SRC</p>
+<p>Alternatively you may use the linux build in [[http://man7.org/linux/man-pages/man1/find.1.html][find]].</p>
+
+
+  
+
+  
+  <footer>
+    <hr>
+    
+  </footer>
+  
+
+  
+
+
+  <div class="comments">
+
+
+
+</div>
+
+</article>
+
+
+
+  
+  
+  
+</body>
+<div class="foot">
+  
+  
+    &copy; 2019 - 2024 &#183; 
+    <a href="/" target="_blank">Home</a> · Theme <a href="https://github.com/RainerChiang/simpleness" target="_blank">Simpleness</a> Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> &#183;
+    <a href="#" aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+	  </svg></a>
+  
+
+  
+</div>
+
+
+
+</html>

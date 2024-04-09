@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="Hugo 0.124.1">
 
-  <title> Note taking resources |  Treppenwitze</title>
+  <title> Project Iroh |  Treppenwitze</title>
   <meta name="description" content="Thoughts, rants and notes">
   <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/blog/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
@@ -16,7 +16,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:1313/blog/post/note-taking-resources/">
+  <link rel="canonical" href="http://localhost:1313/blog/post/iroh/">
   <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
 
 </head>
@@ -63,10 +63,10 @@
   
 	</div>
 
-    <h1 style="text-align: center;" >Note taking resources</h1>
+    <h1 style="text-align: center;" >Project Iroh</h1>
     <div class="post-meta">
     
-      <time datetime="2024-02-24T11:19:07&#43;05:30">February 24, 2024</time>  &nbsp; &nbsp;| 
+      <time datetime="2021-06-22T08:33:25&#43;05:30">June 22, 2021</time>  &nbsp; &nbsp;| 
     
     
 
@@ -77,7 +77,7 @@
       
 
       
-      3 s
+      37 s
       &nbsp;
     
     </div>
@@ -95,27 +95,30 @@
 
 
 
+<p>Project Iroh is a collection of scripts, programs and extensions which is used to convert a bunch of markdown files to this website. While the code is still messy, needs reorganization and optimization, I think it would be a good idea to document various parts of it.</p>
+<h2 id="rationality-and-justification-of-choices">Rationality and Justification of choices</h2>
+<h2 id="the-core">The Core</h2>
+<p>At the core of Iroh is a command line interface written in Golang. It provides 3 commands</p>
+<ol>
+<li>init<br>
+Init command takes user input regarding where the markdown notes are stored, where do you want to keep the published notes etc. It would then create a <code>.meta</code> folder</li>
+<li>parse<br>
+Parse co</li>
+</ol>
+<p>As mentioned above, it is a bit too messy for public consumption right now.</p>
+<h2 id="vscode-and-plugins">VSCode and Plugins</h2>
 <ul>
-<li>Obsidian</li>
-<li><a href="https://excalidraw.com/" target="_blank">Excalidraw</a></li>
-<li>Neovim</li>
-<li>Termux</li>
-<li>Markor</li>
+<li>Mayukai dark theme</li>
 </ul>
-<p><a href="https://docs.linkwarden.app/self-hosting/installation" target="_blank">LinkWarden</a><br>
-<a href="https://beavernotes.com/" target="_blank">BeaverNotes</a><br>
-<a href="https://plocate.sesse.net/" target="_blank">plocate</a>, a much faster locate</p>
+<h2 id="scripts-and-other-components">Scripts and Other components</h2>
+<p>At its core is a golang program I wrote.</p>
+
 
   
 
   
   <footer>
     <hr>
-    
-    <time datetime="2024-04-09T11:49:55&#43;05:30">
-      update @ April 09, 2024
-    </time>
-    <p></p>
     
   </footer>
   
