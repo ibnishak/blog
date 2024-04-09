@@ -1,18 +1,9 @@
 ---
 title: Dotfile Management - Criteria and Candidates
 date: 2020-12-10T22:00:43+05:30
-lastmod: 
 author: Riz
-
-description: 
 categories: ["review"]
 tags: ["linux"]
-
-draft: false
-enableDisqus : false
-enableMathJax: false
-disableToC: false
-disableAutoCollapse: true
 ---
 
 ## Essential
@@ -33,5 +24,9 @@ disableAutoCollapse: true
 
 ## Candidates
 - Gnu stow: Symlinks
-- Chezmoi: Copying
-- Yadm: CURRENT
+- [Chezmoi](https://github.com/twpayne/chezmoi): Copying
+- [RCM](https://github.com/thoughtbot/rcm)
+- [Comtrya](https://github.com/comtrya/comtrya)
+- [dotfiles](https://github.com/rhysd/dotfiles): Symlinks
+- [dotbot](https://github.com/sigmonsays/dotbot): Symlinks
+- [Yadm](https://yadm.io/): CURRENT
