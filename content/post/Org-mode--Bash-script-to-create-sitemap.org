@@ -3,7 +3,7 @@
 #+DATE: 2019-05-16
 #+DRAFT: true
 #+DESCRIPTION: Write directory structure or a subset of it as a list in an org mode file
-#+tags:  ["org-mode" "bash" "emacs"]
+
 
 This is a bash script that will write the file structure of a given directory to an org mode file. By default, the script writes the file structure as plain list. However, I will explain the steps below enough so that you may create variations where file structure is written as org headlines. It will be rather easy to understand if we start out with an understanding of what we are planning to achieve.
 
