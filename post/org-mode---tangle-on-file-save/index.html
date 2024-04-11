@@ -1,188 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="Hugo 0.124.1">
-
-  <title> Org mode - Tangle on file save |  Treppenwitze</title>
-  <meta name="description" content="Thoughts, rants and notes">
-  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/blog/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
-  <link rel="icon" href="http://localhost:1313/blog/favicon.ico">
-  <link rel="manifest" href="http://localhost:1313/blog/site.webmanifest">
-
-  <link rel="stylesheet" href="http://localhost:1313/blog/css/index.css">
-  
-  
-  
-  <link rel="canonical" href="http://localhost:1313/blog/post/org-mode---tangle-on-file-save/">
-  <link rel="alternate" type="application/rss+xml" href="" title="Treppenwitze">
-
-</head>
-
-<body >
-  <header class="menus">
-  
-
-  <nav >
-    
-    <a href="/blog/"> Home</a>
-    
-    <a href="/blog/about/"> About</a>
-    
-    <a href="https://nilavara.surge.sh/?stackedNotes=000"> Digital Garden</a>
-    
-  </nav>
-
-  <nav class="fontawesome">
-    
-    <a href="https://github.com/ibnishak" target="_blank">
-        
-		GitHub
-    </a>
-    
-    
-    <a href="http://localhost:1313/blog/index.xml" target="_blank">
-        
-		RSS
-    </a>
-    
-  </nav>
-  
-  
-  <div class="hidden description">Thoughts, rants and notes</div>
-  
-</header>
-
-<article id="article">
-  <header>
-	<div class="cat-into">
-		
-
-  
-  <span class="header-item">
-	&nbsp;&nbsp;| &nbsp;&nbsp; Tags: 
-   
-	 <a href="/tags/emacs">emacs</a>
-	 &nbsp;
-   
-	 <a href="/tags/org-mode">org-mode</a>
-	 &nbsp;
-   
-</span>
- 
-	</div>
-
-    <h1 style="text-align: center;" >Org mode - Tangle on file save</h1>
-    <div class="post-meta">
-    
-      <time datetime="2019-05-16T11:19:07&#43;05:30">May 16, 2019</time>  &nbsp; &nbsp;| 
-    
-    
-
-    
-	&nbsp; &nbsp; Reading Time:
-      
-      
-      
-
-      
-        1 min
-      
-      12 s
-      &nbsp;
-    
-    </div>
-  </header>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<p>If you use org file to maintain your =init.el=, it is possible that many a times you need to tangle codes frequently. Below given is a couple of methods which will enable you to automatically tangle code snippets out of org mode file everytime the file is saved.</p>
-<h1 id="via-toggle-function">Via toggle function</h1>
-<p>A toggle function is one which you can enable/disable from M-x menu (call once to enable, call again to disable). If enabled, <code>ri-org-toggle-tangle-on-save</code>  will tangle src blocks automatically everytime the org file is saved.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elisp" data-lang="elisp"><span style="display:flex;"><span>  (defun ri-tangle-on-save-org-mode-file()
-</span></span><span style="display:flex;"><span>    (when (<span style="color:#a6e22e">equal</span> major-mode <span style="color:#e6db74">&#39;org-mode</span>)
-</span></span><span style="display:flex;"><span>      (org-babel-tangle)))
-</span></span><span style="display:flex;"><span>  (defun ri-org-toggle-tangle-on-save ()
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Toggle tangling code blocks on save&#34;</span>
-</span></span><span style="display:flex;"><span>    (interactive)
-</span></span><span style="display:flex;"><span>    (if (<span style="color:#a6e22e">get</span> <span style="color:#e6db74">&#39;ri-org-toggle-tangle-on-save</span> <span style="color:#e6db74">&#39;state</span>)
-</span></span><span style="display:flex;"><span>        (progn
-</span></span><span style="display:flex;"><span>          (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;Org tangle on save Disabled&#34;</span>)
-</span></span><span style="display:flex;"><span>          (remove-hook <span style="color:#e6db74">&#39;after-save-hook</span> <span style="color:#e6db74">&#39;ri-tangle-on-save-org-mode-file</span>)
-</span></span><span style="display:flex;"><span>          (<span style="color:#a6e22e">put</span> <span style="color:#e6db74">&#39;ri-org-toggle-tangle-on-save</span> <span style="color:#e6db74">&#39;state</span> <span style="color:#66d9ef">nil</span>))
-</span></span><span style="display:flex;"><span>      (progn
-</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">message</span> <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;Org tangle on save Enabled&#34;</span>)
-</span></span><span style="display:flex;"><span>        (add-hook <span style="color:#e6db74">&#39;after-save-hook</span> <span style="color:#e6db74">&#39;ri-tangle-on-save-org-mode-file</span>)
-</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">put</span> <span style="color:#e6db74">&#39;ri-org-toggle-tangle-on-save</span> <span style="color:#e6db74">&#39;state</span> <span style="color:#66d9ef">t</span>))))
-</span></span></code></pre></div><p>You can substitute ~org-babel-tangle~ part with functions other than tangling. For eg, those who use org mode to publish to html as a part of project can set it as <code>org-publish-current-file</code> to update the html file everytime you save the  org file. When you are out of the project, do not forget to toggle it to off.</p>
-<h1 id="via-minor-mode">Via minor mode</h1>
-<p>An alternative is to define a minor mode that will do the same. Add the following to the =init.el=</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elisp" data-lang="elisp"><span style="display:flex;"><span> (define-minor-mode opos-mode
-</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;Org-publish-on-save mode&#34;</span>
-</span></span><span style="display:flex;"><span>      :global <span style="color:#66d9ef">t</span>
-</span></span><span style="display:flex;"><span>      (if zo-mode
-</span></span><span style="display:flex;"><span>          (add-hook <span style="color:#e6db74">&#39;after-save-hook</span> <span style="color:#e6db74">&#39;publish-on-save-org-mode-file</span>)
-</span></span><span style="display:flex;"><span>        (remove-hook <span style="color:#e6db74">&#39;after-save-hook</span> <span style="color:#e6db74">&#39;publish-on-save-org-mode-file</span>)))
-</span></span></code></pre></div><p>You can set the opos-mode in <code>.dir-local-variable</code> in a folder to non-nil as given below, so that all org files in that folder will update the html files automatically upon file save.</p>
-<pre tabindex="0"><code>  ((nil .  ((eval . (opos-mode 1)))))
-</code></pre>
-
-  
-
-  
-  <footer>
-    <hr>
-    
-    <time datetime="2024-04-09T11:49:55&#43;05:30">
-      update @ April 09, 2024
-    </time>
-    <p></p>
-    
-  </footer>
-  
-
-  
-
-
-  <div class="comments">
-
-
-
-</div>
-
-</article>
-
-
-
-  
-  
-  
-</body>
-<div class="foot">
-  
-  
-    &copy; 2019 - 2024 &#183; 
-    <a href="/" target="_blank">Home</a> · Theme <a href="https://github.com/RainerChiang/simpleness" target="_blank">Simpleness</a> Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> &#183;
-    <a href="#" aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
-		<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-	  </svg></a>
-  
-
-  
-</div>
-
-
-
-</html>
+<!doctype html><html lang=en><head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.124.1"><title>Org mode - Tangle on file save | Treppenwitze</title>
+<meta name=description content="Thoughts, rants and notes"><link rel=apple-touch-icon sizes=180x180 href=http://localhost:1313/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/blog/favicon-32x32.png><link rel=icon href=http://localhost:1313/blog/favicon.ico><link rel=manifest href=http://localhost:1313/blog/site.webmanifest><link rel=stylesheet href=http://localhost:1313/blog/css/index.css><link rel=canonical href=http://localhost:1313/blog/post/org-mode---tangle-on-file-save/><link rel=alternate type=application/rss+xml href title=Treppenwitze></head><body><header class=menus><nav><a href=/blog/>Home</a>
+<a href=/blog/about/>About</a>
+<a href="https://nilavara.surge.sh/?stackedNotes=000">Digital Garden</a></nav><nav class=fontawesome><a href=https://github.com/ibnishak target=_blank>GitHub
+</a><a href=http://localhost:1313/blog/index.xml target=_blank>RSS</a></nav><div class="hidden description">Thoughts, rants and notes</div></header><article id=article><header><div class=cat-into><span class=header-item>&nbsp;&nbsp;| &nbsp;&nbsp; Tags:
+<a href=/tags/emacs>emacs</a>
+&nbsp;
+<a href=/tags/org-mode>org-mode</a>
+&nbsp;</span></div><h1 style=text-align:center>Org mode - Tangle on file save</h1><div class=post-meta><time datetime=2019-05-16T11:19:07+05:30>May 16, 2019</time> &nbsp; &nbsp;|
+&nbsp; &nbsp; Reading Time:
+1 min
+12 s
+&nbsp;</div></header><p>If you use org file to maintain your =init.el=, it is possible that many a times you need to tangle codes frequently. Below given is a couple of methods which will enable you to automatically tangle code snippets out of org mode file everytime the file is saved.</p><h1 id=via-toggle-function>Via toggle function</h1><p>A toggle function is one which you can enable/disable from M-x menu (call once to enable, call again to disable). If enabled, <code>ri-org-toggle-tangle-on-save</code> will tangle src blocks automatically everytime the org file is saved.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elisp data-lang=elisp><span style=display:flex><span>  (defun ri-tangle-on-save-org-mode-file()
+</span></span><span style=display:flex><span>    (when (<span style=color:#a6e22e>equal</span> major-mode <span style=color:#e6db74>&#39;org-mode</span>)
+</span></span><span style=display:flex><span>      (org-babel-tangle)))
+</span></span><span style=display:flex><span>  (defun ri-org-toggle-tangle-on-save ()
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Toggle tangling code blocks on save&#34;</span>
+</span></span><span style=display:flex><span>    (interactive)
+</span></span><span style=display:flex><span>    (if (<span style=color:#a6e22e>get</span> <span style=color:#e6db74>&#39;ri-org-toggle-tangle-on-save</span> <span style=color:#e6db74>&#39;state</span>)
+</span></span><span style=display:flex><span>        (progn
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;%s&#34;</span> <span style=color:#e6db74>&#34;Org tangle on save Disabled&#34;</span>)
+</span></span><span style=display:flex><span>          (remove-hook <span style=color:#e6db74>&#39;after-save-hook</span> <span style=color:#e6db74>&#39;ri-tangle-on-save-org-mode-file</span>)
+</span></span><span style=display:flex><span>          (<span style=color:#a6e22e>put</span> <span style=color:#e6db74>&#39;ri-org-toggle-tangle-on-save</span> <span style=color:#e6db74>&#39;state</span> <span style=color:#66d9ef>nil</span>))
+</span></span><span style=display:flex><span>      (progn
+</span></span><span style=display:flex><span>        (<span style=color:#a6e22e>message</span> <span style=color:#e6db74>&#34;%s&#34;</span> <span style=color:#e6db74>&#34;Org tangle on save Enabled&#34;</span>)
+</span></span><span style=display:flex><span>        (add-hook <span style=color:#e6db74>&#39;after-save-hook</span> <span style=color:#e6db74>&#39;ri-tangle-on-save-org-mode-file</span>)
+</span></span><span style=display:flex><span>        (<span style=color:#a6e22e>put</span> <span style=color:#e6db74>&#39;ri-org-toggle-tangle-on-save</span> <span style=color:#e6db74>&#39;state</span> <span style=color:#66d9ef>t</span>))))
+</span></span></code></pre></div><p>You can substitute ~org-babel-tangle~ part with functions other than tangling. For eg, those who use org mode to publish to html as a part of project can set it as <code>org-publish-current-file</code> to update the html file everytime you save the org file. When you are out of the project, do not forget to toggle it to off.</p><h1 id=via-minor-mode>Via minor mode</h1><p>An alternative is to define a minor mode that will do the same. Add the following to the =init.el=</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elisp data-lang=elisp><span style=display:flex><span> (define-minor-mode opos-mode
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;Org-publish-on-save mode&#34;</span>
+</span></span><span style=display:flex><span>      :global <span style=color:#66d9ef>t</span>
+</span></span><span style=display:flex><span>      (if zo-mode
+</span></span><span style=display:flex><span>          (add-hook <span style=color:#e6db74>&#39;after-save-hook</span> <span style=color:#e6db74>&#39;publish-on-save-org-mode-file</span>)
+</span></span><span style=display:flex><span>        (remove-hook <span style=color:#e6db74>&#39;after-save-hook</span> <span style=color:#e6db74>&#39;publish-on-save-org-mode-file</span>)))
+</span></span></code></pre></div><p>You can set the opos-mode in <code>.dir-local-variable</code> in a folder to non-nil as given below, so that all org files in that folder will update the html files automatically upon file save.</p><pre tabindex=0><code>  ((nil .  ((eval . (opos-mode 1)))))
+</code></pre><footer><hr><time datetime=2024-04-09T11:49:55+05:30>update @ April 09, 2024</time><p></p></footer><div class=comments></div></article></body><div class=foot>&copy; 2019 - 2024 &#183;
+<a href=/ target=_blank>Home</a> · Theme <a href=https://github.com/RainerChiang/simpleness target=_blank>Simpleness</a> Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a> &#183;
+<a href=# aria-label="Go to Top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentcolor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.646a.5.5.0 01.708.0l6 6a.5.5.0 01-.708.708L8 5.707l-5.646 5.647a.5.5.0 01-.708-.708l6-6z"/></svg></a></div></html>
