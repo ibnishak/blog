@@ -18,4 +18,4 @@ disableAutoCollapse: true
 # Hi there
 
 My name is Rizwan Ishak. In my free time I tend to read and experiment with computer. This is a collection of things which you might find interesting. 
-You can follow me on twitter at [@OneLittleRiz](https://twitter.com/OneLittleRiz)
+You can follow me on mastodon at [@riz_madapeedikakkaran](https://mastodon.social/@riz_madapeedikakkaran/followers)
