@@ -1,7 +1,7 @@
 ---
 title: 
 date: 2024-04-11T16:45:48+05:30
-lastmod: 2024-04-11T20:00:18+05:30
+lastmod: 2024-04-11T20:06:37+05:30
 author: Riz
 
 description: 
@@ -95,7 +95,7 @@ socket.onclose = (event) => {
   console.log("Socket Closed Connection: ", event);
   socket.send("Client Closed!");
 };
-// TODO: On message here
+
 socket.onerror = (error) => {
   console.log("Socket Error: ", error);
 };
@@ -147,16 +147,22 @@ func handleWs(w http.ResponseWriter, r *http.Request) {
 
 	// Once client disconnects reduce the number of connections by one
 	currConn = currConn - 1
+	
+// If there are other live connections, return
 	if currConn > 0 {
 		return
 	}
-	// Wait 10secs for any more connection and any operations to finish
+
+
+	// If there no other connection, Wait 10secs for any more connection and any operations to finish
 	for i := 0; i < 10; i++ {
 		time.Sleep(1 * time.Second)
 		if currConn != 0 {
 			return
 		}
 	}
+
+// Signal shutdown via channel
 	endofSession <- true
 }
 ```
