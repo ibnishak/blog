@@ -1,5 +1,5 @@
 ---
-title: 
+title: Using browser as a GUI for Golang apps
 date: 2024-04-11T16:45:48+05:30
 lastmod: 2024-04-11T20:06:37+05:30
 author: Riz
