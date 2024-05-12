@@ -1,7 +1,10 @@
 public
+hugopublish
 .hugo_build.lock
 .obsidian
-content/post/000.md
+.cache/
 node_modules
 package-lock.json
 obsidian-transformer/obsidian-transformer
+
+

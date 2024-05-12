@@ -3,6 +3,7 @@ languageCode = "en"
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 enableEmoji = true
+publishDir= "hugopublish"
 # pagination = 10
 
 title = "Treppenwitze"
