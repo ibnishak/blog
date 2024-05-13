@@ -61,3 +61,6 @@ tag = "tags"
 [markup.goldmark.renderer]
     unsafe= true
 	hardWraps = true
+
+[outputs]
+	home = ["HTML","RSS","JSON"]

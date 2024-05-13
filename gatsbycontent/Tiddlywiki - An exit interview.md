@@ -28,3 +28,7 @@ Usually if a tool fails to clear essential criteria of its category (See [[Note 
 6. [[Tiddlywiki - Issues with markup]]
 7. [[Tiddlywiki - Issues with UI, Community and the rest]]
 8. [[Tiddlywiki - Conclusion]]
+
+Also see
+- [TW5: CSS woes with smaller screens](/blog/post/tw5-small-screen-css-woes/)
+- [TW5: Options in Android Platform](/blog/post/tw5-options-in-android-platform/)

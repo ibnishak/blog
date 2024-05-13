@@ -9,7 +9,9 @@ id: 20220316194517288
 
 # Tiddlywiki - Way ahead
 
-Tiddlywiki is a unique tool. That is not always good. When your tool is unique, your problems are also unique and solutions might be rare. It is incredibly powerful to roll out your own solutions, but it is time-consuming. Ultimately the question is do you want to work on your notes, or do you want to work on your tool. Its unique selling proposition of powerful filters and transclusion is being implemented in apps like Logseq and Obsidian, which gives one fewer and fewer incentives to stay with Tiddlywiki.
+Tiddlywiki is a unique tool. That is not always good. When your tool is unique, your problems are also unique and solutions might be rare. It is incredibly powerful to roll out your own solutions, but it is time-consuming. It takes up a middle ground between being a framework and note taking application. Problem with being in middle is, there are better note-taking solutions, and there are better frameworks. 
+
+Ultimately the question is do you want to work on your notes, or do you want to work on your tool. Its unique selling proposition of powerful filters and transclusion is being implemented in apps like Logseq and Obsidian, which gives one fewer and fewer incentives to stay with Tiddlywiki.
 
 ---
 

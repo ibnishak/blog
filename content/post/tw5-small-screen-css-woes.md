@@ -29,21 +29,21 @@ I am not touching the part where the color palettes look straight out of webzine
 
 Admittedly all these are minor inconveniences. Community members have put in effort to create themes which will solve all these issues. However none of that has made its way to the core. Given that the desktop way of installing plugins and themes is drag 'n drop which is not available on small screens, if you want to start a wiki in smaller screens with a comfortable level of usability, you will have to jump through several hoops.
 
-### #recommendations:
-##### [JD's material theme](http://j.d.material.tiddlyspot.com/)  
-  Using the latest [hammerjs widgets from BurningTreeC](http://hammerwidgets.tiddlyspot.com), JD has put together a modern theme for smaller screens which has behaviors expected from a webpage on this side of 2010, including swipe from edges to show the sidebar.
+## Recommendations:
+### [JD's material theme](http://j.d.material.tiddlyspot.com/)  
+Using the latest [hammerjs widgets from BurningTreeC](http://hammerwidgets.tiddlyspot.com), JD has put together a modern theme for smaller screens which has behaviors expected from a webpage on this side of 2010, including swipe from edges to show the sidebar.
 
-##### [Multiling O Keyboard](https://play.google.com/store/apps/details?id=kl.ime.oh).  
+### [Multiling O Keyboard](https://play.google.com/store/apps/details?id=kl.ime.oh).  
 Usual recommendation is to use [hacker's keyboard](https://play.google.com/store/apps/details?id=org.pocketworkstation.pckeyboard). However, multiling O keyboard is much more versatile.  
 
-###### Pros
+Pros
 * It enables you to design your own keyboard layouts complete with Ctrl, Alt, Shift, and even Function keys. 
 * User can design as many layouts as he needs and switch between them easily, essentially leaving him free to choose separate layouts fro seaparate applications. You might not need that escape key until you use vim. 
 
-###### Cons
+Cons
 * Autocorrect and word predictions will leave you yearning for more.
 
-### #ideas:
+## Ideas
 
 <li> Separation of templates <br/>
 Enable different filters load page-templates, view-templates, and toolbar buttons depending on screen width.<br/><br/> 
