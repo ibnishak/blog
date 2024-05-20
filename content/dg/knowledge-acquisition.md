@@ -1,6 +1,6 @@
 ---
 title: "Knowledge Acquisition"
-tags: education
+tags: ["education"]
 up:
 aliases:
 id: 20220217114833213
