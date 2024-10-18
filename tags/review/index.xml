@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Review on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/review/</link><description>Recent content in Review on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/review/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>&lt;h2 id="essential-criteria">Essential criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Mobile first.&lt;/li>
+&lt;li>Privacy.&lt;/li>
+&lt;li>Cross platform.
+&lt;ul>
+&lt;li>At least Linux and Android must be supported.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Scalable.&lt;/li>
+&lt;li>Ability to cross link notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="desired-criteria">Desired criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Fast search and navigation.&lt;/li>
+&lt;li>Semi automation of organization.&lt;/li>
+&lt;li>Bottom up organization.&lt;/li>
+&lt;li>Fast input.&lt;/li>
+&lt;li>Least effort for initial setup, but extendable according to personal requirements.&lt;/li>
+&lt;/ol>
+&lt;h2 id="ideal-criteria">Ideal criteria&lt;/h2>
+&lt;ol>
+&lt;li>Complete portability
+&lt;ul>
+&lt;li>The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Visualization of relationships between notes as a mind-map.&lt;/li>
+&lt;li>Web-clipper add-on for browser.&lt;/li>
+&lt;li>Secure cloud backups&lt;/li>
+&lt;li>Tool-chain for easy publishing&lt;/li>
+&lt;/ol>
+&lt;h2 id="candidates">Candidates&lt;/h2>
+&lt;ol>
+&lt;li>Evernote: Privacy issues&lt;/li>
+&lt;li>Onenote: Privacy issues&lt;/li>
+&lt;li>Notion: Privacy issues&lt;/li>
+&lt;li>Roam: Privacy issues&lt;/li>
+&lt;li>Zim: No mobile app&lt;/li>
+&lt;li>Org mode: Orgzly is a great mobile app. Unforunately it is more geared towards &amp;lsquo;few-large-notes&amp;rsquo; kind of workflow, while I am looking at a &amp;lsquo;many small notes with ability to convert it to large notes&amp;rsquo; kind of workflow&lt;/li>
+&lt;li>Tiddlywiki: Not scalable. &lt;a href="https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/" target="_blank">Usability in mobile&lt;/a> is mediocre.&lt;/li>
+&lt;li>Obsidian: Very interesting project. However I was hard pressed to find a feature that is not available as a VSCode Plugin inorder to warrant the swtich to a non-opensource project.&lt;/li>
+&lt;li>Markdown notes - Markor in Mobile, VS codium with plugins in Linux: CURRENT&lt;/li>
+&lt;/ol>
+&lt;h2 id="interesting-links">Interesting links&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.notion.so/Artificial-Brain-Networked-notebook-app-a131b468fc6f43218fb8105430304709" target="_blank">Artificial Brain Networked notebook app - Master list of Personal knowledge base softwares&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://wiki.nikitavoloboev.xyz/other/wiki-workflow#similar-wikis-i-liked" target="_blank">List of Public Zettelkasten Wikis&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

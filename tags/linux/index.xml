@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/linux/</link><description>Recent content in Linux on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Mon, 03 Oct 2022 14:50:05 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Fcron - Set up, run jobs and troubleshoot</title><link>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot--fcron/</link><pubDate>Mon, 03 Oct 2022 14:50:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot--fcron/</guid><description>&lt;ul>
+&lt;li>Install Fcron&lt;/li>
+&lt;li>Ensure that an Fcron group is created&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cat /etc/group | grep fcron
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Should output something like this: fcron:x:23&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Add current user to Fcron group (Need Root)&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo usermod -a -G fcron $USER
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You might have to re-login after the last command.&lt;/p>
+&lt;ul>
+&lt;li>Open the fcrontab&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>fcrontab -e
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>An empty text file should open. This is where we define what tasks to run and when to run them. However, first we add the necessary environment variables&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>SHELL&lt;span style="color:#f92672">=&lt;/span>/usr/bin/zsh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DISPLAY&lt;span style="color:#f92672">=&lt;/span>:0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Now we can tasks one per line. For eg, below given task will change wallpaper to a random picture in wallpapers folder every 5 mins (Need &lt;code>feh&lt;/code> installed)&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>@ &lt;span style="color:#ae81ff">5&lt;/span> /usr/bin/feh --no-fehbg --bg-fill --randomize ~/Collection/Pictures/wallpapers
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="what-to-do-in-case-of-permission-errors">What to do in case of permission errors&lt;/h2>
+&lt;p>Remember that the folder &lt;code>/var/spool/fcron&lt;/code> should be owned by the user &lt;code>fcron&lt;/code> while the fcrontab files inside that folder should be owned by respective users. So if you have permission issues, the following commands may resolve the issues&lt;/p></description></item><item><title>The Simplest Time Logger I Could Have Written</title><link>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</link><pubDate>Fri, 09 Jul 2021 20:37:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</guid><description>&lt;p>A zsh script to take input from a form, and store it in a sqlite database.&lt;/p>
+&lt;p>Dependecies: YAD, Sqlite&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-zsh" data-lang="zsh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/usr/bin/env zsh
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">########## VARIABLES ################&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>AREAS&lt;span style="color:#f92672">=(&lt;/span>Acad Programming Reading Calories&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e">#Single words separated by spaces&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#######################################&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>JA&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>echo &lt;span style="color:#e6db74">${&lt;/span>(j:&lt;span style="color:#ae81ff">\!&lt;/span>:)AREAS&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#75715e"># Join Areas with ! because that is how yad wants it.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>yad --form --columns&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> --date-format&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;%Y-%m-%d&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--field&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Date::DT&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>date +%Y-%m-%d&lt;span style="color:#66d9ef">)&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--field&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Area::CBE&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>JA&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--field&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Units::NUM&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;25&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DTARR&lt;span style="color:#f92672">=(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>(@s/|/)data&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e"># Split yad output to array&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> -z &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DTARR&lt;span style="color:#e6db74">[1]&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#75715e"># If user had cancelled the yad window, exit&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;User cancellation&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sqlite3 tracker.db &lt;span style="color:#e6db74">&amp;lt;&amp;lt;END_SQL
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">CREATE TABLE IF NOT EXISTS data(
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> ID INTEGER PRIMARY KEY AUTOINCREMENT,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> DATE TEXT NOT NULL,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> AREA TEXT NOT NULL,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> UNITS 	INT 		NOT NULL
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">INSERT INTO data (DATE,AREA,UNITS)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">VALUES ( &amp;#34;$DTARR[1]&amp;#34;, &amp;#34;$DTARR[2]&amp;#34;, &amp;#34;$DTARR[3]&amp;#34; );
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">END_SQL&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Create a desktop launcher for it by saving the following file as &lt;code>Tracker.desktop&lt;/code> in your desktop. Remember to substitute paths appropriately.&lt;/p></description></item><item><title>Converting CapsLock to Hyper key with XKB</title><link>https://ibnishak.github.io/blog/post/caps-to-hyper/</link><pubDate>Sat, 26 Dec 2020 22:54:47 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/caps-to-hyper/</guid><description>&lt;p>Warning: While doing this, my cat decided to take a walk over my keyboard because I ignored her attempts to gain my attention for sometime. I saved the file not realizing that there were some syntax errors due to the cat walk. Next time I tried to login, my keyboard wouldn&amp;rsquo;t work. I couldn&amp;rsquo;t switch to console. The arch linux fall back did not help either. Finally I had to do a clean install of my OS. So please do not ignore your cat and ensure you do not have any syntax errors.&lt;/p></description></item><item><title>Arch Linux Sudoers</title><link>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</link><pubDate>Tue, 15 Dec 2020 20:53:19 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch-linux-sudoers/</guid><description>&lt;h1 id="arch-linux-sudoers">Arch Linux: Sudoers&lt;/h1>
+&lt;p>Sudoer files is the configuration file for sudo command. It is located at &lt;code>/etc/sudoers&lt;/code>.&lt;/p>
+&lt;h2 id="editing-sudoer">Editing Sudoer&lt;/h2>
+&lt;p>It &lt;strong>MUST&lt;/strong> be edited using the command &lt;code>sudo visudo&lt;/code>. Behind the scenes this command creates a temporary file, checks for any errors once you save and finally replace the original file.&lt;/p>
+&lt;p>However editing in vi can be a pain. You can change it to any terminal editors using the command in the form below.&lt;/p></description></item><item><title>Dotfile Management - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/dotfile-management---criteria-and-candidates/</link><pubDate>Thu, 10 Dec 2020 22:00:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/dotfile-management---criteria-and-candidates/</guid><description>&lt;h2 id="essential">Essential&lt;/h2>
+&lt;ul>
+&lt;li>NOT symlinking. Some programs (eg: XFCE) will overwrite symlinks.&lt;/li>
+&lt;li>NOT copying. The config files itself should be the source of truth. ie, If the config files are edited, the changes should automatically reflect in the dotfiles vault.&lt;/li>
+&lt;li>Version control. If the config files ought be edited without worry, they need be reversible to previous states&lt;/li>
+&lt;li>Scriptable&lt;/li>
+&lt;/ul>
+&lt;h2 id="desirable">Desirable&lt;/h2>
+&lt;ul>
+&lt;li>Simple command structure&lt;/li>
+&lt;li>Ability to encrypt files&lt;/li>
+&lt;li>Ability to ignore files based on OS or other parameters&lt;/li>
+&lt;li>Bootstrapping - Ability to run some scripts automatically on first run.&lt;/li>
+&lt;/ul>
+&lt;h2 id="ideal">Ideal&lt;/h2>
+&lt;ul>
+&lt;li>Automated synchronisation to cloud targets on regular intervals (like an inbuilt cron)&lt;/li>
+&lt;li>Part of core packages so that it is immediately available upon OS reinstall&lt;/li>
+&lt;/ul>
+&lt;h2 id="candidates">Candidates&lt;/h2>
+&lt;ul>
+&lt;li>Gnu stow: Symlinks&lt;/li>
+&lt;li>&lt;a href="https://github.com/twpayne/chezmoi" target="_blank">Chezmoi&lt;/a>: Copying&lt;/li>
+&lt;li>&lt;a href="https://github.com/thoughtbot/rcm" target="_blank">RCM&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/comtrya/comtrya" target="_blank">Comtrya&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/rhysd/dotfiles" target="_blank">dotfiles&lt;/a>: Symlinks&lt;/li>
+&lt;li>&lt;a href="https://github.com/sigmonsays/dotbot" target="_blank">dotbot&lt;/a>: Symlinks&lt;/li>
+&lt;li>&lt;a href="https://yadm.io/" target="_blank">Yadm&lt;/a>: CURRENT&lt;/li>
+&lt;/ul></description></item><item><title>Alias for updating YADM</title><link>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</link><pubDate>Mon, 07 Dec 2020 21:15:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/arch_yadm-update-alias/</guid><description>&lt;h2 id="yadm-update-alias">Yadm update alias&lt;/h2>
+&lt;p>Ref: &lt;a href="https://yadm.io/" target="_blank">YADM&lt;/a>&lt;/p>
+&lt;p>Open &lt;code>~/.config/yadm/repo.git/config&lt;/code> and add the following&lt;/p>
+&lt;pre tabindex="0">&lt;code>[alias]
+ update = !git add -u &amp;amp;&amp;amp; git commit -m \&amp;#34;$(date)\&amp;#34; &amp;amp;&amp;amp; git push
+&lt;/code>&lt;/pre>&lt;p>Now when you give the command &lt;code>yadm update&lt;/code>, yadm will update all the exisiting files in repo, commit it with date and try to push to orgin. For bonus, you can add ssh keys to github/&lt;a href="https://docs.gitlab.com/ee/gitlab-basics/create-your-ssh-keys.html" target="_blank">gitlab&lt;/a> accounts and set this on a &lt;a href="https://crontab.guru/#0_*/3_*_*_*" target="_blank">cron job&lt;/a> to completely automate backing up of your configuration.&lt;/p></description></item><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>&lt;h2 id="essential-criteria">Essential criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Mobile first.&lt;/li>
+&lt;li>Privacy.&lt;/li>
+&lt;li>Cross platform.
+&lt;ul>
+&lt;li>At least Linux and Android must be supported.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Scalable.&lt;/li>
+&lt;li>Ability to cross link notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="desired-criteria">Desired criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Fast search and navigation.&lt;/li>
+&lt;li>Semi automation of organization.&lt;/li>
+&lt;li>Bottom up organization.&lt;/li>
+&lt;li>Fast input.&lt;/li>
+&lt;li>Least effort for initial setup, but extendable according to personal requirements.&lt;/li>
+&lt;/ol>
+&lt;h2 id="ideal-criteria">Ideal criteria&lt;/h2>
+&lt;ol>
+&lt;li>Complete portability
+&lt;ul>
+&lt;li>The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Visualization of relationships between notes as a mind-map.&lt;/li>
+&lt;li>Web-clipper add-on for browser.&lt;/li>
+&lt;li>Secure cloud backups&lt;/li>
+&lt;li>Tool-chain for easy publishing&lt;/li>
+&lt;/ol>
+&lt;h2 id="candidates">Candidates&lt;/h2>
+&lt;ol>
+&lt;li>Evernote: Privacy issues&lt;/li>
+&lt;li>Onenote: Privacy issues&lt;/li>
+&lt;li>Notion: Privacy issues&lt;/li>
+&lt;li>Roam: Privacy issues&lt;/li>
+&lt;li>Zim: No mobile app&lt;/li>
+&lt;li>Org mode: Orgzly is a great mobile app. Unforunately it is more geared towards &amp;lsquo;few-large-notes&amp;rsquo; kind of workflow, while I am looking at a &amp;lsquo;many small notes with ability to convert it to large notes&amp;rsquo; kind of workflow&lt;/li>
+&lt;li>Tiddlywiki: Not scalable. &lt;a href="https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/" target="_blank">Usability in mobile&lt;/a> is mediocre.&lt;/li>
+&lt;li>Obsidian: Very interesting project. However I was hard pressed to find a feature that is not available as a VSCode Plugin inorder to warrant the swtich to a non-opensource project.&lt;/li>
+&lt;li>Markdown notes - Markor in Mobile, VS codium with plugins in Linux: CURRENT&lt;/li>
+&lt;/ol>
+&lt;h2 id="interesting-links">Interesting links&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.notion.so/Artificial-Brain-Networked-notebook-app-a131b468fc6f43218fb8105430304709" target="_blank">Artificial Brain Networked notebook app - Master list of Personal knowledge base softwares&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://wiki.nikitavoloboev.xyz/other/wiki-workflow#similar-wikis-i-liked" target="_blank">List of Public Zettelkasten Wikis&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Emacs - Adding clipboad.js to HTML exports</title><link>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</guid><description>&lt;p>&lt;a href="https://clipboardjs.com/" target="_blank">Clipboard.js&lt;/a> is a javascript solution to add copy buttons to &lt;code>&amp;lt;pre&amp;gt;&lt;/code> or &lt;code>&amp;lt;code&amp;gt;&lt;/code> regions in your html file. F&lt;/p>
+&lt;p>Since many of the Emacs community use org-publish for blogging, it seems like a good idea to note how to include clipboard.js snippets in the org mode html exports.&lt;/p>
+&lt;ul>
+&lt;li>Add the following to your &lt;code>init.el&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lisp" data-lang="lisp">&lt;span style="display:flex;">&lt;span>(defun org-html-src-block (src-block contents info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Transcode a SRC-BLOCK element from Org to HTML.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> CONTENTS holds the contents of the item. INFO is a plist holding
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> contextual information.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">if&lt;/span> (org-export-read-attribute &lt;span style="color:#e6db74">:attr_html&lt;/span> src-block &lt;span style="color:#e6db74">:textarea&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--textarea-block src-block)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let*&lt;/span> ((lang (org-element-property &lt;span style="color:#e6db74">:language&lt;/span> src-block))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (caption (org-export-get-caption src-block))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (code (org-html-format-code src-block info))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (label (&lt;span style="color:#66d9ef">let&lt;/span> ((lbl (and (org-element-property &lt;span style="color:#e6db74">:name&lt;/span> src-block)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 (org-export-get-reference src-block info))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#66d9ef">if&lt;/span> lbl (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34; id=\&amp;#34;%s\&amp;#34;&amp;#34;&lt;/span> lbl)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (concat &lt;span style="color:#e6db74">&amp;#34;btn_&amp;#34;&lt;/span> (s-replace &lt;span style="color:#e6db74">&amp;#34;-&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> (org-id-new))))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (btnprops &lt;span style="color:#e6db74">&amp;#34; class=&amp;#39;btn-clipboard&amp;#39; data-original-title=&amp;#39;Copy to clipboard&amp;#39;&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (button (concat &lt;span style="color:#e6db74">&amp;#34;&amp;lt;div class=\&amp;#34;bd-clipboard\&amp;#34;&amp;gt; &amp;lt;button&amp;#34;&lt;/span> btnprops &lt;span style="color:#e6db74">&amp;#34; data-clipboard-target=\&amp;#34;#&amp;#34;&lt;/span> label &lt;span style="color:#e6db74">&amp;#34;\&amp;#34;&amp;gt; Copy &amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt;&amp;#34;&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">not&lt;/span> lang) (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;pre class=\&amp;#34;example\&amp;#34;%s&amp;gt;\n%s&amp;lt;/pre&amp;gt;&amp;#34;&lt;/span> label code)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	(&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;div class=\&amp;#34;org-src-container\&amp;#34;&amp;gt;\n%s%s\n&amp;lt;/div&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">not&lt;/span> caption) &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;label class=\&amp;#34;org-src-name\&amp;#34;&amp;gt;%s&amp;lt;/label&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (org-export-data caption info)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;%s\n&amp;lt;pre class=\&amp;#34;src src-%s\&amp;#34; id=\&amp;#34;%s\&amp;#34;&amp;gt;%s&amp;lt;/pre&amp;gt;&amp;#34;&lt;/span> button lang label code))))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (defconst org-clipboardjs-script
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;!-- 2. Include library --&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;script src=\&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js\&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;!-- 3. Instantiate clipboard by passing a string selector --&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;script&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> var clipboard = new ClipboardJS(&amp;#39;.btn-clipboard&amp;#39;);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> clipboard.on(&amp;#39;success&amp;#39;, function(e) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> 	console.log(e);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> });
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> clipboard.on(&amp;#39;error&amp;#39;, function(e) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> 	console.log(e);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> });
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/script&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Clipoard JS script to be included&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (defun org-html-template (contents info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Return complete document string after HTML conversion.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> CONTENTS is the transcoded contents string. INFO is a plist
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> holding export options.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (concat
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when (and (&lt;span style="color:#a6e22e">not&lt;/span> (org-html-html5-p info)) (org-html-xhtml-p info))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let*&lt;/span> ((xml-declaration (plist-get info &lt;span style="color:#e6db74">:html-xml-declaration&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (decl (or (and (&lt;span style="color:#a6e22e">stringp&lt;/span> xml-declaration) xml-declaration)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#a6e22e">cdr&lt;/span> (&lt;span style="color:#a6e22e">assoc&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-extension&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 xml-declaration))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#a6e22e">cdr&lt;/span> (&lt;span style="color:#a6e22e">assoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span> xml-declaration))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when (&lt;span style="color:#a6e22e">not&lt;/span> (or (&lt;span style="color:#a6e22e">not&lt;/span> decl) (&lt;span style="color:#a6e22e">string=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> decl)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;%s\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#a6e22e">format&lt;/span> decl
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 			 (or (and org-html-coding-system
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 (&lt;span style="color:#a6e22e">fboundp&lt;/span> &lt;span style="color:#e6db74">&amp;#39;coding-system-get&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 (coding-system-get org-html-coding-system &lt;span style="color:#e6db74">&amp;#39;mime-charset&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 			 &lt;span style="color:#e6db74">&amp;#34;iso-8859-1&amp;#34;&lt;/span>))))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html-doctype info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (concat &lt;span style="color:#e6db74">&amp;#34;&amp;lt;html&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (when (org-html-xhtml-p info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34; xmlns=\&amp;#34;http://www.w3.org/1999/xhtml\&amp;#34; lang=\&amp;#34;%s\&amp;#34; xml:lang=\&amp;#34;%s\&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (plist-get info &lt;span style="color:#e6db74">:language&lt;/span>) (plist-get info &lt;span style="color:#e6db74">:language&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;gt;\n&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;head&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-meta-info info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-head info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-mathjax-config info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;/head&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;body&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let&lt;/span> ((link-up (org-trim (plist-get info &lt;span style="color:#e6db74">:html-link-up&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (link-home (org-trim (plist-get info &lt;span style="color:#e6db74">:html-link-home&lt;/span>))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (unless (and (&lt;span style="color:#a6e22e">string=&lt;/span> link-up &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>) (&lt;span style="color:#a6e22e">string=&lt;/span> link-home &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">format&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-home/up-format&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (or link-up link-home)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (or link-home link-up))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Preamble.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-pre/postamble &lt;span style="color:#e6db74">&amp;#39;preamble&lt;/span> info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Document contents.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let&lt;/span> ((div (assq &lt;span style="color:#e6db74">&amp;#39;content&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-divs&lt;/span>))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;%s id=\&amp;#34;%s\&amp;#34;&amp;gt;\n&amp;#34;&lt;/span> (&lt;span style="color:#a6e22e">nth&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> div) (&lt;span style="color:#a6e22e">nth&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> div)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Document title.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when (plist-get info &lt;span style="color:#e6db74">:with-title&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let&lt;/span> ((title (plist-get info &lt;span style="color:#e6db74">:title&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (subtitle (plist-get info &lt;span style="color:#e6db74">:subtitle&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when title
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-html5-fancy&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;header&amp;gt;\n&amp;lt;h1 class=\&amp;#34;title\&amp;#34;&amp;gt;%s&amp;lt;/h1&amp;gt;\n%s&amp;lt;/header&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;h1 class=\&amp;#34;title\&amp;#34;&amp;gt;%s%s&amp;lt;/h1&amp;gt;\n&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (org-export-data title info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> subtitle
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-html5-fancy&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;p class=\&amp;#34;subtitle\&amp;#34;&amp;gt;%s&amp;lt;/p&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 &lt;span style="color:#e6db74">&amp;#34;\n&amp;lt;br&amp;gt;\n&amp;lt;span class=\&amp;#34;subtitle\&amp;#34;&amp;gt;%s&amp;lt;/span&amp;gt;\n&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (org-export-data subtitle info))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>)))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> contents
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;/%s&amp;gt;\n&amp;#34;&lt;/span> (&lt;span style="color:#a6e22e">nth&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> (assq &lt;span style="color:#e6db74">&amp;#39;content&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-divs&lt;/span>))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Postamble.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-pre/postamble &lt;span style="color:#e6db74">&amp;#39;postamble&lt;/span> info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-element-normalize-string org-clipboardjs-script)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Closing document.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;/body&amp;gt;\n&amp;lt;/html&amp;gt;&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Reload your configuration with &lt;code>M-x eval-buffer&lt;/code> on init.el&lt;/li>
+&lt;li>Now export any org file with &lt;code>M-x org-html-export-to-html&lt;/code> or with shortcut keys &lt;kbd>C-c C-e h h&lt;/kbd>&lt;/li>
+&lt;/ul></description></item><item><title>Emacs: Notes on keybindings in GNU+Linux</title><link>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</guid><description>&lt;h1 id="pointless-introduction">Pointless introduction&lt;/h1>
+&lt;p>Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.&lt;/p></description></item><item><title>zsh: Parameter expansion cheatsheet</title><link>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</link><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</guid><description>&lt;h2 id="parent-directory">Parent directory&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00/src&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $PWD:h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="grandparent-directry">Grandparent directry&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD:h:h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="current-dir-without-path">Current dir without path&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD:t
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># src&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="extracting-file-name-and-extension">Extracting file name and extension&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $name:r
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $name:e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># c&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="substituting-parts-of-variable">Substituting parts of variable&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $name:s/foo/bar/ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># bar.c&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Mass renaming of files&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo.c foo.h foo.o foo.pro&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i in foo.*; mv $i $i:s/foo/bar/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># bar.c bar.h bar.o bar.pro&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="uppercasing-and-lower-casing">Uppercasing and Lower casing&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>xx&lt;span style="color:#f92672">=&lt;/span>Test
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $xx:u
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># TEST&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $xx:l
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># test&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cutting-patterns-from-beginning-and-end">Cutting patterns from beginning and end&lt;/h2>
+&lt;ul>
+&lt;li>Cut from end&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00/src&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>PWD%/*&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>PWD%/*/*&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#/home/learning/pf/zsh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>name%.*&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Cut from beginning&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>PWD##*/&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># src&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>name#*.&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># c&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

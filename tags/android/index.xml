@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/android/</link><description>Recent content in Android on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Tue, 24 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>Adding custom language highlight and fonts to markor</title><link>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</link><pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/adding-custom-language-highlight-to-markor/</guid><description>&lt;h2 id="custom-language-highlight">Custom Language Highlight&lt;/h2>
+&lt;p>Markor has inbuilt support for syntax highlighting of a select few languages. However markor comes bundled with &lt;a href="https://prismjs.com/" target="_blank">prism js&lt;/a>. This means adding syntax highlighting for any of &lt;a href="https://prismjs.com/#supported-languages" target="_blank">199 languages&lt;/a> supported by prism is a matter of two steps&lt;/p>
+&lt;ul>
+&lt;li>Go to &lt;a href="https://cdnjs.com/libraries/prism" target="_blank">prism CDN&lt;/a> and copy the link corresponding to your language.&lt;/li>
+&lt;li>In the markor app, open &lt;code>Settings&amp;gt;View mode&lt;/code> and add the the following snippet to &lt;code>Inject -&amp;gt; head&lt;/code> after changing the link.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-toml.js&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="custom-fonts">Custom Fonts.&lt;/h2>
+&lt;ul>
+&lt;li>Copy font to one of these locations:
+&lt;ul>
+&lt;li>Markor-Notebook/.app/fonts/&lt;/li>
+&lt;li>/storage/emulated/0/Fonts/&lt;/li>
+&lt;li>/sdcard/Fonts/&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>In the markor app, open &lt;code>Settings&amp;gt;Edit mode&amp;gt;Fonts&lt;/code> and select your font.&lt;/li>
+&lt;/ul></description></item><item><title>Building markor from source code in linux</title><link>https://ibnishak.github.io/blog/post/building-markor-in-linux/</link><pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/building-markor-in-linux/</guid><description>&lt;p>Markor can be installed from Google playstore, FDroid as well as releases page of this repo. Nevertheless, if you want the cutting edge version, here are the general instructions for Linux platform. Open terminal run the following set of commands one by one.&lt;/p>
+&lt;ul>
+&lt;li>If you do not have android-sdk installed, you need to install it first. Most package managers has it. Given below is a portable method.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export ANDROID_SDK_ROOT&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$HOME&lt;span style="color:#e6db74">/android-sdk&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[[&lt;/span> ! -d &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#f92672">]]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mkdir -p &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> curl https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip &amp;gt; sdk-tools.zip 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unzip -qq -n sdk-tools.zip -d &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> rm sdk-tools.zip
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo y | &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/tools/bin/sdkmanager &lt;span style="color:#e6db74">&amp;#39;tools&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo y | &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/tools/bin/sdkmanager &lt;span style="color:#e6db74">&amp;#39;platform-tools&amp;#39;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo y | &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/tools/bin/sdkmanager &lt;span style="color:#e6db74">&amp;#39;build-tools;29.0.3&amp;#39;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo y | &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/tools/bin/sdkmanager &lt;span style="color:#e6db74">&amp;#39;platforms;android-29&amp;#39;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo y | &lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/tools/bin/sdkmanager &lt;span style="color:#e6db74">&amp;#39;extras;google;m2repository&amp;#39;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/tools/bin/sdkmanager --licenses
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Clone markor repo&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code class="language-git" data-lang="git">git clone --depth=1 https://github.com/gsantner/markor.git &amp;amp;&amp;amp; cd markor
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Then run the gradlew scripts&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>./gradlew --no-daemon clean
+./gradlew --no-daemon build
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Change directory to build folder. Depending on the state of upstream repository or your git clone, this could be &lt;code>flavorDefault&lt;/code> or &lt;code>flavorAtest&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd app/build/outputs/apk/flavorDefault/release 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>You will see an unsigned apk created with name the reads like &lt;code>net.gsantner.markor-v***********unsigned.apk&lt;/code>. We are going to align the apk first before signing it.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/build-tools/28.0.3/zipalign -v -p &lt;span style="color:#ae81ff">4&lt;/span> net.gsantner.markor-v99-2.1.6-flavorDefault-release-unsigned.apk markor-unsign-aligned-apk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>At this point you need to create a signing key witha a unique alias. In the following command, change the &lt;code>my-unique-name&lt;/code> with some unique combination of words&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>keytool -genkey -v -keystore markor-release-key.jks -keyalg RSA -keysize &lt;span style="color:#ae81ff">2048&lt;/span> -validity &lt;span style="color:#ae81ff">10000&lt;/span> -alias my-unique-name 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Now we use the key just created to sign it.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/build-tools/28.0.3/apksigner sign --ks markor-release-key.jks --out markor-signed-aligned.apk markor-unsign-aligned.apk
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">${&lt;/span>ANDROID_SDK_ROOT&lt;span style="color:#e6db74">}&lt;/span>/build-tools/28.0.3/apksigner verify markor-signed-aligned.apk
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Copy the apk to phone and install it.&lt;/li>
+&lt;/ul></description></item><item><title>Vim: Copy and paste to termux clipboard</title><link>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</link><pubDate>Thu, 12 Dec 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/copy-to-termux-clip/</guid><description>&lt;p>Copying to system clipboard from vim is usually done by using the &amp;ldquo;+ register. Unfortunately this will not work in termux. Here is a workaround to cut, copy and paste from android clipboard. Remember that you need termux-apk tools for this to work.&lt;/p>
+&lt;ul>
+&lt;li>Add the following to vimrc&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-vim" data-lang="vim">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">vnoremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">x&lt;/span>&amp;gt; :!&lt;span style="color:#a6e22e">termux&lt;/span>-&lt;span style="color:#a6e22e">clipboard&lt;/span>-&lt;span style="color:#66d9ef">set&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">vnoremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">c&lt;/span>&amp;gt; :&lt;span style="color:#a6e22e">w&lt;/span> !&lt;span style="color:#a6e22e">termux&lt;/span>-&lt;span style="color:#a6e22e">clipboard&lt;/span>-&lt;span style="color:#66d9ef">set&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">inoremap&lt;/span> &amp;lt;&lt;span style="color:#a6e22e">C&lt;/span>-&lt;span style="color:#a6e22e">v&lt;/span>&amp;gt; &amp;lt;&lt;span style="color:#a6e22e">ESC&lt;/span>&amp;gt;:&lt;span style="color:#a6e22e">read&lt;/span> !&lt;span style="color:#a6e22e">termux&lt;/span>-&lt;span style="color:#a6e22e">clipboard&lt;/span>-&lt;span style="color:#a6e22e">get&lt;/span>&amp;lt;&lt;span style="color:#a6e22e">CR&lt;/span>&amp;gt;&lt;span style="color:#a6e22e">i&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Source the vimrc or reload vim.&lt;/li>
+&lt;li>In visual mode, you can now use &amp;ldquo;Ctrl-x&amp;rdquo; to cut, &amp;ldquo;Ctrl-c&amp;rdquo; to copy to termux clipboard.&lt;/li>
+&lt;li>In insert mode, you can use &amp;ldquo;Ctrl+p&amp;rdquo; to paste from termux clipboard.&lt;/li>
+&lt;li>You might need hackers keyboard or Multilingo keyboard for control keys&lt;/li>
+&lt;/ul></description></item></channel></rss>

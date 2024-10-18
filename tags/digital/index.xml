@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Digital on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/digital/</link><description>Recent content in Digital on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Sun, 04 Sep 2022 19:52:43 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/digital/index.xml" rel="self" type="application/rss+xml"/><item><title>Malayalam Phonetic Typing aka Transliteration in Arch Linux</title><link>https://ibnishak.github.io/blog/post/malayalam-phonetic-typing-aka-transliteration-in-arch-linux/</link><pubDate>Sun, 04 Sep 2022 19:52:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/malayalam-phonetic-typing-aka-transliteration-in-arch-linux/</guid><description>&lt;ol>
+&lt;li>Install iBus and related libraries&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>yay -S ibus ibus-m17n m17n-db
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Download Swanalekha inpput method lib and copy to to &lt;code>/usr/share/m17n/&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>wget http://swanalekha.smc.org.in/m17n/ml-swanalekha.mim
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo cp ml-swanalekha.mim /usr/share/m17n/ml-swanalekha.mim
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>Start ibus daemon&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ibus-daemon -drxR
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>Open ibus preferences&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ibus-setup
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
+&lt;li>Switch to Input Method Tab, Click Add and search for &lt;code>Malayalam - ml-swanalekha&lt;/code> and add it. If needed, change hotkey for switching input methods.&lt;/li>
+&lt;li>Restart ibus daemon&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ibus-daemon -rdx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Also ensure that you have some malayalam fonts installed in your system. Fonts are available from:&lt;/p></description></item></channel></rss>

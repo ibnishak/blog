@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Emacs on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/emacs/</link><description>Recent content in Emacs on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/emacs/index.xml" rel="self" type="application/rss+xml"/><item><title>Emacs - Adding clipboad.js to HTML exports</title><link>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--adding-clipboard-js-to-html-exports/</guid><description>&lt;p>&lt;a href="https://clipboardjs.com/" target="_blank">Clipboard.js&lt;/a> is a javascript solution to add copy buttons to &lt;code>&amp;lt;pre&amp;gt;&lt;/code> or &lt;code>&amp;lt;code&amp;gt;&lt;/code> regions in your html file. F&lt;/p>
+&lt;p>Since many of the Emacs community use org-publish for blogging, it seems like a good idea to note how to include clipboard.js snippets in the org mode html exports.&lt;/p>
+&lt;ul>
+&lt;li>Add the following to your &lt;code>init.el&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lisp" data-lang="lisp">&lt;span style="display:flex;">&lt;span>(defun org-html-src-block (src-block contents info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Transcode a SRC-BLOCK element from Org to HTML.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> CONTENTS holds the contents of the item. INFO is a plist holding
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> contextual information.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">if&lt;/span> (org-export-read-attribute &lt;span style="color:#e6db74">:attr_html&lt;/span> src-block &lt;span style="color:#e6db74">:textarea&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--textarea-block src-block)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let*&lt;/span> ((lang (org-element-property &lt;span style="color:#e6db74">:language&lt;/span> src-block))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (caption (org-export-get-caption src-block))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (code (org-html-format-code src-block info))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (label (&lt;span style="color:#66d9ef">let&lt;/span> ((lbl (and (org-element-property &lt;span style="color:#e6db74">:name&lt;/span> src-block)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 (org-export-get-reference src-block info))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#66d9ef">if&lt;/span> lbl (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34; id=\&amp;#34;%s\&amp;#34;&amp;#34;&lt;/span> lbl)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (concat &lt;span style="color:#e6db74">&amp;#34;btn_&amp;#34;&lt;/span> (s-replace &lt;span style="color:#e6db74">&amp;#34;-&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> (org-id-new))))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (btnprops &lt;span style="color:#e6db74">&amp;#34; class=&amp;#39;btn-clipboard&amp;#39; data-original-title=&amp;#39;Copy to clipboard&amp;#39;&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (button (concat &lt;span style="color:#e6db74">&amp;#34;&amp;lt;div class=\&amp;#34;bd-clipboard\&amp;#34;&amp;gt; &amp;lt;button&amp;#34;&lt;/span> btnprops &lt;span style="color:#e6db74">&amp;#34; data-clipboard-target=\&amp;#34;#&amp;#34;&lt;/span> label &lt;span style="color:#e6db74">&amp;#34;\&amp;#34;&amp;gt; Copy &amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt;&amp;#34;&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">not&lt;/span> lang) (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;pre class=\&amp;#34;example\&amp;#34;%s&amp;gt;\n%s&amp;lt;/pre&amp;gt;&amp;#34;&lt;/span> label code)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	(&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;div class=\&amp;#34;org-src-container\&amp;#34;&amp;gt;\n%s%s\n&amp;lt;/div&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">not&lt;/span> caption) &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;label class=\&amp;#34;org-src-name\&amp;#34;&amp;gt;%s&amp;lt;/label&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (org-export-data caption info)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;%s\n&amp;lt;pre class=\&amp;#34;src src-%s\&amp;#34; id=\&amp;#34;%s\&amp;#34;&amp;gt;%s&amp;lt;/pre&amp;gt;&amp;#34;&lt;/span> button lang label code))))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (defconst org-clipboardjs-script
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;!-- 2. Include library --&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;script src=\&amp;#34;https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js\&amp;#34;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;!-- 3. Instantiate clipboard by passing a string selector --&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;script&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> var clipboard = new ClipboardJS(&amp;#39;.btn-clipboard&amp;#39;);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> clipboard.on(&amp;#39;success&amp;#39;, function(e) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> 	console.log(e);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> });
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> clipboard.on(&amp;#39;error&amp;#39;, function(e) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> 	console.log(e);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> });
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/script&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Clipoard JS script to be included&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (defun org-html-template (contents info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Return complete document string after HTML conversion.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> CONTENTS is the transcoded contents string. INFO is a plist
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> holding export options.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (concat
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when (and (&lt;span style="color:#a6e22e">not&lt;/span> (org-html-html5-p info)) (org-html-xhtml-p info))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let*&lt;/span> ((xml-declaration (plist-get info &lt;span style="color:#e6db74">:html-xml-declaration&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (decl (or (and (&lt;span style="color:#a6e22e">stringp&lt;/span> xml-declaration) xml-declaration)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#a6e22e">cdr&lt;/span> (&lt;span style="color:#a6e22e">assoc&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-extension&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 xml-declaration))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#a6e22e">cdr&lt;/span> (&lt;span style="color:#a6e22e">assoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span> xml-declaration))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when (&lt;span style="color:#a6e22e">not&lt;/span> (or (&lt;span style="color:#a6e22e">not&lt;/span> decl) (&lt;span style="color:#a6e22e">string=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> decl)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;%s\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 (&lt;span style="color:#a6e22e">format&lt;/span> decl
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 			 (or (and org-html-coding-system
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 (&lt;span style="color:#a6e22e">fboundp&lt;/span> &lt;span style="color:#e6db74">&amp;#39;coding-system-get&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 				 (coding-system-get org-html-coding-system &lt;span style="color:#e6db74">&amp;#39;mime-charset&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 			 &lt;span style="color:#e6db74">&amp;#34;iso-8859-1&amp;#34;&lt;/span>))))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html-doctype info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (concat &lt;span style="color:#e6db74">&amp;#34;&amp;lt;html&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (when (org-html-xhtml-p info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34; xmlns=\&amp;#34;http://www.w3.org/1999/xhtml\&amp;#34; lang=\&amp;#34;%s\&amp;#34; xml:lang=\&amp;#34;%s\&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (plist-get info &lt;span style="color:#e6db74">:language&lt;/span>) (plist-get info &lt;span style="color:#e6db74">:language&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;gt;\n&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;head&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-meta-info info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-head info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-mathjax-config info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;/head&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;body&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let&lt;/span> ((link-up (org-trim (plist-get info &lt;span style="color:#e6db74">:html-link-up&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (link-home (org-trim (plist-get info &lt;span style="color:#e6db74">:html-link-home&lt;/span>))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (unless (and (&lt;span style="color:#a6e22e">string=&lt;/span> link-up &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>) (&lt;span style="color:#a6e22e">string=&lt;/span> link-home &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">format&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-home/up-format&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (or link-up link-home)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (or link-home link-up))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Preamble.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-pre/postamble &lt;span style="color:#e6db74">&amp;#39;preamble&lt;/span> info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Document contents.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let&lt;/span> ((div (assq &lt;span style="color:#e6db74">&amp;#39;content&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-divs&lt;/span>))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;%s id=\&amp;#34;%s\&amp;#34;&amp;gt;\n&amp;#34;&lt;/span> (&lt;span style="color:#a6e22e">nth&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> div) (&lt;span style="color:#a6e22e">nth&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> div)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Document title.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when (plist-get info &lt;span style="color:#e6db74">:with-title&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">let&lt;/span> ((title (plist-get info &lt;span style="color:#e6db74">:title&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (subtitle (plist-get info &lt;span style="color:#e6db74">:subtitle&lt;/span>)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (when title
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-html5-fancy&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;header&amp;gt;\n&amp;lt;h1 class=\&amp;#34;title\&amp;#34;&amp;gt;%s&amp;lt;/h1&amp;gt;\n%s&amp;lt;/header&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;h1 class=\&amp;#34;title\&amp;#34;&amp;gt;%s%s&amp;lt;/h1&amp;gt;\n&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (org-export-data title info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> subtitle
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#a6e22e">format&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (&lt;span style="color:#66d9ef">if&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-html5-fancy&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 &lt;span style="color:#e6db74">&amp;#34;&amp;lt;p class=\&amp;#34;subtitle\&amp;#34;&amp;gt;%s&amp;lt;/p&amp;gt;\n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 		 &lt;span style="color:#e6db74">&amp;#34;\n&amp;lt;br&amp;gt;\n&amp;lt;span class=\&amp;#34;subtitle\&amp;#34;&amp;gt;%s&amp;lt;/span&amp;gt;\n&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 (org-export-data subtitle info))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 	 &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>)))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> contents
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#a6e22e">format&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;/%s&amp;gt;\n&amp;#34;&lt;/span> (&lt;span style="color:#a6e22e">nth&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> (assq &lt;span style="color:#e6db74">&amp;#39;content&lt;/span> (plist-get info &lt;span style="color:#e6db74">:html-divs&lt;/span>))))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Postamble.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-html--build-pre/postamble &lt;span style="color:#e6db74">&amp;#39;postamble&lt;/span> info)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (org-element-normalize-string org-clipboardjs-script)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">;; Closing document.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;lt;/body&amp;gt;\n&amp;lt;/html&amp;gt;&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Reload your configuration with &lt;code>M-x eval-buffer&lt;/code> on init.el&lt;/li>
+&lt;li>Now export any org file with &lt;code>M-x org-html-export-to-html&lt;/code> or with shortcut keys &lt;kbd>C-c C-e h h&lt;/kbd>&lt;/li>
+&lt;/ul></description></item><item><title>Emacs: Notes on keybindings in GNU+Linux</title><link>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</link><pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/emacs--notes-on-keybindings-in-linux/</guid><description>&lt;h1 id="pointless-introduction">Pointless introduction&lt;/h1>
+&lt;p>Emacs being a rather keyboard driven editor, tends to rely heavily on keyboard shortcuts. The non-conformity of keybindings in emacs is a rather tricky hurdle. While it is accepted that Emacs is practically an operating system and the true emacs-jedi can do everything in Emacs itself, the rest of mortals have to interact with other, normal softwares. Let us consider the simple tasks of cut, copy and paste.&lt;/p></description></item></channel></rss>

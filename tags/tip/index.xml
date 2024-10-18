@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tip on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/tip/</link><description>Recent content in Tip on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Tue, 17 Nov 2020 17:40:28 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/tip/index.xml" rel="self" type="application/rss+xml"/><item><title>Creating customized Reddit RSS feeds of top links</title><link>https://ibnishak.github.io/blog/post/reddit-rss/</link><pubDate>Tue, 17 Nov 2020 17:40:28 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/reddit-rss/</guid><description>&lt;p>Add the following snippet to any subreddit url&lt;/p>
+&lt;pre tabindex="0">&lt;code> /top.rss?t=week&amp;amp;amp;limit=25
+&lt;/code>&lt;/pre>&lt;p>Example&lt;/p>
+&lt;pre tabindex="0">&lt;code>https://www.reddit.com/r/askreddit/top.rss?t=week&amp;amp;amp;limit=25
+&lt;/code>&lt;/pre></description></item><item><title>Limiting Number of Git Revisions - How</title><link>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</link><pubDate>Sat, 10 Oct 2020 22:42:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/limit-number-of-git-revisions/</guid><description>&lt;h2 id="what">What&lt;/h2>
+&lt;p>Whenever a git commit is made, you are essentially creating a snapshot of the directory tree with some optimisations. This is great for software development workflow. However if you are using git to version control something like a personal knowledge base, keeping snapshots all the way back to origin is unnecessary.&lt;/p>
+&lt;p>Git provides facilities to prune old commits. We make use of this facility to keep only last 5 commits. This means whenver a new commit is made, the fifth oldest commit is removed. You can verify this with &lt;code>git log&lt;/code>.&lt;/p></description></item><item><title>zsh: Parameter expansion cheatsheet</title><link>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</link><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/zsh-parameter-expansion-cheatsheet/</guid><description>&lt;h2 id="parent-directory">Parent directory&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00/src&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $PWD:h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="grandparent-directry">Grandparent directry&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD:h:h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="current-dir-without-path">Current dir without path&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD:t
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># src&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="extracting-file-name-and-extension">Extracting file name and extension&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $name:r
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $name:e
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># c&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="substituting-parts-of-variable">Substituting parts of variable&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $name:s/foo/bar/ 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># bar.c&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Mass renaming of files&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo.c foo.h foo.o foo.pro&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i in foo.*; mv $i $i:s/foo/bar/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ls
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># bar.c bar.h bar.o bar.pro&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="uppercasing-and-lower-casing">Uppercasing and Lower casing&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>xx&lt;span style="color:#f92672">=&lt;/span>Test
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $xx:u
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># TEST&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $xx:l
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># test&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cutting-patterns-from-beginning-and-end">Cutting patterns from beginning and end&lt;/h2>
+&lt;ul>
+&lt;li>Cut from end&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $PWD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00/src&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>PWD%/*&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># /home/learning/pf/zsh/zsh2.00&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>PWD%/*/*&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#/home/learning/pf/zsh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>name%.*&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># foo&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Cut from beginning&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>PWD##*/&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># src&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>name&lt;span style="color:#f92672">=&lt;/span>foo.c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo &lt;span style="color:#e6db74">${&lt;/span>name#*.&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># c&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

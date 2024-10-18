@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Workflow on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/workflow/</link><description>Recent content in Workflow on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Thu, 15 Jul 2021 06:30:12 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/workflow/index.xml" rel="self" type="application/rss+xml"/><item><title>Zettelkasten - What, Why, and Why Not</title><link>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</link><pubDate>Wed, 14 Jul 2021 20:11:40 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/zettelkasten-what-why-and-why-not/</guid><description>&lt;p>Zettelkasten is a workflow used by &lt;a href="https://en.wikipedia.org/wiki/Niklas_Luhmann" target="_blank">Niklas Luhmann&lt;/a>. It is popularized in recent times by &lt;a href="https://twitter.com/soenke_ahrens?lang=en" target="_blank">Sohnke Ahren&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://youtu.be/ljyo_WAJevQ?t=73" target="_blank">Source&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>Import your highlights. Ensure that you add metadata to the top including appropriate tags and source. These are called reference notes. It is like inbox in &lt;a href="https://todoist.com/productivity-methods/getting-things-done" target="_blank">GTD workflow&lt;/a>&lt;/li>
+&lt;li>Take Literature Notes
+&lt;ul>
+&lt;li>Summarise&lt;/li>
+&lt;li>Explain idea enough to stand on its own, without the context of the book or the associated highlight.&lt;/li>
+&lt;li>Note your insights and questions regarding it.&lt;/li>
+&lt;li>Add metadata: Source, Keywords&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Take Permanent Notes
+&lt;ul>
+&lt;li>Think how each literature note relates to things you already know. Place it appropriate position in that stream.&lt;/li>
+&lt;li>Add links to other notes. See Cross-Linking section below.&lt;/li>
+&lt;li>If this existing permanent note were used to write an article, what information is missing?&lt;/li>
+&lt;li>Write in full sentences.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="workflow-principles">Workflow Principles&lt;/h2>
+&lt;p>This is more important than the workflow itself. From time to time, one should check their workflow against these principles. Your workflow should be able to:&lt;/p></description></item><item><title>The Simplest Time Logger I Could Have Written</title><link>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</link><pubDate>Fri, 09 Jul 2021 20:37:38 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/the-simplest-time-logger-i-could-have-writtern/</guid><description>&lt;p>A zsh script to take input from a form, and store it in a sqlite database.&lt;/p>
+&lt;p>Dependecies: YAD, Sqlite&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-zsh" data-lang="zsh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/usr/bin/env zsh
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">########## VARIABLES ################&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>AREAS&lt;span style="color:#f92672">=(&lt;/span>Acad Programming Reading Calories&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e">#Single words separated by spaces&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#######################################&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>JA&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>echo &lt;span style="color:#e6db74">${&lt;/span>(j:&lt;span style="color:#ae81ff">\!&lt;/span>:)AREAS&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#75715e"># Join Areas with ! because that is how yad wants it.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>yad --form --columns&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> --date-format&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;%Y-%m-%d&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--field&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Date::DT&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>date +%Y-%m-%d&lt;span style="color:#66d9ef">)&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--field&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Area::CBE&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>JA&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span>--field&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Units::NUM&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;25&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DTARR&lt;span style="color:#f92672">=(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>(@s/|/)data&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e"># Split yad output to array&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> -z &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DTARR&lt;span style="color:#e6db74">[1]&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#75715e"># If user had cancelled the yad window, exit&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;User cancellation&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sqlite3 tracker.db &lt;span style="color:#e6db74">&amp;lt;&amp;lt;END_SQL
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">CREATE TABLE IF NOT EXISTS data(
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> ID INTEGER PRIMARY KEY AUTOINCREMENT,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> DATE TEXT NOT NULL,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> AREA TEXT NOT NULL,
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> UNITS 	INT 		NOT NULL
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">);
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">INSERT INTO data (DATE,AREA,UNITS)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">VALUES ( &amp;#34;$DTARR[1]&amp;#34;, &amp;#34;$DTARR[2]&amp;#34;, &amp;#34;$DTARR[3]&amp;#34; );
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">END_SQL&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Create a desktop launcher for it by saving the following file as &lt;code>Tracker.desktop&lt;/code> in your desktop. Remember to substitute paths appropriately.&lt;/p></description></item><item><title>Time Blocking - What, Why and How</title><link>https://ibnishak.github.io/blog/post/time-blocking/</link><pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/time-blocking/</guid><description>&lt;h2 id="what">What&lt;/h2>
+&lt;p>Divide day into blocks of time dedicated to separate tasks&lt;/p>
+&lt;h2 id="why">Why&lt;/h2>
+&lt;ul>
+&lt;li>Open ended todo lists is less effective as you do easy tasks first, leaving frogs uneaten&lt;/li>
+&lt;li>Helps to avoid perfectionism&lt;/li>
+&lt;li>Helps to club shallow tasks and do more deep work&lt;/li>
+&lt;/ul>
+&lt;h2 id="how">How&lt;/h2>
+&lt;ul>
+&lt;li>Prioritise task list using a weekly review and create and rough outline of time blocks&lt;/li>
+&lt;li>At the end of day, review tasks that remain unfinished and adjust time blocks of the rest of the week&lt;/li>
+&lt;li>Batch shallow tasks&lt;/li>
+&lt;li>Have leisure blocks. However try and be spontaneous in what leisure activity you choose to do there&lt;/li>
+&lt;li>Have pause blocks/overflow blocks - or even overflow days&lt;/li>
+&lt;li>Be flexible. If something does not go according to plan readjust blocks depending on priority. Time blocks are suggestions, not prisons.&lt;/li>
+&lt;li>Be liberal with time allotment to tasks until you get a realistic grip on the time required for the same.&lt;/li>
+&lt;li>Optional: You can combine time-boxing to test Parkinson&amp;rsquo;s law.&lt;/li>
+&lt;/ul></description></item><item><title>Personal Knowledge Base - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</link><pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/criteria-for-personal-knowledge-base/</guid><description>&lt;h2 id="essential-criteria">Essential criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Mobile first.&lt;/li>
+&lt;li>Privacy.&lt;/li>
+&lt;li>Cross platform.
+&lt;ul>
+&lt;li>At least Linux and Android must be supported.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Scalable.&lt;/li>
+&lt;li>Ability to cross link notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="desired-criteria">Desired criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Fast search and navigation.&lt;/li>
+&lt;li>Semi automation of organization.&lt;/li>
+&lt;li>Bottom up organization.&lt;/li>
+&lt;li>Fast input.&lt;/li>
+&lt;li>Least effort for initial setup, but extendable according to personal requirements.&lt;/li>
+&lt;/ol>
+&lt;h2 id="ideal-criteria">Ideal criteria&lt;/h2>
+&lt;ol>
+&lt;li>Complete portability
+&lt;ul>
+&lt;li>The question to consider is: &amp;ldquo;If I have to run and all I can take is a pendrive, can I take my pkb with me and how effectively can I use it?&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Visualization of relationships between notes as a mind-map.&lt;/li>
+&lt;li>Web-clipper add-on for browser.&lt;/li>
+&lt;li>Secure cloud backups&lt;/li>
+&lt;li>Tool-chain for easy publishing&lt;/li>
+&lt;/ol>
+&lt;h2 id="candidates">Candidates&lt;/h2>
+&lt;ol>
+&lt;li>Evernote: Privacy issues&lt;/li>
+&lt;li>Onenote: Privacy issues&lt;/li>
+&lt;li>Notion: Privacy issues&lt;/li>
+&lt;li>Roam: Privacy issues&lt;/li>
+&lt;li>Zim: No mobile app&lt;/li>
+&lt;li>Org mode: Orgzly is a great mobile app. Unforunately it is more geared towards &amp;lsquo;few-large-notes&amp;rsquo; kind of workflow, while I am looking at a &amp;lsquo;many small notes with ability to convert it to large notes&amp;rsquo; kind of workflow&lt;/li>
+&lt;li>Tiddlywiki: Not scalable. &lt;a href="https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/" target="_blank">Usability in mobile&lt;/a> is mediocre.&lt;/li>
+&lt;li>Obsidian: Very interesting project. However I was hard pressed to find a feature that is not available as a VSCode Plugin inorder to warrant the swtich to a non-opensource project.&lt;/li>
+&lt;li>Markdown notes - Markor in Mobile, VS codium with plugins in Linux: CURRENT&lt;/li>
+&lt;/ol>
+&lt;h2 id="interesting-links">Interesting links&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.notion.so/Artificial-Brain-Networked-notebook-app-a131b468fc6f43218fb8105430304709" target="_blank">Artificial Brain Networked notebook app - Master list of Personal knowledge base softwares&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://wiki.nikitavoloboev.xyz/other/wiki-workflow#similar-wikis-i-liked" target="_blank">List of Public Zettelkasten Wikis&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>

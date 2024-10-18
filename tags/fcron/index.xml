@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fcron on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/fcron/</link><description>Recent content in Fcron on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Mon, 03 Oct 2022 14:50:05 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/fcron/index.xml" rel="self" type="application/rss+xml"/><item><title>Fcron - Set up, run jobs and troubleshoot</title><link>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot--fcron/</link><pubDate>Mon, 03 Oct 2022 14:50:05 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/set-up-run-jobs-and-troubleshoot--fcron/</guid><description>&lt;ul>
+&lt;li>Install Fcron&lt;/li>
+&lt;li>Ensure that an Fcron group is created&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cat /etc/group | grep fcron
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Should output something like this: fcron:x:23&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Add current user to Fcron group (Need Root)&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo usermod -a -G fcron $USER
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You might have to re-login after the last command.&lt;/p>
+&lt;ul>
+&lt;li>Open the fcrontab&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>fcrontab -e
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>An empty text file should open. This is where we define what tasks to run and when to run them. However, first we add the necessary environment variables&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>SHELL&lt;span style="color:#f92672">=&lt;/span>/usr/bin/zsh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DISPLAY&lt;span style="color:#f92672">=&lt;/span>:0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Now we can tasks one per line. For eg, below given task will change wallpaper to a random picture in wallpapers folder every 5 mins (Need &lt;code>feh&lt;/code> installed)&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>@ &lt;span style="color:#ae81ff">5&lt;/span> /usr/bin/feh --no-fehbg --bg-fill --randomize ~/Collection/Pictures/wallpapers
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="what-to-do-in-case-of-permission-errors">What to do in case of permission errors&lt;/h2>
+&lt;p>Remember that the folder &lt;code>/var/spool/fcron&lt;/code> should be owned by the user &lt;code>fcron&lt;/code> while the fcrontab files inside that folder should be owned by respective users. So if you have permission issues, the following commands may resolve the issues&lt;/p></description></item></channel></rss>

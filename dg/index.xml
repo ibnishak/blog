@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dgs on Treppenwitze</title><link>https://ibnishak.github.io/blog/dg/</link><description>Recent content in Dgs on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><atom:link href="https://ibnishak.github.io/blog/dg/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://ibnishak.github.io/blog/dg/follicles/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/follicles/</guid><description>&lt;h1 id="follicles">Follicles&lt;/h1>
+&lt;p>Follicle = a small spherical group of cells containing a cavity&lt;/p>
+&lt;p>eg:&lt;/p>
+&lt;ul>
+&lt;li>Hair follicle at the root of hair aiding hair growth.&lt;/li>
+&lt;li>Ovarian follicle = Basic units of ovary. Each ovarian follicle is made of one oocyte and its supporting cells.&lt;/li>
+&lt;li>Thyroid follicle = Cuboidal cells surrounding fluid filled space called colloid. Has receptor for TSH
+&lt;ul>
+&lt;li>Para follicular cells are interspersed between Thyroid follicles. They produce calcitonin&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Lymph follicle = Lymph node&lt;/li>
+&lt;/ul></description></item><item><title/><link>https://ibnishak.github.io/blog/dg/note-taking-and-workflows/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/note-taking-and-workflows/</guid><description>&lt;h1 id="note-taking-and-workflows">Note taking and Workflows&lt;/h1>
+&lt;ul>
+&lt;li>[[Note taking Apps - Criteria]]&lt;/li>
+&lt;li>[[History of Notes Migration]]&lt;/li>
+&lt;li>[[Tiddlywiki - An exit interview]]&lt;/li>
+&lt;li>[[Obsidian - Notes on Workflow]]&lt;/li>
+&lt;/ul></description></item><item><title/><link>https://ibnishak.github.io/blog/dg/notes-by-category/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/notes-by-category/</guid><description>&lt;h1 id="notes-by-category">Notes by Category&lt;/h1>
+&lt;ul>
+&lt;li>[[Mental Models]]&lt;/li>
+&lt;li>[[Note taking and Workflows]]&lt;/li>
+&lt;/ul></description></item><item><title>About</title><link>https://ibnishak.github.io/blog/dg/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/about/</guid><description>&lt;h1 id="hello-there">Hello There&lt;/h1>
+&lt;p>This is collection of small notes build with gatsby using &lt;a href="https://www.npmjs.com/package/gatsby-theme-garden" target="_blank">Gatsby theme garden&lt;/a>. In here I tend to write about practically anything that interests me.&lt;/p>
+&lt;ul>
+&lt;li>[[Notes by Calendar]]&lt;/li>
+&lt;li>[[Notes by Category]]&lt;/li>
+&lt;/ul></description></item><item><title>About Criticism</title><link>https://ibnishak.github.io/blog/dg/about-criticism/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/about-criticism/</guid><description>&lt;h1 id="about-criticism">About Criticism&lt;/h1>
+&lt;ul>
+&lt;li>Not all criticism is good
+&lt;ul>
+&lt;li>There is no act, however virtuous, for which ingenuity may not find some bad motive.&amp;quot; -Thomas Jefferson&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Not all criticims is bad
+&lt;ul>
+&lt;li>Criticism may not be agreeable, but it is necessary. It fulfills the same function as pain in the human body. It calls attention to the unhealthy state of things&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="criticism-vs-constructive-criticism">Criticism vs Constructive Criticism&lt;/h2>
+&lt;ul>
+&lt;li>Criticism = this is bad&lt;/li>
+&lt;li>Constructive criticism = this is how you could have used the things under your control to make things better.&lt;/li>
+&lt;/ul></description></item><item><title>Ad hominem</title><link>https://ibnishak.github.io/blog/dg/ad-hominem/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/ad-hominem/</guid><description>&lt;h1 id="ad-hominem">Ad hominem&lt;/h1>
+&lt;p>&lt;a href="https://medium.com/the-innovation/ad-hominem-the-logical-fallacy-we-are-all-guilty-of-committing-7b4f9014e858?" target="_blank">Source&lt;/a>&lt;/p>
+&lt;p>Discusion of an idea or argument should be done completely independent of who or where it came from&lt;/p>
+&lt;p>Violations of this:&lt;/p>
+&lt;ul>
+&lt;li>Questioning the motivation: &amp;ldquo;You are paid to say that&amp;rdquo;&lt;/li>
+&lt;li>Abuse: &amp;ldquo;You are a Nazi&amp;rdquo;&lt;/li>
+&lt;li>Tu Quoque: &amp;ldquo;&amp;hellip; but you do not follow it yourself.&amp;rdquo;
+&lt;ul>
+&lt;li>Inability to follow a principle does not nullify the principle itself.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Guilt by association: &amp;ldquo;This is exactly what Nazi&amp;rsquo;s did.&amp;rdquo;
+&lt;ul>
+&lt;li>Just because our argument aligns with a malefactor, does not mean all our arguments are invalid. Inorder to prove otherwise, one have to show that deplorable arguments of the malefactor can be derived from this.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Availability Bias</title><link>https://ibnishak.github.io/blog/dg/availability-bias/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/availability-bias/</guid><description>&lt;h1 id="availability-bias">Availability Bias&lt;/h1>
+&lt;p>Idea: Are there more English words that start with a k or more words with k as its third letter? Answer: More than twice as many English words have k in the third position than start with a k. Why do most people believe the opposite is true? Because we can think of words beginning with a k more quickly. They are more available to our memory.&lt;/p>
+&lt;p>The availability bias says this: We create a picture of the world using the examples that most easily come to mind. This is idiotic, of course, because in reality, things don’t happen more frequently just because we can conceive of them more easily. It is as if you were in a foreign city without a map, and then pulled out one for your hometown and simply used that. We prefer wrong information to no information.&lt;/p></description></item><item><title>Circle of Competence</title><link>https://ibnishak.github.io/blog/dg/circle-of-competence/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/circle-of-competence/</guid><description>&lt;h1 id="circle-of-competence">Circle of Competence&lt;/h1>
+&lt;p>Understanding your circle of competence helps you avoid problems, identify opportunities for improvement, and learn from others.&lt;/p>
+&lt;p>The size of that circle is not very important; knowing its boundaries, however, is vital.&lt;/p>
+&lt;p>You have to figure out what your own aptitudes are. If you play games where other people have the aptitudes and you don’t, you’re going to lose. And that’s as close to certain as any prediction that you can make. You have to figure out where you’ve got an edge. And you’ve got to play within your own circle of competence.&lt;/p></description></item><item><title>Collectors Fallacy</title><link>https://ibnishak.github.io/blog/dg/collectors-fallacy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/collectors-fallacy/</guid><description>&lt;h1 id="collectors-fallacy">Collectors Fallacy&lt;/h1>
+&lt;p>Knowing &lt;strong>about&lt;/strong> a thing is not the same as knowing a thing.&lt;/p>
+&lt;p>Knowledge should provide new insights, better understanding of reality and ultimately bring about change within us. Filing away information will not help us achieve any of these goals.&lt;/p>
+&lt;h2 id="counter">Counter&lt;/h2>
+&lt;p>To clearly understand the information.&lt;/p>
+&lt;ul>
+&lt;li>Write it in your own words&lt;/li>
+&lt;li>Link to similar ideas&lt;/li>
+&lt;li>Put it in right context&lt;/li>
+&lt;li>Review it&lt;/li>
+&lt;/ul></description></item><item><title>Confirmation bias</title><link>https://ibnishak.github.io/blog/dg/confirmation-bias/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/confirmation-bias/</guid><description>&lt;h1 id="confirmation-bias">Confirmation bias&lt;/h1>
+&lt;p>Whenever observations contradicted one&amp;rsquo;s theory, we should take them very seriously and note them down immediately. Brain actively “forgets” disconfirming evidence after a short time. The more correct one judge his theory to be, the more actively one should looked for contradictions.&lt;/p></description></item><item><title>Conjunction Fallacy</title><link>https://ibnishak.github.io/blog/dg/conjunction-fallacy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/conjunction-fallacy/</guid><description>&lt;h1 id="conjunction-fallacy">Conjunction Fallacy&lt;/h1>
+&lt;p>Probability of two events in conjunction is always less than or equal to the probability of either one of the events occurring alone.&lt;/p></description></item><item><title>Criteria for Bad Ideologies</title><link>https://ibnishak.github.io/blog/dg/criteria-for-bad-ideologies/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/criteria-for-bad-ideologies/</guid><description>&lt;h1 id="criteria-for-bad-ideologies">Criteria for Bad Ideologies&lt;/h1>
+&lt;p>“Doubt each old thing you know. Require current evidence. Make it prove itself to be true today. Otherwise, let it go.” - Derek Sivers&lt;/p>
+&lt;h1 id="what-is-an-ideology">What is an ideology&lt;/h1>
+&lt;p>&lt;em>An ideology is a coherent set of ideas that should help you make sense of the world.&lt;/em> &lt;em>Set of normative beliefs and values that a person or other entity hold.&lt;/em>&lt;/p>
+&lt;p>&lt;strong>Normative&lt;/strong> : Standard for evaluating or making judgments about behavior or outcomes. Designating some actions or outcomes as good or desirable or permissible and others as bad or undesirable or impermissible.&lt;/p></description></item><item><title>Deliberate Practice</title><link>https://ibnishak.github.io/blog/dg/deliberate-practice/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/deliberate-practice/</guid><description>&lt;h1 id="deliberate-practice">Deliberate Practice&lt;/h1>
+&lt;p>&lt;strong>The right sort of practice carried out over a sufficient period of time leads to improvement. Nothing else. There is no such thing as natural talent or prodigies.&lt;/strong>&lt;/p>
+&lt;h2 id="components-of-purposeful-practice">Components of purposeful practice:&lt;/h2>
+&lt;ul>
+&lt;li>Putting a bunch of baby steps together to hit a long term goal, having a plan&lt;/li>
+&lt;li>Feedback, you have to know whether you are doing something right and if not, what mistakes you’re making&lt;/li>
+&lt;li>Getting outside of your comfort zone, feeling uncomfortable. If you never push beyond your comfort zone you’ll never improve.&lt;/li>
+&lt;li>A way to monitor your progress&lt;/li>
+&lt;li>Maintaining motivation&lt;/li>
+&lt;li>You won’t improve much without giving the task your full attention (See Deep Work)&lt;/li>
+&lt;/ul></description></item><item><title>Dichotomy of Control</title><link>https://ibnishak.github.io/blog/dg/dichotomy-of-control/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/dichotomy-of-control/</guid><description>&lt;h1 id="dichotomy-of-control">Dichotomy of Control&lt;/h1>
+&lt;blockquote>
+&lt;p>There are things which are within our power, and there are things which are beyond our power. Within our power are opinion, aim, desire, aversion, and, in one word, whatever affairs are our own. Beyond our power are body, property, reputation, office, and, in one word, whatever are not properly our own affairs.— Epictetus, Enchiridion.&lt;/p>
+&lt;/blockquote>
+&lt;p>This is tricky and requires a lot of nuanced analysis of items.&lt;/p></description></item><item><title>Diderot effect</title><link>https://ibnishak.github.io/blog/dg/diderot-effect/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/diderot-effect/</guid><description>&lt;h1 id="diderot-effect">Diderot effect&lt;/h1>
+&lt;p>The Diderot Effect states that obtaining a new possession often creates a spiral of consumption which leads you to acquire more new things. As a result, we end up buying things that our previous selves never needed to feel happy or fulfilled.&lt;/p>
+&lt;p>We are rarely looking to downgrade, to simplify, to eliminate, to reduce. Our natural inclination is always to accumulate, to add, to upgrade, and to build upon.&lt;/p></description></item><item><title>Digital Garden - Comparison with blog</title><link>https://ibnishak.github.io/blog/dg/digital-garden-comparison-with-blog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/digital-garden-comparison-with-blog/</guid><description>&lt;h1 id="digital-garden---comparison-with-blog">Digital Garden - Comparison with blog&lt;/h1>
+&lt;p>The major issue seems to be that of semantics. There is no universal definition of &amp;ldquo;blog&amp;rdquo;. However, most blogs we see have the following pattern.&lt;/p>
+&lt;ul>
+&lt;li>Most posts are essay-ish.&lt;/li>
+&lt;li>Posts are standalone. They might link to resources outside the blog itself.&lt;/li>
+&lt;li>Blog index pages are a time-stamped stream that is very RSS friendly.&lt;/li>
+&lt;li>Posts are published after a certain finality is achieved. It is more performative writing.&lt;/li>
+&lt;/ul>
+&lt;p>In comparison, digital gardens are more like a personal mini Wikipedia.&lt;/p></description></item><item><title>Ethics of Capitalism</title><link>https://ibnishak.github.io/blog/dg/ethics-of-capitalism/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/ethics-of-capitalism/</guid><description>&lt;h1 id="ethics-of-capitalism">Ethics of Capitalism&lt;/h1>
+&lt;p>Capitalism do not support liberty as a primary ethical value. Capitalism supports liberty because it aids them to generate more profit. If a condition arises where curtailing liberties of a population will help them generate more profit, capitalism will find no reason not to support that. Louis Vuitton during German occupation, Apple exploitation of Chinese children, slave supported economies etc&lt;br>
+Towards this aim they are ready to exploit any loophole or sacifice any ethical position. For a company in capitalist society, failure to be this ruthless would mean some other company will overtake them using the same loophole.&lt;/p></description></item><item><title>February 2022</title><link>https://ibnishak.github.io/blog/dg/february-2022/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/february-2022/</guid><description>&lt;h1 id="february-2022">February 2022&lt;/h1>
+&lt;ul>
+&lt;li>[[Interesting Obsidian plugins]]&lt;/li>
+&lt;li>[[Digital Garden - Comparison with blog]]&lt;/li>
+&lt;li>[[Knowledge Acquisition]]&lt;/li>
+&lt;li>[[Kintsukuroi]]&lt;/li>
+&lt;li>[[Ad hominem]]&lt;/li>
+&lt;li>[[Pomodoro]]&lt;/li>
+&lt;/ul></description></item><item><title>First Principle Thinking</title><link>https://ibnishak.github.io/blog/dg/first-principle-thinking/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/first-principle-thinking/</guid><description>&lt;h1 id="first-principle-thinking">First Principle Thinking&lt;/h1>
+&lt;p>First Principles Thinking (FPT) is starting from unequivocal base facts and building up toward some vision or explanation of reality.&lt;/p></description></item><item><title>Fundamental attribution error</title><link>https://ibnishak.github.io/blog/dg/fundamental-attribution-error/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/fundamental-attribution-error/</guid><description>&lt;h1 id="fundamental-attribution-error">Fundamental attribution error&lt;/h1>
+&lt;p>Under-emphasize situational explanations for an individual&amp;rsquo;s observed behavior while over-emphasizing dispositional and personality-based explanations for their behavior.&lt;/p>
+&lt;h2 id="rigged-game-of-monopoly">Rigged Game Of Monopoly&lt;/h2>
+&lt;p>In a series of behavioral experiments centered on the game of Monopoly conducted at the UC Berkeley campus — involved the secret recording of multiple “rigged” games of monopoly in which one random player in a group was given certain advantages such as: twice the money, greater ability to move around the board (more than two dice!), and more access to resources (higher bonuses for passing ‘go’).&lt;/p></description></item><item><title>Git Annex - Setup and Workflow</title><link>https://ibnishak.github.io/blog/dg/git-annex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/git-annex/</guid><description>&lt;h1 id="git-annex---setup-and-workflow">Git Annex - Setup and Workflow&lt;/h1>
+&lt;h2 id="what-is-git-annex">What is git annex?&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://git-annex.branchable.com/" target="_blank">Git Annex&lt;/a> is an open source software written in haskell. It provides a layer over Git to manage large and binary which are otherwise not checked into Git.&lt;/li>
+&lt;li>For me, git-annex is a software that enables me to see what all files are stored in all my hard-drives when they are not connected. It also acts as an interface to retrieve those files, add files, and create multiple copies stored in different hard-drives.&lt;/li>
+&lt;/ul>
+&lt;h2 id="how-to-install-git-annex-in-arch-linux">How to install git annex in Arch Linux&lt;/h2>
+&lt;ul>
+&lt;li>Install &lt;code>git-annex-standalone&lt;/code> from pacman or download linux version from its webpage and run install script.
+&lt;ul>
+&lt;li>DO NOT install &lt;code>git-annex&lt;/code> - ONLY install &lt;code>git-annex-standalone&lt;/code>. The former will install all haskell libraries which is heavy and reuqires frequent updates.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="how-to-set-up-folders-in-laptop-and-external-hdd-for-synchronizing">How to set up folders in laptop and external-HDD for synchronizing?&lt;/h2>
+&lt;ul>
+&lt;li>Create a source folder in laptop, and destination folder in external-HDD&lt;/li>
+&lt;li>Run init commands in each folder and add complementary folder as remote&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd source-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex init &lt;span style="color:#e6db74">&amp;#34;source&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd destination-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex init &lt;span style="color:#e6db74">&amp;#34;destination&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd source-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git remote add &lt;span style="color:#e6db74">&amp;#34;destination&amp;#34;&lt;/span> destination-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd destination-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git remote add &lt;span style="color:#e6db74">&amp;#34;source&amp;#34;&lt;/span> source-folder
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="how-to-move-all-files-to-destination-folder-leaving-only-metadata-in-source-folder">How to move all files to destination-folder, leaving only metadata in source-folder&lt;/h2>
+&lt;ul>
+&lt;li>Add files to git-annex in source-folder, run sync from each folder and move.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd source-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex add .
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git commit -a -m &lt;span style="color:#e6db74">&amp;#34;My commit message&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex sync
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex move . --to &lt;span style="color:#e6db74">&amp;#34;destination&amp;#34;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd destination-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex sync
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="what-special-instructions-does-calibre-library-folder-require-during-setup-and-syncing">What special instructions does calibre-library folder require during setup and syncing&lt;/h2>
+&lt;ul>
+&lt;li>During setup, add the following lines to &lt;code>.gitignore&lt;/code> files in both source-folder and destination folder.&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>metadata_db_prefs_backup.json
+metadata.db
+-.jpg
+-.opf
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Also during setup, run the following commands once from source-folder and once from destination folder.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git config annex.largefiles &lt;span style="color:#e6db74">&amp;#34;include=* exclude=*.opf exclude=*.json exclude=*.db exclude=*.jpg&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>During synchronization, run the following command while in source-folder&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rsync -av --delete --exclude&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;.git/&amp;#34;&lt;/span> --include &lt;span style="color:#e6db74">&amp;#39;*.jpg&amp;#39;&lt;/span> --include &lt;span style="color:#e6db74">&amp;#39;*.opf&amp;#39;&lt;/span> --include &lt;span style="color:#e6db74">&amp;#39;metadata*&amp;#39;&lt;/span> --include&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;*/&amp;#34;&lt;/span> --exclude&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;*&amp;#34;&lt;/span> . destination-folder
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="how-to-retrieve-a-file-from-external-hdd">How to retrieve a file from external-HDD?&lt;/h2>
+&lt;ul>
+&lt;li>Run &lt;code>get&lt;/code> command from source folder&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cd source-folder
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git annex get &lt;span style="color:#e6db74">&amp;#34;myfile&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="how-to-find-the-location-where-files-is-stored">How to find the location where files is stored?&lt;/h2>
+&lt;ul>
+&lt;li>Run whereis command from any of git-annex folders&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git annex whereis &lt;span style="color:#e6db74">&amp;#34;myfile&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Growth mindset</title><link>https://ibnishak.github.io/blog/dg/growth-mindset/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/growth-mindset/</guid><description>&lt;h1 id="growth-mindset">Growth mindset&lt;/h1>
+&lt;p>See adversity as a catalyst for beneficial transformation&lt;/p></description></item><item><title>Halo effect</title><link>https://ibnishak.github.io/blog/dg/halo-effect/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/halo-effect/</guid><description>&lt;h1 id="halo-effect">Halo effect&lt;/h1>
+&lt;p>The initial impressions about a person can influence our opinions regarding his actions. It could also appear that a person&amp;rsquo;s expertise on field could paint his opinions on another field with undue importance.&lt;/p>
+&lt;h2 id="counter">Counter&lt;/h2>
+&lt;ol>
+&lt;li>Always value experts in the field in question.&lt;/li>
+&lt;li>Measure the performance of subjects with no weightage to past actions&lt;/li>
+&lt;/ol>
+&lt;h2 id="use">Use&lt;/h2>
+&lt;ol>
+&lt;li>Create good first impressions&lt;/li>
+&lt;/ol></description></item><item><title>Hickams dictum</title><link>https://ibnishak.github.io/blog/dg/hickams-dictum/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/hickams-dictum/</guid><description>&lt;h1 id="hickams-dictum">Hickams dictum&lt;/h1>
+&lt;p>patients can have as many diseases as they damn (or darn) well please&lt;/p>
+&lt;p>If all the symptoms of a patient is explained by&lt;/p>
+&lt;ul>
+&lt;li>a combination of 3 common diseases&lt;/li>
+&lt;li>one rare disease&lt;/li>
+&lt;/ul>
+&lt;p>then weightage should be given to former explanation.&lt;/p>
+&lt;p>When you hear hoofbeats, think of horses, not zebra.&lt;/p></description></item><item><title>Hindsight Bias</title><link>https://ibnishak.github.io/blog/dg/hindsight-bias/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/hindsight-bias/</guid><description>&lt;h1 id="hindsight-bias">Hindsight Bias&lt;/h1>
+&lt;p>Why is it bad?&lt;br>
+It makes us believe we are better predictors than we actually are, causing us to be arrogant about our knowledge and consequently to take too much risk.&lt;/p>
+&lt;p>How to counter it?&lt;br>
+Document your experiments and predictions&lt;/p></description></item><item><title>History of Notes Migration</title><link>https://ibnishak.github.io/blog/dg/history-of-notes-migration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/history-of-notes-migration/</guid><description>&lt;h1 id="history-of-notes-migration">History of Notes Migration&lt;/h1>
+&lt;p>I started note-taking in analog -a lined notebook. It was more of a commonplace book than note-taking per se. However I liked the process. It helped me to draw quotes and little poems for my school essays. I collected jokes and used them in conversations with surprising effect to my acceptance in social circles.&lt;/p>
+&lt;p>Then came the first migration - OneNote was a revelation. You didn&amp;rsquo;t have to worry about ink and pages running out. You didn&amp;rsquo;t have to remember where you put it. It was gorgeous too with its tabs and notebooks. To this day I pine for the ability to take notes in a canvas like interface. The fact that my school taught how to use MS Word, MS Powerpoint, MS Excel and others but not OneNote baffled me to no end. I evangelized OneNote to anybody who would listen. However this was the most painful migration. There was no way to digitize handwriting available widely at that point. So I had to type my entire collection, page by page, letter by letter.&lt;/p></description></item><item><title>Hyperbolic discounting</title><link>https://ibnishak.github.io/blog/dg/hyperbolic-discounting/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/hyperbolic-discounting/</guid><description>&lt;h1 id="hyperbolic-discounting">Hyperbolic discounting&lt;/h1>
+&lt;p>&lt;a href="https://models.substack.com/p/hyperbolic-discounting" target="_blank">Source&lt;/a>&lt;/p>
+&lt;p>People prefer immediate rewards in the short-term over better rewards in the long-term.&lt;/p>
+&lt;h2 id="use">Use&lt;/h2>
+&lt;p>Frame your message in such a way that its effects are seen in shortest possible time. Egs&lt;/p>
+&lt;ul>
+&lt;li>Rather than go with “Shed 10 kgs in 60 days”, try “Burn 1000 calories today, so that you don’t have to burn extra calories tomorrow.”&lt;/li>
+&lt;li>Instead of saying “You’ll likely get lung cancer in 5 years”, we can reframe like “Every cigarette you smoke, makes it that much harder for you to quit.”&lt;/li>
+&lt;li>Instead of saying, you’ll save $20 dollars by buying our yearly subscription of $100. We can try reframing it by saying - “You only pay $8.40 this month instead of $10.”&lt;/li>
+&lt;/ul>
+&lt;h2 id="counter">Counter&lt;/h2>
+&lt;p>Think in second order.&lt;/p></description></item><item><title>Inclusion body</title><link>https://ibnishak.github.io/blog/dg/inclusion-body/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/inclusion-body/</guid><description>&lt;h1 id="inclusion-body">Inclusion body&lt;/h1>
+&lt;p>Inclusion bodies are dense, spherical, aggregated proteins, mostly formed in the cytoplasm of prokaryotes&lt;/p></description></item><item><title>Inclusion body conjunctivitis</title><link>https://ibnishak.github.io/blog/dg/inclusion-body-conjunctivitis/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/inclusion-body-conjunctivitis/</guid><description>&lt;h1 id="inclusion-body-conjunctivitis">Inclusion body conjunctivitis&lt;/h1>
+&lt;ul>
+&lt;li>Conjunctivitis caused by &lt;a href="Chlamydia" class="internal-link">Chlamydia&lt;/a>&lt;/li>
+&lt;li>Shows Cytoplasmic [[Inclusion body|Inclusion bodies]] - HP bodies
+&lt;ul>
+&lt;li>HP = Halberstaedter-Prowazeki bodies&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Superior limbal [[follicles]] may resolve to leave a row of shallow depressions called &lt;strong>Herbert pits&lt;/strong>&lt;/li>
+&lt;/ul></description></item><item><title>Infinite buffet approach</title><link>https://ibnishak.github.io/blog/dg/infinite-buffet-approach/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/infinite-buffet-approach/</guid><description>&lt;h1 id="infinite-buffet-approach">Infinite buffet approach&lt;/h1>
+&lt;p>Life is a buffet with infinite choices. In the initial stage, one should explore rapidly. After a while, one should revisit the best out of choices tested till then. While choices are infinite, our time and tummy space is finite. After this stage one ought to split their time to revisiting best out of known choices and exploring further. The ratio of time will keep tilting towards former but one ought to take care not to tip over.&lt;/p></description></item><item><title>Interesting Obsidian Plugins</title><link>https://ibnishak.github.io/blog/dg/interesting-obsidian-plugins/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/interesting-obsidian-plugins/</guid><description>&lt;h1 id="interesting-obsidian-plugins">Interesting Obsidian Plugins&lt;/h1>
+&lt;h2 id="for-everyone">For Everyone&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/argenos/nldates-obsidian" target="_blank">Natural Language Dates&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/akaalias/obsidian-footnotes" target="_blank">Foot notes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/Vinzent03/obsidian-hotkeys-for-specific-files" target="_blank">Shortcut keys for specific files&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/konodyuk/obsidian-text-expander" target="_blank">Text Expander&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mdelobelle/obsidian_supercharged_links" target="_blank">Supercharged links: Stylize your links based on target metadata&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="for-the-hacker">For the hacker&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/SilentVoid13/Templater" target="_blank">Templater&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/Vinzent03/obsidian-hotkeys-for-templates" target="_blank">Hotkey for Templater&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/Taitava/obsidian-shellcommands" target="_blank">Shell commands&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/chhoumann/quickadd" target="_blank">QuickAdd - Macros&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="for-heavy-tagger">For heavy tagger&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/jmilldotdev/obsidian-frontmatter-tag-suggest" target="_blank">Frontmatter Tag suggest&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/aidurber/tag-page-preview" target="_blank">Tag page preview: Hovering over a tag shows list of pages tagged by it&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/vrtmrz/obsidian-tagfolder" target="_blank">Tag Folder&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/alexobenauer/Cross-reference-Navigation-for-Obsidian" target="_blank">Cross reference navigation&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="for-the-compulsive-organizer">For the compulsive organizer&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/SkepticMystic/breadcrumbs" target="_blank">Breadcrumbs: Allows up/down/sibling links&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="for-the-journal-addict">For the Journal addict&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/ShockThunder/RandomStructuralDiary" target="_blank">Random structural diary&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Inverse thinking</title><link>https://ibnishak.github.io/blog/dg/inverse-thinking/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/inverse-thinking/</guid><description>&lt;h1 id="inverse-thinking">Inverse thinking&lt;/h1>
+&lt;p>Approaching a problem from the desired end-result and working backwards can show you the steps needed to achieve it.&lt;/p></description></item><item><title>Kintsukuroi</title><link>https://ibnishak.github.io/blog/dg/kintsukuroi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/kintsukuroi/</guid><description>&lt;h1 id="kintsukuroi">Kintsukuroi&lt;/h1>
+&lt;p>Japanese art of repairing broken pottery using lacquer infused with powdered gold, which has the totally opposite effect of an invisible mend. Rather than trying to hide the fact that the pottery piece has been broken, the repair of the broken piece using gold produces a result that is more beautiful and stronger than the original, unbroken item.&lt;/p>
+&lt;p>It is a reminder to forgive ourselves for your past mistakes and use them to grow.&lt;/p></description></item><item><title>Knowledge Acquisition</title><link>https://ibnishak.github.io/blog/dg/knowledge-acquisition/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/knowledge-acquisition/</guid><description>&lt;h1 id="knowledge-acquisition">Knowledge Acquisition&lt;/h1>
+&lt;p>Knowledge acquisition should come in 2 forms - deliberate and free-flowing.&lt;/p>
+&lt;p>Deliberate knowledge acquisition in 3 fields&lt;/p>
+&lt;ul>
+&lt;li>Personal: Observe our patterns of behavior, and understand whether or not it aligns with goals one has set for himself. Observing oneself also inevitably brings to light one&amp;rsquo;s strengths and weaknesses, and allows the opportunity to experiment with them.
+&lt;ul>
+&lt;li>[[Journaling]].&lt;/li>
+&lt;li>[[Quantified self]].&lt;/li>
+&lt;li>[[Mindfulness]]/[[Metacognition]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Professional: In real life, one must earn a living. Whether you view your profession in materialistic terms or philosophical terms, It behooves us to do it better. Find your [[Circle of competence]] and expand it.&lt;/li>
+&lt;li>Spiritual/Philosophical: Everybody should deal with questions like what is my purpose, what is my life philosophy, and a tangential set of why&amp;rsquo;s. It is not necessary to find answers to these questions. However, completely avoiding tussles with them might lead to finding ourselves having mislived. See [[Living in bad faith]]&lt;/li>
+&lt;/ul>
+&lt;p>What separates knowledge acquisition different from deliberate knowledge acquisition is the portion of time dedicated to [[Metalearning]]. In addition to acquiring knowledge, one should also evaluate the methods, reasons, and progress of knowledge acquisition ideally at fixed intervals.&lt;/p></description></item><item><title>March 2022</title><link>https://ibnishak.github.io/blog/dg/march-2022/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/march-2022/</guid><description>&lt;h1 id="march-2022">March 2022&lt;/h1>
+&lt;ul>
+&lt;li>[[Reverse outlining]]&lt;/li>
+&lt;li>[[Criteria for Bad Ideologies]]&lt;/li>
+&lt;li>[[Rules of Social behaviour]]&lt;/li>
+&lt;li>[[Why learn Philosophy]]&lt;/li>
+&lt;li>[[Need for Serendipity engines]]&lt;/li>
+&lt;li>[[Git Annex]]&lt;/li>
+&lt;li>[[About Criticism]]&lt;/li>
+&lt;li>[[Ethics of Capitalism]]&lt;/li>
+&lt;li>[[Inclusion body conjunctivitis]]&lt;/li>
+&lt;li>[[Follicles]]&lt;/li>
+&lt;li>[[Inclusion body]]&lt;/li>
+&lt;/ul></description></item><item><title>Memory fades</title><link>https://ibnishak.github.io/blog/dg/memory-fades/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/memory-fades/</guid><description>&lt;h1 id="memory-fades">Memory fades&lt;/h1>
+&lt;p>Important insights, lessons etc won&amp;rsquo;t stay in memory.&lt;/p>
+&lt;p>The solution is both simple and hard — &lt;em>Document Everything&lt;/em>.&lt;/p></description></item><item><title>Mental Models</title><link>https://ibnishak.github.io/blog/dg/mental-models/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/mental-models/</guid><description>&lt;h1 id="mental-models">Mental Models&lt;/h1>
+&lt;ol>
+&lt;li>[[Ad hominem]]&lt;/li>
+&lt;li>[[Circle of Competence]]&lt;/li>
+&lt;li>[[Collectors Fallacy]]&lt;/li>
+&lt;li>[[Confirmation bias]]&lt;/li>
+&lt;li>[[Conjunction Fallacy]]&lt;/li>
+&lt;li>[[Criteria for Bad Ideologies]]&lt;/li>
+&lt;li>[[Deliberate Practice]]&lt;/li>
+&lt;li>[[Diderot effect]]&lt;/li>
+&lt;li>[[Dichotomy of Control]]&lt;/li>
+&lt;li>[[First Principle Thinking]]&lt;/li>
+&lt;li>[[Fundamental attribution error]]&lt;/li>
+&lt;li>[[Growth mindset]]&lt;/li>
+&lt;li>[[Halo effect]]&lt;/li>
+&lt;li>[[Hickams dictum]]&lt;/li>
+&lt;li>[[Hindsight Bias]]&lt;/li>
+&lt;li>[[Hyperbolic discounting]]&lt;/li>
+&lt;li>[[Infinite buffet approach]]&lt;/li>
+&lt;li>[[Inverse thinking]]&lt;/li>
+&lt;li>[[Memory fades]]&lt;/li>
+&lt;li>[[Metalearning]]&lt;/li>
+&lt;li>[[Occams Razor]]&lt;/li>
+&lt;li>[[Occams Broom]]&lt;/li>
+&lt;li>[[Oversensitivity to pattern]]&lt;/li>
+&lt;li>[[Reverse outlining]]&lt;/li>
+&lt;li>[[Rule of 72]]&lt;/li>
+&lt;li>[[Second order thinking]]&lt;/li>
+&lt;li>[[Survivorship bias]]&lt;/li>
+&lt;li>[[The Laundry Approach]]&lt;/li>
+&lt;li>[[Veil of ignorance]]&lt;/li>
+&lt;li>[[Availability Bias]]&lt;/li>
+&lt;/ol></description></item><item><title>Metalearning</title><link>https://ibnishak.github.io/blog/dg/metalearning/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/metalearning/</guid><description>&lt;h1 id="metalearning">Metalearning&lt;/h1>
+&lt;ul>
+&lt;li>Why: Determine your learning goal and ask yourself why you’ve chosen it.&lt;/li>
+&lt;li>What: List what you need to learn to achieve your goal. Use this info to identify critical areas of focus.&lt;/li>
+&lt;li>How: Identify the most critical parts of your topic and rigorously evaluate your current learning approach. Identify repeating strategies used by others.&lt;/li>
+&lt;/ul></description></item><item><title>Need for Serendipity engines</title><link>https://ibnishak.github.io/blog/dg/need-for-serendipity-engines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/need-for-serendipity-engines/</guid><description>&lt;h1 id="need-for-serendipity-engines">Need for Serendipity engines&lt;/h1>
+&lt;blockquote>
+&lt;p>Wandering around the web is like living in a world in which every doorway is actually one of those science fiction devices which deposit you in a completely different part of the world when you walk through them. - Douglas Adams&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>We revisit handful of webpages.&lt;/li>
+&lt;li>We need serendipity engines - like search engines.
+&lt;ul>
+&lt;li>Wikipedia, Zettelkasten, StumbleUpon etc are serendipity engines.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Aggregators have overpowered serendipity engines because we find comfort in [[Confirmation bias]].&lt;/li>
+&lt;li>Our imagination is limited by our experiences. Since imagination leads to queries, we need to expose ourselves to varied experiences to push our imagination. See [[Infinite Buffet]]&lt;/li>
+&lt;/ul>
+&lt;p>[[Social Media as echo chambers]]&lt;/p></description></item><item><title>Note taking Apps - Criteria</title><link>https://ibnishak.github.io/blog/dg/note-taking-apps---criteria/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/note-taking-apps---criteria/</guid><description>&lt;h1 id="note-taking-apps---criteria">Note-taking Apps - Criteria&lt;/h1>
+&lt;h2 id="essential-criteria">Essential criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Cross-platform.
+&lt;ul>
+&lt;li>At least Linux and Android must be supported.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Privacy and Offline Accessibility.&lt;/li>
+&lt;li>Mobile Accessibility.&lt;/li>
+&lt;li>Scalable.
+&lt;ul>
+&lt;li>See [[Scalability Limits for Note taking Applications]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Ability to cross-link notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="desired-criteria">Desired criteria.&lt;/h2>
+&lt;ol>
+&lt;li>Fast and accurate search.&lt;/li>
+&lt;li>Fast navigation, preferably keyboard based.&lt;/li>
+&lt;li>Semi automation of organization.&lt;/li>
+&lt;li>Bottom up organization.&lt;/li>
+&lt;li>Ability to add Quick Notes&lt;/li>
+&lt;li>Effortless setup, but extendable according to personal requirements.&lt;/li>
+&lt;/ol>
+&lt;h2 id="ideal-criteria">Ideal criteria&lt;/h2>
+&lt;ol>
+&lt;li>Complete portability
+&lt;ul>
+&lt;li>The question to consider is: &amp;ldquo;If I have to open my notes in a computer with only default apps, can I make sense of it?&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Web-clipper add-on for browser.&lt;/li>
+&lt;li>Secure cloud backups.&lt;/li>
+&lt;li>Visualization of relationships between notes as a mind-map.&lt;/li>
+&lt;li>Tool-chain for publication of selected notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="interesting-links">Interesting links&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://arieluna.notion.site/Apps-29ffc475bd3a4539b48eeb5bb551d713" target="_blank">Arie Luna&amp;rsquo;s List of Note taking Apps&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.notion.so/Artificial-Brain-Networked-notebook-app-a131b468fc6f43218fb8105430304709" target="_blank">Artificial Brain Networked notebook app - Master list of Personal knowledge base softwares&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/topics/personal-knowledge-base" target="_blank">Repos Tagged Personal Knowledgebase in Github&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Note-taking - Organization of the Zeroth Folder</title><link>https://ibnishak.github.io/blog/dg/note-taking---organization-of-the-zeroth-folder/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/note-taking---organization-of-the-zeroth-folder/</guid><description>&lt;h1 id="note-taking--organization-of-the-zeroth-folder">Note-taking – Organization of the Zeroth Folder&lt;/h1>
+&lt;p>In my home directory, I have a folder named &lt;code>0&lt;/code> which is mirrored between Linux and Android using Syncthing. It is named so that it appears first in lists and is easy to &lt;code>cd&lt;/code> into. Under &lt;code>~/0&lt;/code> there is:&lt;/p>
+&lt;p>Three Obsidian vaults.&lt;/p>
+&lt;ol>
+&lt;li>Think box
+&lt;ul>
+&lt;li>For thinking, deliberating opinions, and questioning myself&lt;/li>
+&lt;li>Daily routines and situational routines, mental models.&lt;/li>
+&lt;li>Notes on people.&lt;/li>
+&lt;li>Managing my lists (from ranked list of atrocities committed by governments to alphabetically sorted list of friends I would prefer as neighbors).&lt;/li>
+&lt;li>Highlights from Books (Moon reader) and Articles (Scrap bee).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Digital Fortress
+&lt;ul>
+&lt;li>Workflows, Criteria&lt;/li>
+&lt;li>Links to Resources.&lt;/li>
+&lt;li>Tutorials&lt;/li>
+&lt;li>Code snippets. See [[Workflow for Code Snippets]] #notYet&lt;/li>
+&lt;li>Reviews.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Academic – Personal Wikipedia.&lt;/li>
+&lt;/ol>
+&lt;p>In addition, I have five more folders.&lt;/p></description></item><item><title>Notes by Calendar</title><link>https://ibnishak.github.io/blog/dg/notes-by-calendar/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/notes-by-calendar/</guid><description>&lt;h1 id="notes-by-calendar">Notes by Calendar&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>[[March 2022]]&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>[[February 2022]]&lt;/p>
+&lt;/li>
+&lt;li>&lt;/li>
+&lt;li>
+&lt;p>[[September 2018]]&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>Notes on Accessories Folder</title><link>https://ibnishak.github.io/blog/dg/notes-on-accessories-folder/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/notes-on-accessories-folder/</guid><description>&lt;h1 id="notes-on-accessories-folder">Notes on Accessories Folder&lt;/h1>
+&lt;p>Accessories folder is served over a localhost port using a basic HTTP server. Images and Videos are then embedded in notes using the URL.&lt;br>
+This affords me the following conveniences:&lt;/p>
+&lt;ol>
+&lt;li>Keep heavy files out of obsidian vaults. This leaves just text in obsidian vaults which I can encrypt and store in any number of free cloud storage services. See [[Rclone]]&lt;/li>
+&lt;li>No need to worry about a bunch of ignore rules for backup and version control of vaults. The Accessories folder is backed up weekly to external hard drives weekly.&lt;/li>
+&lt;li>Use images and videos in other software (e.g.: Anki) without concern about their exact location in the file system.&lt;/li>
+&lt;/ol>
+&lt;p>Obsidian config that is shared between vaults is also kept in Accessories folder and symlinked to each vault. Shared configs include plugins, hotkeys, CSS snippets, and themes. Vault specific config, which remains within vault, controls things like which plugin/themes etc. are active in that specific vault.&lt;/p></description></item><item><title>Notes on Fourth Migration</title><link>https://ibnishak.github.io/blog/dg/notes-on-fourth-migration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/notes-on-fourth-migration/</guid><description>&lt;h1 id="notes-on-fourth-migration">Notes on Fourth Migration&lt;/h1>
+&lt;p>As mentioned in [[History of Notes Migration]], what prompted this migration was Tiddlywiki&amp;rsquo;s inability to scale. See [[Tiddlywiki - Inability to scale]]. True to the [[Infinite buffet approach]], I decided to see what is around and what all fits my [[Note taking Apps - Criteria]].&lt;/p>
+&lt;p>Every migration is painful. Every migration is also intended to be the last. So I tried to introduce little more resilience this time. Instead of choosing a single note taking application, I chose markdown with extra features that is supported by more than 1 application. These extra features include&lt;/p></description></item><item><title>Obsidian - Notes on Workflow</title><link>https://ibnishak.github.io/blog/dg/obsidian---notes-on-workflow/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/obsidian---notes-on-workflow/</guid><description>&lt;h1 id="obsidian---notes-on-workflow">Obsidian - Notes on Workflow&lt;/h1>
+&lt;p>Fair warning: This is essentially workflow documentation. Workflows are unique to one&amp;rsquo;s situation. So take pieces you seem worth taking, and let me know if you have shinier pieces to share. I have no monetary interest here, so you may relax.&lt;/p>
+&lt;p>Also, semi-mandatory watching: &lt;a href="https://www.youtube.com/watch?v=9Lnrj1jZG7I" target="_blank">CollegeHumor: May be this will fix my life&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>[[Obsidian - Organization]]&lt;/li>
+&lt;/ul></description></item><item><title>Occams Broom</title><link>https://ibnishak.github.io/blog/dg/occams-broom/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/occams-broom/</guid><description>&lt;h1 id="occams-broom">Occams Broom&lt;/h1>
+&lt;p>Urge to hide inconvenient facts that don’t fit into one’s hypothesis.&lt;/p></description></item><item><title>Occams Razor</title><link>https://ibnishak.github.io/blog/dg/occams-razor/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/occams-razor/</guid><description>&lt;h1 id="occams-razor">Occams Razor&lt;/h1>
+&lt;p>It advises that the simplest explanation is most likely to be true&lt;/p>
+&lt;p>A practical tactic is to look at your explanation of a situation, break it down into its constituent assumptions, and for each one, ask yourself: Does this assumption really need to be here? What evidence do I have that it should remain? Is it a false dependency?&lt;/p>
+&lt;h2 id="occams-razor-in-medicine">Occams Razor in medicine&lt;/h2>
+&lt;ul>
+&lt;li>If all the symptoms of a patient is explained by&lt;/li>
+&lt;li>one single disease&lt;/li>
+&lt;li>3 different diseases&lt;/li>
+&lt;/ul>
+&lt;p>opt for the former explanation.&lt;/p></description></item><item><title>Oversensitivity to pattern</title><link>https://ibnishak.github.io/blog/dg/oversensitivity-to-pattern/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/oversensitivity-to-pattern/</guid><description>&lt;h1 id="oversensitivity-to-pattern">Oversensitivity to pattern&lt;/h1>
+&lt;p>When it comes to pattern recognition, we are oversensitive. Regain your skepticism. If you think you have discovered a pattern, first consider it pure chance.&lt;/p>
+&lt;p>The human brain seeks patterns and rules. In fact, it takes it one step further: If it finds no familiar patterns, it simply invents some. The more diffuse the signal, such as the background noise on the tape, the easier it is to find “hidden messages” in it.&lt;/p></description></item><item><title>Pomodoro</title><link>https://ibnishak.github.io/blog/dg/pomodoro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/pomodoro/</guid><description>&lt;h1 id="pomodoro">Pomodoro&lt;/h1>
+&lt;ul>
+&lt;li>Set a timer and a single realistic goal. &lt;strong>A realistic goal = median of previous performances.&lt;/strong>
+&lt;ul>
+&lt;li>See also [[Bayesian Thinking]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Get into [[Flow]] for that amount of time.&lt;/li>
+&lt;li>Raise the counter and take a break.
+&lt;ul>
+&lt;li>[[Things to do while taking pomodoro breaks]].&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Update your data and probability of realistic goals.&lt;/li>
+&lt;/ul></description></item><item><title>Reverse outlining</title><link>https://ibnishak.github.io/blog/dg/reverse-outlining/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/reverse-outlining/</guid><description>&lt;h1 id="reverse-outlining">Reverse outlining&lt;/h1>
+&lt;p>Instead of writing an outline first and then writing the essay, write whatever that comes to mind, then add outline to see logical consistency, gaps etc&lt;/p>
+&lt;p>See &lt;a href="https://www.theverge.com/2016/1/28/10853534/flowstate-writing-app-mac-ios-delete-everything" target="_blank">Flowstate App&lt;/a>&lt;/p>
+&lt;p>Instead to sitting down and planning every detail, just start working. After a while, look back and see what is missing.&lt;/p></description></item><item><title>Rule of 72</title><link>https://ibnishak.github.io/blog/dg/rule-of-72/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/rule-of-72/</guid><description>&lt;h1 id="rule-of-72">Rule of 72&lt;/h1>
+&lt;p>Source: &lt;a href="https://betterexplained.com/articles/the-rule-of-72/" target="_blank">https://betterexplained.com/articles/the-rule-of-72/&lt;/a>&lt;/p>
+&lt;p>Years to double = &lt;strong>72 / Interest Rate&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>If inflation rates go from 2% to 3%, your money will lose half its value in 24 years instead of 36.&lt;/li>
+&lt;li>If population grows at 2% rate, it will double in 36 years.&lt;/li>
+&lt;li>If Bank offers 10% interest rate, your money will double in 7.2 years&lt;/li>
+&lt;/ul></description></item><item><title>Rules of Social behaviour</title><link>https://ibnishak.github.io/blog/dg/rules-of-social-behaviour/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/rules-of-social-behaviour/</guid><description>&lt;h1 id="rules-of-social-behaviour">Rules of Social behaviour&lt;/h1>
+&lt;ul>
+&lt;li>Prophet SAW said, ‘Whoever believes in God and the Last Day should &lt;strong>speak a good word or remain silent.&lt;/strong>’
+&lt;ul>
+&lt;li>This is an exhortion to avoid unnecessarily criticising and engaging in debate. When one criticize or debate, one must #interrupt-your-thinking to ask if the subject is actually wrong and warrants a debate.&lt;/li>
+&lt;li>One should not remain silent when faced with wrong-doing
+&lt;ul>
+&lt;li>If someone among you sees wrong, he must right it by his hand if he can, if he cannot, then by his tongue, if he cannot, then by his gaze, and if he cannot, then in his heart. - Hadith 34, Hadith an-Nawawi&lt;/li>
+&lt;li>The best of jihad is a just word spoken to an unjust ruler.” - IbnMaja 4011&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>“To refrain from imitation is the best revenge. — Marcus Aurelius, Meditations”
+&lt;ul>
+&lt;li>This is an exhortion to not hurt someone back the same way they hurt you.&lt;/li>
+&lt;li>One should always remember to imitate the good from whatever sources one can find. See tangent: [[Ad hominem|Guilt by Association in Ad hominem fallacy]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Admit when you do not know.
+&lt;ul>
+&lt;li>#interrupt-your-thinking When somebody asks something, interrupt your urge to answer. Do I really know this or am I giving my opinion?&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Scalability Limits for Note taking Applications</title><link>https://ibnishak.github.io/blog/dg/scalability-limits-for-note-taking-applications/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/scalability-limits-for-note-taking-applications/</guid><description>&lt;h1 id="scalability-limits-for-note-taking-applications">Scalability Limits for Note taking Applications&lt;/h1>
+&lt;p>Let us assume we take 20 notes per day all together - journal, snippets, bookmarks and all.&lt;/p>
+&lt;ul>
+&lt;li>In a year, 7500 is a good approximation.&lt;/li>
+&lt;li>In 10 years, that becomes 75K.&lt;/li>
+&lt;li>Let us give it a comfortable blanket of 33% and we get a rounded number of 100K.&lt;/li>
+&lt;/ul>
+&lt;p>In 10 years I hope to see significant upgrades in hardwares and softwares. So these are my arbitrary limits which I consider reasonable - I should be able to use my existing laptop to manage a personal knowledge base of &lt;strong>100K notes for the next 10 years&lt;/strong>.&lt;/p></description></item><item><title>Second order thinking</title><link>https://ibnishak.github.io/blog/dg/second-order-thinking/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/second-order-thinking/</guid><description>&lt;h1 id="second-order-thinking">Second order thinking&lt;/h1>
+&lt;p>&lt;a href="https://via.hypothes.is/https://fs.blog/2016/04/second-order-thinking/" target="_blank">Source&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>Always ask yourself “And then what? How many steps am I picturing?”&lt;/li>
+&lt;li>Think through time — What do the consequences look like in 10 minutes? 10 months? 10 Years?&lt;/li>
+&lt;li>Ask yourself how important parts of the ecosystem are likely to respond. How will your family deal with this? What will my coworkers likely do? What about my superiors?
+&lt;ul>
+&lt;li>Overthinking? This needs a tricky balance. The skill to acquire is the ability to realise when you are being overwhelmed and break your thought process there.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol></description></item><item><title>September 2018</title><link>https://ibnishak.github.io/blog/dg/september-2018/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/september-2018/</guid><description>&lt;h1 id="september-2018">September 2018&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="https://ibnishak.github.io/blog/blog/post/zsh-parameter-expansion-cheatsheet/" target="_blank">zsh: Parameter expansion cheatsheet&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ibnishak.github.io/blog/blog/post/tw5-options-in-android-platform/" target="_blank">TW5: Options in Android Platform&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ibnishak.github.io/blog/blog/post/tw5-small-screen-css-woes/" target="_blank">TW5: CSS woes with smaller screens&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Sunk Cost Fallacy</title><link>https://ibnishak.github.io/blog/dg/sunk-cost-fallacy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/sunk-cost-fallacy/</guid><description>&lt;h1 id="sunk-cost-fallacy">Sunk Cost Fallacy&lt;/h1>
+&lt;p>The Sunk Cost Fallacy describes our tendency to follow through on an endeavor if we have already invested time, effort, or money into it, whether or not the current costs outweigh the benefits.&lt;/p></description></item><item><title>Survivorship bias</title><link>https://ibnishak.github.io/blog/dg/survivorship-bias/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/survivorship-bias/</guid><description>&lt;h1 id="survivorship-bias">Survivorship bias&lt;/h1>
+&lt;ul>
+&lt;li>Social media and other information outlets only show individual successes. For every individual that succeeded, there might be 10 who failed. These 10 might have used the same technique, went to same coach and read the same self-help book.
+&lt;ol>
+&lt;li>Since we only see successes around us, we overestimate our chance of success.&lt;/li>
+&lt;li>A lot of success is pure chance. See &lt;a href="meritocracy" target="_blank">Meritocracy&lt;/a>. While we should strive to succeed with all our might, we should also remind ourselves of this. It will help us retain humility in our successes, remind what we owe to the society.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="counter">Counter&lt;/h2>
+&lt;ul>
+&lt;li>Every time you hear a success story, remember those who used the same techniques and failed.&lt;/li>
+&lt;/ul></description></item><item><title>The Laundry Approach</title><link>https://ibnishak.github.io/blog/dg/the-laundry-approach/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/the-laundry-approach/</guid><description>&lt;h1 id="the-laundry-approach">The Laundry Approach&lt;/h1>
+&lt;p>Do you wash every single piece of clothes separately? I’m sure not. You simply wait until the whole bag is full and then do the laundry. Thus, here you can follow the same approach. Don’t keep yourself busy with checking out your emails the whole day long. You can do that once a day or once in 2 days, depends on their importance”&lt;/p>
+&lt;p>Bilal El Mouden&lt;/p></description></item><item><title>Tiddlywiki - An exit interview</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---an-exit-interview/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---an-exit-interview/</guid><description>&lt;h1 id="tiddlywiki---an-exit-interview">Tiddlywiki - An exit interview&lt;/h1>
+&lt;p>Fair warning: This is not a takedown. I am just explaining why to &lt;em>my particular use-case&lt;/em>, Tiddlywiki is not a good fit anymore. In a way this is documentation of my [[Circle of Competence]] rather than limitation of Tiddlywiki. As a tool Tiddlywiki has persisted for 15+ years and earned praise from industry giants. So before dismissing it based on anyone&amp;rsquo;s opinion, it would be only fair to give it a try.&lt;/p></description></item><item><title>Tiddlywiki - Conclusion</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---conclusion/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---conclusion/</guid><description>&lt;h1 id="tiddlywiki---way-ahead">Tiddlywiki - Way ahead&lt;/h1>
+&lt;p>Tiddlywiki is a unique tool. That is not always good. When your tool is unique, your problems are also unique and solutions might be rare. It is incredibly powerful to roll out your own solutions, but it is time-consuming. It takes up a middle ground between being a framework and note taking application. Problem with being in middle is, there are better note-taking solutions, and there are better frameworks.&lt;/p></description></item><item><title>Tiddlywiki - Extensibility issues</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---extensibility-issues/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---extensibility-issues/</guid><description>&lt;h1 id="tiddlywiki---extensibility-issues">Tiddlywiki - Extensibility issues&lt;/h1>
+&lt;p>Tiddlywiki has an expressive internal language in which most of plugins are written&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>. This reminds me of Emacs/Vim attitude to extensibility. You have all the power, but only if you learn ELisp/Vim script/WikiText.&lt;/p>
+&lt;p>None of these languages has any application outside their restricted environments. The knowledge regarding these can be neither transferred in or transferred out. There is hardly any meta tools for this internal language - say syntax-highlighting or prettification tools. In addition, unlike Emacs/Vim, the community size of Tiddlywiki is rather small. The effect of such barriers easy to gauge when you compare the speed at which &lt;a href="https://obsidian-plugin-stats.vercel.app/" target="_blank">plugin ecosystem is expanding for apps like Obsidian&lt;/a>(which has well defined API in Typescript) compared to that of Tiddlywiki.&lt;/p></description></item><item><title>Tiddlywiki - Inability to scale</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---inability-to-scale/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---inability-to-scale/</guid><description>&lt;h1 id="tiddlywiki---inability-to-scale">Tiddlywiki - Inability to scale&lt;/h1>
+&lt;p>See [[Scalability Limits for Note taking Applications]]&lt;/p>
+&lt;p>There are &lt;a href="https://tiddlywiki.com/#Scalability" target="_blank">claims in the official website&lt;/a> about how much data can a single Tiddlywiki can hold. However, no actual benchmarks are given. I looked around and found the biggest public examples of Tiddlywiki I could find:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://onetwo.ren/CDDA-Kenan-Modpack-Chinese/#Index:Index%20README.md" target="_blank">Kenan&amp;rsquo;s wiki&lt;/a>: It has close to 30K notes, 85.6 MB in size as of 13th March 2022.&lt;/li>
+&lt;li>&lt;a href="https://philosopher.life/" target="_blank">H0p3&amp;rsquo;s wiki&lt;/a>. It has above 15K notes, 50.4 MB in size as of 13th March 2022.&lt;/li>
+&lt;/ul>
+&lt;p>I downloaded them for further testing. H0p3 seems to be managing all lists in the wiki statically&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>. That is fine by me, I am a firm believer of not using app specific markup in the notes. However, an &lt;a href="https://philosopher.life/#2019.03.26%20-%20Wiki%20Audit%3A%20Cake" target="_blank">audit note by the author&lt;/a> in which he talks about data loss, issues with NodeJS and other TW5 saver mechanisms and so on gives some serious points to ponder over.&lt;/p></description></item><item><title>Tiddlywiki - Issues with HTML flavor</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-html-flavor/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-html-flavor/</guid><description>&lt;h1 id="tiddlywiki---issues-with-html-flavor">Tiddlywiki - Issues with HTML flavor&lt;/h1>
+&lt;p>In HTML flavor, all the data is saved in a single HTML file. This is a unique Tiddlywiki approach and a radical one. Every other note taking solution including markdown, requires some sort of parser. You might find yourselves in a position where you don&amp;rsquo;t have the privileges to install a software in a computer, thereby cutting you off from your notes. However it is a safe bet that any of those machines will have a web browser installed, and that is all you need to read your Tiddlywiki notes in single HTML flavor.&lt;/p></description></item><item><title>Tiddlywiki - Issues with markup</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-markup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-markup/</guid><description>&lt;h1 id="tiddlywiki---issues-with-markup">Tiddlywiki - Issues with markup&lt;/h1>
+&lt;p>Of all the issues, this one is not the fault of Tiddlywiki. It is not even an issue to be honest, mere inconvenience. When Tiddlywiki started out, markdown was also in its infancy. However later years saw markdown emerge as the markup of choice among note taking applications and static site generators, while Tiddlywiki refused to follow the trend for the sake of backward compatibility.&lt;/p></description></item><item><title>Tiddlywiki - Issues with NodeJS variant</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-nodejs-flavor/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-nodejs-flavor/</guid><description>&lt;h1 id="tiddlywiki---issues-with-nodejs-variant">Tiddlywiki - Issues with NodeJS variant&lt;/h1>
+&lt;p>Between NodeJS flavor and Single Page Application flavor of Tiddlywiki, NodeJS flavor of Tiddlywiki is the one that acts more in line with expectations from a plain text note taking application. Each note is saved to a separate plain-text file with the extension &lt;code>.tid&lt;/code>. One should install NodeJS runtime and acquiring basic terminal skills in order to get this running. While it was not an issue for me, this should bother average Windows users who never had to interact with terminal before.&lt;/p></description></item><item><title>Tiddlywiki - Issues with search</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-search/</guid><description>&lt;h1 id="tiddlywiki---issues-with-search">Tiddlywiki - Issues with search&lt;/h1>
+&lt;p>This is easy to demonstrate - go to &lt;a href="https://tiddlywiki.com/" target="_blank">Tiddlywiki website&lt;/a> and type &lt;code>macro&lt;/code> into the search field. There is a note in that Tiddlywiki titled &lt;code>Macros&lt;/code>, which is naturally expected as the top result. However, it appears in way down, in search results sorted alphabetically. While you can change the sort order of search results to other parameters like creation date or modification date, there is no way to sort it by &amp;ldquo;relevance&amp;rdquo;. The third party solutions for this problem depend on creating and recreating index on every single change, which is inefficient and balloons the size of wiki.&lt;/p></description></item><item><title>Tiddlywiki - Issues with UI, Community and the rest</title><link>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-ui-community-and-the-rest/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/tiddlywiki---issues-with-ui-community-and-the-rest/</guid><description>&lt;h1 id="tiddlywiki---issues-with-ui-community-and-the-rest">Tiddlywiki - Issues with UI, Community and the rest&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>There is no way to put this gently, Tiddlywiki UI is outdated. Yes, beauty is in the eyes of beholder, I am being superficial yada yada. Despite having immense potential and ease with which Tiddlywiki could modify its UI, it decided to stay with the 90s. Biggest visible changes to UI in the core has been introduction of menubar which is an eyesore. &lt;a href="https://www.figma.com/proto/TCQj1L5v85AEB0RUqDMA8a/TiddliWiki-revamp?node-id=586%3A0&amp;amp;viewport=403%2C424%2C0.2502712905406952&amp;amp;scaling=min-zoom" target="_blank">Well intentioned developers had offered to help out&lt;/a> for free, only to be never heard from again, presumably due to lack of input or interest from the community.&lt;/p></description></item><item><title>Veil of ignorance</title><link>https://ibnishak.github.io/blog/dg/veil-of-ignorance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/veil-of-ignorance/</guid><description>&lt;h1 id="veil-of-ignorance">Veil of ignorance&lt;/h1>
+&lt;p>“Imagine you’ve been asked to create the principles and rules of a new society. Now imagine, when making the rules, that you don’t know your position, sex, intellectual capacity or disability in that society.”&lt;/p>
+&lt;p>Our primary social tendency is to ensure our survival. Any tool or power we come to possess, we use for the same purpose. Law making is one of the highest powers available to anyone. Left alone, the law makers will naturally be biased towards oneself. Veil of ignorance uses the same bias to counter it.&lt;/p></description></item><item><title>Why learn Philosophy</title><link>https://ibnishak.github.io/blog/dg/why-learn-philosophy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/dg/why-learn-philosophy/</guid><description>&lt;h1 id="why-learn-philosophy">Why learn Philosophy&lt;/h1>
+&lt;p>Everyone should &amp;ldquo;think&amp;rdquo;. However, one does not think in vacuum. Our thoughts are products of our exposure to other thoughts and experiences passed through the filter of our own deliberation. Philosophy is exposure to other thoughts - thoughts of people who had different experiences than us and deliberated upon them.&lt;/p>
+&lt;blockquote>
+&lt;p>Employ your time in improving yourself by other men&amp;rsquo;s writings, so that you shall gain easily what others have labored hard for. - Socrates&lt;/p></description></item></channel></rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Review on Treppenwitze</title><link>https://ibnishak.github.io/blog/categories/review/</link><description>Recent content in Review on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Thu, 10 Dec 2020 22:00:43 +0530</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/categories/review/index.xml" rel="self" type="application/rss+xml"/><item><title>Dotfile Management - Criteria and Candidates</title><link>https://ibnishak.github.io/blog/post/dotfile-management---criteria-and-candidates/</link><pubDate>Thu, 10 Dec 2020 22:00:43 +0530</pubDate><guid>https://ibnishak.github.io/blog/post/dotfile-management---criteria-and-candidates/</guid><description>&lt;h2 id="essential">Essential&lt;/h2>
+&lt;ul>
+&lt;li>NOT symlinking. Some programs (eg: XFCE) will overwrite symlinks.&lt;/li>
+&lt;li>NOT copying. The config files itself should be the source of truth. ie, If the config files are edited, the changes should automatically reflect in the dotfiles vault.&lt;/li>
+&lt;li>Version control. If the config files ought be edited without worry, they need be reversible to previous states&lt;/li>
+&lt;li>Scriptable&lt;/li>
+&lt;/ul>
+&lt;h2 id="desirable">Desirable&lt;/h2>
+&lt;ul>
+&lt;li>Simple command structure&lt;/li>
+&lt;li>Ability to encrypt files&lt;/li>
+&lt;li>Ability to ignore files based on OS or other parameters&lt;/li>
+&lt;li>Bootstrapping - Ability to run some scripts automatically on first run.&lt;/li>
+&lt;/ul>
+&lt;h2 id="ideal">Ideal&lt;/h2>
+&lt;ul>
+&lt;li>Automated synchronisation to cloud targets on regular intervals (like an inbuilt cron)&lt;/li>
+&lt;li>Part of core packages so that it is immediately available upon OS reinstall&lt;/li>
+&lt;/ul>
+&lt;h2 id="candidates">Candidates&lt;/h2>
+&lt;ul>
+&lt;li>Gnu stow: Symlinks&lt;/li>
+&lt;li>&lt;a href="https://github.com/twpayne/chezmoi" target="_blank">Chezmoi&lt;/a>: Copying&lt;/li>
+&lt;li>&lt;a href="https://github.com/thoughtbot/rcm" target="_blank">RCM&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/comtrya/comtrya" target="_blank">Comtrya&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/rhysd/dotfiles" target="_blank">dotfiles&lt;/a>: Symlinks&lt;/li>
+&lt;li>&lt;a href="https://github.com/sigmonsays/dotbot" target="_blank">dotbot&lt;/a>: Symlinks&lt;/li>
+&lt;li>&lt;a href="https://yadm.io/" target="_blank">Yadm&lt;/a>: CURRENT&lt;/li>
+&lt;/ul></description></item></channel></rss>

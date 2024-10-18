@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tiddlywiki on Treppenwitze</title><link>https://ibnishak.github.io/blog/tags/tiddlywiki/</link><description>Recent content in Tiddlywiki on Treppenwitze</description><generator>Hugo</generator><language>en</language><copyright>[Home](/) &amp;#183; Theme [Simpleness](https://github.com/RainerChiang/simpleness) Powered by [Hugo](https://gohugo.io/)</copyright><lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://ibnishak.github.io/blog/tags/tiddlywiki/index.xml" rel="self" type="application/rss+xml"/><item><title>TW5: Options in Android Platform</title><link>https://ibnishak.github.io/blog/post/tw5-options-in-android-platform/</link><pubDate>Fri, 14 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/tw5-options-in-android-platform/</guid><description>&lt;p>Saving a TW5 wiki in android has 7 possible solutions. We shall take a quick look at each of them.&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="#android-apps" target="_blank">Android Apps&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#tiddloid" target="_blank">Tiddloid&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#andtidwiki" target="_blank">Andtidwiki&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#webdav-server" target="_blank">Webdav server&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="#servers-using-termux" target="_blank">Servers using Termux&lt;/a>
+&lt;ul>
+&lt;li>&lt;a href="#built-in-server" target="_blank">Built in server.&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#tiddlyserver" target="_blank">Tiddlyserver.&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#bob" target="_blank">Bob&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#and-finally-the-winner-widdly-by-opennota" target="_blank">And finally the winner: Widdly by Opennota&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;br/>&lt;br/>&lt;/p>
+&lt;h3 id="android-apps">Android Apps&lt;/h3>
+&lt;h4 id="tiddloid">Tiddloid&lt;/h4>
+&lt;p>Tiddloid is the latest android app to save tiddlywiki in android. It is surprisingly good. It allows you to add TW5s stored anywhere in your internal memory, saves without glitches and even has dark mode. If you want to use TW5 in android, tiddloid is definitely the way to go. Developer is actively adding new features. Download the &lt;a href="https://github.com/donmor/Tiddloid/releases" target="_blank">apk from github&lt;/a>.&lt;/p></description></item><item><title>TW5: CSS woes with smaller screens</title><link>https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/</link><pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate><guid>https://ibnishak.github.io/blog/post/tw5-small-screen-css-woes/</guid><description>&lt;p>We will keep this strictly to the ease o use of TW5 on smaller screens. I have been using TW5 for 4 years now, at the end of which I reached 2 conclusions.&lt;/p>
+&lt;ol>
+&lt;li>It is not intended to handle large amount of data.&lt;/li>
+&lt;li>It is not well adapted for mobile platform.&lt;/li>
+&lt;/ol>
+&lt;p>The first problem had solutions - categorize and split the data. The second problem took a long time for a satisfactory resolution. Before discussing the solutions that eventually turned up, let us indulge in a bit of rambling.&lt;/p></description></item></channel></rss>
